@@ -1,17 +1,8 @@
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-web')
-    compile project(":core")
-    compile project(":base-facade")
-    compile project(":facade")
-}
+    compile('org.springframework:spring-webmvc:4.3.17.RELEASE')
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${r'${springCloudVersion}'}"
-    }
+    compile project(':base-facade')
+    compile project(':core')
+    compile project(':facade')
 }
