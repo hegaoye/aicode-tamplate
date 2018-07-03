@@ -24,7 +24,7 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import com.baidu.fsg.uid.UidGenerator;
 
-@Service("${classNameLower}SV")
+@Service("${className?uncap_first}SV")
 @Slf4j
 public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implements ${className}SV {
 
