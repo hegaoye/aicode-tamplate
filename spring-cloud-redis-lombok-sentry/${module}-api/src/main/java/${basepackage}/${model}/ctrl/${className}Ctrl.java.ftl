@@ -163,7 +163,7 @@ public class ${className}Ctrl {
     */
     @ApiOperation(value = "创建${className}", notes = "创建${className}")
     @ApiImplicitParams({
-        <#list notPkFields as field>
+        <#list fields as field>
         <#if !field.checkDate>
         @ApiImplicitParam(name = "${field.field}", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
         </#if>
