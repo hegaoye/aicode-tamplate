@@ -26,6 +26,7 @@ import com.baidu.fsg.uid.UidGenerator;
 
 @Service("${className?uncap_first}SV")
 @Slf4j
+2222222
 public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implements ${className}SV {
 
     @Autowired
