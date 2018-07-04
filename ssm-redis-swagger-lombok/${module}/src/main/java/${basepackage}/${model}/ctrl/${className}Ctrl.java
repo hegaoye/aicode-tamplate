@@ -153,10 +153,10 @@ public class ${className}Ctrl extends BaseCtrl {
     @DeleteMapping("/delete")
     @ResponseBody
     public BeanRet delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
-        <#list pkFields as field>
-                if(StringTools.isEmpty(${classNameLower}.get${field.field?cap_first}())){
-                return BeanRet.create(false,"${field.notes}不能为空");
-                }
+        <#list pkFields as pkField>
+        if(${pkField.field}==null){
+          return BeanRet.create(false,"${field.notes}不能为空");
+        }
         </#list>
         ${classNameLower}SV.delete(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
         return BeanRet.create(true, "删除${className}成功");
