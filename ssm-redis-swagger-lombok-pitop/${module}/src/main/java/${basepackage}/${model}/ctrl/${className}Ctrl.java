@@ -155,7 +155,7 @@ public class ${className}Ctrl extends BaseCtrl {
     public BeanRet delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         <#list pkFields as pkField>
         if(${pkField.field}==null){
-          return BeanRet.create(false,"${field.notes}不能为空");
+          return BeanRet.create(false,"${pkField.notes}不能为空");
         }
         </#list>
         ${classNameLower}SV.delete(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
