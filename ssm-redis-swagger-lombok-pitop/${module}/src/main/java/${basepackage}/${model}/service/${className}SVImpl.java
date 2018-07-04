@@ -16,7 +16,6 @@ import ${basePackage}.core.base.Page;
 import ${basePackage}.${model}.facade.${className}SV;
 import ${basePackage}.${model}.dao.${className}DAO;
 import ${basePackage}.${model}.entity.${className};
-import ${basePackage}.core.base.BeanRet;
 import ${basePackage}.core.tools.StringTools;
 
 /**
@@ -35,58 +34,6 @@ public class ${className}SVImpl extends BaseMybatisSVImpl<${className},Long> imp
     protected BaseMybatisDAO getBaseMybatisDAO(){
 		return ${classNameLower}DAO;
 	}
-
-	/**
-	 * 添加对象${className}
-	 * @param ${className} ${classNameLower}
-	 * @return ${className}
-	 */
-	@Override
-	public BeanRet insert(${className} ${classNameLower}){
-<#list fields as field>
-		if(StringTools.isEmpty(${classNameLower}.get${field.field?cap_first}())){
-		return BeanRet.create(false,"${field.notes}不能为空");
-		}
-		//判断值是否重复
-		if(${classNameLower}SV.isExist("${field.field}",${classNameLower}.get${field.field?cap_first}())){
-		return BeanRet.create(false,"${field.notes}重复");
-		}
-</#list>
-
-		${classNameLower}=${classNameLower}DAO.insert(${classNameLower});
-		return BeanRet.create(true, "创建${className}成功",${classNameLower});
-
-	}
-
-	/**
-	 * 修改对象${className}
-	 * @param ${className} ${classNameLower}
-	 * @return ${className}
-	 */
-	@Override
-	public BeanRet modify(${className} ${classNameLower}){
-		//唯一标识字段
-		Map map=new HashMap();
-<#list pkFields as pkField>
-<#if pkField.field!='id'>
-		map.put("${pkField.field}",${classNameLower}.get${pkField.field?cap_first}());
-</#if>
-</#list>
-
-<#list fields as field>
-		if(StringTools.isEmpty(${classNameLower}.get${field.field?cap_first}())){
-		return BeanRet.create(false,"${field.notes}不能为空");
-		}
-		//判断值是否重复
-		if(${classNameLower}SV.isExistByConditions("${field.field}",${classNameLower}.get${field.field?cap_first}(),map)){
-		return BeanRet.create(false,"${field.notes}重复");
-		}
-</#list>
-
-		${classNameLower}=${classNameLower}DAO.update(${classNameLower});
-		return BeanRet.create(true, "修改${className}成功",${classNameLower});
-	}
-
 
 <#if (pkFields?size>0)>
 

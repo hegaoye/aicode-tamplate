@@ -16,20 +16,6 @@ import ${basePackage}.core.base.BeanRet;
  */
 public interface ${className}SV extends BaseMybatisSV<${className},Long>{
 
-    /**
-     * 添加对象${className}
-     * @param ${className} ${classNameLower}
-     * @return BeanRet
-     */
-     BeanRet insert(${className} ${classNameLower});
-    /**
-     * 修改对象${className}
-     * @param ${className} ${classNameLower}
-     * @return BeanRet
-     */
-     BeanRet modify(${className} ${classNameLower});
-
-
 <#if (pkFields?size>0)>
 
 
