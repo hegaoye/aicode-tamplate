@@ -48,7 +48,6 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     */
     @Override
     public void save(${className} entity) throws BaseException {
-        entity.setCode(String.valueOf(uidGenerator.getUID()));
         <#list fields as field>
         <#if field.checkPk && field.field?contains("code")>
         entity.set${field.field?cap_first}(String.valueOf(uidGenerator.getUID()));
@@ -102,6 +101,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     * @param newState 新状态
     * @param oldStates 旧状态集合
     */
+    @Override
     public void updateStateBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field},${className}State newState,${className}State... oldStates){
         if(${pkField.field}==null){
             throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
@@ -123,6 +123,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     * @param ${pkField.field} ${pkField.notes}
     * @param state 状态
     */
+    @Override
     public void updateBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field},${className}State state){
             if(${pkField.field}==null){
                throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
@@ -179,6 +180,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
         return ${classNameLower}DAO.list(map, new RowBounds(offset, limit));
     }
 
+    @Override
     public  int count(${className} ${classNameLower}){
         Map<String, Object> map = null;
         if (${classNameLower} != null) {
