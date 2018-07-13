@@ -103,11 +103,10 @@ public class Page<VO> implements java.io.Serializable {
         this.curPage = curPage;
         params = new HashMap<String, Object>(0);
         voList = new ArrayList<VO>(this.pageSize);
-        if (curPage > getTotalPage()) {
-            this.curPage = getTotalPage();
-        }
         if (curPage < 1) {
             this.curPage = 1;
+        } else {
+            this.curPage = curPage;
         }
     }
 

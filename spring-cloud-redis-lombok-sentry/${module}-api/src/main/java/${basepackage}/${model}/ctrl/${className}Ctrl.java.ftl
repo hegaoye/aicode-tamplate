@@ -148,7 +148,7 @@ public class ${className}Ctrl {
         if(page==null){
            return BeanRet.create(BaseException.BaseExceptionEnum.Empty_Param);
         }
-        List<${className}> ${classNameLower}s = ${classNameLower}SVImpl.list(<#list pkFields as pkField>${pkField.field},</#list> page.genRowStart(),page.getPageSize());
+        List<${className}> ${classNameLower}s = ${classNameLower}SVImpl.list(<#list pkFields as pkField>${pkField.field},</#list> page.getCurPage(),page.getPageSize());
         int total = ${classNameLower}SVImpl.count(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
         page.setTotalRow(total);
         page.setVoList(${classNameLower}s);
