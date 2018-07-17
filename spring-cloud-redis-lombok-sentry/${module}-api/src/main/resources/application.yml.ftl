@@ -1,6 +1,12 @@
 spring:
   application:
     name: ${projectName?replace("_","-")}-consumer
+  zipkin:
+    base-url: http://localhost:9411
+    connectTimeout: 3000
+    readTimeout: 3000
+    flushInterval: 1
+    compressionEnabled: true
   output:
     ansi:
       enabled: always

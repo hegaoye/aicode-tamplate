@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+    compile('io.zipkin.java:zipkin-server')
+    compile('io.zipkin.java:zipkin-autoconfigure-ui')
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}

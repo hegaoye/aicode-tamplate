@@ -1,6 +1,7 @@
 include 'core', 'base-facade', 'base-sv','base-web'
 
-include 'eureka',
+include 'eureka-server',
+        'zipkin-server',
         '${projectName}',
         '${projectName}-api',
         'facade'
