@@ -23,5 +23,5 @@ security:
  basic:
    enabled: true
  user:
-   name: pitop
-   password: www.pi-top.com
+   name: ${projectName}
+   password: www.${projectName}.com

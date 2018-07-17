@@ -16,10 +16,17 @@ eureka:
     registerWithEureka: false #是否将自身注册
     fetchRegistry: false #如果为true，启动时报警.
     serviceUrl:
-      defaultZone: http://${r'${eureka.instance.hostname}'}:${r'${server.port}'}/eureka/
+    defaultZone: http://${r'${'}security.user.name}:${r'${'}security.user.password}@${r'${'}eureka.instance.hostname}:${r'${'}server.port}/eureka/
   server:
     enable-self-preservation: true
 
+#启用密码保护
+security:
+  basic:
+    enabled: true
+  user:
+    name: ${projectName}
+    password: www.${projectName}.com
 
 logging:
 #   pattern:

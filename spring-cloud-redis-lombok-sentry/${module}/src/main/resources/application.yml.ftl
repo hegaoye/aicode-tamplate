@@ -55,13 +55,24 @@ server:
 
 #访问注册中心配置
 eureka:
-   instance:
-      status-page-url: http://localhost:${r"${"}server.port}/swagger-ui.html
-      lease-expiration-duration-in-seconds: 5 #心跳更新时间5s
-      lease-renewal-interval-in-seconds: 5 #心跳过期时间5s
-   client:
-     serviceUrl:
-       defaultZone: http://localhost:8761/eureka/
+    instance:
+        prefer-ip-address: true
+        instance-id: ${r'${'}spring.application.name}:${r'${'}spring.cloud.client.ipAddress}:${r'${'}spring.application.instance_id:${r'${'}server.port}}
+        hostname: localhost #指定主机名
+        status-page-url: http://${r'${'}eureka.instance.hostname}:${r'${'}server.port}/swagger-ui.html
+        lease-expiration-duration-in-seconds: 5 #心跳更新时间5s
+        lease-renewal-interval-in-seconds: 5 #心跳过期时间5s
+    client:
+        serviceUrl:
+        defaultZone: http://${r'${'}security.user.name}:${r'${'}security.user.password}@${r'${'}eureka.instance.hostname}:8761/eureka/
+
+#启用密码保护
+security:
+    basic:
+        enabled: true
+    user:
+        name: ${projectName}
+        password: www.${projectName}.com
 
 
 #指定mybatis映射文件的地址
