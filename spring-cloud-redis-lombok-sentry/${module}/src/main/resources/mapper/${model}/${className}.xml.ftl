@@ -126,6 +126,9 @@
             UPDATE `${tableName}`
             set state = ${r'#{newState}'}
             <where>
+                <if test="${pkField.field}!=null">
+                   ${pkField.column} = <@mapperEl pkField.field/>
+                </if>
                 <if test="oldStates!=null">
                     AND state in
                     <foreach collection="oldStates" index="index" item="stateIn" open="(" separator="," close=")">
