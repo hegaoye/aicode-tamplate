@@ -124,7 +124,14 @@
         <!--根据主键更新 ${tableName} 的数据-->
         <update id="updateStateBy${pkField.field?cap_first}" parameterType="map">
             UPDATE `${tableName}`
-            set state = ${r'#{newState}'}
+            <trim prefix="set" suffixOverrides=",">
+                <if test="${newState}!=null and ${newState}!=''">
+                    state = ${r'#{newState}'}
+                </if>
+                <if test="${updateTime}!=null">
+                    updateTime = ${r'#{updateTime}'}
+                </if>
+            </trim>
             <where>
                 <if test="${pkField.field}!=null">
                    ${pkField.column} = <@mapperEl pkField.field/>
@@ -143,7 +150,14 @@
         <!--根据主键更新 ${tableName} 的状态数据-->
         <update id="updateBy${pkField.field?cap_first}" parameterType="map">
             UPDATE `${tableName}`
-            set state = ${r'#{state}'}
+            <trim prefix="set" suffixOverrides=",">
+                <if test="${state}!=null and ${state}!=''">
+                    state = ${r'#{state}'}
+                </if>
+                <if test="${updateTime}!=null">
+                    updateTime = ${r'#{updateTime}'}
+                </if>
+            </trim>
             where ${pkField.column}=<@mapperEl pkField.field/>
         </update>
     </#list>

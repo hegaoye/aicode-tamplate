@@ -111,7 +111,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
         if(oldStates==null){
             throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
-        ${classNameLower}DAO.updateStateBy${pkField.field?cap_first}(${pkField.field},newState,oldStates);
+        ${classNameLower}DAO.updateStateBy${pkField.field?cap_first}(${pkField.field},new Date(),newState,oldStates);
     }
     </#list>
 
@@ -127,7 +127,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
             if(${pkField.field}==null){
                throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
             }
-          ${classNameLower}DAO.updateBy${pkField.field?cap_first}(${pkField.field},state);
+          ${classNameLower}DAO.updateBy${pkField.field?cap_first}(${pkField.field},state,new Date());
     }
     </#list>
 

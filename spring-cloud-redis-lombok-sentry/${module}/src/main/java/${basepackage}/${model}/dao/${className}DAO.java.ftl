@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Date;
 import ${basePackage}.core.base.BaseDAO;
 import ${basePackage}.${model}.entity.${className}State;
 import ${basePackage}.${model}.entity.${className};
@@ -42,7 +43,7 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
     * @param newState 新状态
     * @param oldStates 旧状态集合
     */
-    void updateStateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("newState") ${className}State newState,@Param("oldState") ${className}State... oldStates);
+    void updateStateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("updateTime") Date updateTime,@Param("newState") ${className}State newState,@Param("oldStates") ${className}State... oldStates);
     </#list>
 
     <#list pkFields as pkField>
@@ -52,7 +53,7 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
     * @param ${pkField.field} ${pkField.notes}
     * @param state 状态
     */
-    void updateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("state") ${className}State state);
+    void updateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("state") ${className}State state,@Param("updateTime") Date updateTime);
     </#list>
 
     /**
