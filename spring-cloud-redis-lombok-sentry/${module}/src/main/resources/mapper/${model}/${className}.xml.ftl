@@ -128,7 +128,7 @@
                 <if test="${r'${newState}'}!=null and ${r'${newState}'}!=''">
                     state = ${r'#{newState}'}
                 </if>
-                <if test="${updateTime}!=null">
+                <if test="${r'${updateTime}'}!=null">
                     updateTime = ${r'#{updateTime}'}
                 </if>
             </trim>
@@ -154,7 +154,7 @@
                 <if test="${state}!=null and ${state}!=''">
                     state = ${r'#{state}'}
                 </if>
-                <if test="${updateTime}!=null">
+                <if test="${r'${updateTime}'}!=null">
                     updateTime = ${r'#{updateTime}'}
                 </if>
             </trim>
