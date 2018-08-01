@@ -66,7 +66,6 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
 
    /**
     * 查询${className}列表
-    * @param ${classNameLower} 对象
     * @param rowBounds 分页参数
     * @return List<${className}>
     */
