@@ -125,7 +125,7 @@
         <update id="updateStateBy${pkField.field?cap_first}" parameterType="map">
             UPDATE `${tableName}`
             <trim prefix="set" suffixOverrides=",">
-                <if test="${newState}!=null and ${newState}!=''">
+                <if test="${r'${newState}'}!=null and ${r'${newState}'}!=''">
                     state = ${r'#{newState}'}
                 </if>
                 <if test="${updateTime}!=null">
