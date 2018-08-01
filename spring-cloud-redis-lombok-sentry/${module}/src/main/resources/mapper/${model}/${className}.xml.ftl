@@ -125,10 +125,10 @@
         <update id="updateStateBy${pkField.field?cap_first}" parameterType="map">
             UPDATE `${tableName}`
             <trim prefix="set" suffixOverrides=",">
-                <if test="${r'${newState}'}!=null and ${r'${newState}'}!=''">
+                <if test="newState!=null and newState!=''">
                     state = ${r'#{newState}'}
                 </if>
-                <if test="${r'${updateTime}'}!=null">
+                <if test="updateTime!=null">
                     updateTime = ${r'#{updateTime}'}
                 </if>
             </trim>
@@ -151,10 +151,10 @@
         <update id="updateBy${pkField.field?cap_first}" parameterType="map">
             UPDATE `${tableName}`
             <trim prefix="set" suffixOverrides=",">
-                <if test="${state}!=null and ${state}!=''">
+                <if test="state!=null and state!=''">
                     state = ${r'#{state}'}
                 </if>
-                <if test="${r'${updateTime}'}!=null">
+                <if test="updateTime!=null">
                     updateTime = ${r'#{updateTime}'}
                 </if>
             </trim>
