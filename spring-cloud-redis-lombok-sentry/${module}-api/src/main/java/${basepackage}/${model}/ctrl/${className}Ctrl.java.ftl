@@ -165,7 +165,7 @@ public class ${className}Ctrl {
     @ApiImplicitParams({
         <#list fields as field>
         <#if !field.checkDate>
-        @ApiImplicitParam(name = "${field.field}Begin", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
+        @ApiImplicitParam(name = "${field.field}Begin", value = "${field.notes}", paramType = "query"),
         @ApiImplicitParam(name = "${field.field}End", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
         </#if>
         </#list>
