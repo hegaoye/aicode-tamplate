@@ -1,0 +1,4 @@
+include 'core', 'base-facade', 'base-sv', 'base-web'
+
+include '${projectName}',
+        'facade'
