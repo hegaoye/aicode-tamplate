@@ -13,11 +13,13 @@ import javax.annotation.Resource;
 public class ContextConfiguration extends WebMvcConfigurerAdapter {
 
     @Resource
-    ContextInterceptor contextInterceptor;
+    private ContextInterceptor contextInterceptor;
+    @Resource
+    private LoginInterceptor loginInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(contextInterceptor).addPathPatterns("/**");//全局拦截器
-        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**");//登录拦截器
+        registry.addInterceptor(contextInterceptor).addPathPatterns("/**").excludePathPatterns("/swagger-resources/**");//全局拦截器
+        registry.addInterceptor(loginInterceptor).addPathPatterns("/**").excludePathPatterns("/swagger-resources/**");//登录拦截器
     }
 }
