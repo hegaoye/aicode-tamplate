@@ -15,8 +15,8 @@ import springfox.documentation.annotations.ApiIgnore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.annotation.Resource;
-import ${basePackage}.core.tools.redis.RedisUtils;
-import ${basePackage}.core.tools.StringTools;
+import com.rzhkj.core.tools.redis.RedisUtils;
+import com.rzhkj.core.tools.StringTools;
 import com.rzhkj.core.entity.BeanRet;
 import com.rzhkj.core.entity.Page;
 import com.rzhkj.core.base.BaseCtrl;
@@ -49,21 +49,28 @@ public class ${className}Ctrl extends BaseCtrl {
 <#list pkFields as pkField>
 
     /**
-     * 查询${className}详情信息
+     * 查询${notes}详情信息
      *
      * @param ${pkField.field} ${pkField.notes}
      * @return BeanRet
      */
-    @ApiOperation(value = "查询${className}详情信息", notes = "查询${className}详情信息")
+    @ApiOperation(value = "查询${notes}详情信息", notes = "查询${notes}详情信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}", paramType = "query")
     })
     @GetMapping(value = "/loadBy${pkField.field?cap_first}")
     @ResponseBody
     public BeanRet loadBy${pkField.field?cap_first}(@PathVariable ${pkField.fieldType} ${pkField.field}) {
+<#if pkField.fieldType=='java.lang.String'>
         if(StringTools.isEmpty(${pkField.field})){
           return BeanRet.create();
         }
+<#else>
+        if(${pkField.field} == null){
+          return BeanRet.create();
+        }
+</#if>
+        
 <#if pkField.field!='id'>
         ${className} ${classNameLower} = ${classNameLower}SV.loadBy${pkField.field?cap_first}(${pkField.field});
 </#if>
@@ -79,11 +86,11 @@ public class ${className}Ctrl extends BaseCtrl {
 
 
     /**
-     * 查询${className}信息集合
+     * 查询${notes}信息集合
      *
      * @return 分页对象
      */
-    @ApiOperation(value = "查询${className}信息集合", notes = "查询${className}信息集合")
+    @ApiOperation(value = "查询${notes}信息集合", notes = "查询${notes}信息集合")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "分页大小", required = true, paramType = "query"),
@@ -104,11 +111,11 @@ public class ${className}Ctrl extends BaseCtrl {
     }
 
     /**
-     * 创建${className}
+     * 创建${notes}
      *
      * @return BeanRet
      */
-    @ApiOperation(value = "创建${className}", notes = "创建${className}")
+    @ApiOperation(value = "创建${notes}", notes = "创建${notes}")
     @ApiImplicitParams({
             <#list fields as field>
             @ApiImplicitParam(name = "${field.field}", value = "${field.notes}", paramType = "query", required = true)<#if field_has_next>,</#if>
@@ -123,11 +130,11 @@ public class ${className}Ctrl extends BaseCtrl {
 
 
     /**
-     * 修改${className}
+     * 修改${notes}
      *
      * @return BeanRet
      */
-    @ApiOperation(value = "修改${className}", notes = "修改${className}")
+    @ApiOperation(value = "修改${notes}", notes = "修改${notes}")
     @ApiImplicitParams({
             <#list fields as field>
             @ApiImplicitParam(name = "${field.field}", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
@@ -141,11 +148,11 @@ public class ${className}Ctrl extends BaseCtrl {
     }
 
     /**
-     * 删除${className}
+     * 删除${notes}
      *
      * @return BeanRet
      */
-    @ApiOperation(value = "删除${className}", notes = "删除${className}")
+    @ApiOperation(value = "删除${notes}", notes = "删除${notes}")
     @ApiImplicitParams({
             <#list pkFields as pkField>
             @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}", paramType = "query", required = true)<#if pkField_has_next>,</#if>

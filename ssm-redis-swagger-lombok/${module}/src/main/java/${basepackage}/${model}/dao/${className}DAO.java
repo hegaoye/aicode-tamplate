@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import ${basePackage}.core.base.BaseMybatisDAOImpl;
+import com.rzhkj.core.base.BaseMybatisDAOImpl;
 import ${basePackage}.${model}.entity.${className};
 
 /**
@@ -24,7 +24,7 @@ public class ${className}DAO extends BaseMybatisDAOImpl<${className},Long>{
 <#list pkFields as pkField>
 <#if pkField.field!='id'>
     /**
-     * 加载一个对象${className} 通过${pkField.field}
+     * 加载一个对象${notes} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
      * @return ${className}
      */
@@ -33,7 +33,7 @@ public class ${className}DAO extends BaseMybatisDAOImpl<${className},Long>{
     }
 
     /**
-     * 更新对象${className} 通过${pkField.field}
+     * 更新对象${notes} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
      */
     public void updateBy${pkField.field?cap_first}(${className} ${classNameLower},${pkField.fieldType} ${pkField.field}) {
@@ -44,7 +44,7 @@ public class ${className}DAO extends BaseMybatisDAOImpl<${className},Long>{
     }
 
     /**
-     * 删除对象${className}
+     * 删除对象${notes}
      * <#list pkFields as pkField>@param ${pkField.field} ${pkField.notes}</#list>
      */
     public void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {

@@ -3,7 +3,7 @@
  */
 package ${basePackage}.${model}.entity;
 
-import ${basePackage}.core.base.BaseEntity;
+import com.rzhkj.core.base.BaseEntity;
 import lombok.Data;
 
 /**

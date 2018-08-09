@@ -37,7 +37,7 @@ public class ${className}SVImpl extends BaseMybatisSVImpl<${className},Long> imp
 	<#list pkFields as pkField>
 	<#if pkField.field!='id'>
 	/**
-	 * 加载对象${className} 通过${pkField.field}
+	 * 加载对象${notes} 通过${pkField.field}
 	 * @param ${pkField.field} ${pkField.notes}
 	 * @return ${className}
 	 */
@@ -49,7 +49,7 @@ public class ${className}SVImpl extends BaseMybatisSVImpl<${className},Long> imp
 	</#list>
 
      /**
-      * 删除对象${className}
+      * 删除对象${notes}
 	   <#list pkFields as pkField>* @param ${pkField.field} ${pkField.notes}</#list>
       */
 	 @Override

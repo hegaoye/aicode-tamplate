@@ -176,10 +176,10 @@ ext {
             //-----------Paypal end-----------
 
             //----------核心框架 begin---------------
-            'core-tools'                     : 'com.rzhkj.framwork:core-tools:1.0.0-SNAPSHOT',
-            'base-facade'                    : 'com.rzhkj.framwork:base-facade:1.0.0-SNAPSHOT',
-            'base-sv-mybatis'                : 'com.rzhkj.framwork:base-sv-mybatis:1.0.0-SNAPSHOT',
-            'base-web'                       : 'com.rzhkj.framwork:base-web:1.0.0-SNAPSHOT'
+            'core-tools'                     : 'com.rzhkj.framwork:core-tools:1.0.1-SNAPSHOT',
+            'base-facade'                    : 'com.rzhkj.framwork:base-facade:1.0.1-SNAPSHOT',
+            'base-sv-mybatis'                : 'com.rzhkj.framwork:base-sv-mybatis:1.0.1-SNAPSHOT',
+            'base-web'                       : 'com.rzhkj.framwork:base-web:1.0.1-SNAPSHOT'
             //----------核心框架 end---------------
     ]
 }

@@ -5,7 +5,7 @@ package ${basePackage}.${model}.facade;
 
 import java.util.List;
 
-import ${basePackage}.core.base.BaseMybatisSV;
+import com.rzhkj.core.base.BaseMybatisSV;
 import ${basePackage}.${model}.entity.${className};
 
 /**
@@ -19,7 +19,7 @@ public interface ${className}SV extends BaseMybatisSV<${className},Long>{
     <#list pkFields as pkField>
     <#if pkField.field!='id'>
     /**
-     * 加载对象${className} 通过${pkField.field}
+     * 加载对象${notes} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
      * @return ${className}
      */
@@ -29,7 +29,7 @@ public interface ${className}SV extends BaseMybatisSV<${className},Long>{
    </#list>
 
     /**
-     * 删除对象${className}
+     * 删除对象${notes}
      * <#list pkFields as pkField>@param ${pkField.field} ${pkField.notes}</#list>
      * @return ${className}
      */
