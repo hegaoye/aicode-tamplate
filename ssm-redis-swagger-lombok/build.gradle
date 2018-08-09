@@ -231,7 +231,7 @@ allprojects {
     sourceSets {
         main {
             resources {
-                srcDir "src/main/config/${profile}"
+                srcDir "src/main/config/${r'${profile}'}"
             }
         }
     }

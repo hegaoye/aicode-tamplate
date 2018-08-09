@@ -15,12 +15,11 @@ import springfox.documentation.annotations.ApiIgnore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.annotation.Resource;
-import java.util.List;
 import ${basePackage}.core.tools.redis.RedisUtils;
 import ${basePackage}.core.tools.StringTools;
 import com.rzhkj.core.entity.BeanRet;
 import com.rzhkj.core.entity.Page;
-import ${basePackage}.core.base.BaseCtrl;
+import com.rzhkj.core.base.BaseCtrl;
 import ${basePackage}.${model}.facade.${className}SV;
 import ${basePackage}.${model}.entity.${className};
 
