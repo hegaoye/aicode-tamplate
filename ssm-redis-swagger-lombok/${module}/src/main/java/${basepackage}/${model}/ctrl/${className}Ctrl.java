@@ -18,8 +18,8 @@ import javax.annotation.Resource;
 import java.util.List;
 import ${basePackage}.core.tools.redis.RedisUtils;
 import ${basePackage}.core.tools.StringTools;
-import ${basePackage}.core.base.BeanRet;
-import ${basePackage}.core.base.Page;
+import com.rzhkj.core.entity.BeanRet;
+import com.rzhkj.core.entity.Page;
 import ${basePackage}.core.base.BaseCtrl;
 import ${basePackage}.${model}.facade.${className}SV;
 import ${basePackage}.${model}.entity.${className};
@@ -115,10 +115,11 @@ public class ${className}Ctrl extends BaseCtrl {
             @ApiImplicitParam(name = "${field.field}", value = "${field.notes}", paramType = "query", required = true)<#if field_has_next>,</#if>
             </#list>
     })
-    @PostMapping("/build")
+    @PostMapping("/save")
     @ResponseBody
-    public BeanRet build(@ApiIgnore ${className} ${classNameLower}) {
-        return ${classNameLower}SV.insert(${classNameLower});
+    public BeanRet save(@ApiIgnore ${className} ${classNameLower}) {
+        ${classNameLower}SV.save(${classNameLower});
+        return BeanRet.create(true, "保存成功");
     }
 
 
@@ -136,7 +137,8 @@ public class ${className}Ctrl extends BaseCtrl {
     @PutMapping("/modify")
     @ResponseBody
     public BeanRet modify(@ApiIgnore ${className} ${classNameLower}) {
-        return ${classNameLower}SV.modify(${classNameLower});
+        ${classNameLower}SV.update(${classNameLower});
+        return BeanRet.create(true, "修改成功");
     }
 
     /**
@@ -155,7 +157,7 @@ public class ${className}Ctrl extends BaseCtrl {
     public BeanRet delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         <#list pkFields as pkField>
         if(${pkField.field}==null){
-          return BeanRet.create(false,"${field.notes}不能为空");
+          return BeanRet.create(false,"${pkField.notes}不能为空");
         }
         </#list>
         ${classNameLower}SV.delete(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);

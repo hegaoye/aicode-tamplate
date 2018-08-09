@@ -69,39 +69,25 @@
 
     <!--根据主键联合更新 ${tableName} 的数据-->
      <update id="update" parameterType="${className}">
-       UPDATE `${tableName}`
-       <trim prefix="set" suffixOverrides=",">
-        <#if (notPkFields?size>0)>
-         <#list notPkFields as field>
-           <#if field.checkDate>
-           <if test="${field.field}!=null">
+        UPDATE `${tableName}`
+        <trim prefix="set" suffixOverrides=",">
+          <#if (notPkFields?size>0)>
+          <#list notPkFields as field>
+            <#if field.checkDate>
+            <if test="${field.field}!=null">
                ${field.column} = <@mapperEl field.field/> <#if field_has_next>,</#if>
-           </if>
-           <#else>
-           <if test="${field.field}!=null and ${field.field}!=''">
+            </if>
+            <#else>
+            <if test="${field.field}!=null and ${field.field}!=''">
                ${field.column} = <@mapperEl field.field/> <#if field_has_next>,</#if>
-           </if>
-           </#if>
-         </#list>
-         </#if>
-       </trim>
+            </if>
+            </#if>
+          </#list>
+          </#if>
+        </trim>
         <where>
         <#list fields as field>
-        <#if field.checkDate>
-          <if test="${field.field}Begin!=null">
-             AND ${field.column} >= <@mapperEl field.field+"Begin"/>
-          </if>
-          <if test="${field.field}End!=null">
-             AND ${field.column} &lt;= <@mapperEl field.field+"End"/>
-          </if>
-        <#elseif field.checkState>
-          <if test="${field.field}s!=null and ${field.field}s!=''">
-              AND ${field.column} in
-              <foreach collection="${field.field}s" index="index" item="stateIn" open="(" separator="," close=")">
-                  <@mapperEl stateIn/>
-              </foreach>
-          </if>
-        <#elseif field.checkPk>
+        <#if field.checkPk>
           <if test="${field.field}!=null and ${field.field}!=''">
              AND ${field.column} = <@mapperEl field.field/>
           </if>

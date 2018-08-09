@@ -21,7 +21,6 @@ import ${basePackage}.${model}.entity.${className};
 public class ${className}DAO extends BaseMybatisDAOImpl<${className},Long>{
 
 <#if (pkFields?size>0)>
-
 <#list pkFields as pkField>
 <#if pkField.field!='id'>
     /**
@@ -30,13 +29,12 @@ public class ${className}DAO extends BaseMybatisDAOImpl<${className},Long>{
      * @return ${className}
      */
     public ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
-            return getSqlSession().selectOne(this.sqlmapNamespace+".loadBy${pkField.field?cap_first}",${pkField.field});
+        return getSqlSession().selectOne(this.sqlmapNamespace+".loadBy${pkField.field?cap_first}",${pkField.field});
     }
 
     /**
      * 更新对象${className} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
-     * @return ${className}
      */
     public void updateBy${pkField.field?cap_first}(${className} ${classNameLower},${pkField.fieldType} ${pkField.field}) {
         if(${pkField.field}!=null){
@@ -44,25 +42,21 @@ public class ${className}DAO extends BaseMybatisDAOImpl<${className},Long>{
         }
         getSqlSession().update(this.sqlmapNamespace+".update",${classNameLower});
     }
-</#if>
-</#list>
-
 
     /**
      * 删除对象${className}
      * <#list pkFields as pkField>@param ${pkField.field} ${pkField.notes}</#list>
-     * @return ${className}
      */
-     public void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
-         Map<String,Object> map= new HashMap<String,Object>();
-         <#list pkFields as pkField>
-         if(${pkField.field}!=null){
-            map.put("${pkField.field}",${pkField.field});
-         }
-         </#list>
-         getSqlSession().delete(this.sqlmapNamespace+".delete",map);
-    }
-
+    public void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
+        Map<String,Object> map= new HashMap<String,Object>();
+        <#list pkFields as pkField>
+        if(${pkField.field}!=null){
+           map.put("${pkField.field}",${pkField.field});
+        }
+        </#list>
+        getSqlSession().delete(this.sqlmapNamespace+".delete",map);
+   }
 </#if>
-
+</#list>
+</#if>
 }

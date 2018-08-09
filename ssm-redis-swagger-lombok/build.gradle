@@ -1,52 +1,6 @@
 def intoFile = "../build/libs/"
-
-allprojects {
-    apply plugin: 'idea'
-    apply plugin: 'java'
-    sourceCompatibility = 1.8
-
-    [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
-
-    buildscript {
-        repositories {
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        }
-        dependencies {
-            classpath 'org.akhikhl.gretty:gretty:+'
-        }
-    }
-
-    repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    }
-
-
-    dependencies {
-        compile "javax.servlet:javax.servlet-api:4.+"
-        compile "javax.servlet.jsp:jsp-api:2.2.1-b03"
-        testCompile group: 'junit', name: 'junit', version: '4.11'
-    }
-
-    task allTask << { task -> println "项目:" + project.name }
-    build {
-        doLast {
-            def fromFile = "./build/libs/" + project.name + ".war"
-            copy {
-                from fromFile
-                into intoFile
-            }
-
-            delete "./build/libs/hawthorn-api.jar"
-            println("=====================build " + project.name + " success.=========================")
-        }
-
-        doFirst{
-            def fromFile = "./buld/libs/"
-        }
-    }
-
-}
 ext {
+    profile = "dev"
     dependencies = [
             "asm"                            : 'asm:asm:3.3.1',
             "aopalliance"                    : 'aopalliance:aopalliance:1.0',
@@ -184,26 +138,26 @@ ext {
             //-----------Google生成二维码---end-------------
 
             //------------solr  start------------
-            "solr-solrj"                     :'org.apache.solr:solr-solrj:6.6.1',
+            "solr-solrj"                     : 'org.apache.solr:solr-solrj:6.6.1',
             //------------solr  end------------
 
             //------------极光推送 start------------
-            "jpush-client"                   :'cn.jpush.api:jpush-client:3.3.1',
+            "jpush-client"                   : 'cn.jpush.api:jpush-client:3.3.1',
             //------------极光推送  end------------
 
             //------------aliyun 文本反垃圾 start------------
-            "aliyun-java-sdk-core"           :'com.aliyun:aliyun-java-sdk-core:3.3.1',
+            "aliyun-java-sdk-core"           : 'com.aliyun:aliyun-java-sdk-core:3.3.1',
             //------------aliyun 文本反垃圾  end------------
 
             //------------微信sdk start------------
-            "weixin-java-mp"                 :'com.github.binarywang:weixin-java-mp:2.8.8.BETA',
+            "weixin-java-mp"                 : 'com.github.binarywang:weixin-java-mp:2.8.8.BETA',
             //------------微信sdk start------------
 
             //------------apache httpclient start------------
-            "httpclient"                     :'org.apache.httpcomponents:httpclient:4.5.2',
-            "httpcore"                       :'org.apache.httpcomponents:httpcore:4.4.5',
+            "httpclient"                     : 'org.apache.httpcomponents:httpclient:4.5.2',
+            "httpcore"                       : 'org.apache.httpcomponents:httpcore:4.4.5',
             //------------apache httpclient end------------
-            "dom4j"                      :'org.dom4j:dom4j:2.0.0',
+            "dom4j"                          : 'org.dom4j:dom4j:2.0.0',
 
             //-----------jwt Nimbus JOSE+JWT  start--------------
             "java-jwt"                       : 'com.auth0:java-jwt:3.2.0',
@@ -214,12 +168,76 @@ ext {
             //-----------jsch ssh  end--------------
 
             //-----------Sentry begin-----------
-            "sentry-log4j"                  : 'io.sentry:sentry-log4j:1.5.4',
+            "sentry-log4j"                   : 'io.sentry:sentry-log4j:1.5.4',
             //-----------Sentry end-----------
 
             //-----------Paypal begin-----------
-            "disconf-client"                 : 'com.baidu.disconf:disconf-client:2.6.31'
+            "disconf-client"                 : 'com.baidu.disconf:disconf-client:2.6.31',
             //-----------Paypal end-----------
+
+            //----------核心框架 begin---------------
+            'core-tools'                     : 'com.rzhkj.framwork:core-tools:1.0.0-SNAPSHOT',
+            'base-facade'                    : 'com.rzhkj.framwork:base-facade:1.0.0-SNAPSHOT',
+            'base-sv-mybatis'                : 'com.rzhkj.framwork:base-sv-mybatis:1.0.0-SNAPSHOT',
+            'base-web'                       : 'com.rzhkj.framwork:base-web:1.0.0-SNAPSHOT'
+            //----------核心框架 end---------------
     ]
 }
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
 
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
+
+    buildscript {
+        repositories {
+            maven { url 'http://maven.ilinm.com/repository/maven-public/' }
+        }
+        dependencies {
+            classpath 'org.akhikhl.gretty:gretty:+'
+        }
+    }
+
+    repositories {
+        maven { url 'http://maven.ilinm.com/repository/maven-public/' }
+    }
+
+
+    dependencies {
+        compile "javax.servlet:javax.servlet-api:4.+"
+        compile "javax.servlet.jsp:jsp-api:2.2.1-b03"
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+
+    task allTask << { task -> println "项目:" + project.name }
+    build {
+        doLast {
+            def fromFile = "./build/libs/" + project.name + ".war"
+            copy {
+                from fromFile
+                into intoFile
+            }
+
+            delete "./build/libs/" + project.name + ".jar"
+            println("=====================build " + project.name + " success.=========================")
+        }
+
+        doFirst {
+            def fromFile = "./buld/libs/"
+        }
+    }
+
+    sourceSets {
+        main {
+            resources {
+                srcDir "src/main/config/${profile}"
+            }
+        }
+    }
+
+    configurations.all {
+        // check for updates every build
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+}

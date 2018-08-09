@@ -94,5 +94,10 @@ dependencies {
     compile rootProject.ext.dependencies["sentry-log4j"]
     //------------Sentry end-------------------
 
+    compile rootProject.ext.dependencies["core-tools"]
+    compile rootProject.ext.dependencies["base-facade"]
+    compile rootProject.ext.dependencies["base-sv-mybatis"]
+    compile rootProject.ext.dependencies["base-web"]
+
     compile fileTree(dir: '../libs', include: ['*.jar'])
 }
