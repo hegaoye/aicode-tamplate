@@ -4,13 +4,8 @@
 
 package ${basePackage}.${model}.dao;
 
-import org.apache.ibatis.session.RowBounds;
-import org.springframework.stereotype.Repository;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.rzhkj.core.base.BaseMybatisDAOImpl;
+import org.springframework.stereotype.Repository;
 import ${basePackage}.${model}.entity.${className};
 
 /**

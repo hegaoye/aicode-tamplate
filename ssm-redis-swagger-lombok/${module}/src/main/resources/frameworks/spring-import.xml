@@ -23,6 +23,25 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="com"/>
+
+    <bean class="com.rzhkj.core.tools.ConfigUtil">
+        <property name="locations">
+            <list>
+                <value>classpath:redis-manager-config.properties</value>
+                <value>classpath:config.properties</value>
+                <value>classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+    <!--redis工具-->
+    <bean class="com.rzhkj.core.tools.redis.RedisUtils"/>
+    <!--springBean获取工具-->
+    <bean class="com.rzhkj.core.tools.SpringContextUtils"/>
+    <!-- 使用中间类解决RedisCache.jedisConnectionFactory的静态注入，从而使MyBatis实现第三方缓存 -->
+    <bean id="redisCacheTransfer" class="com.rzhkj.core.cache.RedisCacheTransfer">
+        <property name="redissonClient" ref="redissonClient"/>
+    </bean>
+    
     <!-- 导入数据源配置 -->
     <import resource="classpath:frameworks/spring-datasource.xml"/>
     <!-- 导入mybatis配置 -->

@@ -101,12 +101,11 @@ public class ${className}Ctrl extends BaseCtrl {
     @GetMapping(value = "/list")
     @ResponseBody
     public BeanRet list(@ApiIgnore ${className} ${classNameLower},@ApiIgnore Page<${className}> page) {
-        if(page==null){
-          return BeanRet.create(false,"分页对象不能为空");
+        if (page == null) {
+                return BeanRet.create(false, "分页对象不能为空");
         }
         page.setParams(JSON.parseObject(JSON.toJSONString(${classNameLower})));
         page = ${classNameLower}SV.getList(page);
-        logger.info(JSON.toJSONString(page));
         return BeanRet.create(true, "", page);
     }
 
