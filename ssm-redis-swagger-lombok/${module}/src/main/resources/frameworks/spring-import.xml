@@ -30,6 +30,9 @@
                 <value>classpath:redis-manager-config.properties</value>
                 <value>classpath:config.properties</value>
                 <value>classpath:jdbc.properties</value>
+                <value>classpath:upload_config.properties</value>
+                <value>classpath:memcached-config.properties</value>
+                <value>classpath:system-config.properties</value>
             </list>
         </property>
     </bean>
