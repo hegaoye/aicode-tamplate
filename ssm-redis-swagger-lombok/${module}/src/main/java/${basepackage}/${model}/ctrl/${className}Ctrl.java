@@ -19,7 +19,7 @@ import com.rzhkj.core.tools.redis.RedisUtils;
 import com.rzhkj.core.tools.StringTools;
 import com.rzhkj.core.entity.BeanRet;
 import com.rzhkj.core.entity.Page;
-import com.rzhkj.core.base.BaseCtrl;
+import ${basePackage}.core.base.BaseCtrl;
 import ${basePackage}.${model}.facade.${className}SV;
 import ${basePackage}.${model}.entity.${className};
 

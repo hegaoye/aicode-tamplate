@@ -1,4 +1,4 @@
-package com.shangze.core.base;
+package ${basePackage}.core.base;
 
 import com.rzhkj.core.exceptions.BaseException;
 import com.rzhkj.core.tools.redis.RedisUtils;
