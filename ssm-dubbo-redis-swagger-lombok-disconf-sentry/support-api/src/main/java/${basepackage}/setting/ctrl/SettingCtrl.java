@@ -53,7 +53,7 @@ public class SettingCtrl extends BaseUploadCtrl {
     @ResponseBody
     public BeanRet loadSetting(String k) {
         logger.info("加载一个系统中的参数设置 k : ====> " + k);
-        Assert.hasText(k, BaseException.BaseExceptionEnum.Empty_Param.toString());
+        Assert.hasText(k, BaseException.ExceptionMessage.PARAM_IS_EMPTY.toString());
         Map<String, Object> map = Maps.newHashMap();
         map.put("k", k);
         Setting setting = settingSV.load(map);
@@ -76,7 +76,7 @@ public class SettingCtrl extends BaseUploadCtrl {
     @PostMapping("/modifyset")
     @ResponseBody
     public BeanRet modifySetting(@ApiIgnore Setting setting) {
-        Assert.notNull(setting, BaseException.BaseExceptionEnum.Empty_Param.toString());
+        Assert.notNull(setting, BaseException.ExceptionMessage.PARAM_IS_EMPTY.toString());
         settingSV.modifySetting(setting);
         return BeanRet.create(true, "Modify Success!");
     }
@@ -96,18 +96,18 @@ public class SettingCtrl extends BaseUploadCtrl {
     }
 
 
-    /**
-     * 查询所有设置参数
-     *
-     * @return
-     */
-    @ApiOperation(value = "查询所有设置参数")
-    @GetMapping(value = "/setting/custom/upperlimit")
-    @ResponseBody
-    public BeanRet settingCustomUpperlimit() {
-        Map<String, Object> map = Maps.newHashMap();
-        map.put("k", Setting.Key.Custom_Upper_Limit.name());
-        Setting setting = settingSV.load(map);
-        return BeanRet.create(true, "", setting.getV());
-    }
+    // /**
+    //  * 查询所有设置参数
+    //  *
+    //  * @return
+    //  */
+    // @ApiOperation(value = "查询所有设置参数")
+    // @GetMapping(value = "/setting/custom/upperlimit")
+    // @ResponseBody
+    // public BeanRet settingCustomUpperlimit() {
+    //     Map<String, Object> map = Maps.newHashMap();
+    //     map.put("k", Setting.Key.Custom_Upper_Limit.name());
+    //     Setting setting = settingSV.load(map);
+    //     return BeanRet.create(true, "", setting.getV());
+    // }
 }

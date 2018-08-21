@@ -9,4 +9,4 @@ include 'support'//为support-api系统提供接口支持
 
 //Web管理项目
 include '${projectName}-api'
-include '${projectName}'
+include '${projectName}-sv'

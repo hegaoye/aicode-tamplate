@@ -2,7 +2,7 @@
 package ${basePackage}.res.ctrl;
 
 import com.alibaba.fastjson.JSON;
-import ${basePackage}.core.annotation.Ignore;
+import com.rzhkj.core.annotantion.Ignore;
 import ${basePackage}.core.enums.SexEnum;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.tools.redis.RedisUtils;
@@ -57,7 +57,7 @@ public class EnumCtrl {
     @ResponseBody
     public Map<String, String> commonEnum(@PathVariable Integer code) {
         Map<String, String> map = null;
-        Assert.notNull(code, BaseException.BaseExceptionEnum.Empty_Param.toString());
+        Assert.notNull(code, BaseException.ExceptionMessage.PARAM_IS_EMPTY.toString());
         String cachekey = Enums.genCachekey(code);
         //1.检查缓存，不存在就缓存
         if (!redisUtils.hasKey(cachekey)) {

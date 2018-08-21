@@ -86,5 +86,5 @@ dependencies {
     compile fileTree(dir: '../libs', include: ['*.jar'])
     compile project(":core")
     compile project(":facade")
-    compile project(":base-sv")
+    compile rootProject.ext.dependencies["base-sv-mybatis"]
 }

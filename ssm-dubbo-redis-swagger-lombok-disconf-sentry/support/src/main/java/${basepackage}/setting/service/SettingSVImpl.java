@@ -13,12 +13,12 @@ package ${basePackage}.setting.service;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.baidu.fsg.uid.UidGenerator;
 import com.google.common.collect.Maps;
+import com.alibaba.fastjson.JSON;
 import ${basePackage}.core.base.BaseMybatisDAO;
 import ${basePackage}.core.base.BaseMybatisSVImpl;
 import ${basePackage}.setting.service.SettingSV;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.exceptions.SettingException;
-import ${basePackage}.core.tools.JSON;
 import ${basePackage}.setting.dao.SettingDAO;
 import ${basePackage}.setting.entity.Setting;
 import org.slf4j.Logger;
@@ -87,11 +87,11 @@ public class SettingSVImpl extends BaseMybatisSVImpl<Setting, Long> implements S
     public void modifySetting(Setting setting) {
         //1.判断是否存在
         if (setting == null)  {
-            throw new SettingException(BaseException.BaseExceptionEnum.Empty_Param);
+            throw new SettingException(BaseException.ExceptionMessage.PARAM_IS_EMPTY);
         }
         Setting settingLoad = settingDAO.loadByKey(setting.getK());
         if (settingLoad == null)  {
-            throw new SettingException(BaseException.BaseExceptionEnum.Result_Not_Exist);
+            throw new SettingException(BaseException.ExceptionMessage.DATA_IS_NOT_EXIST);
         }
         //2.修改设置值
         logger.info(" setting 修改设置值 : " + JSON.toJSONString(setting));

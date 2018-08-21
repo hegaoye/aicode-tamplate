@@ -20,7 +20,7 @@ import ${basePackage}.area.service.BasicAreaSV;
 import ${basePackage}.core.base.BaseMybatisSVImpl;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.exceptions.BasicAreaException;
-import ${basePackage}.core.tools.redis.RedisKey;
+import ${basePackage}.core.common.RedisKey;
 import ${basePackage}.core.tools.redis.RedisUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,8 +62,8 @@ public class BasicAreaSVImpl extends BaseMybatisSVImpl<BasicArea, String> implem
     @Override
     public BasicArea load(String areaCode) {
         if (StringUtils.isBlank(areaCode)) {
-            logger.error("根据areaCode获得区域对象失败，原因：" + BaseException.BaseExceptionEnum.Result_Not_Exist.error + ",areaCode:" + areaCode);
-            throw new BasicAreaException(BaseException.BaseExceptionEnum.Empty_Param, areaCode);
+            logger.error("根据areaCode获得区域对象失败，原因：" + BaseException.ExceptionMessage.DATA_IS_NOT_EXIST.message + ",areaCode:" + areaCode);
+            throw new BasicAreaException(BaseException.ExceptionMessage.PARAM_IS_EMPTY, areaCode);
         }
 
         BasicArea basicArea = null;
@@ -91,8 +91,8 @@ public class BasicAreaSVImpl extends BaseMybatisSVImpl<BasicArea, String> implem
         }
 
         if (basicArea == null) {
-            logger.error("根据areaCode获得区域对象失败，原因：" + BaseException.BaseExceptionEnum.Result_Not_Exist.error + ",areaCode:" + areaCode);
-            throw new BasicAreaException(BaseException.BaseExceptionEnum.Empty_Param, areaCode);
+            logger.error("根据areaCode获得区域对象失败，原因：" + BaseException.ExceptionMessage.DATA_IS_NOT_EXIST.message + ",areaCode:" + areaCode);
+            throw new BasicAreaException(BaseException.ExceptionMessage.PARAM_IS_EMPTY, areaCode);
         }
 
         return basicArea;
