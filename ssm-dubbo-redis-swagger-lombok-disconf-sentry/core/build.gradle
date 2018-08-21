@@ -65,6 +65,8 @@ dependencies {
     compile rootProject.ext.dependencies["swagger-annotations"]
 
     compile rootProject.ext.dependencies["lombok"]
+    compile rootProject.ext.dependencies["core-tools"]
+    compile rootProject.ext.dependencies["base-facade"]
 
     compile fileTree(dir: '../libs', include: ['*.jar'])
 }
