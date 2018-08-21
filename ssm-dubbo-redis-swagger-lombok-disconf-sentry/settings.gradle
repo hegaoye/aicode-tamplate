@@ -5,7 +5,7 @@ include 'facade'//接口定义包
 
 //基础支撑项目（support）
 include 'support-api'//基础支撑项目（support） 对日志，上传，枚举，区域进行支撑查询接口
-include 'support'//为support-api系统提供接口支持
+include 'support-sv'//为support-api系统提供接口支持
 
 //Web管理项目
 include '${projectName}-api'
