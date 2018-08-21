@@ -13,5 +13,5 @@
     <dubbo:application name="support-api"/>
     <dubbo:consumer check="false"/>
     <!-- 使用zookeeper广播注册中心暴露服务地址 -->
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" check="false"/>
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:12181" check="false"/>
 </beans>
