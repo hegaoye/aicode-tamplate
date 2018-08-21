@@ -1,12 +1,12 @@
-package ${basePackage}.core.exceptions;
+package com.rzhkj.core.exceptions;
 
 public class BasicAreaException extends BaseException {
 
-    public BasicAreaException(BaseExceptionEnum exceptionMessage) {
+    public BasicAreaException(ExceptionMessage exceptionMessage) {
         super(exceptionMessage);
     }
 
-    public BasicAreaException(BaseExceptionEnum exceptionMessage, Object... params) {
+    public BasicAreaException(ExceptionMessage exceptionMessage, Object... params) {
         super(exceptionMessage, params);
     }
 

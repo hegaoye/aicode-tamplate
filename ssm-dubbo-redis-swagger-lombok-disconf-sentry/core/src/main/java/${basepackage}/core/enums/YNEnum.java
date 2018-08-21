@@ -7,7 +7,7 @@
  *
  */
 
-package ${basePackage}.core.enums;
+package com.rzhkj.core.enums;
 
 /**
  * true/false 枚举

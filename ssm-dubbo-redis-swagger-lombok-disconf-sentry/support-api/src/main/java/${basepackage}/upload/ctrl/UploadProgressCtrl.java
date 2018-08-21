@@ -1,11 +1,11 @@
-package ${basePackage}.upload.ctrl;
+package com.rzhkj.upload.ctrl;
 
-import ${basePackage}.core.entity.BeanRet;
-import ${basePackage}.core.entity.ProgressVO;
-import ${basePackage}.core.exceptions.BaseException;
-import ${basePackage}.core.tools.redis.RedisKey;
-import ${basePackage}.core.tools.redis.RedisUtils;
 import com.alibaba.fastjson.JSON;
+import com.rzhkj.core.entity.BeanRet;
+import com.rzhkj.core.entity.ProgressVO;
+import com.rzhkj.core.enums.ExceptionMsgEnum;
+import com.rzhkj.core.common.RedisKey;
+import com.rzhkj.core.tools.redis.RedisUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -24,7 +24,7 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("/upload/progress")
-@Api(value = "上传进度条控制器", description = "文件上传过程中上传进度的控制")
+@Api(value = "上传进度条控制器", description = "文件上传（读取进度）：上传过程中进度的控制")
 public class UploadProgressCtrl {
     @Resource
     private RedisUtils redisUtils;
@@ -33,7 +33,7 @@ public class UploadProgressCtrl {
     @GetMapping("/getProgress")
     @ResponseBody
     public BeanRet getProgress(@ApiParam(value = "文件唯一标识编码", required = true) @RequestParam String uid) {
-        Assert.hasText(uid, BaseException.BaseExceptionEnum.Empty_Param.toString());
+        Assert.notNull(uid, ExceptionMsgEnum.PARAM_IS_NULL.toString());
         ProgressVO progressVO = JSON.parseObject((String) redisUtils.get(RedisKey.genUploadProgressKey(uid)), ProgressVO.class);
         if (progressVO == null) {
             return BeanRet.create(false, "上传进度不存在");

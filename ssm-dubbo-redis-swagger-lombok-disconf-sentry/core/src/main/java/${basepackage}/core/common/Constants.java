@@ -6,60 +6,16 @@
  *      本代码仅用于AI-Code.
  */
 
-package ${basePackage}.core.common;
+package com.rzhkj.core.common;
 
-import ${basePackage}.core.Env;
+import com.rzhkj.core.Env;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * 常量表
  */
-public enum Constants {
-    sessionid("sessionId"),//登陆session key
-    AssistantSessionId("AssistantSessionId"),//登陆session key
-    SS_TIMEOUT(360000L * 1000 * 4), //session过期时间(毫秒)
-    Cookie_Maxage(5),//cookie 最大过期
-    Tutor("Tutor"),//sessionType
-    Student("Student"),//sessionType
-    Assitant("Assitant"),//sessionType
-    ;
-
-    public Object val;
-
-    Constants(Object val) {
-        this.val = val;
-    }
-
-    private final static Logger log = LoggerFactory.getLogger(Constants.class);
-
-    public static String Domain = null;
-    public static String AssistantDomain = null;
-
-
-    static {
-        switch (Env.env) {
-            case DEVELOP:
-                log.info("----------常量表 开启开发环境-------------");
-                Domain = null;
-                AssistantDomain = null;
-                log.info("===> 域名" + Domain);
-                log.info("----------常量表 开启开发环境-------------");
-                break;
-            case SANDBOX:
-                log.info("----------常量表 开启测试环境-------------");
-                Domain = null;
-                AssistantDomain = null;
-                log.info("===> 域名" + Domain);
-                log.info("----------常量表 开启测试环境-------------");
-                break;
-            case PRODUCT:
-                log.info("----------常量表 开启生产环境-------------");
-                Domain = "ponddy.com";
-                AssistantDomain = "my-tutors.ponddy.com";
-                log.info("===> 域名" + Domain.toString());
-                log.info("----------常量表 开启生产环境-------------");
-                break;
-        }
-    }
+public class Constants {
+    //默认图片路径
+    public final static String UPLOAD_PATH = "files";
 }

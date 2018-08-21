@@ -1,4 +1,4 @@
-package ${basePackage}.core.exceptions;
+package com.rzhkj.core.exceptions;
 
 /**
  * 设置异常类
@@ -7,11 +7,11 @@ package ${basePackage}.core.exceptions;
  */
 
 public class SettingException extends BaseException {
-    public SettingException(BaseExceptionEnum exceptionMessage) {
+    public SettingException(ExceptionMessage exceptionMessage) {
         super(exceptionMessage);
     }
 
-    public SettingException(BaseExceptionEnum exceptionMessage, Object... params) {
+    public SettingException(ExceptionMessage exceptionMessage, Object... params) {
         super(exceptionMessage, params);
     }
 

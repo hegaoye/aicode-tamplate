@@ -6,7 +6,7 @@
  *      本代码仅用于AI-Code.
  */
 
-package ${basePackage}.core.common;
+package com.rzhkj.core.common;
 
 /**
  * cookie 键

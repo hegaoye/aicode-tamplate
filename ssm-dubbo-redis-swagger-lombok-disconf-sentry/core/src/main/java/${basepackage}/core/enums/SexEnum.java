@@ -1,4 +1,4 @@
-package ${basePackage}.core.enums;
+package com.rzhkj.core.enums;
 
 /**
  * 性别枚举
@@ -21,6 +21,4 @@ public enum SexEnum {
         }
         return null;
     }
-
-
 }

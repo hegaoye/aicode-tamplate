@@ -1,49 +1,6 @@
 def intoFile = "../build/libs/"
-
-allprojects {
-    apply plugin: 'idea'
-    apply plugin: 'java'
-    sourceCompatibility = 1.8
-
-    [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
-
-    buildscript {
-        repositories {
-            mavenCentral()
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        }
-        dependencies {
-            classpath 'org.akhikhl.gretty:gretty:+'
-        }
-    }
-
-    repositories {
-        mavenCentral()
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    }
-
-
-    dependencies {
-        compile "javax.servlet:javax.servlet-api:4.+"
-        compile "javax.servlet.jsp:jsp-api:2.2.1-b03"
-        testCompile group: 'junit', name: 'junit', version: '4.11'
-    }
-
-    task allTask << { task -> println "项目:" + project.name }
-    build {
-        doLast {
-            def fromFile = "./build/libs/" + project.name + ".war"
-            copy {
-                from fromFile
-                into intoFile
-            }
-            delete "./build/libs/ponddy-pension.jar"
-            println("=====================build " + project.name + " success.=========================")
-        }
-    }
-
-}
 ext {
+    profile = "dev"
     dependencies = [
             "asm"                            : 'asm:asm:3.3.1',
             "aopalliance"                    : 'aopalliance:aopalliance:1.0',
@@ -204,17 +161,75 @@ ext {
             //-----------Quartz end-----------
 
             //-----------Sentry begin-----------
-            "sentry-log4j"                  : 'io.sentry:sentry-log4j:1.5.4',
+            "sentry-log4j"                   : 'io.sentry:sentry-log4j:1.5.4',
             "sentry-log4j2"                  : 'io.sentry:sentry-log4j2:1.5.4',
             "sentry-logback"                 : 'io.sentry:sentry-logback:1.5.4',
             //-----------Sentry end-----------
 
-
             //-----------Paypal begin-----------
-            "disconf-client"                 : 'com.baidu.disconf:disconf-client:2.6.31'
+            "disconf-client"                 : 'com.baidu.disconf:disconf-client:2.6.31',
             //-----------Paypal end-----------
 
-
+            //----------核心框架 begin---------------
+            'core-tools'                     : 'com.rzhkj.framwork:core-tools:1.0.1-SNAPSHOT',
+            'base-facade'                    : 'com.rzhkj.framwork:base-facade:1.0.1-SNAPSHOT',
+            'base-sv-mybatis'                : 'com.rzhkj.framwork:base-sv-mybatis:1.0.1-SNAPSHOT',
+            'base-web'                       : 'com.rzhkj.framwork:base-web:1.0.1-SNAPSHOT'
+            //----------核心框架 end---------------
     ]
 }
+allprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
 
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
+
+    buildscript {
+        repositories {
+            mavenCentral()
+            maven { url 'http://maven.ilinm.com/repository/maven-public/' }
+        }
+        dependencies {
+            classpath 'org.akhikhl.gretty:gretty:+'
+        }
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url 'http://maven.ilinm.com/repository/maven-public/' }
+    }
+
+
+    dependencies {
+        compile "javax.servlet:javax.servlet-api:4.+"
+        compile "javax.servlet.jsp:jsp-api:2.2.1-b03"
+        testCompile group: 'junit', name: 'junit', version: '4.11'
+    }
+
+    task allTask << { task -> println "项目:" + project.name }
+    build {
+        doLast {
+            def fromFile = "./build/libs/" + project.name + ".war"
+            copy {
+                from fromFile
+                into intoFile
+            }
+            delete "./build/libs/"+ project.name +".jar"
+            println("=====================build " + project.name + " success.=========================")
+        }
+    }
+
+    sourceSets {
+        main {
+            resources {
+                srcDir "src/main/config/${profile}"
+            }
+        }
+    }
+
+    configurations.all {
+        // check for updates every build
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
+}
