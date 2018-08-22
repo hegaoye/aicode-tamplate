@@ -219,7 +219,7 @@ allprojects {
                 into intoFile
             }
 
-            delete "./build/libs/${module}.jar"
+            delete "./build/libs/${projectName}.jar"
             println("=====================build " + project.name + " success.=========================")
         }
 
