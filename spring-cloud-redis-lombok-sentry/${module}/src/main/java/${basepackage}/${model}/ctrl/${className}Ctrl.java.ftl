@@ -228,7 +228,7 @@ public class ${className}Ctrl {
     @ApiOperation(value = "删除${className}", notes = "删除${className}")
     @ApiImplicitParams({
     <#list pkFields as pkField>
-        @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}", paramType = "query")<#sep>,
+        @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}", paramType = "query")<#if field_has_next>,</#if>
     </#list>
     })
     @DeleteMapping("/delete")
