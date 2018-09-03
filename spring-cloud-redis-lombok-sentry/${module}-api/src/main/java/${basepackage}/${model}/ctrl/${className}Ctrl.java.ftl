@@ -124,7 +124,7 @@ public class ${className}Ctrl {
         if(page==null){
             return BeanRet.create(BaseException.BaseExceptionEnum.Empty_Param);
         }
-        List<${className}> ${classNameLower}s = ${classNameLower}SVImpl.list(${classNameLower},page.genRowStart(),page.getPageSize());
+        List<${className}> ${classNameLower}s = ${classNameLower}SVImpl.list(${classNameLower},page.getCurPage(),page.getPageSize());
         int total = ${classNameLower}SVImpl.count(${classNameLower});
         page.setTotalRow(total);
         page.setVoList(${classNameLower}s);
