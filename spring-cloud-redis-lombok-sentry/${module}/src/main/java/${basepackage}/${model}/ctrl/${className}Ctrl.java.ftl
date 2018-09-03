@@ -215,7 +215,7 @@ public class ${className}Ctrl {
     })
     @PutMapping("/modify")
     @ResponseBody
-    public ${className} modify(@ApiIgnore ${className} ${classNameLower}) {
+    public ${className} modify(@RequestBody @ApiIgnore ${className} ${classNameLower}) {
         ${className?uncap_first}SV.modify(${classNameLower});
         return ${classNameLower};
     }
