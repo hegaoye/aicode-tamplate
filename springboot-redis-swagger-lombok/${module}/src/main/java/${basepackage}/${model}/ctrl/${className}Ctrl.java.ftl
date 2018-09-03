@@ -101,7 +101,10 @@ public class ${className}Ctrl {
     @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query"),
     @ApiImplicitParam(name = "pageSize", value = "分页大小", required = true, paramType = "query"),
     <#list fields as field>
-    @ApiImplicitParam(name = "${field.field}", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
+        <#if field.checkDate>
+        @ApiImplicitParam(name = "${field.field}Begin", value = "${field.notes}", paramType = "query"),
+        @ApiImplicitParam(name = "${field.field}End", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
+        </#if>
     </#list>
     })
     @PostMapping(value = "/list")
@@ -188,10 +191,7 @@ public class ${className}Ctrl {
     @ApiOperation(value = "创建${className}", notes = "创建${className}")
     @ApiImplicitParams({
     <#list notPkFields as field>
-        <#if !field.checkDate>
-        @ApiImplicitParam(name = "${field.field}Begin", value = "${field.notes}", paramType = "query"),
-        @ApiImplicitParam(name = "${field.field}End", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
-        </#if>
+    @ApiImplicitParam(name = "${field.field}", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
     </#list>
     })
     @PostMapping("/build")
