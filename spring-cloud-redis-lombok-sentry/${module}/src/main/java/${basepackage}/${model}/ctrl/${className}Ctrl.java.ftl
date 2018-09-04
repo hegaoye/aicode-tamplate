@@ -174,11 +174,7 @@ public class ${className}Ctrl {
     @PostMapping(value = "/count")
     @ResponseBody
     public Integer count(@RequestBody ${className} ${classNameLower}) {
-        if(${classNameLower}==null){
-            return ${className?uncap_first}SV.count(new HashMap());
-        }else{
-            return ${className?uncap_first}SV.count(${classNameLower});
-        }
+        return ${className?uncap_first}SV.count(${classNameLower});
     }
 
 
