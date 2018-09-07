@@ -23,7 +23,7 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
      <#list pkFields as pkField>
      * @param ${pkField.field} ${pkField.notes}
     </#list>
-     * @return BeanRet
+     * @return ${className}
      */
     @Override
     public  ${className} load(<#list pkFields as pkField>@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>){
@@ -36,7 +36,7 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
      * 根据条件${pkField.field}查询${className}一个详情信息
      *
      * @param ${pkField.field} ${pkField.notes}
-     * @return BeanRet
+     * @return ${className}
      */
     @Override
     public   ${className} loadBy${pkField.field?cap_first}(@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}){
@@ -44,7 +44,6 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
     }
     </#list>
     </#if>
-
 
     /**
      * 查询${className}信息集合
@@ -56,7 +55,6 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
         return new ArrayList();
     }
 
-
     /**
      * 查询${className}信息集合
      *
@@ -67,7 +65,6 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
         return new ArrayList();
     }
 
-
     @Override
     public Integer count(<#list pkFields as pkField>@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>){
          return 0;
@@ -77,21 +74,21 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
     public Integer count(@RequestBody ${className} ${classNameLower}) {
         return 0;
     }
+
     /**
      * 创建${className}
      *
-     * @return BeanRet
+     * @return ${className}
      */
     @Override
     public   ${className} build(@RequestBody ${className} ${classNameLower}){
         return new ${className}();
     }
 
-
     /**
      * 修改${className}
      *
-     * @return BeanRet
+     * @return ${className}
      */
     @Override
     public   ${className} modify(@RequestBody ${className} ${classNameLower}){
@@ -101,7 +98,6 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
     /**
      * 删除${className}
      *
-     * @return BeanRet
      */
     @Override
     public  void delete(<#list pkFields as pkField>@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>){

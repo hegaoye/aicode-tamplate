@@ -56,7 +56,6 @@ public class ${className}SVImpl {
     /**
      * 删除对象${className}
      <#list pkFields as pkField>* @param ${pkField.field} ${pkField.notes}</#list>
-     * @return ${className}
      */
     
     public void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {

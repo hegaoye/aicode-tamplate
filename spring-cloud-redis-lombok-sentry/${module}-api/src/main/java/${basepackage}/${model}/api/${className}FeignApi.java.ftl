@@ -21,7 +21,7 @@ public interface ${className}FeignApi {
      <#list pkFields as pkField>
      * @param ${pkField.field} ${pkField.notes}
     </#list>
-     * @return BeanRet
+     * @return ${className}
      */
     @GetMapping(value = "/${className?uncap_first}/load")
     ${className} load(<#list pkFields as pkField>@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
@@ -32,7 +32,7 @@ public interface ${className}FeignApi {
      * 根据条件${pkField.field}查询${className}一个详情信息
      *
      * @param ${pkField.field} ${pkField.notes}
-     * @return BeanRet
+     * @return ${className}
      */
     @GetMapping(value = "/${className?uncap_first}/load/${pkField.field}/{${pkField.field}}")
     ${className} loadBy${pkField.field?cap_first}(@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field});
@@ -41,7 +41,6 @@ public interface ${className}FeignApi {
     /**
      * 删除${className}
      *
-     * @return BeanRet
      */
     @DeleteMapping("/${className?uncap_first}/delete")
     void delete(<#list pkFields as pkField>@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
@@ -89,7 +88,7 @@ public interface ${className}FeignApi {
     /**
      * 创建${className}
      *
-     * @return BeanRet
+     * @return ${className}
      */
     @PostMapping("/${className?uncap_first}/build")
     ${className} build(@RequestBody ${className} ${className?uncap_first});
@@ -98,7 +97,7 @@ public interface ${className}FeignApi {
     /**
      * 修改${className}
      *
-     * @return BeanRet
+     * @return ${className}
      */
     @PutMapping("/${className?uncap_first}/modify")
     ${className} modify(@RequestBody ${className} ${className?uncap_first});

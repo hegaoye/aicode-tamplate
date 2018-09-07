@@ -126,10 +126,10 @@
             UPDATE `${tableName}`
             <trim prefix="set" suffixOverrides=",">
                 <if test="newState!=null and newState!=''">
-                    state = ${r'#{newState}'}
+                    state = ${r'#{newState}'}<#if field_has_next>,</#if>
                 </if>
                 <if test="updateTime!=null">
-                    updateTime = ${r'#{updateTime}'}
+                    updateTime = ${r'#{updateTime}'}<#if field_has_next>,</#if>
                 </if>
             </trim>
             <where>
@@ -152,10 +152,10 @@
             UPDATE `${tableName}`
             <trim prefix="set" suffixOverrides=",">
                 <if test="state!=null and state!=''">
-                    state = ${r'#{state}'}
+                    state = ${r'#{state}'}<#if field_has_next>,</#if>
                 </if>
                 <if test="updateTime!=null">
-                    updateTime = ${r'#{updateTime}'}
+                    updateTime = ${r'#{updateTime}'}<#if field_has_next>,</#if>
                 </if>
             </trim>
             where ${pkField.column}=<@mapperEl pkField.field/>

@@ -43,7 +43,7 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
     * @param newState 新状态
     * @param oldStates 旧状态集合
     */
-    void updateStateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("updateTime") Date updateTime,@Param("newState") ${className}State newState,@Param("oldStates") ${className}State... oldStates);
+    void updateStateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("updateTime") Date updateTime,@Param("newState") String newState,@Param("oldStates") String... oldStates);
     </#list>
 
     <#list pkFields as pkField>
@@ -53,7 +53,7 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
     * @param ${pkField.field} ${pkField.notes}
     * @param state 状态
     */
-    void updateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("state") ${className}State state,@Param("updateTime") Date updateTime);
+    void updateBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field},@Param("state") String state,@Param("updateTime") Date updateTime);
     </#list>
 
     /**
