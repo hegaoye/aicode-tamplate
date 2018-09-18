@@ -10,13 +10,13 @@ export class SettingUrl {
       enum: '/res/enum/',            //获取枚举接口
     },
     <#list classes as class>
-      ${class.classModel}: {
-        list: '/${class.classModel}/list',//${className}列表
-        add: '/${class.classModel}/build',//添加${className}
-        modify: '/${class.classModel}/modify',//修改${className}
-        load: '/${class.classModel}/load/code/',//查询${className}信息
-        updateState: '/${class.classModel}/updateState',//修改${className}状态
-      }
+    ${class.classModel}: {
+      list: '/${class.classModel}/list',//${className}列表
+      add: '/${class.classModel}/build',//添加${className}
+      modify: '/${class.classModel}/modify',//修改${className}
+      load: '/${class.classModel}/load/code/',//查询${className}信息
+      updateState: '/${class.classModel}/updateState',//修改${className}状态
+      },
     </#list>
 };
 
@@ -33,8 +33,8 @@ export class SettingUrl {
         list: '/main/${class.classModel}/list',//${className}列表
         add: '/main/${class.classModel}/build',//添加${className}
         modify: '/main/${class.classModel}/modify',//修改${className}
-        detail: '/main/${class.classModel}/load/code/',//查询${className}信息
-      }
+        detail: '/main/${class.classModel}/detail',//查询${className}信息
+      },
     </#list>
   }
 }

@@ -12,17 +12,16 @@ export class SuppliersService {
   constructor(private notification: NzNotificationService, private message: NzMessageService) {
   }
 
-
   /**
    * 查询供应商列表
    * @param params {curPage:number,pageSize:number,name?:any)
    * @returns {any<T>}
    */
-  getSuppliersList(params) {
+  get${classNameLower?cap_first}List(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.get({
-        url: SettingUrl.URL.supplier.list,
+        url: SettingUrl.URL.${classNameLower}.list,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
