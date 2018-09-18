@@ -1,4 +1,4 @@
-import { ${classNameLower?cap_first}Module } from './${module}.module';
+import { ${classNameLower?cap_first}Module } from './${classNameLower}.module';
 
 describe('${classNameLower?cap_first}Module', () => {
   let ${classNameLower}Module: ${classNameLower?cap_first}Module;

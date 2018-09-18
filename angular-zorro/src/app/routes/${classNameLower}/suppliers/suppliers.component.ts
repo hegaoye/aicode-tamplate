@@ -7,8 +7,8 @@ import {SettingUrl} from "../../../public/setting/setting_url.ts";
 
 @Component({
   selector: 'app-suppliers',
-  templateUrl: './${module}.component.html',
-  styleUrls: ['./${module}.component.scss']
+  templateUrl: './${classNameLower}.component.html',
+  styleUrls: ['./${classNameLower}.component.scss']
 })
 export class SuppliersComponent implements OnInit {
   public searchParams: any = {};//搜索参数
