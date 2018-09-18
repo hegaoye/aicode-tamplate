@@ -9,14 +9,16 @@ export class SettingUrl {
     base: {
       enum: '/res/enum/',            //获取枚举接口
     },
-  ${classNameLower}: {
-      list: '/${classNameLower}/list',//${className}列表
-      add: '/${classNameLower}/build',//添加${className}
-      modify: '/${classNameLower}/modify',//修改${className}
-      load: '/${classNameLower}/load/code/',//查询${className}信息
-      updateState: '/${classNameLower}/updateState',//修改${className}状态
-    }
-  };
+    <#list classes as class>
+      ${class.classModel}: {
+        list: '/${class.classModel}/list',//${className}列表
+        add: '/${class.classModel}/build',//添加${className}
+        modify: '/${class.classModel}/modify',//修改${className}
+        load: '/${class.classModel}/load/code/',//查询${className}信息
+        updateState: '/${class.classModel}/updateState',//修改${className}状态
+      }
+    </#list>
+};
 
 // 路由链接信息
   static ROUTERLINK: any = {
@@ -26,11 +28,13 @@ export class SettingUrl {
     pass: {
       login: "/listData/login", //登录
     },
-${classNameLower}: {
-      list: '/main/${classNameLower}/list',//列表
-      add: '/main/${classNameLower}/add',//添加
-      modify: '/main/${classNameLower}/modify',//修改
-      detail: '/main/${classNameLower}/detail',//详情
-    },
+    <#list classes as class>
+      ${class.classModel}: {
+        list: '/main/${class.classModel}/list',//${className}列表
+        add: '/main/${class.classModel}/build',//添加${className}
+        modify: '/main/${class.classModel}/modify',//修改${className}
+        detail: '/main/${class.classModel}/load/code/',//查询${className}信息
+      }
+    </#list>
   }
 }
