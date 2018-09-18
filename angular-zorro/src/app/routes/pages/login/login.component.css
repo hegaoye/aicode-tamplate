@@ -1,0 +1,24 @@
+.login-box {
+  width: 100%;
+  position: absolute;
+  top: 66px;
+  bottom: 66px;
+}
+
+.login-form {
+  width: 420px;
+  padding: 50px 30px;
+  margin: 20% auto;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.headings {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.logo {
+  width: 160px;
+  margin: auto;
+}

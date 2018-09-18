@@ -1,0 +1,44 @@
+<section class="login-box bg-theme">
+
+  <!--登录验证表单start-->
+  <form nz-form [formGroup]="validateForm" class="login-form" (submit)="login($event)">
+    <!--表单头部start-->
+    <div class="headings">
+      <h1 class="color-theme">{{'Login0000' | translate}}</h1>
+    </div>
+    <!--表单头部end-->
+    <!--表单用户名input框start-->
+    <nz-form-item>
+      <nz-form-control [nzValidateStatus]="validateForm.controls['loginCode']" nzHasFeedback>
+        <nz-input-group nzPrefixIcon="anticon anticon-user" [nzSize]="'large'">
+          <input nz-input formControlName="loginCode" type="text" placeholder="{{'Login0001' | translate}}">
+        </nz-input-group>
+        <nz-form-explain *ngIf="getFormControl('loginCode').dirty&&getFormControl('loginCode').hasError('required')">
+          {{'Login0001' | translate}}
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <!--表单用户名input框end-->
+    <!--表单密码input框start-->
+    <nz-form-item>
+      <nz-form-control [nzValidateStatus]="validateForm.controls['pwd']" nzHasFeedback>
+        <nz-input-group nzPrefixIcon="anticon anticon-lock" [nzSize]="'large'">
+          <input nz-input formControlName="pwd" type="password" placeholder="{{'Login0002' | translate}}">
+        </nz-input-group>
+        <nz-form-explain *ngIf="getFormControl('pwd').dirty&&getFormControl('pwd').hasError('required')">{{'Login0002' | translate}}
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+    <!--表单密码input框end-->
+
+    <!--表单底部start-->
+    <nz-form-item class="pt">
+      <nz-form-control>
+        <button nz-button [nzSize]="'large'" class="login-form-button w100" [nzType]="'primary'">{{'Login0003' | translate}}</button>
+      </nz-form-control>
+    </nz-form-item>
+    <!--表单底部end-->
+  </form>
+  <!--登录验证的表单end-->
+
+</section>
