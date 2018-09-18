@@ -12,7 +12,7 @@ const suppliers: MenuItem = {
   subMenuList: [
     {
       menuName: "MenuSupplier0001",
-      menuUrl: '/main/supplier/${classNameLower}'
+      menuUrl: '/main/supplier/${module}'
     }
   ]
 };
