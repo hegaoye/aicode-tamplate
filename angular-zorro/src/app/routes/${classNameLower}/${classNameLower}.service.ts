@@ -7,7 +7,7 @@ import {HttpCodesEnum} from "../../public/setting/enums";
 @Injectable({
   providedIn: 'root'
 })
-export class SuppliersService {
+export class ${classNameLower?cap_first}Service {
 
   constructor(private notification: NzNotificationService, private message: NzMessageService) {
   }

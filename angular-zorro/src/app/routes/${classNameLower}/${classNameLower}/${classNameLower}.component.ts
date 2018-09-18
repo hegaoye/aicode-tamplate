@@ -1,16 +1,16 @@
 import {Component, OnInit} from "@angular/core";
 import {Page} from "../../../public/util/page";
-import {SuppliersService} from "../suppliers.service";
+import {${classNameLower?cap_first}Service} from "../${classNameLower}.service";
 import {NzModalService} from "ng-zorro-antd";
 import {Enums, States} from "../../../public/setting/enums";
 import {SettingUrl} from "../../../public/setting/setting_url.ts";
 
 @Component({
   selector: 'app-suppliers',
-  templateUrl: './suppliers.component.html',
-  styleUrls: ['./suppliers.component.scss']
+  templateUrl: './${classNameLower}.component.html',
+  styleUrls: ['./${classNameLower}.component.scss']
 })
-export class SuppliersComponent implements OnInit {
+export class ${classNameLower?cap_first}Component implements OnInit {
   public searchParams: any = {};//搜索参数
   public suppliers: Page = new Page(); //供应商
   public _loading: boolean = false;
@@ -18,7 +18,7 @@ export class SuppliersComponent implements OnInit {
   public companyNature = Enums.companyNature;       // 公司性质码
   public states = States;       // 状态
 
-  constructor(private suppliersService: SuppliersService, public modalService: NzModalService) {
+  constructor(private suppliersService: ${classNameLower?cap_first}Service, public modalService: NzModalService) {
   }
 
   ngOnInit() {

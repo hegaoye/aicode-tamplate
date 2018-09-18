@@ -1,5 +1,5 @@
 import {NgModule} from "@angular/core";
-import {SuppliersComponent} from "./suppliers/suppliers.component";
+import {${classNameLower?cap_first}Component} from "./${classNameLower}/${classNameLower}.component";
 import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
 import {SupplierDetailComponent} from "./supplier-detail/supplier-detail.component";
@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'suppliers', children: [
       {path: '', redirectTo: 'list'},
-      {path: 'list', component: SuppliersComponent},
+      {path: 'list', component: ClassNameLowerComponent},
       {path: 'add', component: SupplierEditComponent},
       {path: 'modify/:code', component: SupplierEditComponent},
       {path: 'detail/:code', component: SupplierDetailComponent},
@@ -25,11 +25,11 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    SuppliersComponent,
+      ${classNameLower?cap_first}Component,
     SupplierDetailComponent,
     SupplierEditComponent,
     SupplierInfoComponent],
   providers: []
 })
-export class SuppliersModule {
+export class ${classNameLower?cap_first}Module {
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {SuppliersService} from "../suppliers.service";
+import {ClassNameLowerService} from "../${classNameLower}.service";
 
 @Component({
   selector: 'app-supplier-detail',
@@ -11,7 +11,7 @@ export class SupplierDetailComponent implements OnInit {
   private code: string;
   public supplierInfo: any = {};//供应商信息
 
-  constructor(private suppliersService: SuppliersService, private route: ActivatedRoute) {
+  constructor(private suppliersService: ClassNameLowerService, private route: ActivatedRoute) {
     this.code = this.route.snapshot.queryParams['code'];
   }
 
