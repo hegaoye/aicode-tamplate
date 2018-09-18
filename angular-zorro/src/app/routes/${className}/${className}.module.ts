@@ -31,5 +31,5 @@ const routes: Routes = [
     SupplierInfoComponent],
   providers: []
 })
-export class ${classNameLower?cap_first}Module {
+export class ${className}Module {
 }
