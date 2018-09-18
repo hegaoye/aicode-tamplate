@@ -14,7 +14,8 @@ export class Setting {
     copyright: '© 2018 - 玺得科技',
     logo: '../../../assets/img/logo.png',
     logoDark: '../../../assets/img/logo-dark.png',
-    defaultImg: '../../../assets/img/dummy.png',
+    defaultImg: '',
+    // defaultImg: '../../../assets/img/dummy.png',
     userDefaultImg: '../../../assets/img/user-default.png',
     refundImg: '../../../assets/img/refund.png',
     contactInformation: {
