@@ -18,66 +18,11 @@ export class ${className}Service {
    * @param params {curPage:number,pageSize:number,name?:any)
    * @returns {any<T>}
    */
-  getSuppliersList(params) {
+  get${className}List(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.get({
-        url: SettingUrl.URL.supplier.list,
-        data: params,
-        success: (res) => {
-          if (res.success && res.code === HttpCodesEnum.Success) {
-            resolve(res.data);
-          } else {
-            reject(false);
-            me.notification.error(`error`, res.info);
-          }
-        },
-        error: (res) => {
-          reject(false);
-          me.notification.error(`error`, res.message)
-        }
-      });
-    })
-  }
-
-
-  /**
-   * 查询供应商类型列表
-   * @param params {curPage:number,pageSize:number,name?:any)
-   * @returns {any<T>}
-   */
-  getSupplierCategoryList(params) {
-    let me = this;
-    return new Promise(function (resolve, reject) {
-      AjaxService.get({
-        url: SettingUrl.URL.supplierCategory.list,
-        data: params,
-        success: (res) => {
-          if (res.success && res.code === HttpCodesEnum.Success) {
-            resolve(res.data);
-          } else {
-            reject(res.info);
-            me.notification.error(`error`, res.info);
-          }
-        },
-        error: (res) => {
-          reject(res.message);
-          me.notification.error(`error`, res.message)
-        }
-      });
-    })
-  }
-
-  /**
-   * 查询供应商支付方式
-   * @param params {curPage:number,pageSize:number,name?:any)
-   * @returns {any<T>}
-   */
-  getPaymentList(params) {
-    let me = this;
-    return new Promise(function (resolve, reject) {
-      AjaxService.get({
-        url: SettingUrl.URL.payment.list,
+        url: SettingUrl.URL.${classNameLower}.list,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -100,11 +45,11 @@ export class ${className}Service {
    * @param params
    * @returns {Promise<T>}
    */
-  addSupplier(params) {
+  add${className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.post({
-        url: SettingUrl.URL.supplier.add,
+        url: SettingUrl.URL.${classNameLower}.add,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -124,67 +69,15 @@ export class ${className}Service {
   }
 
   /**
-   * 添加供应商类型
-   * @param params {name:string, code?:string}
-   * @returns {Promise<T>}
-   */
-  addSupplierCategory(params) {
-    let me = this;
-    return new Promise(function (resolve) {
-      AjaxService.post({
-        url: SettingUrl.URL.supplierCategory.add,
-        data: params,
-        success: (res) => {
-          if (res.success && res.code === HttpCodesEnum.Success) {
-            me.message.success(res.info);
-            resolve(res.data);
-          } else {
-            me.notification.error(`error`, res.info);
-          }
-        },
-        error: (res) => {
-          me.notification.error(`error`, res.message)
-        }
-      });
-    })
-  }
-
-  /**
-   * 添加支付方式
-   * @param params 表单数据
-   * @returns {Promise<T>}
-   */
-  addPayment(params) {
-    let me = this;
-    return new Promise(function (resolve, reject) {
-      AjaxService.post({
-        url: SettingUrl.URL.payment.add,
-        data: params,
-        success: (res) => {
-          if (res.success && res.code === HttpCodesEnum.Success) {
-            me.message.success(res.info);
-            resolve(res.data);
-          } else {
-            me.notification.error(`error`, res.info);
-          }
-        },
-        error: (res) => {
-          me.notification.error(`error`, res.message)
-        }
-      });
-    })
-  }
-
-  /**
    * 修改供应商
    * @param params
    * @returns {Promise<T>}
    */
-  modifySupplier(params) {
+  modify${className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.put({
-        url: SettingUrl.URL.supplier.modify,
+        url: SettingUrl.URL.${classNameLower}.modify,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -209,11 +102,11 @@ export class ${className}Service {
    * @param state 供应商状态
    * @returns {Promise<T>}
    */
-  modifySupplierState(code, state) {
+  modify${className}State(code, state) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.put({
-        url: SettingUrl.URL.supplier.updateState,
+        url: SettingUrl.URL.${classNameLower}.updateState,
         data: {
           code: code,
           state: state
@@ -235,91 +128,15 @@ export class ${className}Service {
   }
 
   /**
-   * 修改供应商类型
-   * @param params {name:string, code?:string}
-   * @returns {Promise<T>}
-   */
-  modifySupplierCategory(params) {
-    let me = this;
-    return new Promise(function (resolve) {
-      AjaxService.put({
-        url: SettingUrl.URL.supplierCategory.modify,
-        data: params,
-        success: (res) => {
-          if (res.success && res.code === HttpCodesEnum.Success) {
-            me.message.success(res.info);
-            resolve(res.data);
-          } else {
-            me.notification.error(`error`, res.info);
-          }
-        },
-        error: (res) => {
-          me.notification.error(`error`, res.message)
-        }
-      });
-    })
-  }
-
-  /**
-   * 修改支付方式
-   * @param params {name:string, code?:string}
-   * @returns {Promise<T>}
-   */
-  modifyPayment(params) {
-    let me = this;
-    return new Promise(function (resolve) {
-      AjaxService.put({
-        url: SettingUrl.URL.payment.modify,
-        data: params,
-        success: (res) => {
-          if (res.success && res.code === HttpCodesEnum.Success) {
-            me.message.success(res.info);
-            resolve(res.data);
-          } else {
-            me.notification.error(`error`, res.info);
-          }
-        },
-        error: (res) => {
-          me.notification.error(`error`, res.message)
-        }
-      });
-    })
-  }
-
-  /**
    * 查询供应商详细信息
    * @param code 供应商编码
    * @returns {Promise<T>}
    */
-  loadSupplierByCode(code) {
+  load${className}ByCode(code) {
     let me = this;
     return new Promise(function (resolve) {
       AjaxService.get({
-        url: SettingUrl.URL.supplier.load + code,
-        success: (res) => {
-          if (res.success && res.code === HttpCodesEnum.Success) {
-            resolve(res.data);
-          } else {
-            me.notification.error(`error`, res.info);
-          }
-        },
-        error: (res) => {
-          me.notification.error(`error`, res.message)
-        }
-      });
-    })
-  }
-
-  /**
-   * 查询供应商类型信息
-   * @param code 供应商类型编码
-   * @returns {Promise<T>}
-   */
-  loadSupplierCategoryByCode(code) {
-    let me = this;
-    return new Promise(function (resolve) {
-      AjaxService.get({
-        url: SettingUrl.URL.supplierCategory.load + code,
+        url: SettingUrl.URL.${classNameLower}.load + code,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
             resolve(res.data);

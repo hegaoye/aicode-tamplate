@@ -28,7 +28,7 @@ export class SettingUrl {
       checkSmsCode: '/sms/checkSmsCode',//（get）验证码的校验
     },
     <#list classes as class>
-  ${class.classModel}: {
+    ${class.classModel}: {
         list: '/${class.classModel}/list',//${class.classModel}列表
         add: '/${class.classModel}/build',//添加${class.classModel}
         modify: '/${class.classModel}/modify',//修改${class.classModel}
@@ -47,7 +47,7 @@ export class SettingUrl {
       login: "/listData/login", //登录
     },
   <#list classes as class>
-${class.classModel}: {
+    ${class.classModel}: {
       list: '/main/${class.classModel}/list',//${class.classModel}列表
       add: '/main/${class.classModel}/add',//添加${class.classModel}
       modify: '/main/${class.classModel}/modify',//修改${class.classModel}

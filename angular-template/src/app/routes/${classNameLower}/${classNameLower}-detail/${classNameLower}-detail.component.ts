@@ -11,7 +11,7 @@ export class ${className}DetailComponent implements OnInit {
   private code: string;
   public supplierInfo: any = {};//供应商信息
 
-  constructor(private suppliersService: ${className}Service, private route: ActivatedRoute) {
+  constructor(private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute) {
     this.code = this.route.snapshot.queryParams['code'];
   }
 
@@ -24,7 +24,7 @@ export class ${className}DetailComponent implements OnInit {
    * 查询供应商信息
    */
   loadSupplierInfo() {
-    this.suppliersService.loadSupplierByCode(this.code).then((data: any) => {
+    this.${classNameLower}Service.loadSupplierByCode(this.code).then((data: any) => {
       if (data) this.supplierInfo = data;
     })
   }

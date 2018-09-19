@@ -8,7 +8,7 @@
 
 <div class="panel panel-body">
   <!--搜索 start-->
-  <form nz-form (submit)="querySuppliersList(1)">
+  <form nz-form (submit)="query${className}List(1)">
     <div class="search-group">
       <span class="search-title">{{"Supplier0001"| translate}}：</span>
       <div class="search-main">
@@ -30,16 +30,16 @@
 </div>
 <div class="panel">
   <nz-table #nzTable
-            [nzData]="suppliers.voList"
+            [nzData]="${classNameLower}List.voList"
             [nzLoading]="_loading"
             [nzFrontPagination]="false"
             [nzShowTotal]="totalRow"
-            [nzPageSize]="suppliers.pageSize"
-            [nzTotal]="suppliers.totalRow"
-            [nzPageIndex]="suppliers.curPage"
-            (nzPageIndexChange)="querySuppliersList($event)">
+            [nzPageSize]="${classNameLower}List.pageSize"
+            [nzTotal]="${classNameLower}List.totalRow"
+            [nzPageIndex]="${classNameLower}List.curPage"
+            (nzPageIndexChange)="query${className}List($event)">
     <thead nz-thead>
-    <ng-template #totalRow>{{'Th0000' | translate : {totalRow: suppliers.totalRow} }}</ng-template>
+    <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
     <tr>
       <th nz-th class="text-center" nzWidth="5%"><span>{{'Th0001' | translate}}</span></th><!--序号-->
       <th nz-th class="text-center" nzWidth="10%"><span>{{'ThSupplier0000' | translate}}</span></th><!--名字+信用等级-->

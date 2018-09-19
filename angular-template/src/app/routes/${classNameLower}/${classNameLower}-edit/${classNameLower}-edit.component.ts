@@ -22,7 +22,7 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
   public paymentList: Array<any>;//支付方式
   private routeListener: any;//路由监听
 
-  constructor(private fb: FormBuilder, private suppliersService: ${className}Service, private route: ActivatedRoute, public location: Location) {
+  constructor(private fb: FormBuilder, private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({
       name: [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(32)])],//中文名
       englishName: [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(64)])],//英文名
@@ -75,13 +75,13 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
     //添加供应商
     if (this.code) {
       formData.code = this.code;
-      this.suppliersService.modifySupplier(formData).then((data: any) => {
+      this.${classNameLower}Service.modifySupplier(formData).then((data: any) => {
         this.isConfirmLoading = false;
         this.validateForm.reset();
         this.location.back();
       }).catch(res => this.isConfirmLoading = false)
     } else {
-      this.suppliersService.addSupplier(formData).then((data: any) => {
+      this.${classNameLower}Service.addSupplier(formData).then((data: any) => {
         this.isConfirmLoading = false;
         this.location.back();
       }).catch(res => this.isConfirmLoading = false)
@@ -96,7 +96,7 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
       curPage: 1,
       pageSize: 1000
     };
-    this.suppliersService.getSupplierCategoryList(params).then((data: any) => {
+    this.${classNameLower}Service.getSupplierCategoryList(params).then((data: any) => {
       if (data && data.voList) this.supplierCategorys = data.voList;
     }).catch(res => console.log(res));
   }
@@ -109,7 +109,7 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
       curPage: 1,
       pageSize: 1000
     };
-    this.suppliersService.getPaymentList(params).then((data: any) => {
+    this.${classNameLower}Service.getPaymentList(params).then((data: any) => {
       if (data && data.voList) this.paymentList = data.voList;
     }).catch(res => console.log(res));
   }
@@ -118,7 +118,7 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
    * 查询供应商信息
    */
   loadSupplierInfo() {
-    this.suppliersService.loadSupplierByCode(this.code).then((data: any) => {
+    this.${classNameLower}Service.loadSupplierByCode(this.code).then((data: any) => {
       this.validateForm.patchValue(data);
     })
   }

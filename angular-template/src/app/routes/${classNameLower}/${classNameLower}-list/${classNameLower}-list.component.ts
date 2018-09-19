@@ -12,35 +12,35 @@ import {SettingUrl} from "../../../public/setting/setting_url";
 })
 export class ${className}ListComponent implements OnInit {
   public searchParams: any = {};//搜索参数
-  public suppliers: Page = new Page(); //供应商
+  public ${classNameLower}List: Page = new Page(); //供应商
   public _loading: boolean = false;
   public routerLinks = SettingUrl.ROUTERLINK;//路由
   public companyNature = Enums.companyNature;       // 公司性质码
   public states = States;       // 状态
 
-  constructor(private suppliersService: ${className}Service, public modalService: NzModalService) {
+  constructor(private ${classNameLower}Service: ${className}Service, public modalService: NzModalService) {
   }
 
   ngOnInit() {
-    this.querySuppliersList()
+    this.query${className}List()
   }
 
   /**
    * 查询供应商
    * @param curPage 当前页
    */
-  querySuppliersList(curPage?: number) {
+  query${className}List(curPage?: number) {
     let me = this;
     me._loading = true;
-    if (curPage) me.suppliers.curPage = curPage;//当有页码时，查询该页数据
-    me.suppliers.params = {
-      curPage: me.suppliers.curPage, //目标页码
-      pageSize: 1000, //每页条数
+    if (curPage) me.${classNameLower}List.curPage = curPage;//当有页码时，查询该页数据
+    me.${classNameLower}List.params = {
+      curPage: me.${classNameLower}List.curPage, //目标页码
+      pageSize: me.${classNameLower}List.pageSize, //每页条数
       name: me.searchParams.name, //供应商名称
     };
-    me.suppliersService.getSuppliersList(me.suppliers.params).then((res: Page) => {
+    me.${classNameLower}Service.get${className}List(me.${classNameLower}List.params).then((res: Page) => {
       me._loading = false;
-      me.suppliers = res;
+      me.${classNameLower}List = res;
     }).catch(err => {
       me._loading = false;
     })
@@ -51,10 +51,10 @@ export class ${className}ListComponent implements OnInit {
    * @param code
    * @param event
    */
-  modifySupplierState(code, event) {
+  modify${className}State(code, event) {
     let state = event ? States.enable : States.disable;
-    this.suppliersService.modifySupplierState(code, state).catch((res) => {
-      this.querySuppliersList();//由于switch的特殊性，因此在失败的时候刷新页面
+    this.${classNameLower}Service.modify${className}State(code, state).catch((res) => {
+      this.query${className}List();//由于switch的特殊性，因此在失败的时候刷新页面
     })
   }
 
@@ -63,6 +63,6 @@ export class ${className}ListComponent implements OnInit {
    */
   resetSearch() {
     this.searchParams = {};
-    this.querySuppliersList(1)
+    this.query${className}List(1)
   }
 }

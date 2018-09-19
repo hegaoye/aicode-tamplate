@@ -4,7 +4,6 @@ import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
 import {${className}DetailComponent} from "./${classNameLower}-detail/${classNameLower}-detail.component";
 import {${className}EditComponent} from "./${classNameLower}-edit/${classNameLower}-edit.component";
-import {${className}InfoComponent} from "./${classNameLower}-info/${classNameLower}-info.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'list'},
@@ -22,8 +21,7 @@ const routes: Routes = [
   declarations: [
     ${className}ListComponent,
     ${className}DetailComponent,
-    ${className}EditComponent,
-    ${className}InfoComponent],
+    ${className}EditComponent],
   providers: []
 })
 export class ${className}Module {
