@@ -9,8 +9,10 @@
     <h2 class="subtitle">${className}信息</h2>
     <#list fields as field>
     <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
+
+    <!--${field.field} start-->
     <nz-form-item>
-      <nz-form-label [nzSm]="7" nzFor="${field.field}" nzRequired>{{'Supplier0006'| translate}}</nz-form-label>
+      <nz-form-label [nzSm]="7" nzFor="${field.field}" nzRequired>${field.field}</nz-form-label>
       <nz-form-control [nzSm]="10" [nzValidateStatus]="getFormControl('${field.field}')">
         <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.field}">
         <nz-form-explain *ngIf="getFormControl('${field.field}').dirty&&getFormControl('${field.field}').errors">
@@ -23,7 +25,6 @@
     </nz-form-item>
     </#if>
     </#list>
-    
 
     <!--表单底部start-->
     <nz-form-item class="action-button">

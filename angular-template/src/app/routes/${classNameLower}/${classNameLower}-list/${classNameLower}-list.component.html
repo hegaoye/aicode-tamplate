@@ -1,6 +1,6 @@
 <div class="page-title clearfix">
   <div class="title">{{"Supplier0000"| translate}}</div>
-  <button nz-button class="fr btn-green" [routerLink]="routerLinks.supplier.add" title="{{'Btn0003'| translate}}"><i
+  <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="{{'Btn0003'| translate}}"><i
     class="anticon anticon-plus"></i>
     {{'Btn0003'| translate}}
   </button>
@@ -10,7 +10,7 @@
   <!--搜索 start-->
   <form nz-form (submit)="query${className}List(1)">
     <div class="search-group">
-      <span class="search-title">{{"Supplier0001"| translate}}：</span>
+      <span class="search-title">${classNameLower}名：</span>
       <div class="search-main">
         <input nz-input name="name"
                [(ngModel)]="searchParams.name"
@@ -42,14 +42,12 @@
     <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
     <tr>
       <th nz-th class="text-center" nzWidth="5%"><span>{{'Th0001' | translate}}</span></th><!--序号-->
-      <th nz-th class="text-center" nzWidth="10%"><span>{{'ThSupplier0000' | translate}}</span></th><!--名字+信用等级-->
-      <th nz-th class="text-center" nzWidth="8%"><span>{{'ThSupplier0001' | translate}}</span></th><!--联系人-->
-      <th nz-th class="text-center" nzWidth="8%"><span>{{'ThSupplier0002' | translate}}</span></th><!--手机号-->
-      <th nz-th class="text-center" nzWidth="10%"><span>{{'ThSupplier0003' | translate}}</span></th><!--网址-->
-      <th nz-th class="text-center" nzWidth="8%"><span>{{'ThSupplier0005' | translate}}</span></th><!--公司性质-->
-      <th nz-th class="text-center" nzWidth="8%"><span>{{'ThSupplier0004' | translate}}</span></th><!--公司类型-->
+      <#list fields as field>
+      <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
+      <th nz-th class="text-center" nzWidth="10%"><span>${field.field}</span></th><!--${field.notes}-->
+      </#if>
+      </#list>
       <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0003' | translate}}</span></th><!--状态-->
-      <th nz-th class="text-center" nzWidth="13%"><span>{{'ThSupplier0006' | translate}}</span></th><!--地址-->
       <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0004' | translate}}</span></th><!--时间-->
       <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0006' | translate}}</span></th><!--操作-->
     </tr>
@@ -58,29 +56,23 @@
     <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
       <tr nz-tbody-tr>
         <td nz-td class="text-center">{{i+1}}</td>
-        <td nz-td class="text-center">{{data.name}}
-          <div>
-            <nz-rate [ngModel]="data.creditRating" title="{{'Supplier0002'| translate}}" nzDisabled></nz-rate>
-          </div>
-        </td>
-        <td nz-td class="text-center">{{data.contacts}}</td>
-        <td nz-td class="text-center">{{data.mobile}}</td>
-        <td nz-td class="text-center"><a target="_blank" [href]="data.website">{{data.website}}</a></td>
-        <td nz-td class="text-center">{{data.companyNature | enumName: companyNature}}</td>
-        <td nz-td class="text-center">{{data.supplierCategory.name}}</td>
+        <#list fields as field>
+        <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
+        <td nz-td class="text-center">{{data.${field.field}}}</td>
+        </#if>
+        </#list>
         <td nz-td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
-                     nzCheckedChildren="{{'Btn0007' | translate}}" nzUnCheckedChildren="{{'Btn0008' | translate}}"
-                     (ngModelChange)="modifySupplierState(data.code, $event)">
+                     nzCheckedChildren="是" nzUnCheckedChildren="否"
+                     (ngModelChange)="modify${classNameLower}State(data.code, $event)">
           </nz-switch>
         </td>
-        <td nz-td class="text-center">{{data.address}}</td>
         <td nz-td class="text-center">{{data.createTime}}</td>
         <td nz-td class="text-center">
-          <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.supplier.modify,data.code]"
+          <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
                   title="{{'Btn0004'| translate}}">
             <i class="anticon anticon-edit"></i></button>
-          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.supplier.detail,data.code]"
+          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
                   title="{{'Btn0005'| translate}}">
             <i class="anticon anticon-eye-o"></i></button>
         </td>

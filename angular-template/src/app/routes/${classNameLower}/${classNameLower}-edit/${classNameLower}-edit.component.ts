@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {${className}Service} from "../${classNameLower}.service";
-import {Enums} from "../../../public/setting/enums";
+import {Service} from "../${classNameLower}.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MainService} from "../../../public/service/main.service";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 
@@ -15,9 +13,6 @@ export class ${className}EditComponent implements OnInit {
   public isConfirmLoading: boolean = false;
   private code: string; //供应商编码，修改时会传过来
   public validateForm: FormGroup;//企业登录的表单
-  public companyNature = MainService.getEnumDataList(Enums.companyNature);       // 公司性质
-  public creditRating: number = 0;       // 状态
-  private routeListener: any;//路由监听
 
   constructor(private fb: FormBuilder, private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {${className}Service} from "../${classNameLower}.service";
+import {SettingUrl} from "../../../public/setting/setting_url";
 
 @Component({
   selector: 'app-${classNameLower}-detail',
@@ -11,8 +12,7 @@ export class ${className}DetailComponent implements OnInit {
   private code: string;
   public ${classNameLower}Info: any = {};//供应商信息
 
-  constructor(private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute) {
-    this.code = this.route.snapshot.queryParams['code'];
+  constructor(private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -29,5 +29,11 @@ export class ${className}DetailComponent implements OnInit {
     })
   }
 
+  /**
+   * 修改未设置数据
+   */
+  toModifyTheUnSetData() {
+    this.router.navigate([SettingUrl.ROUTERLINK.${classNameLower}.modify, this.code])
+  }
 
 }

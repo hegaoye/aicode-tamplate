@@ -15,7 +15,6 @@ export class ${className}ListComponent implements OnInit {
   public ${classNameLower}List: Page = new Page(); //供应商
   public _loading: boolean = false;
   public routerLinks = SettingUrl.ROUTERLINK;//路由
-  public companyNature = Enums.companyNature;       // 公司性质码
   public states = States;       // 状态
 
   constructor(private ${classNameLower}Service: ${className}Service) {
@@ -26,7 +25,7 @@ export class ${className}ListComponent implements OnInit {
   }
 
   /**
-   * 查询供应商
+   * 查询${classNameLower}列表
    * @param curPage 当前页
    */
   query${className}List(curPage?: number) {
@@ -35,7 +34,6 @@ export class ${className}ListComponent implements OnInit {
     this.${classNameLower}List.params = {
       curPage: this.${classNameLower}List.curPage, //目标页码
       pageSize: this.${classNameLower}List.pageSize, //每页条数
-      name: this.searchParams.name, //供应商名称
     };
     this.${classNameLower}Service.get${className}List(this.${classNameLower}List.params).then((res: Page) => {
       this._loading = false;
