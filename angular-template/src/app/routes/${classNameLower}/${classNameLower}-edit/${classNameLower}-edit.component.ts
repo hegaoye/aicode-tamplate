@@ -22,7 +22,7 @@ export class ${className}EditComponent implements OnInit {
   constructor(private fb: FormBuilder, private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({
     <#list fields as field>
-    <#if field.field!='id' && field.field!='code' && !field.checkDate>
+    <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
       ${field.field}: [null, Validators.compose([Validators.required])]<#if field_has_next>,</#if> // ${field.notes}
     </#if>
     </#list>
