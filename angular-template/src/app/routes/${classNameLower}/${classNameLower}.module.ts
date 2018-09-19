@@ -7,16 +7,11 @@ import {SupplierEditComponent} from "./supplier-edit/supplier-edit.component";
 import {SupplierInfoComponent} from "./supplier-info/supplier-info.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'suppliers'},
-  {
-    path: 'suppliers', children: [
-      {path: '', redirectTo: 'list'},
-      {path: 'list', component: SuppliersComponent},
-      {path: 'add', component: SupplierEditComponent},
-      {path: 'modify/:code', component: SupplierEditComponent},
-      {path: 'detail/:code', component: SupplierDetailComponent},
-    ]
-  }
+  {path: '', redirectTo: 'list'},
+  {path: 'list', component: SuppliersComponent},
+  {path: 'add', component: SupplierEditComponent},
+  {path: 'modify/:code', component: SupplierEditComponent},
+  {path: 'detail/:code', component: SupplierDetailComponent},
 ]
 
 @NgModule({
@@ -31,5 +26,5 @@ const routes: Routes = [
     SupplierInfoComponent],
   providers: []
 })
-export class SuppliersModule {
+export class ${className}Module {
 }

@@ -60,10 +60,10 @@ export class SettingUrl {
       login: "/listData/login", //登录
     },
     supplier: {
-      list: '/main/supplier/suppliers/list',//列表
-      add: '/main/supplier/suppliers/add',//添加
-      modify: '/main/supplier/suppliers/modify',//修改
-      detail: '/main/supplier/suppliers/detail',//详情
+      list: '/main/${classNameLower}/list',//列表
+      add: '/main/${classNameLower}/add',//添加
+      modify: '/main/${classNameLower}/modify',//修改
+      detail: '/main/${classNameLower}/detail',//详情
     }
   }
 }
