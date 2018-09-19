@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
 import {NgZorroAntdModule} from "ng-zorro-antd";
-import {ImgErrDirective} from "../public/directives/img-err.directive";
 import {ImgSizePipe} from "../public/pipes/img-size.pipe";
 import { BackBtnComponent } from './compontents/back-btn/back-btn.component';
 import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
@@ -20,7 +19,6 @@ import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
   ],
   declarations: [
     BackBtnComponent,         //返回按钮
-    ImgErrDirective,           //图片错误处理
     ImgSizePipe,
     EnumNamePipe,
   ],
@@ -31,7 +29,6 @@ import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
     ReactiveFormsModule,    //表单支持
     TranslateModule,            //国际化
     NgZorroAntdModule,            //zorro
-    ImgErrDirective,             //图片错误处理
     ImgSizePipe,
     EnumNamePipe,
     BackBtnComponent,         //返回按钮
