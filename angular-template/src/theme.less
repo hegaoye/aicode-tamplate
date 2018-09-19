@@ -1,0 +1,39 @@
+@import "../node_modules/ng-zorro-antd/src/ng-zorro-antd.less";
+
+// -------- 自定义参数覆盖 -----------
+@primary-color: #009688;
+@text-color: fade(#000, 85%);
+@link-hover-color: @info-color;
+
+// Border color
+@border-color-base: hsv(0, 0, 85%); // base border outline a component
+@btn-border-radius-base: @border-radius-sm;
+
+// layout
+@layout-body-background: #f6f6f6;
+@layout-header-background: #001529;
+@layout-footer-background: @layout-body-background;
+@layout-header-height: 66px;
+
+// input
+@input-height-base: 32px;
+@input-height-lg: 40px;
+@input-height-sm: 24px;
+@input-placeholder-color: hsv(0, 0, 75%);
+@input-border-color: @border-color-base;
+@input-hover-border-color: @primary-3;
+@outline-color: @primary-3;
+
+//menu
+@menu-inline-toplevel-item-height: 50px;
+@menu-item-height: 50px;
+@menu-collapsed-width: 100px;
+@menu-dark-submenu-bg: #00796b;
+
+.bg-theme {
+  background-color: @primary-color;
+}
+
+.color-theme {
+  color: @primary-color;
+}
