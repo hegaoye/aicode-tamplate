@@ -8,11 +8,11 @@ import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 
 @Component({
-  selector: 'app-supplier-edit',
-  templateUrl: './supplier-edit.component.html',
-  styleUrls: ['./supplier-edit.component.css']
+  selector: 'app-${classNameLower}-edit',
+  templateUrl: './${classNameLower}-edit.component.html',
+  styleUrls: ['./${classNameLower}-edit.component.css']
 })
-export class SupplierEditComponent implements OnInit, OnDestroy {
+export class ${className}EditComponent implements OnInit, OnDestroy {
   public isConfirmLoading: boolean = false;
   private code: string; //供应商编码，修改时会传过来
   public validateForm: FormGroup;//企业登录的表单

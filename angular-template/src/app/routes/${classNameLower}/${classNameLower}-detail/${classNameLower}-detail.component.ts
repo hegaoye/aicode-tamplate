@@ -3,11 +3,11 @@ import {ActivatedRoute} from "@angular/router";
 import {${className}Service} from "../${classNameLower}.service";
 
 @Component({
-  selector: 'app-supplier-detail',
-  templateUrl: './supplier-detail.component.html',
-  styleUrls: ['./supplier-detail.component.css']
+  selector: 'app-${classNameLower}-detail',
+  templateUrl: './${classNameLower}-detail.component.html',
+  styleUrls: ['./${classNameLower}-detail.component.css']
 })
-export class SupplierDetailComponent implements OnInit {
+export class ${className}DetailComponent implements OnInit {
   private code: string;
   public supplierInfo: any = {};//供应商信息
 

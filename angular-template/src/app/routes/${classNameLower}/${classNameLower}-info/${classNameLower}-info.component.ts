@@ -4,11 +4,11 @@ import {SettingUrl} from "../../../public/setting/setting_url";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-supplier-info',
-  templateUrl: './supplier-info.component.html',
-  styleUrls: ['./supplier-info.component.css']
+  selector: 'app-${classNameLower}-info',
+  templateUrl: './${classNameLower}-info.component.html',
+  styleUrls: ['./${classNameLower}-info.component.css']
 })
-export class SupplierInfoComponent implements OnInit {
+export class ${className}InfoComponent implements OnInit {
   @Input() supplierInfo: any;
   public companyNature = Enums.companyNature;       // 公司性质码
 
