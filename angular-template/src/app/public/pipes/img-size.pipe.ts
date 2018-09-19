@@ -12,6 +12,6 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class ImgSizePipe implements PipeTransform {
   transform(value: any, args?: any): any {
     if(!args) args = "200";
-    return value + `?imageView2/2/w/${args}/h/${args}`;
+    return value + `?imageView2/2/w/${r"${"}args}/h/${r"${"}args}`;
   }
 }
