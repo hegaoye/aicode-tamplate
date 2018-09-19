@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {Service} from "../${classNameLower}.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
+import {${className}Service} from "../${classNameLower}.service";
 
 @Component({
   selector: 'app-${classNameLower}-edit',

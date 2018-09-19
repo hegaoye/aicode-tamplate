@@ -14,9 +14,9 @@
     <nz-form-item>
       <nz-form-label [nzSm]="7" nzFor="${field.field}" nzRequired>${field.field}</nz-form-label>
       <nz-form-control [nzSm]="10" [nzValidateStatus]="getFormControl('${field.field}')">
-        <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.field}">
+        <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.notes}">
         <nz-form-explain *ngIf="getFormControl('${field.field}').dirty&&getFormControl('${field.field}').errors">
-          <ng-container *ngIf="getFormControl('${field.field}').hasError('required')">请输入${field.field}</ng-container>
+          <ng-container *ngIf="getFormControl('${field.field}').hasError('required')">请输入${field.notes}</ng-container>
         </nz-form-explain>
       </nz-form-control>
       <nz-form-control [nzSm]="7" class="font12 pl color-gray">

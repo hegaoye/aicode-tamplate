@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 import {${className}Service} from "../${classNameLower}.service";
 import {SettingUrl} from "../../../public/setting/setting_url";
 

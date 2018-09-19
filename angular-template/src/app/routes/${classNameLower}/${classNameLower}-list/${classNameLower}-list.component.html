@@ -42,13 +42,10 @@
     <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
     <tr>
       <th nz-th class="text-center" nzWidth="5%"><span>{{'Th0001' | translate}}</span></th><!--序号-->
-      <#list fields as field>
-      <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
-      <th nz-th class="text-center" nzWidth="10%"><span>${field.field}</span></th><!--${field.notes}-->
-      </#if>
+      <#list tableFields as field>
+      <th nz-th class="text-center" nzWidth=""><span>${field.notes}</span></th><!--${field.notes}-->
       </#list>
       <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0003' | translate}}</span></th><!--状态-->
-      <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0004' | translate}}</span></th><!--时间-->
       <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0006' | translate}}</span></th><!--操作-->
     </tr>
     </thead>
@@ -67,7 +64,6 @@
                      (ngModelChange)="modify${classNameLower}State(data.code, $event)">
           </nz-switch>
         </td>
-        <td nz-td class="text-center">{{data.createTime}}</td>
         <td nz-td class="text-center">
           <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
                   title="{{'Btn0004'| translate}}">
