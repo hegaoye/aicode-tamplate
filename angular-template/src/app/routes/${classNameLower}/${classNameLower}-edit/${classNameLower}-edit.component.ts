@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {${className}Service} from "../${classNameLower}.service";
 import {Enums} from "../../../public/setting/enums";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PatternService} from "../../../public/service/pattern.service";
 import {MainService} from "../../../public/service/main.service";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
@@ -12,7 +11,7 @@ import {Location} from "@angular/common";
   templateUrl: './${classNameLower}-edit.component.html',
   styleUrls: ['./${classNameLower}-edit.component.css']
 })
-export class ${className}EditComponent implements OnInit, OnDestroy {
+export class ${className}EditComponent implements OnInit {
   public isConfirmLoading: boolean = false;
   private code: string; //供应商编码，修改时会传过来
   public validateForm: FormGroup;//企业登录的表单
@@ -23,13 +22,15 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder, private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({
     <#list fields as field>
-    ${field.field}: [null, Validators.compose([Validators.required])]<#if field_has_next>,</#if>//${field.notes}
+    <#if field.field!='id' && field.field!='code' && !field.checkDate>
+      ${field.field}: [null, Validators.compose([Validators.required])]<#if field_has_next>,</#if> // ${field.notes}
+    </#if>
     </#list>
     });
   }
 
   ngOnInit() {
-    this.routeListener = this.route.url.subscribe(url => {
+    this.route.url.subscribe(url => {
       const curPath = url[0].path;
       if (curPath === 'modify') {
         this.code = this.route.snapshot.params.code;//获取参数
@@ -79,9 +80,5 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
 
   getFormControl(name) {
     return this.validateForm.controls[name];
-  }
-
-  ngOnDestroy(): void {
-    this.routeListener.unsubscribe();
   }
 }
