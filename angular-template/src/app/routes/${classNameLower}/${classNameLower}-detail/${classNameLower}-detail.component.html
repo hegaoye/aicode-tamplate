@@ -15,7 +15,7 @@
       <#list fields as field>
       <#if field.field!='id' && field.field!='code'>
         <p>
-          <strong class="pr"><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,3)}<#else> ${field.notes}</#if>：</strong><!--${field.notes}-->
+          <strong class="pr"><#if (field.notes?? && field.notes?length>0)>${field.notes?substring(0,3)}<#else> ${field.notes}</#if>：</strong><!--${field.notes}-->
           <span *ngIf="${classNameLower}Info.${field.field}">{{${classNameLower}Info.${field.field}}}</span>
           <a class="color-gray" [title]="'Extra0007'| translate" *ngIf="!${classNameLower}Info.${field.field}"
              (click)="toModifyTheUnSetData()">[未设置]</a><!--[未设置]-->
