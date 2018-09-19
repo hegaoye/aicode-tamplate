@@ -53,10 +53,8 @@
     <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
       <tr nz-tbody-tr>
         <td nz-td class="text-center">{{i+1}}</td>
-        <#list fields as field>
-        <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
+        <#list tableFields as field>
         <td nz-td class="text-center">{{data.${field.field}}}</td>
-        </#if>
         </#list>
         <td nz-td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
