@@ -18,7 +18,7 @@ export class ${className}ListComponent implements OnInit {
   public companyNature = Enums.companyNature;       // 公司性质码
   public states = States;       // 状态
 
-  constructor(private ${classNameLower}Service: ${className}Service, public modalService: NzModalService) {
+  constructor(private ${classNameLower}Service: ${className}Service) {
   }
 
   ngOnInit() {
@@ -30,29 +30,28 @@ export class ${className}ListComponent implements OnInit {
    * @param curPage 当前页
    */
   query${className}List(curPage?: number) {
-    let me = this;
-    me._loading = true;
-    if (curPage) me.${classNameLower}List.curPage = curPage;//当有页码时，查询该页数据
-    me.${classNameLower}List.params = {
-      curPage: me.${classNameLower}List.curPage, //目标页码
-      pageSize: me.${classNameLower}List.pageSize, //每页条数
-      name: me.searchParams.name, //供应商名称
+    this._loading = true;
+    if (curPage) this.${classNameLower}List.curPage = curPage;//当有页码时，查询该页数据
+    this.${classNameLower}List.params = {
+      curPage: this.${classNameLower}List.curPage, //目标页码
+      pageSize: this.${classNameLower}List.pageSize, //每页条数
+      name: this.searchParams.name, //供应商名称
     };
-    me.${classNameLower}Service.get${className}List(me.${classNameLower}List.params).then((res: Page) => {
-      me._loading = false;
-      me.${classNameLower}List = res;
+    this.${classNameLower}Service.get${className}List(this.${classNameLower}List.params).then((res: Page) => {
+      this._loading = false;
+      this.${classNameLower}List = res;
     }).catch(err => {
-      me._loading = false;
+      this._loading = false;
     })
   }
 
   /**
    * 修改禁用状态
    * @param code
-   * @param event
+   * @param event:boolean
    */
   modify${className}State(code, event) {
-    let state = event ? States.enable : States.disable;
+    let state = event ? States.enable : States.disable;//转换为对应的枚举
     this.${classNameLower}Service.modify${className}State(code, state).catch((res) => {
       this.query${className}List();//由于switch的特殊性，因此在失败的时候刷新页面
     })

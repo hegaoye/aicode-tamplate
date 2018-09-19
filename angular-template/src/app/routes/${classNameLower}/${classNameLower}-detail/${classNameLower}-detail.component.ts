@@ -9,7 +9,7 @@ import {${className}Service} from "../${classNameLower}.service";
 })
 export class ${className}DetailComponent implements OnInit {
   private code: string;
-  public supplierInfo: any = {};//供应商信息
+  public ${classNameLower}Info: any = {};//供应商信息
 
   constructor(private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute) {
     this.code = this.route.snapshot.queryParams['code'];
@@ -17,15 +17,15 @@ export class ${className}DetailComponent implements OnInit {
 
   ngOnInit() {
     this.code = this.route.snapshot.params.code;//获取参数
-    this.loadSupplierInfo();//查询供应商类型列表
+    this.load${className}Info();//查询供应商类型列表
   }
 
   /**
    * 查询供应商信息
    */
-  loadSupplierInfo() {
-    this.${classNameLower}Service.loadSupplierByCode(this.code).then((data: any) => {
-      if (data) this.supplierInfo = data;
+  load${className}Info() {
+    this.${classNameLower}Service.load${className}ByCode(this.code).then((data: any) => {
+      if (data) this.${classNameLower}Info = data;
     })
   }
 

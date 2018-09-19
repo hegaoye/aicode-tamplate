@@ -47,13 +47,11 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getSupplierCategoryList();//查询供应商类型列表
-    this.getPaymentList();//查询供应商支付方式
     this.routeListener = this.route.url.subscribe(url => {
       const curPath = url[0].path;
       if (curPath === 'modify') {
         this.code = this.route.snapshot.params.code;//获取参数
-        this.loadSupplierInfo();
+        this.load${className}Info();
       }//修改前查询出供应商信息
     })
   }
@@ -61,27 +59,26 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
   /**
    * 确认
    */
-  addSupplier($event) {
+  add${className}($event) {
     $event.preventDefault();
-    let me = this;
     //1.进行脏检查，提示未填的必填字段
-    for (const key in me.validateForm.controls) {
-      me.validateForm.controls[key].markAsDirty();
-      me.validateForm.controls[key].updateValueAndValidity();
+    for (const key in this.validateForm.controls) {
+      this.validateForm.controls[key].markAsDirty();
+      this.validateForm.controls[key].updateValueAndValidity();
     }
-    if (me.validateForm.invalid) return;
-    me.isConfirmLoading = true;
+    if (this.validateForm.invalid) return;
+    this.isConfirmLoading = true;
     let formData = Object.assign({},this.validateForm.value);
     //添加供应商
     if (this.code) {
       formData.code = this.code;
-      this.${classNameLower}Service.modifySupplier(formData).then((data: any) => {
+      this.${classNameLower}Service.modify${className}(formData).then((data: any) => {
         this.isConfirmLoading = false;
         this.validateForm.reset();
         this.location.back();
       }).catch(res => this.isConfirmLoading = false)
     } else {
-      this.${classNameLower}Service.addSupplier(formData).then((data: any) => {
+      this.${classNameLower}Service.add${className}(formData).then((data: any) => {
         this.isConfirmLoading = false;
         this.location.back();
       }).catch(res => this.isConfirmLoading = false)
@@ -89,36 +86,10 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * 查询供应商类型信息
-   */
-  getSupplierCategoryList() {
-    let params = {
-      curPage: 1,
-      pageSize: 1000
-    };
-    this.${classNameLower}Service.getSupplierCategoryList(params).then((data: any) => {
-      if (data && data.voList) this.supplierCategorys = data.voList;
-    }).catch(res => console.log(res));
-  }
-
-  /**
-   * 查询供应商支付方式
-   */
-  getPaymentList() {
-    let params = {
-      curPage: 1,
-      pageSize: 1000
-    };
-    this.${classNameLower}Service.getPaymentList(params).then((data: any) => {
-      if (data && data.voList) this.paymentList = data.voList;
-    }).catch(res => console.log(res));
-  }
-
-  /**
    * 查询供应商信息
    */
-  loadSupplierInfo() {
-    this.${classNameLower}Service.loadSupplierByCode(this.code).then((data: any) => {
+  load${className}Info() {
+    this.${classNameLower}Service.load${className}ByCode(this.code).then((data: any) => {
       this.validateForm.patchValue(data);
     })
   }
