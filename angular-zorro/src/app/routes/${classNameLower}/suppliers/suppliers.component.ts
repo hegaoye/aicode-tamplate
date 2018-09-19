@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {Page} from "../../../public/util/page";
-import {SuppliersService} from "../suppliers.service";
+import {${className}Service} from "../${classNameLower}.service";
 import {NzModalService} from "ng-zorro-antd";
 import {Enums, States} from "../../../public/setting/enums";
 import {SettingUrl} from "../../../public/setting/setting_url.ts";
 
 @Component({
   selector: 'app-suppliers',
-  templateUrl: './${className}.component.html',
-  styleUrls: ['./${className}.component.scss']
+  templateUrl: './${classNameLower}.component.html',
+  styleUrls: ['./${classNameLower}.component.scss']
 })
 export class SuppliersComponent implements OnInit {
   public searchParams: any = {};//搜索参数
@@ -18,7 +18,7 @@ export class SuppliersComponent implements OnInit {
   public companyNature = Enums.companyNature;       // 公司性质码
   public states = States;       // 状态
 
-  constructor(private suppliersService: SuppliersService, public modalService: NzModalService) {
+  constructor(private suppliersService: ${className}Service, public modalService: NzModalService) {
   }
 
   ngOnInit() {

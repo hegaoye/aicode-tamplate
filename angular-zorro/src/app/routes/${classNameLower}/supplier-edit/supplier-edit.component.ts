@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {SuppliersService} from "../suppliers.service";
+import {${className}Service} from "../${classNameLower}.service";
 import {Enums} from "../../../public/setting/enums";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PatternService} from "../../../public/service/pattern.service";
@@ -22,7 +22,7 @@ export class SupplierEditComponent implements OnInit, OnDestroy {
   public paymentList: Array<any>;//支付方式
   private routeListener: any;//路由监听
 
-  constructor(private fb: FormBuilder, private suppliersService: SuppliersService, private route: ActivatedRoute, public location: Location) {
+  constructor(private fb: FormBuilder, private suppliersService: ${className}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({
       name: [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(32)])],//中文名
       englishName: [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(64)])],//英文名

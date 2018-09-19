@@ -1,4 +1,4 @@
-import { ${className}Module } from './${className}.module';
+import { ${className}Module } from './${classNameLower}.module';
 
 describe('${className}Module', () => {
   let ${classNameLower}Module: ${className}Module;
