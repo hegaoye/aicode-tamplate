@@ -18,31 +18,13 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
   public validateForm: FormGroup;//企业登录的表单
   public companyNature = MainService.getEnumDataList(Enums.companyNature);       // 公司性质
   public creditRating: number = 0;       // 状态
-  public supplierCategorys: Array<any>;//供应商类型
-  public paymentList: Array<any>;//支付方式
   private routeListener: any;//路由监听
 
   constructor(private fb: FormBuilder, private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({
-      name: [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(32)])],//中文名
-      englishName: [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(64)])],//英文名
-      contacts: [null, [Validators.required]],//负责人姓名
-      email: [null, Validators.compose([Validators.email])],//邮箱
-      fax: [null, Validators.compose([Validators.pattern(PatternService.faxCode)])],//传真
-      mobile: [null, Validators.compose([Validators.required, Validators.pattern(PatternService.mobile)])],//负责人手机号
-      telephone: [null, Validators.compose([Validators.pattern(PatternService.telephone)])],//固定电话
-      zipCode: [null, Validators.compose([Validators.pattern(PatternService.zipCode)])],//邮编
-      website: [null, Validators.compose([Validators.pattern(PatternService.website)])],//网址
-      creditRating: [null],//信用等级
-
-      bank: [null, Validators.compose([Validators.required])],//银行
-      bankAccount: [null, Validators.compose([Validators.required, Validators.pattern(PatternService.bankcard)])],//银行账户
-      paymentTerm: [null, [Validators.required]],//支付方式
-      supplierCategoryCode: [null, Validators.compose([Validators.required])],//供应商类型编码
-      address: [null, Validators.compose([Validators.required, Validators.maxLength(64)])],//地址
-      englishAddress: [null, Validators.compose([Validators.maxLength(128)])],//英文地址
-      companyNature: [null, Validators.compose([Validators.required])],//公司性质
-      summary: [null, Validators.compose([Validators.maxLength(128)])],//备注
+    <#list fields as field>
+    ${field.field}: [null, Validators.compose([Validators.required])]<#if field_has_next>,</#if>//${field.notes}
+    </#list>
     });
   }
 
@@ -57,7 +39,7 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * 确认
+   * 表单确认
    */
   add${className}($event) {
     $event.preventDefault();
@@ -69,7 +51,7 @@ export class ${className}EditComponent implements OnInit, OnDestroy {
     if (this.validateForm.invalid) return;
     this.isConfirmLoading = true;
     let formData = Object.assign({},this.validateForm.value);
-    //添加供应商
+    //添加${classNameLower}
     if (this.code) {
       formData.code = this.code;
       this.${classNameLower}Service.modify${className}(formData).then((data: any) => {
