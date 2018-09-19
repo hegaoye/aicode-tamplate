@@ -6,11 +6,11 @@ import {Enums, States} from "../../../public/setting/enums";
 import {SettingUrl} from "../../../public/setting/setting_url";
 
 @Component({
-  selector: 'app-suppliers',
-  templateUrl: './${classNameLower}.component.html',
-  styleUrls: ['./${classNameLower}.component.scss']
+  selector: 'app-${classNameLower}-list',
+  templateUrl: './${classNameLower}-list.component.html',
+  styleUrls: ['./${classNameLower}-list.component.scss']
 })
-export class SuppliersComponent implements OnInit {
+export class ${className}ListComponent implements OnInit {
   public searchParams: any = {};//搜索参数
   public suppliers: Page = new Page(); //供应商
   public _loading: boolean = false;
