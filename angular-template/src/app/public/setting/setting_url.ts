@@ -27,15 +27,18 @@ export class SettingUrl {
       getSms: '/sms/forgetPasswordSMS',//（post）获取验证码
       checkSmsCode: '/sms/checkSmsCode',//（get）验证码的校验
     },
-    <#list classes as class>
-    ${class.classModel}: {
-      list: '/${class.classModel}/list',//${class.classModel}列表
-      add: '/${class.classModel}/build',//添加${class.classModel}
-      modify: '/${class.classModel}/modify',//修改${class.classModel}
-      load: '/${class.classModel}/load/code/',//查询${class.classModel}信息
-      updateState: '/${class.classModel}/updateState',//修改${class.classModel}状态
+    <#list modelDatas as modelData>
+    <#list modelData.classes as class>
+    ${class.className}: {
+      list: '/${class.className}/list',//${class.className}列表
+        add: '/${class.className}/build',//添加${class.className}
+        modify: '/${class.className}/modify',//修改${class.className}
+        load: '/${class.className}/load/code/',//查询${class.className}信息
+        updateState: '/${class.className}/updateState',//修改${class.className}状态
     },
     </#list>
+    </#list>
+
   };
 
 // 路由链接信息

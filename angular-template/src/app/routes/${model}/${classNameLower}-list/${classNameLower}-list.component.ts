@@ -12,7 +12,7 @@ import {SettingUrl} from "../../../public/setting/setting_url";
 })
 export class ${className}ListComponent implements OnInit {
   public searchParams: any = {};//搜索参数
-  public ${model}List: Page = new Page(); //供应商
+  public ${classNameLower}List: Page = new Page(); //供应商
   public _loading: boolean = false;
   public routerLinks = SettingUrl.ROUTERLINK;//路由
   public states = States;       // 状态
