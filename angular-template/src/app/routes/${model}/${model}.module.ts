@@ -12,7 +12,6 @@ const routes: Routes = [
   <#if modelClasses?size gt 1>
   {path: '', redirectTo: ' ${classNameLower}'},
   </#if>
-
   <#list modelClasses as class>
     <#if modelClasses?size gt 1>{
       path: '${class.className?uncap_first}', children: [
@@ -40,7 +39,7 @@ const routes: Routes = [
     ${class.className}DetailComponent,
     ${class.className}EditComponent<#if class_has_next>,</#if>
     </#list>
-],
+  ],
   providers: []
 })
 export class ${model?cap_first}Module {

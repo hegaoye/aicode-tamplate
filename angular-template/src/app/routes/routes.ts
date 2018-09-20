@@ -12,8 +12,8 @@ export const routes:Routes = [
     component: MainComponent,
     children: [
       {path: 'home', loadChildren: './home/home.module#HomeModule'}, //首页
-      <#list classes as class>
-      {path: '${class.classModel}', loadChildren: './${class.classModel}/${class.classModel}.module#${class.classModel?cap_first}Module'}, //${class.classModel}
+      <#list modelDatas as modelData>
+      {path: '${modelData.model}', loadChildren: './${modelData.model}/${modelData.model}.module#${modelData.model?cap_first}Module'}, //供应商
       </#list>
     ]
   },
