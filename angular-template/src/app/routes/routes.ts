@@ -12,7 +12,9 @@ export const routes:Routes = [
     component: MainComponent,
     children: [
       {path: 'home', loadChildren: './home/home.module#HomeModule'}, //首页
-      {path: '${classNameLower}', loadChildren: './${classNameLower}/${classNameLower}.module#${className}Module'}, //供应商
+      <#list classes as class>
+      {path: '${class.classModel}', loadChildren: './${class.classModel}/${class.classModel}.module#${class.classModel?cap_first}Module'}, //${class.classModel}
+      </#list>
     ]
   },
   {

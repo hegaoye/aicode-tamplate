@@ -10,7 +10,8 @@ const ${class.classModel}: MenuItem = {
   menuName: "${class.classModel}",
   menuIcon: 'anticon anticon-shop',
   menuUrl: '/main/${class.classModel}'
-},
+};
+
 </#list>
 export const MENUS = [
   <#list classes as class>${class.classModel},</#list>

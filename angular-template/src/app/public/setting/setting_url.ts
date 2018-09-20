@@ -29,12 +29,12 @@ export class SettingUrl {
     },
     <#list classes as class>
     ${class.classModel}: {
-        list: '/${class.classModel}/list',//${class.classModel}列表
-        add: '/${class.classModel}/build',//添加${class.classModel}
-        modify: '/${class.classModel}/modify',//修改${class.classModel}
-        load: '/${class.classModel}/load/code/',//查询${class.classModel}信息
-        updateState: '/${class.classModel}/updateState',//修改${class.classModel}状态
-      },
+      list: '/${class.classModel}/list',//${class.classModel}列表
+      add: '/${class.classModel}/build',//添加${class.classModel}
+      modify: '/${class.classModel}/modify',//修改${class.classModel}
+      load: '/${class.classModel}/load/code/',//查询${class.classModel}信息
+      updateState: '/${class.classModel}/updateState',//修改${class.classModel}状态
+    },
     </#list>
   };
 
