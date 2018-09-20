@@ -7,10 +7,17 @@ import {${className}EditComponent} from "./${classNameLower}-edit/${classNameLow
 
 const routes: Routes = [
   {path: '', redirectTo: 'list'},
-  {path: 'list', component: ${className}ListComponent},
-  {path: 'add', component: ${className}EditComponent},
-  {path: 'modify/:code', component: ${className}EditComponent},
-  {path: 'detail/:code', component: ${className}DetailComponent},
+  <#list classes as class>
+    {
+      path: '${class.classModel}', children: [
+        {path: '', redirectTo: 'list'},
+        {path: 'list', component: ${class.className}ListComponent},
+        {path: 'add', component: ${class.className}EditComponent},
+        {path: 'modify/:code', component: ${class.className}EditComponent},
+        {path: 'detail/:code', component: ${class.className}DetailComponent}
+      ]
+    }<#if class_has_next>,</#if>
+  </#list>
 ]
 
 @NgModule({
