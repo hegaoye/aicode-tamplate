@@ -41,12 +41,12 @@
     <thead nz-thead>
     <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
     <tr>
-      <th nz-th class="text-center" nzWidth="5%"><span>{{'Th0001' | translate}}</span></th><!--序号-->
+      <th nz-th class="text-center" nzWidth=""><span>{{'Th0001' | translate}}</span></th><!--序号-->
       <#list tableFields as field>
       <th nz-th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
       </#list>
-      <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0003' | translate}}</span></th><!--状态-->
-      <th nz-th class="text-center" nzWidth="10%"><span>{{'Th0006' | translate}}</span></th><!--操作-->
+      <th nz-th class="text-center" nzWidth=""><span>{{'Th0003' | translate}}</span></th><!--状态-->
+      <th nz-th class="text-center" nzWidth=""><span>{{'Th0006' | translate}}</span></th><!--操作-->
     </tr>
     </thead>
     <tbody nz-tbody>
