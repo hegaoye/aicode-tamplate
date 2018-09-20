@@ -6,17 +6,23 @@ import {${className}DetailComponent} from "./${classNameLower}-detail/${classNam
 import {${className}EditComponent} from "./${classNameLower}-edit/${classNameLower}-edit.component";
 
 const routes: Routes = [
+  <#if modelClasses?size > 1>
   {path: '', redirectTo: ' ${classNameLower}'},
+  </#if>
+
   <#list modelClasses as class>
-    {
+    <#if modelClasses?size > 1>{
       path: '${class.className?uncap_first}', children: [
+    </#if>
         {path: '', redirectTo: 'list'},
         {path: 'list', component: ${class.className}ListComponent},
         {path: 'add', component: ${class.className}EditComponent},
         {path: 'modify/:code', component: ${class.className}EditComponent},
         {path: 'detail/:code', component: ${class.className}DetailComponent}
-      ]
-    }<#if class_has_next>,</#if>
+      <#if modelClasses?size > 1>
+        ]
+      }<#if class_has_next>,</#if>
+    </#if>
   </#list>
 ]
 
