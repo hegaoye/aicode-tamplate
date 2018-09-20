@@ -5,21 +5,27 @@ import {MenuItem} from "./model";
  * 本地开发使用菜单
  * 生产环境中菜单信息将由登录接口返回
  */
-<#list classes as class>
-const ${class.classModel}: MenuItem = {
+<#list modelDatas as modelData>
+const ${modelDatas.model}: MenuItem = {
   menuName: "${class.classModel}",
   menuIcon: 'anticon anticon-shop',
-  menuUrl: '/main/${class.classModel}',
+  menuUrl: '/main/${modelDatas.model}',
   subMenuList: [
+    <#list modelData.classes as class>
+    <#if modelData.classes?size gt 1>
     {
-      menuName: "MenuSupplier0001",
-      menuUrl: '/main/supplier/suppliers'
+      menuName: ${class.className},
+      menuUrl: '/main/${modelDatas.model}/${class.className?uncap_first}'
     }<#if class_has_next>,</#if>
+    </#if>
+
+    </#list>
   ]
 };
-
 </#list>
+
+
 export const MENUS = [
-  <#list classes as class>${class.classModel}<#if class_has_next>,</#if></#list>
+  <#list modelDatas as modelData>${modelDatas.model}<#if class_has_next>,</#if></#list>
 ];
 
