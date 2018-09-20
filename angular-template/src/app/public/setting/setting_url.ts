@@ -27,17 +27,14 @@ export class SettingUrl {
       getSms: '/sms/forgetPasswordSMS',//（post）获取验证码
       checkSmsCode: '/sms/checkSmsCode',//（get）验证码的校验
     },
-    <#list modelDatas as modelData>
-    <#list modelData.classes as class>
+    <#list classes as class>
     ${class.className?uncap_first}: {
       list: '/${class.className?uncap_first}/list',//${class.className}列表
       add: '/${class.className?uncap_first}/build',//添加${class.className}
       modify: '/${class.className?uncap_first}/modify',//修改${class.className}
       load: '/${class.className?uncap_first}/load/code/',//查询${class.className}信息
-      updateState: '/${class.className?uncap_first}/updateState'<#if class_has_next>,</#if>//修改${class.className}状态
-    }
-    </#list>
-    <#if modelData_has_next>,</#if>
+      updateState: '/${class.className?uncap_first}/updateState'//修改${class.className}状态
+    }<#if class_has_next>,</#if>
     </#list>
 
   };
@@ -65,10 +62,9 @@ export class SettingUrl {
       add: '/main/${class.className?uncap_first}/add',//添加${class.classModel}
       modify: '/main/${class.className?uncap_first}/modify',//修改${class.classModel}
       detail: '/main/${class.className?uncap_first}/detail'//查询${class.classModel}信息
-    }
+    }<#if modelData_has_next>,</#if>
     </#if>
     </#list>
-    <#if modelData_has_next>,</#if>
     </#list>
   }
 }
