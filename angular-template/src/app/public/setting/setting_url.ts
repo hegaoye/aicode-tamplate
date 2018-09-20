@@ -55,7 +55,7 @@ export class SettingUrl {
       add: '/main/${class.classModel}/${class.className?uncap_first}/add',//添加${class.className}
       modify: '/main/${class.classModel}/${class.className?uncap_first}/modify',//修改${class.className}
       detail: '/main/${class.classModel}/${class.className?uncap_first}/detail'<#if class_has_next>,</#if>//查询${class.className}信息
-    },
+    }<#if class_has_next>,</#if>
   <#else>
     ${class.className?uncap_first}: {
       list: '/main/${class.className?uncap_first}/list',//${class.classModel}列表
