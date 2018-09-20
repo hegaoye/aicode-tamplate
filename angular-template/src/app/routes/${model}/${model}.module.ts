@@ -1,9 +1,12 @@
 import {NgModule} from "@angular/core";
-import {${className}ListComponent} from "./${classNameLower}-list/${classNameLower}-list.component";
 import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
-import {${className}DetailComponent} from "./${classNameLower}-detail/${classNameLower}-detail.component";
-import {${className}EditComponent} from "./${classNameLower}-edit/${classNameLower}-edit.component";
+
+<#list modelClasses as class>
+import {${class.className}ListComponent} from "./${class.className?uncap_first}-list/${class.className?uncap_first}-list.component";
+import {${class.className}DetailComponent} from "./${class.className?uncap_first}-detail/${class.className?uncap_first}-detail.component";
+import {${class.className}EditComponent} from "./${class.className?uncap_first}-edit/${class.className?uncap_first}-edit.component";
+</#list>
 
 const routes: Routes = [
   <#if modelClasses?size gt 1>
@@ -32,9 +35,12 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [
-    ${className}ListComponent,
-    ${className}DetailComponent,
-    ${className}EditComponent],
+    <#list modelClasses as class>
+    ${class.className}ListComponent,
+    ${class.className}DetailComponent,
+    ${class.className}EditComponent<#if class_has_next>,</#if>
+    </#list>
+],
   providers: []
 })
 export class ${model?cap_first}Module {
