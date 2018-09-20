@@ -14,11 +14,10 @@ const ${modelData.model}: MenuItem = {
     <#list modelData.classes as class>
     <#if modelData.classes?size gt 1>
     {
-      menuName: ${class.className},
+      menuName: "${class.className?uncap_first}",
       menuUrl: '/main/${modelData.model}/${class.className?uncap_first}'
     }<#if class_has_next>,</#if>
     </#if>
-
     </#list>
   ]
 };
@@ -26,6 +25,6 @@ const ${modelData.model}: MenuItem = {
 
 
 export const MENUS = [
-  <#list modelDatas as modelData>${modelData.model}<#if class_has_next>,</#if></#list>
+  <#list modelDatas as modelData>${modelData.model}<#if modelData_has_next>,</#if></#list>
 ];
 
