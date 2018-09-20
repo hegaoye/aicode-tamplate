@@ -12,17 +12,17 @@ export class ${model?cap_first}Service {
   constructor(private notification: NzNotificationService, private message: NzMessageService) {
   }
 
-<#list modelClasses as class>
+<#list modelClasses as modelClass>
   /**
-   * 查询${class.className}列表
+   * 查询${modelClass.className}列表
    * @param params {curPage:number,pageSize:number,name?:any)
    * @returns {any<T>}
    */
-  get${class.className}List(params) {
+  get${modelClass.className}List(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.get({
-        url: SettingUrl.URL.${class.className?upcap_first}.list,
+        url: SettingUrl.URL.${modelClass.className?upcap_first}.list,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -41,15 +41,15 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 添加${class.className}
+   * 添加${modelClass.className}
    * @param params
    * @returns {Promise<T>}
    */
-  add${class.className}(params) {
+  add${modelClass.className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.post({
-        url: SettingUrl.URL.${class.className?uncap_first}.add,
+        url: SettingUrl.URL.${modelClass.className?uncap_first}.add,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -69,15 +69,15 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 修改${class.className}
+   * 修改${modelClass.className}
    * @param params
    * @returns {Promise<T>}
    */
-  modify${class.className}(params) {
+  modify${modelClass.className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.put({
-        url: SettingUrl.URL.${class.className?uncap_first}.modify,
+        url: SettingUrl.URL.${modelClass.className?uncap_first}.modify,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -97,16 +97,16 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 修改${class.className}状态
+   * 修改${modelClass.className}状态
    * @param code 供应商编码
    * @param state 供应商状态
    * @returns {Promise<T>}
    */
-  modify${class.className}State(code, state) {
+  modify${modelClass.className}State(code, state) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.put({
-        url: SettingUrl.URL.${class.className?uncap_first}.updateState,
+        url: SettingUrl.URL.${modelClass.className?uncap_first}.updateState,
         data: {
           code: code,
           state: state
@@ -128,15 +128,15 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 查询${class.className}详细信息
-   * @param code ${class.className}编码
+   * 查询${modelClass.className}详细信息
+   * @param code ${modelClass.className}编码
    * @returns {Promise<T>}
    */
-  load${class.className}ByCode(code) {
+  load${modelClass.className}ByCode(code) {
     let me = this;
     return new Promise(function (resolve) {
       AjaxService.get({
-        url: SettingUrl.URL.${class.className?uncap_first}.load + code,
+        url: SettingUrl.URL.${modelClass.className?uncap_first}.load + code,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
             resolve(res.data);
