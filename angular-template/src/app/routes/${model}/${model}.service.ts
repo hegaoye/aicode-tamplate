@@ -12,17 +12,17 @@ export class ${model?cap_first}Service {
   constructor(private notification: NzNotificationService, private message: NzMessageService) {
   }
 
-
+<#list modelClasses as class>
   /**
-   * 查询供应商列表
+   * 查询${class.className}列表
    * @param params {curPage:number,pageSize:number,name?:any)
    * @returns {any<T>}
    */
-  get${className}List(params) {
+  get${class.className}List(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.get({
-        url: SettingUrl.URL.${classNameLower}.list,
+        url: SettingUrl.URL.${class.className?upcap_first}.list,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -41,15 +41,15 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 添加供应商
+   * 添加${class.className}
    * @param params
    * @returns {Promise<T>}
    */
-  add${className}(params) {
+  add${class.className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.post({
-        url: SettingUrl.URL.${classNameLower}.add,
+        url: SettingUrl.URL.${class.className?uncap_first}.add,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -69,15 +69,15 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 修改供应商
+   * 修改${class.className}
    * @param params
    * @returns {Promise<T>}
    */
-  modify${className}(params) {
+  modify${class.className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.put({
-        url: SettingUrl.URL.${classNameLower}.modify,
+        url: SettingUrl.URL.${class.className?uncap_first}.modify,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
@@ -97,16 +97,16 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 修改供应商状态
+   * 修改${class.className}状态
    * @param code 供应商编码
    * @param state 供应商状态
    * @returns {Promise<T>}
    */
-  modify${className}State(code, state) {
+  modify${class.className}State(code, state) {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.put({
-        url: SettingUrl.URL.${classNameLower}.updateState,
+        url: SettingUrl.URL.${class.className?uncap_first}.updateState,
         data: {
           code: code,
           state: state
@@ -128,15 +128,15 @@ export class ${model?cap_first}Service {
   }
 
   /**
-   * 查询供应商详细信息
-   * @param code 供应商编码
+   * 查询${class.className}详细信息
+   * @param code ${class.className}编码
    * @returns {Promise<T>}
    */
-  load${className}ByCode(code) {
+  load${class.className}ByCode(code) {
     let me = this;
     return new Promise(function (resolve) {
       AjaxService.get({
-        url: SettingUrl.URL.${classNameLower}.load + code,
+        url: SettingUrl.URL.${class.className?uncap_first}.load + code,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
             resolve(res.data);
@@ -150,4 +150,6 @@ export class ${model?cap_first}Service {
       });
     })
   }
+
+</#list>
 }

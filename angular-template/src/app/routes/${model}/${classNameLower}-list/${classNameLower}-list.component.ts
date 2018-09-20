@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Page} from "../../../public/util/page";
 import {${model?cap_first}Service} from "../${model}.service";
-import {NzModalService} from "ng-zorro-antd";
 import {States} from "../../../public/setting/enums";
 import {SettingUrl} from "../../../public/setting/setting_url";
 
