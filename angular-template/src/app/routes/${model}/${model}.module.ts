@@ -24,5 +24,5 @@ const routes: Routes = [
     ${className}EditComponent],
   providers: []
 })
-export class ${className}Module {
+export class ${model?cap_first}Module {
 }

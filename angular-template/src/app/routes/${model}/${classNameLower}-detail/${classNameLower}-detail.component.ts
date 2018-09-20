@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {${className}Service} from "../${classNameLower}.service";
+import {${model?cap_first}Service} from "../${model}.service";
 import {SettingUrl} from "../../../public/setting/setting_url";
 
 @Component({
@@ -10,9 +10,9 @@ import {SettingUrl} from "../../../public/setting/setting_url";
 })
 export class ${className}DetailComponent implements OnInit {
   private code: string;
-  public ${classNameLower}Info: any = {};//供应商信息
+  public ${model}Info: any = {};//供应商信息
 
-  constructor(private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, private router: Router) {
+  constructor(private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class ${className}DetailComponent implements OnInit {
    * 查询供应商信息
    */
   load${className}Info() {
-    this.${classNameLower}Service.load${className}ByCode(this.code).then((data: any) => {
+    this.${model}Service.load${className}ByCode(this.code).then((data: any) => {
       if (data) this.${classNameLower}Info = data;
     })
   }

@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {Page} from "../../../public/util/page";
-import {${className}Service} from "../${classNameLower}.service";
+import {${model?cap_first}Service} from "../${model}.service";
 import {NzModalService} from "ng-zorro-antd";
-import {Enums, States} from "../../../public/setting/enums";
+import {States} from "../../../public/setting/enums";
 import {SettingUrl} from "../../../public/setting/setting_url";
 
 @Component({
@@ -12,12 +12,12 @@ import {SettingUrl} from "../../../public/setting/setting_url";
 })
 export class ${className}ListComponent implements OnInit {
   public searchParams: any = {};//搜索参数
-  public ${classNameLower}List: Page = new Page(); //供应商
+  public ${model}List: Page = new Page(); //供应商
   public _loading: boolean = false;
   public routerLinks = SettingUrl.ROUTERLINK;//路由
   public states = States;       // 状态
 
-  constructor(private ${classNameLower}Service: ${className}Service) {
+  constructor(private ${model}Service: ${model?cap_first}Service) {
   }
 
   ngOnInit() {
@@ -35,7 +35,7 @@ export class ${className}ListComponent implements OnInit {
       curPage: this.${classNameLower}List.curPage, //目标页码
       pageSize: this.${classNameLower}List.pageSize, //每页条数
     };
-    this.${classNameLower}Service.get${className}List(this.${classNameLower}List.params).then((res: Page) => {
+    this.${model}Service.get${className}List(this.${classNameLower}List.params).then((res: Page) => {
       this._loading = false;
       this.${classNameLower}List = res;
     }).catch(err => {
@@ -50,7 +50,7 @@ export class ${className}ListComponent implements OnInit {
    */
   modify${className}State(code, event) {
     let state = event ? States.enable : States.disable;//转换为对应的枚举
-    this.${classNameLower}Service.modify${className}State(code, state).catch((res) => {
+    this.${model}Service.modify${className}State(code, state).catch((res) => {
       this.query${className}List();//由于switch的特殊性，因此在失败的时候刷新页面
     })
   }

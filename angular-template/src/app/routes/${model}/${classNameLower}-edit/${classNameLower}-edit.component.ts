@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
-import {${className}Service} from "../${classNameLower}.service";
+import {${model?cap_first}Service} from "../${model}.service";
 
 @Component({
   selector: 'app-${classNameLower}-edit',
@@ -14,7 +14,7 @@ export class ${className}EditComponent implements OnInit {
   private code: string; //供应商编码，修改时会传过来
   public validateForm: FormGroup;//企业登录的表单
 
-  constructor(private fb: FormBuilder, private ${classNameLower}Service: ${className}Service, private route: ActivatedRoute, public location: Location) {
+  constructor(private fb: FormBuilder, private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({
     <#list fields as field>
     <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
@@ -50,13 +50,13 @@ export class ${className}EditComponent implements OnInit {
     //添加${classNameLower}
     if (this.code) {
       formData.code = this.code;
-      this.${classNameLower}Service.modify${className}(formData).then((data: any) => {
+      this.${model}Service.modify${className}(formData).then((data: any) => {
         this.isConfirmLoading = false;
         this.validateForm.reset();
         this.location.back();
       }).catch(res => this.isConfirmLoading = false)
     } else {
-      this.${classNameLower}Service.add${className}(formData).then((data: any) => {
+      this.${model}Service.add${className}(formData).then((data: any) => {
         this.isConfirmLoading = false;
         this.location.back();
       }).catch(res => this.isConfirmLoading = false)
@@ -67,7 +67,7 @@ export class ${className}EditComponent implements OnInit {
    * 查询供应商信息
    */
   load${className}Info() {
-    this.${classNameLower}Service.load${className}ByCode(this.code).then((data: any) => {
+    this.${model}Service.load${className}ByCode(this.code).then((data: any) => {
       this.validateForm.patchValue(data);
     })
   }
