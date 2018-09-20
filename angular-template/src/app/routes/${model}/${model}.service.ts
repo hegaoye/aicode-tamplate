@@ -22,7 +22,7 @@ export class ${model?cap_first}Service {
     let me = this;
     return new Promise(function (resolve, reject) {
       AjaxService.get({
-        url: SettingUrl.URL.${modelClass.className?upcap_first}.list,
+        url: SettingUrl.URL.${modelClass.className?uncap_first}.list,
         data: params,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
