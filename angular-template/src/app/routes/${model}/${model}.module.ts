@@ -6,10 +6,10 @@ import {${className}DetailComponent} from "./${classNameLower}-detail/${classNam
 import {${className}EditComponent} from "./${classNameLower}-edit/${classNameLower}-edit.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'list'},
-  <#list classes as class>
+  {path: '', redirectTo: ' ${classNameLower}'},
+  <#list modelClasses as class>
     {
-      path: '${class.classModel}', children: [
+      path: '${class.className?uncap_first}', children: [
         {path: '', redirectTo: 'list'},
         {path: 'list', component: ${class.className}ListComponent},
         {path: 'add', component: ${class.className}EditComponent},
