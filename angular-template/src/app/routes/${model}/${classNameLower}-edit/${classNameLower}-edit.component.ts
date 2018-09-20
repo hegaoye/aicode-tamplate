@@ -11,7 +11,7 @@ import {${model?cap_first}Service} from "../${model}.service";
 })
 export class ${className}EditComponent implements OnInit {
   public isConfirmLoading: boolean = false;
-  private code: string; //供应商编码，修改时会传过来
+  private code: string; //${classNameLower}
   public validateForm: FormGroup;//企业登录的表单
 
   constructor(private fb: FormBuilder, private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, public location: Location) {
@@ -64,7 +64,7 @@ export class ${className}EditComponent implements OnInit {
   }
 
   /**
-   * 查询供应商信息
+   * 查询${classNameLower}信息
    */
   load${className}Info() {
     this.${model}Service.load${className}ByCode(this.code).then((data: any) => {

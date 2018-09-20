@@ -31,10 +31,10 @@ export class SettingUrl {
     <#list modelData.classes as class>
     ${class.className}: {
       list: '/${class.className}/list',//${class.className}列表
-        add: '/${class.className}/build',//添加${class.className}
-        modify: '/${class.className}/modify',//修改${class.className}
-        load: '/${class.className}/load/code/',//查询${class.className}信息
-        updateState: '/${class.className}/updateState',//修改${class.className}状态
+      add: '/${class.className}/build',//添加${class.className}
+      modify: '/${class.className}/modify',//修改${class.className}
+      load: '/${class.className}/load/code/',//查询${class.className}信息
+      updateState: '/${class.className}/updateState',//修改${class.className}状态
     },
     </#list>
     </#list>
@@ -49,13 +49,24 @@ export class SettingUrl {
     pass: {
       login: "/listData/login", //登录
     },
-  <#list classes as class>
-    ${class.classModel}: {
-      list: '/main/${class.classModel}/list',//${class.classModel}列表
-      add: '/main/${class.classModel}/add',//添加${class.classModel}
-      modify: '/main/${class.classModel}/modify',//修改${class.classModel}
-      detail: '/main/${class.classModel}/detail',//查询${class.classModel}信息
+  <#list modelDatas as modelData>
+  <#list modelData.classes as class>
+  <#if modelData.classes?size gt 1>
+    ${class.className}: {
+      list: '/main/${class.classModel}/${class.className?uncap_first}/list',//${class.className}列表
+      add: '/main/${class.classModel}/${class.className?uncap_first}/add',//添加${class.className}
+      modify: '/main/${class.classModel}/${class.className?uncap_first}/modify',//修改${class.className}
+      detail: '/main/${class.classModel}/${class.className?uncap_first}/detail',//查询${class.className}信息
     },
+  <#else>
+    ${class.className}: {
+      list: '/main/${class.className?uncap_first}/list',//${class.classModel}列表
+      add: '/main/${class.className?uncap_first}/add',//添加${class.classModel}
+      modify: '/main/${class.className?uncap_first}/modify',//修改${class.classModel}
+      detail: '/main/${class.className?uncap_first}/detail',//查询${class.classModel}信息
+    },
+    </#if>
+    </#list>
     </#list>
   }
 }

@@ -10,18 +10,18 @@ import {SettingUrl} from "../../../public/setting/setting_url";
 })
 export class ${className}DetailComponent implements OnInit {
   private code: string;
-  public ${model}Info: any = {};//供应商信息
+  public ${classNameLower}Info: any = {};//${classNameLower}信息
 
   constructor(private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
     this.code = this.route.snapshot.params.code;//获取参数
-    this.load${className}Info();//查询供应商类型列表
+    this.load${className}Info();//查询${classNameLower}类型列表
   }
 
   /**
-   * 查询供应商信息
+   * 查询${classNameLower}信息
    */
   load${className}Info() {
     this.${model}Service.load${className}ByCode(this.code).then((data: any) => {
