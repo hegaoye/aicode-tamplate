@@ -229,7 +229,7 @@ public class ${className}Ctrl {
     })
     @PutMapping("/updateState")
     @ResponseBody
-    public ${className} updateState(String ${pkField.field?uncap_first}, ${className}State state) {
+    public ${className} updateStateBy${pkField.field?cap_first}(String ${pkField.field?uncap_first}, ${className}State state) {
         ${className?uncap_first}SV.updateBy${pkField.field?cap_first}(${pkField.field?uncap_first}, state);
         return ${className};
     }
