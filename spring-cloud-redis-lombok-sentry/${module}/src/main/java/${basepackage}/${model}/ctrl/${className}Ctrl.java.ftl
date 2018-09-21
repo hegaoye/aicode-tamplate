@@ -216,6 +216,26 @@ public class ${className}Ctrl {
         return ${classNameLower};
     }
 
+    <#list pkFields as pkField>
+    /**
+    * 修改${className}状态
+    *
+    * @return ${className}
+    */
+    @ApiOperation(value = "修改${className}状态", notes = "修改${className}状态")
+    @ApiImplicitParams(
+        @ApiImplicitParam(name = "state", value = "状态", paramType = "query")
+        @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}", paramType = "query")<#if pkField_has_next>,</#if>
+    })
+    @PutMapping("/updateState")
+    @ResponseBody
+    public ${className} updateState(String ${pkField.field?uncap_first}, ${className}State state) {
+        ${className?uncap_first}SV.updateBy${pkField.field?cap_first}(${pkField.field?uncap_first}, state);
+        return ${className};
+    }
+    </#list>
+
+
     /**
     * 删除${className}
     *
