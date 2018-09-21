@@ -51,17 +51,17 @@ export class SettingUrl {
   <#list modelData.classes as class>
   <#if modelData.classes?size gt 1>
     ${class.className?uncap_first}: {
-      list: '/main/${class.classModel}/${class.className?uncap_first}/list',//${class.className}列表
-      add: '/main/${class.classModel}/${class.className?uncap_first}/add',//添加${class.className}
-      modify: '/main/${class.classModel}/${class.className?uncap_first}/modify',//修改${class.className}
-      detail: '/main/${class.classModel}/${class.className?uncap_first}/detail'<#if class_has_next>,</#if>//查询${class.className}信息
+      list: '/main/${class.classModel}/${class.dashedCaseName}/list',//${class.className}列表
+      add: '/main/${class.classModel}/${class.dashedCaseName}/add',//添加${class.className}
+      modify: '/main/${class.classModel}/${class.dashedCaseName}/modify',//修改${class.className}
+      detail: '/main/${class.classModel}/${class.dashedCaseName}/detail'<#if class_has_next>,</#if>//查询${class.className}信息
     }<#if class_has_next>,</#if>
   <#else>
     ${class.className?uncap_first}: {
-      list: '/main/${class.className?uncap_first}/list',//${class.classModel}列表
-      add: '/main/${class.className?uncap_first}/add',//添加${class.classModel}
-      modify: '/main/${class.className?uncap_first}/modify',//修改${class.classModel}
-      detail: '/main/${class.className?uncap_first}/detail'//查询${class.classModel}信息
+      list: '/main/${class.dashedCaseName}/list',//${class.classModel}列表
+      add: '/main/${class.dashedCaseName}/add',//添加${class.classModel}
+      modify: '/main/${class.dashedCaseName}/modify',//修改${class.classModel}
+      detail: '/main/${class.dashedCaseName}/detail'//查询${class.classModel}信息
     }<#if modelData_has_next>,</#if>
     </#if>
     </#list>

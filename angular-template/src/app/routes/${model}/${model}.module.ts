@@ -3,9 +3,9 @@ import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
 
 <#list modelClasses as class>
-import {${class.className}ListComponent} from "./${class.className?uncap_first}-list/${class.className?uncap_first}-list.component";
-import {${class.className}DetailComponent} from "./${class.className?uncap_first}-detail/${class.className?uncap_first}-detail.component";
-import {${class.className}EditComponent} from "./${class.className?uncap_first}-edit/${class.className?uncap_first}-edit.component";
+import {${class.className}ListComponent} from "./${class.dashedCaseName}-list/${class.dashedCaseName}-list.component";
+import {${class.className}DetailComponent} from "./${class.dashedCaseName}-detail/${class.dashedCaseName}-detail.component";
+import {${class.className}EditComponent} from "./${class.dashedCaseName}-edit/${class.dashedCaseName}-edit.component";
 </#list>
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
   </#if>
   <#list modelClasses as class>
     <#if modelClasses?size gt 1>{
-      path: '${class.className?uncap_first}', children: [
+      path: '${class.dashedCaseName}', children: [
     </#if>
         {path: '', redirectTo: 'list'},
         {path: 'list', component: ${class.className}ListComponent},

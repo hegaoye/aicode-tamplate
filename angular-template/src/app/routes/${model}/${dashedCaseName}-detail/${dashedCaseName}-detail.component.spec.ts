@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ${className}DetailComponent } from './${classNameLower}-detail.component';
+import { ${className}DetailComponent } from './${dashedCaseName}-detail.component';
 
 describe('${className}DetailComponent', () => {
   let component: ${className}DetailComponent;

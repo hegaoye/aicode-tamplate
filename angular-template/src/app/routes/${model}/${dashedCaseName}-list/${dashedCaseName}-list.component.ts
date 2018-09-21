@@ -5,9 +5,9 @@ import {States} from "../../../public/setting/enums";
 import {SettingUrl} from "../../../public/setting/setting_url";
 
 @Component({
-  selector: 'app-${classNameLower}-list',
-  templateUrl: './${classNameLower}-list.component.html',
-  styleUrls: ['./${classNameLower}-list.component.scss']
+  selector: 'app-${dashedCaseName}-list',
+  templateUrl: './${dashedCaseName}-list.component.html',
+  styleUrls: ['./${dashedCaseName}-list.component.scss']
 })
 export class ${className}ListComponent implements OnInit {
   public searchParams: any = {};//搜索参数

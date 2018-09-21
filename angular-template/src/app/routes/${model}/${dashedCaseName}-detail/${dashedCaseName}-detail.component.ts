@@ -4,9 +4,9 @@ import {${model?cap_first}Service} from "../${model}.service";
 import {SettingUrl} from "../../../public/setting/setting_url";
 
 @Component({
-  selector: 'app-${classNameLower}-detail',
-  templateUrl: './${classNameLower}-detail.component.html',
-  styleUrls: ['./${classNameLower}-detail.component.css']
+  selector: 'app-${dashedCaseName}-detail',
+  templateUrl: './${dashedCaseName}-detail.component.html',
+  styleUrls: ['./${dashedCaseName}-detail.component.css']
 })
 export class ${className}DetailComponent implements OnInit {
   private code: string;
