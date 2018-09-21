@@ -57,6 +57,8 @@ public interface ${className}SV extends BaseSV<${className},Long> {
     </#list>
 
 
+
+
     /**
      * 删除对象${className}
      * <#list pkFields as pkField>@param ${pkField.field} ${pkField.notes}</#list>

@@ -1,12 +1,12 @@
 <nz-layout class="layout">
   <!--menu 信息 start-->
-  <nz-sider nzCollapsible [nzCollapsedWidth]="0" [nzBreakpoint]="'lg'" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzWidth]="220">
+  <nz-sider nzCollapsible [nzBreakpoint]="'lg'" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzWidth]="220">
     <div class="sider">
       <div class="logo cursor mb" [routerLink]="home">
         <img *ngIf="!isCollapsed" src="{{app.logo}}">
         <img *ngIf="isCollapsed" class="collapsed" src="{{app.logo}}">
       </div>
-      <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
         <!--循环显示menu start-->
         <ng-container *ngFor="let menu of menus;let i = index;">
           <!--有下级menu start-->
