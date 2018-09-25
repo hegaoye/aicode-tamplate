@@ -10,7 +10,7 @@ import {${class.className}EditComponent} from "./${class.dashedCaseName}-edit/${
 
 const routes: Routes = [
   <#if modelClasses?size gt 1>
-  {path: '', redirectTo: ' ${classNameLower}'},
+  {path: '', redirectTo: ' ${class.dashedCaseName}'},
   </#if>
   <#list modelClasses as class>
     <#if modelClasses?size gt 1>{
