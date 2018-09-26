@@ -27,9 +27,7 @@
               "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/jquery/src/jquery.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

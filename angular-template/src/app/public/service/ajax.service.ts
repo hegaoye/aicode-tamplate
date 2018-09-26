@@ -9,7 +9,7 @@ export class AjaxService {
   }
 
   //get方式提交，一般用于查询
-  public static get(config) {
+  public get(config) {
     if (!config) {
       console.log('ajax调用参数不能为空');
       return;
@@ -19,7 +19,7 @@ export class AjaxService {
   };
 
   //post方式提交，一般用于新增对象
-  public static post(config) {
+  public post(config) {
     if (!config) {
       console.log('ajax调用参数不能为空');
       return;
@@ -57,7 +57,7 @@ export class AjaxService {
   };
 
   //put方式提交，一般用于更新，会返回更新的所有信息
-  public static put(config) {
+  public put(config) {
     if (!config) {
       console.log('ajax调用参数不能为空');
       return;
@@ -70,7 +70,7 @@ export class AjaxService {
   };
 
   //delete方式提交，用于删除
-  public static del(config) {
+  public del(config) {
     if (!config) {
       console.log("ajax调用参数不能为空");
       return;
@@ -80,7 +80,7 @@ export class AjaxService {
   };
 
   //patch方式提交，一般用于更新，会返回更新的部分信息
-  public static patch(config) {
+  public patch(config) {
     if (!config) {
       console.log("ajax调用参数不能为空");
       return;

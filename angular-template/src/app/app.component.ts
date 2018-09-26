@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
-import {CookieService} from "angular2-cookie/core";
 import {Setting} from "./public/setting/setting";
 import {MENUS} from "./public/setting/menus";
 
@@ -11,7 +10,7 @@ import {MENUS} from "./public/setting/menus";
 })
 export class AppComponent {
 
-  constructor(public router: Router, public cookieService: CookieService) {
+  constructor(public router: Router) {
     //判断是否已经登录，已经登录，引导进入首页
     // let menusInfo: any = localStorage.getItem(Setting.cookie.menusInfo); //localStorage中取出menu菜单
     // if (menusInfo) Setting.MENUS = JSON.parse(menusInfo); //menu菜单

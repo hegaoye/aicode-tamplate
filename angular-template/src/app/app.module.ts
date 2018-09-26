@@ -15,7 +15,6 @@ import {en_US, NZ_I18N, zh_CN} from "ng-zorro-antd";
 import {registerLocaleData} from "@angular/common";
 import zh from "@angular/common/locales/zh";
 import {PageComponent} from "./layout/page/page.component";
-import {CookieService} from "angular2-cookie/core";
 import {NgxEchartsModule} from "ngx-echarts";
 registerLocaleData(zh);
 
@@ -48,7 +47,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
-    CookieService,
     {provide: NZ_I18N, useValue: en_US},
     {provide: NZ_I18N, useValue: zh_CN},
   ],

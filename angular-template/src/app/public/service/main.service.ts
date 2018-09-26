@@ -12,6 +12,7 @@ import {Setting} from "../setting/setting";
 export class MainService {
 
   constructor(public translate: TranslateService,
+              private ajaxService: AjaxService,
               private nzI18nService: NzI18nService) {
   }
 
@@ -20,9 +21,9 @@ export class MainService {
    * @param code 类型标示（如：1001、1002、1003....）
    * @returns {any}
    */
-  public static getEnumData = function (code) {
+  public getEnumData (code) {
     if (!Util.enumData.hasOwnProperty(code)) {
-      AjaxService.get({
+      this.ajaxService.get({
         async: false,
         url: SettingUrl.URL.base.enum + code,
         success: function (result) {
@@ -39,7 +40,7 @@ export class MainService {
    * @param code
    * @returns {Array<any>}
    */
-  public static getEnumDataList = function (code) {
+  public getEnumDataList (code) {
     let list: Array<any> = new Array<any>();
     let enumInfo = this.getEnumData(code);
     for (let prop in enumInfo) {
@@ -56,7 +57,7 @@ export class MainService {
    * @param key （如：ILLNESSCASE、TYPELESS、NURSING....）
    * @returns {any}
    */
-  public static getEnumDataValByKey = function (code, key) {
+  public getEnumDataValByKey (code, key) {
     let enumData = this.getEnumData(code);
     if (enumData != null && enumData !== '' && enumData !== undefined) {
       if (enumData[key] != null && enumData[key] !== '' && enumData[key] !== undefined) {
@@ -82,8 +83,7 @@ export class MainService {
     this.translate.setDefaultLang(defaultLanguage);
 
     //获取当前浏览器环境的语言比如en、 zh
-    let broswerLang = this.translate.getBrowserCultureLang().replace('-','_');
-    console.log("█ broswerLang ►►►", broswerLang);
+    let broswerLang = this.translate.getBrowserCultureLang().replace('-', '_');
     let lang = lastLanguage ? lastLanguage : broswerLang.match(/en|zh/) ? broswerLang : defaultLanguage;
     console.log("█ lang ►►►", broswerLang.match(/en|zh/));
     this.translate.use(lang);//设置管理后台语言
@@ -184,23 +184,5 @@ export class MainService {
         {value: levelThreeAreaCode, label: levelThreeAreaName},
       ];//级联选择器默认值
     return _value;
-  }
-
-  /**
-   * 将枚举Obj对象转换成可遍历的数据对象格式
-   *
-   * @param obj从接口获取到的枚举对象信息
-   * @returns {Array<any>}返回的枚举对象数组 key:枚举属性名 value:枚举属性值
-   */
-  formatEnums(obj): Array<any> {
-    let enumsArr = [];
-    for (let key in obj) {
-      let enmItem = obj[key];
-      let enmObj = {};
-      enmObj['key'] = key;
-      enmObj['value'] = enmItem;
-      enumsArr.push(enmObj);
-    }
-    return enumsArr;
   }
 }

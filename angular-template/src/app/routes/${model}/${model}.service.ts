@@ -9,7 +9,9 @@ import {HttpCodesEnum} from "../../public/setting/enums";
 })
 export class ${model?cap_first}Service {
 
-  constructor(private notification: NzNotificationService, private message: NzMessageService) {
+  constructor(private notification: NzNotificationService,
+              private ajaxService: AjaxService,
+              private message: NzMessageService) {
   }
 
 <#list modelClasses as modelClass>
@@ -21,7 +23,7 @@ export class ${model?cap_first}Service {
   get${modelClass.className}List(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
-      AjaxService.get({
+      me.ajaxService.get({
         url: SettingUrl.URL.${modelClass.className?uncap_first}.list,
         data: params,
         success: (res) => {
@@ -48,7 +50,7 @@ export class ${model?cap_first}Service {
   add${modelClass.className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
-      AjaxService.post({
+      me.ajaxService.post({
         url: SettingUrl.URL.${modelClass.className?uncap_first}.add,
         data: params,
         success: (res) => {
@@ -76,7 +78,7 @@ export class ${model?cap_first}Service {
   modify${modelClass.className}(params) {
     let me = this;
     return new Promise(function (resolve, reject) {
-      AjaxService.put({
+      me.ajaxService.put({
         url: SettingUrl.URL.${modelClass.className?uncap_first}.modify,
         data: params,
         success: (res) => {
@@ -105,7 +107,7 @@ export class ${model?cap_first}Service {
   modify${modelClass.className}State(code, state) {
     let me = this;
     return new Promise(function (resolve, reject) {
-      AjaxService.put({
+      me.ajaxService.put({
         url: SettingUrl.URL.${modelClass.className?uncap_first}.updateState,
         data: {
           code: code,
@@ -135,7 +137,7 @@ export class ${model?cap_first}Service {
   load${modelClass.className}ByCode(code) {
     let me = this;
     return new Promise(function (resolve) {
-      AjaxService.get({
+      me.ajaxService.get({
         url: SettingUrl.URL.${modelClass.className?uncap_first}.load + code,
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {

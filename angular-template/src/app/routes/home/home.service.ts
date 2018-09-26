@@ -8,7 +8,8 @@ import {NzNotificationService} from "ng-zorro-antd";
 })
 export class HomeService {
 
-  constructor(private notification: NzNotificationService) {
+  constructor(private notification: NzNotificationService,
+              private ajaxService: AjaxService) {
   }
 
 
@@ -19,7 +20,7 @@ export class HomeService {
   loadHomePageInfo() {
     let me = this;
     return new Promise(function (resolve, reject) {
-      AjaxService.post({
+      me.ajaxService.post({
         url: SettingUrl.URL.home.homePageInfo,
         success: (res) => {
           if (res.success) {

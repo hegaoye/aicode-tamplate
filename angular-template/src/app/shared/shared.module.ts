@@ -7,6 +7,7 @@ import {NgZorroAntdModule} from "ng-zorro-antd";
 import {ImgSizePipe} from "../public/pipes/img-size.pipe";
 import { BackBtnComponent } from './compontents/back-btn/back-btn.component';
 import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
+import {ImgPreviewPipe} from "../public/pipes/img-preview.pipe";
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
   ],
   declarations: [
     BackBtnComponent,         //返回按钮
-    ImgSizePipe,
+    ImgSizePipe,              //图片尺寸
+    ImgPreviewPipe,           //图片预览
     EnumNamePipe,
   ],
   exports: [
@@ -29,7 +31,8 @@ import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
     ReactiveFormsModule,    //表单支持
     TranslateModule,            //国际化
     NgZorroAntdModule,            //zorro
-    ImgSizePipe,
+    ImgSizePipe,              //图片尺寸
+    ImgPreviewPipe,           //图片预览
     EnumNamePipe,
     BackBtnComponent,         //返回按钮
   ]
