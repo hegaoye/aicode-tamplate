@@ -23,6 +23,7 @@ export class MainComponent implements OnInit, OnDestroy {
   constructor(public router: Router,
               public translate: TranslateService,
               public settings: Setting,
+              private ajaxService: AjaxService,
               private mainService: MainService) {
     this.mainService.languageSupport();//添加语言支持
   }
@@ -82,14 +83,14 @@ export class MainComponent implements OnInit, OnDestroy {
           } else {
             childMenu.isSel = false;
           }
-        })
+        });
       } else if ((url).indexOf(menu.menuUrl) == 0) {
         menu.isSel = true;
         menu.isOpen = true;
       } else {
         menu.isSel = false;
       }
-    })
+    });
   }
 
   /**
@@ -98,7 +99,7 @@ export class MainComponent implements OnInit, OnDestroy {
   logout() {
     localStorage.clear(); //清空所有storage
     //执行查询（异步）
-    AjaxService.get({
+    this.ajaxService.get({
       url: SettingUrl.URL.login.logout,
       success: (result) => {
         if (result.success) {
