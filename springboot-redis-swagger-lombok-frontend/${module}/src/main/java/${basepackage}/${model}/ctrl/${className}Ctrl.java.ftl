@@ -109,7 +109,7 @@ public class ${className}Ctrl {
     })
     @PostMapping(value = "/list")
     @ResponseBody
-    public List<${className}> list(@RequestBody @ApiIgnore ${className} ${classNameLower},Integer curPage,Integer pageSize) {
+    public List<${className}> list( @ApiIgnore ${className} ${classNameLower},Integer curPage,Integer pageSize) {
         Page<${className}> page=new Page<${className}>(pageSize,curPage);
         List<${className}> ${classNameLower}s = ${className?uncap_first}SV.list(${classNameLower},page.genRowStart(),page.getPageSize());
         int total = ${className?uncap_first}SV.count(${classNameLower});
@@ -173,7 +173,7 @@ public class ${className}Ctrl {
     })
     @PostMapping(value = "/count")
     @ResponseBody
-    public Integer count(@RequestBody ${className} ${classNameLower}) {
+    public Integer count(@ApiIgnore ${className} ${classNameLower}) {
         if(${classNameLower}==null){
             return ${className?uncap_first}SV.count(new HashMap());
         }else{
@@ -196,7 +196,7 @@ public class ${className}Ctrl {
     })
     @PostMapping("/build")
     @ResponseBody
-    public ${className} build(@RequestBody @ApiIgnore ${className} ${classNameLower}) {
+    public ${className} build(@ApiIgnore ${className} ${classNameLower}) {
         ${className?uncap_first}SV.save(${classNameLower});
         return ${classNameLower};
     }
