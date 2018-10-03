@@ -5,8 +5,8 @@ export class Setting {
   };
 
   public static APP: any = {                           //平台信息
-    name: 'pi-top中国-后台管理系统',
-    description: 'pi-top中国-后台管理系统',
+    name: '${projectName}-后台管理系统',
+    description: '${projectName}-后台管理系统',
     copyright: '© 2018 - 玺得科技',
     logo: '',
     contactInformation: {

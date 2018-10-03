@@ -11,12 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "description": "pi-top china",
-  "keywords": [
-    "pi-top",
-    "programme",
-    "编程"
-  ],
+  "description": "${projectName}",
+  "keywords": [],
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.1.0",

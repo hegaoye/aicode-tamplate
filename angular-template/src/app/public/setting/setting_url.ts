@@ -55,14 +55,14 @@ export class SettingUrl {
       add: '/main/${class.classModel}/${class.dashedCaseName}/add',//添加${class.className}
       modify: '/main/${class.classModel}/${class.dashedCaseName}/modify',//修改${class.className}
       detail: '/main/${class.classModel}/${class.dashedCaseName}/detail'<#if class_has_next>,</#if>//查询${class.className}信息
-    }<#if class_has_next>,</#if>
+    }<#if modelData_has_next || class_has_next>,</#if>
   <#else>
     ${class.className?uncap_first}: {
       list: '/main/${class.classModel}/list',//${class.classModel}列表
       add: '/main/${class.classModel}/add',//添加${class.classModel}
       modify: '/main/${class.classModel}/modify',//修改${class.classModel}
       detail: '/main/${class.classModel}/detail'//查询${class.classModel}信息
-    }<#if modelData_has_next>,</#if>
+    }<#if class_has_next>,</#if>
     </#if>
     </#list>
     </#list>

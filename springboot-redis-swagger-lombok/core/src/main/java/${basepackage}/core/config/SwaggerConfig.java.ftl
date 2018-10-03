@@ -29,7 +29,7 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("${basePackage}"))//controller路径
                 .paths(PathSelectors.any())
-                .build()
+                .build()``
                 .ignoredParameterTypes(ApiIgnore.class);
     }
 

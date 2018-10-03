@@ -1,5 +1,5 @@
 # pps
-pi-top Production System
+${projectName} Production System
 <H4>代码规范说明</H4>
 
 1.严格遵守typescript代码开发规范，驼峰命名法 例如：   xxxXXX  xxx_xxxx  XXXDDDD
