@@ -11,7 +11,7 @@ import {${class.className}EditComponent} from "./${class.dashedCaseName}-edit/${
 const routes: Routes = [
   <#list modelClasses as class>
     <#if modelClasses?size gt 1>
-    {path: '', redirectTo: ' ${class.dashedCaseName}'},
+    <#if modelClasses?size == 1>{path: '', redirectTo: ' ${class.dashedCaseName}'},</#if>
     {path: '${class.dashedCaseName}', children: [
     </#if>
         {path: '', redirectTo: 'list'},

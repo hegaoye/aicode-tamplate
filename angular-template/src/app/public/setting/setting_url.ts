@@ -62,7 +62,7 @@ export class SettingUrl {
       add: '/main/${class.classModel}/add',//添加${class.classModel}
       modify: '/main/${class.classModel}/modify',//修改${class.classModel}
       detail: '/main/${class.classModel}/detail'//查询${class.classModel}信息
-    }<#if class_has_next>,</#if>
+    }<#if modelData_has_next>,</#if>
     </#if>
     </#list>
     </#list>
