@@ -12,8 +12,9 @@ public enum ${className}State implements java.io.Serializable {
    //枚举定义在此
     ;
 
-    ${className}State() {
-
+    public String val;
+    ${className}State(String val) {
+        this.val=val;
     }
 
     /**

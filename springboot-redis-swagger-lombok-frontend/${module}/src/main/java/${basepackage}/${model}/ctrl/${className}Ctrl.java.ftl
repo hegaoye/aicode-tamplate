@@ -54,7 +54,7 @@ public class ${className}Ctrl {
     })
     @GetMapping(value = "/load")
     @ResponseBody
-    public ${className} load(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
+    public BeanRet load(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         <#list pkFields as pkField>
         if(${pkField.field}==null){
         return null;
@@ -62,7 +62,7 @@ public class ${className}Ctrl {
         </#list>
         ${className} ${classNameLower} = ${className?uncap_first}SV.load(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
         log.info(JSON.toJSONString(${classNameLower}));
-        return ${classNameLower};
+        return BeanRet.create(true, "查询成功", ${classNameLower});
     }
 
 
@@ -79,13 +79,13 @@ public class ${className}Ctrl {
     })
     @GetMapping(value = "/load/${pkField.field}/{${pkField.field}}")
     @ResponseBody
-    public ${className} loadBy${pkField.field?cap_first}(@PathVariable ${pkField.fieldType} ${pkField.field}) {
+    public BeanRet loadBy${pkField.field?cap_first}(@PathVariable ${pkField.fieldType} ${pkField.field}) {
         if(${pkField.field}==null){
            return null;
         }
         ${className} ${classNameLower} = ${className?uncap_first}SV.loadBy${pkField.field?cap_first}(${pkField.field});
         log.info(JSON.toJSONString(${classNameLower}));
-        return ${classNameLower};
+        return BeanRet.create(true, "查询成功", ${classNameLower});
     }
     </#list>
 </#if>
@@ -107,15 +107,17 @@ public class ${className}Ctrl {
         </#if>
     </#list>
     })
-    @PostMapping(value = "/list")
+    @GetMapping(value = "/list")
     @ResponseBody
-    public List<${className}> list( @ApiIgnore ${className} ${classNameLower},Integer curPage,Integer pageSize) {
+    public BeanRet list( @ApiIgnore ${className} ${classNameLower},Integer curPage,Integer pageSize) {
         Page<${className}> page=new Page<${className}>(pageSize,curPage);
         List<${className}> ${classNameLower}s = ${className?uncap_first}SV.list(${classNameLower},page.genRowStart(),page.getPageSize());
+        page.setVoList(${classNameLower}s);
         int total = ${className?uncap_first}SV.count(${classNameLower});
         page.setTotalRow(total);
         log.info(JSON.toJSONString(page));
-        return ${classNameLower}s;
+        return BeanRet.create(true, "查询成功", page);
+
     }
 
 
@@ -134,13 +136,14 @@ public class ${className}Ctrl {
     })
     @GetMapping(value = "/list/by")
     @ResponseBody
-    public List<${className}> listByPk(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field},</#list>Integer curPage,Integer pageSize) {
+    public BeanRet listByPk(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field},</#list>Integer curPage,Integer pageSize) {
         Page<${className}> page=new Page<${className}>(pageSize,curPage);
         List<${className}> ${classNameLower}s = ${className?uncap_first}SV.list(<#list pkFields as pkField>${pkField.field},</#list> page.genRowStart(),page.getPageSize());
+        page.setVoList(${classNameLower}s);
         int total = ${className?uncap_first}SV.count(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
         page.setTotalRow(total);
         log.info(JSON.toJSONString(page));
-        return ${classNameLower}s;
+        return BeanRet.create(true, "查询成功", page);
     }
 
     /**
@@ -171,7 +174,7 @@ public class ${className}Ctrl {
     @ApiImplicitParam(name = "${field.field}", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
     </#list>
     })
-    @PostMapping(value = "/count")
+    @GetMapping(value = "/count")
     @ResponseBody
     public Integer count(@ApiIgnore ${className} ${classNameLower}) {
         if(${classNameLower}==null){
@@ -196,9 +199,9 @@ public class ${className}Ctrl {
     })
     @PostMapping("/build")
     @ResponseBody
-    public ${className} build(@ApiIgnore ${className} ${classNameLower}) {
+    public BeanRet build(@ApiIgnore ${className} ${classNameLower}) {
         ${className?uncap_first}SV.save(${classNameLower});
-        return ${classNameLower};
+        return BeanRet.create(true, "创建成功", ${classNameLower});
     }
 
 
@@ -215,9 +218,9 @@ public class ${className}Ctrl {
     })
     @PutMapping("/modify")
     @ResponseBody
-    public ${className} modify(@ApiIgnore ${className} ${classNameLower}) {
+    public BeanRet modify(@ApiIgnore ${className} ${classNameLower}) {
         ${className?uncap_first}SV.modify(${classNameLower});
-        return ${classNameLower};
+         return BeanRet.create(true, "修改成功", ${classNameLower});
     }
 
     /**

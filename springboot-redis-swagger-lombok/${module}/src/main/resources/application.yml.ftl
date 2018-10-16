@@ -6,7 +6,7 @@ spring:
          enabled: always #控制台的输出颜色控制
   datasource:
      name: mysql-data
-     url: jdbc:mysql://192.168.1.220:3307/${projectName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
+     url: jdbc:mysql://192.168.1.220:3306/${projectName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
      username: root
      password: mysqladmin
      driver-class-name: com.mysql.cj.jdbc.Driver

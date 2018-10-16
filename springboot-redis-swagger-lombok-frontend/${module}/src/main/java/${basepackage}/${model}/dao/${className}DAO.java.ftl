@@ -25,7 +25,7 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
 
 <#if (pkFields?size>0)>
     <#list pkFields as pkField>
-    <#if (pkFields?size>1)>
+    <#if (pkFields?size>0)>
     /**
      * 加载一个对象${className} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
