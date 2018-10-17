@@ -26,13 +26,13 @@ export class Setting {
   public static valitateState: any = {
     empty: "empty",
     error: "error"
-  }
+  };
 
   //存入storage信息的键名
   public static storage: any = {
     menusInfo: 'menus',//存入localStorage的菜单的键值
     language: 'language',//存入localStorage的语言的键值
-  }
+  };
 
   public static I18nData: any = {};
 

@@ -38,31 +38,31 @@
             [nzTotal]="${classNameLower}List.totalRow"
             [nzPageIndex]="${classNameLower}List.curPage"
             (nzPageIndexChange)="query${className}List($event)">
-    <thead nz-thead>
+    <thead>
     <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
     <tr>
-      <th nz-th class="text-center" nzWidth=""><span>{{'Th0001' | translate}}</span></th><!--序号-->
+      <th class="text-center" nzWidth=""><span>{{'Th0001' | translate}}</span></th><!--序号-->
       <#list tableFields as field>
-      <th nz-th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
+      <th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
       </#list>
-      <th nz-th class="text-center" nzWidth=""><span>{{'Th0003' | translate}}</span></th><!--状态-->
-      <th nz-th class="text-center" nzWidth=""><span>{{'Th0006' | translate}}</span></th><!--操作-->
+      <th class="text-center" nzWidth=""><span>{{'Th0003' | translate}}</span></th><!--状态-->
+      <th class="text-center" nzWidth=""><span>{{'Th0006' | translate}}</span></th><!--操作-->
     </tr>
     </thead>
-    <tbody nz-tbody>
+    <tbody>
     <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
-      <tr nz-tbody-tr>
-        <td nz-td class="text-center">{{i+1}}</td>
+      <tr>
+        <td class="text-center">{{i+1}}</td>
         <#list tableFields as field>
         <td nz-td class="text-center">{{data.${field.field}}}</td>
         </#list>
-        <td nz-td class="text-center">
+        <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
                      nzCheckedChildren="是" nzUnCheckedChildren="否"
                      (ngModelChange)="modify${className}State(data.code, $event)">
           </nz-switch>
         </td>
-        <td nz-td class="text-center">
+        <td class="text-center">
           <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
                   title="{{'Btn0004'| translate}}">
             <i class="anticon anticon-edit"></i></button>
