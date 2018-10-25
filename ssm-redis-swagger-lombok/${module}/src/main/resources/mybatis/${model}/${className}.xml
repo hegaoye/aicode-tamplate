@@ -101,13 +101,6 @@
      <select id="load" resultMap="rs_base">
        SELECT <include refid="columns" />
        FROM `${tableName}`
-       where id = ${r'#{id}'}
-     </select>
-
-     <!--根据任何条件加载一条${tableName}的数据-->
-     <select id="load" resultMap="rs_base">
-       SELECT <include refid="columns" />
-       FROM `${tableName}`
        <include refid="where"/>
      </select>
 
