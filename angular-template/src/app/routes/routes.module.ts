@@ -6,7 +6,7 @@ import {routes} from "./routes";
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes,{useHash: true})
   ],
   declarations: []
 })

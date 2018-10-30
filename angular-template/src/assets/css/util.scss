@@ -85,7 +85,26 @@
 
 /*样式清除*/
 .clear{clear:both;}
-.display-inherit{display: inherit;}
+
+//元素类型
+.inline-block {
+  display: inline-block;
+}
+.d-inline {
+  display: inline;
+}
+.d-block {
+  display: block;
+}
+.d-flex{
+  display: flex;
+}
+.d-table{
+  display: table;
+}
+.d-inherit{
+  display: inherit;
+}
 
 /*字体加粗*/
 .strong{font-weight: 600}
