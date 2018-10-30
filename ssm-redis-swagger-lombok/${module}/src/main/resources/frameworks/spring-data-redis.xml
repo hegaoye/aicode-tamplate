@@ -13,6 +13,6 @@
 
     <context:property-placeholder location="classpath:redis-manager-config.properties"/>
     <redisson:client id="redissonClient">
-        <redisson:single-server address="${redis.address}"/>
+        <redisson:single-server address="${r'${redis.address}'}"/>
     </redisson:client>
 </beans>
