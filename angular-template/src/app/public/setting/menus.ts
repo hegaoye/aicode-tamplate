@@ -8,7 +8,7 @@ import {MenuItem} from "./model";
 <#list modelDatas as modelData>
 const ${modelData.model}: MenuItem = {
   menuName: "${modelData.model}",
-  menuIcon: 'anticon anticon-shop',
+  menuIcon: 'shop',
   menuUrl: '/main/${modelData.model}',
   subMenuList: [
     <#list modelData.classes as class>

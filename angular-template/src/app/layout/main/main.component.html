@@ -65,7 +65,7 @@
 
         <!--语言设置-->
         <li>
-          <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomCenter'">
+          <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomCenter'" class="inline-block">
             <div class="cursor" nz-dropdown><span class="font14">{{'Layout0002'| translate}}</span>
               <i class="anticon anticon-down font12"></i>
             </div>
@@ -77,7 +77,7 @@
 
         <!--用户操作-->
         <li>
-          <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomRight'">
+          <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomRight'" class="inline-block">
             <div class="cursor" nz-dropdown>
               <nz-avatar [nzSrc]="settings.user.avatar"
                          [nzText]="settings.user.name"
