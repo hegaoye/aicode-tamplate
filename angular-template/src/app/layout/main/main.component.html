@@ -13,7 +13,7 @@
           <li nz-submenu *ngIf="menu.subMenuList && menu.subMenuList.length>0" [(nzOpen)]="menu.isOpen"
               (nzOpenChange)="openHandler(i)">
           <span title>
-            <i class="{{menu.menuIcon}} font18"></i>
+            <i nz-icon [type]="menu.menuIcon" theme="outline" class="font18"></i>
             <span class="nav-text">{{menu.menuName | translate}}</span>
           </span>
             <ul>
@@ -27,7 +27,7 @@
           <!--无下级menu start-->
           <li nz-menu-item *ngIf="!menu.subMenuList || menu.subMenuList.length<1" [ngClass]="{'ant-menu-item-selected':menu.isSel}" (click)="goUrl(menu.menuUrl)">
           <span>
-            <i class="{{menu.menuIcon}} font18"></i>
+            <i nz-icon [type]="menu.menuIcon" theme="outline" class="font18"></i>
             <span class="nav-text">{{menu.menuName | translate}}</span>
           </span>
           </li>
@@ -44,7 +44,8 @@
       <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed"
          (click)="isCollapsed=!isCollapsed"></i>
       <ul class="fr mr">
-        <li><i class="anticon anticon-home" [routerLink]="home" title="{{'Layout0000'| translate}}"></i></li>
+        <li>
+          <i nz-icon type="home" theme="outline" class="font18" [routerLink]="home" title="{{'Layout0000'| translate}}"></i></li>
 
         <!--消息通知-->
         <!--<li>
@@ -67,7 +68,7 @@
         <li>
           <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomCenter'" class="inline-block">
             <div class="cursor" nz-dropdown><span class="font14">{{'Layout0002'| translate}}</span>
-              <i class="anticon anticon-down font12"></i>
+              <i nz-icon type="down" theme="outline" class="font12"></i>
             </div>
             <ul nz-menu class="languages">
               <li nz-menu-item *ngFor="let lang of translate.getLangs()" (click)="changeLang(lang)">{{lang | translate}}</li>
@@ -83,13 +84,13 @@
                          [nzText]="settings.user.name"
                          [ngStyle]="{'background-color':'#00a2ae'}"
                          class="mr-sm"></nz-avatar>
-              <i class="anticon anticon-down font12"></i>
+              <i nz-icon type="down" theme="outline" class="font12"></i>
             </div>
             <ul nz-menu class="user-infos">
               <li class="p">{{settings.user.name}}</li>
-              <li nz-menu-item><i class="anticon anticon-setting color-blue mr-5"></i>{{'Layout0003'| translate}}</li>
+              <li nz-menu-item><i nz-icon type="setting" theme="outline" class="color-blue mr-5"></i>{{'Layout0003'| translate}}</li>
               <li nz-menu-divider></li>
-              <li nz-menu-item (click)="logout()"><i class="anticon anticon-logout color-red mr-5"></i>{{'Layout0004'| translate}}</li>
+              <li nz-menu-item (click)="logout()"><i nz-icon type="logout" theme="outline" class="color-red mr-5"></i>{{'Layout0004'| translate}}</li>
             </ul>
           </nz-dropdown>
         </li>

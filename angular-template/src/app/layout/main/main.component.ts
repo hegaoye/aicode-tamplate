@@ -32,7 +32,8 @@ export class MainComponent implements OnInit, OnDestroy {
     const _this = this;
     _this.menus = Setting.MENUS; //菜单信息
     //监听路由变化，反选menu信息
-    _this.selMenu(_this.menus, location.pathname);//取刷新等初始化页面的路由
+    // _this.selMenu(_this.menus, location.pathname);//取刷新等初始化页面的路由
+    _this.selMenu(_this.menus, location.hash.substring(1));//锚点路由时，获取刷新等初始化页面的路由
 
     this.listenedRouter = _this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {

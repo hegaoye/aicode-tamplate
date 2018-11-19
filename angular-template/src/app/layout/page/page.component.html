@@ -9,7 +9,7 @@
       <li>
         <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomCenter'" class="inline-block">
           <div class="cursor color-white" nz-dropdown><span class="font14">{{'Layout0002'| translate}}</span>
-            <i class="anticon anticon-down font12"></i>
+            <i nz-icon type="down" theme="outline" class="font12"></i>
           </div>
           <ul nz-menu class="languages">
             <li nz-menu-item *ngFor="let lang of translate.getLangs()" (click)="changeLang(lang)">{{lang | translate}}</li>

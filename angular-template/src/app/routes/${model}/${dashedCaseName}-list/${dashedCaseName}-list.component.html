@@ -1,7 +1,7 @@
 <div class="page-title clearfix">
   <div class="title">${className}管理</div>
-  <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="{{'Btn0003'| translate}}"><i
-    class="anticon anticon-plus"></i>
+  <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="{{'Btn0003'| translate}}">
+    <i nz-icon type="plus" theme="outline"></i>
     {{'Btn0003'| translate}}
   </button>
 </div>
@@ -19,10 +19,10 @@
     </div>
     <div class="inline-block">
       <button nz-button class="ml-20 mr" [nzType]="'primary'" title="{{'Btn0001'| translate}}" type="submit">
-        <i class="anticon anticon-search"></i><span>{{"Btn0001"| translate}}</span>
+        <i nz-icon type="search" theme="outline"></i><span>{{'Btn0001'| translate}}</span>
       </button>
       <button nz-button class="mr" title="{{'Btn0002'| translate}}" type="reset" (click)="resetSearch()">
-        <i class="anticon anticon-sync"></i><span>{{"Btn0002"| translate}}</span>
+        <i nz-icon type="sync" theme="outline"></i><span>{{'Btn0002'| translate}}</span>
       </button>
     </div>
   </form>
@@ -54,21 +54,22 @@
       <tr>
         <td class="text-center">{{i+1}}</td>
         <#list tableFields as field>
-        <td nz-td class="text-center">{{data.${field.field}}}</td>
+        <td class="text-center">{{data.${field.field}}}</td>
         </#list>
         <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
-                     nzCheckedChildren="是" nzUnCheckedChildren="否"
-                     (ngModelChange)="modify${className}State(data.code, $event)">
-          </nz-switch>
+                     (ngModelChange)="modify${className}State(data.code, $event)"
+                     [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon type="check" theme="outline"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
         </td>
         <td class="text-center">
           <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
                   title="{{'Btn0004'| translate}}">
-            <i class="anticon anticon-edit"></i></button>
+          <i nz-icon type="edit" theme="outline"></i>
           <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
                   title="{{'Btn0005'| translate}}">
-            <i class="anticon anticon-eye-o"></i></button>
+          <i nz-icon type="eye" theme="outline"></i>
         </td>
       </tr>
     </ng-template>
