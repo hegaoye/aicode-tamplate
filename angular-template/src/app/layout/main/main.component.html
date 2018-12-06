@@ -41,8 +41,7 @@
   <nz-layout>
     <!--顶部信息 start-->
     <nz-header class="p0 bg-white">
-      <i class="anticon trigger" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed"
-         (click)="isCollapsed=!isCollapsed"></i>
+      <i nz-icon [type]="!isCollapsed?'menu-fold':'menu-unfold'" theme="outline" (click)="isCollapsed=!isCollapsed"></i>
       <ul class="fr mr">
         <li>
           <i nz-icon type="home" theme="outline" class="font18" [routerLink]="home" title="{{'Layout0000'| translate}}"></i></li>
