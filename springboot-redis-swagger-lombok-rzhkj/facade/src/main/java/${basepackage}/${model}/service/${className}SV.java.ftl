@@ -71,24 +71,9 @@ public interface ${className}SV extends BaseSV<${className},Long> {
      * 查询${className}分页
      *
      * @param ${classNameLower}  ${notes}
-     * @param offset 查询开始行
-     * @param limit  查询行数
-     * @return List<${className}>
+     * @param page 分页对象
+     * @return Page<${className}>
      */
-     List<${className}> list(${className} ${classNameLower}, int offset, int limit);
+     List<${className}> list(${className} ${classNameLower}, Page<${className}> page);
      int count(${className} ${classNameLower});
-
-     /**
-     * 查询${className}分页
-     *
-     <#list pkFields as pkField>* @param ${pkField.field}  ${pkField.notes}</#list>
-     * @param offset 查询开始行
-     * @param limit  查询行数
-     * @return List<${className}>
-     */
-     List<${className}> list(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field},</#list>int offset, int limit);
-     int count(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
-
-
-
 }

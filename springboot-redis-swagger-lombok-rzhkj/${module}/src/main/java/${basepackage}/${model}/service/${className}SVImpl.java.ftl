@@ -156,9 +156,8 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     * 查询${className}分页
     *
     * @param ${classNameLower}  对象
-    * @param offset 查询开始行
-    * @param limit  查询行数
-    * @return List<${className}>
+    * @param page 分页对象
+    * @return Page<${className}>
     */
     @Override
     public Page<${className}> list(${className} ${classNameLower}, Page<${className}> page) {
@@ -167,10 +166,10 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
             map = JSON.parseObject(JSON.toJSONString(${classNameLower}, SerializerFeature.WriteDateUseDateFormat));
         }
         
-        int num = ${classNameLower}DAO.count(map);
-        page.setTotalRow(in);
+        int count = ${classNameLower}DAO.count(map);
+        page.setTotalRow(count);
 
-        List<${className}> list = ${classNameLower}DAO.list(map, new RowBounds(offset, limit));
+        List<${className}> list = ${classNameLower}DAO.list(map, new RowBounds(page.genRowStart(), page.getPageSize()));
         page.setVoList(list);
         return page;
     }

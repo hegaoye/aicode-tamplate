@@ -76,8 +76,6 @@ public class ${className}Ctrl {
         @ApiImplicitParam(name = "${field.field}Begin", value = "${field.notes}", paramType = "query"),
         @ApiImplicitParam(name = "${field.field}End", value = "${field.notes}", paramType = "query")<#if field_has_next>,</#if>
         </#if>
-        @ApiImplicitParam(name = "curPage", value = "当前页", paramType = "query", dataType = "int"),
-        @ApiImplicitParam(name = "pageSize", value = "分页大小", paramType = "query", dataType = "int")
     </#list>
     })
     @GetMapping(value = "/list")
@@ -103,8 +101,8 @@ public class ${className}Ctrl {
     @PostMapping("/save")
     @ResponseBody
     public BeanRet save(@RequestBody @ApiIgnore ${className} ${classNameLower}) {
-        ${classNameLower} = ${className?uncap_first}SV.save(${classNameLower});
-        return BeanRet.create(true, "保存成功", ${classNameLower});
+        ${className?uncap_first}SV.save(${classNameLower});
+        return BeanRet.create(true, "保存成功");
     }
 
 
@@ -122,8 +120,8 @@ public class ${className}Ctrl {
     @PutMapping("/update")
     @ResponseBody
     public BeanRet update(@ApiIgnore ${className} ${classNameLower}) {
-        ${classNameLower} = ${className?uncap_first}SV.modify(${classNameLower});
-        return BeanRet.create(true, "修改成功", ${classNameLower});
+        ${className?uncap_first}SV.modify(${classNameLower});
+        return BeanRet.create(true, "修改成功");
     }
 
     /**
