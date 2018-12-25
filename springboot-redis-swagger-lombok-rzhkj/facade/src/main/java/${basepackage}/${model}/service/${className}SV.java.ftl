@@ -3,9 +3,8 @@
  */
 package ${basePackage}.${model}.service;
 
-import java.util.List;
-import java.util.Map;
 import ${basePackage}.core.base.BaseSV;
+import com.rzhkj.core.entity.Page;
 import ${basePackage}.${model}.entity.${className}State;
 import ${basePackage}.${model}.entity.${className};
 
@@ -74,6 +73,6 @@ public interface ${className}SV extends BaseSV<${className},Long> {
      * @param page 分页对象
      * @return Page<${className}>
      */
-     List<${className}> list(${className} ${classNameLower}, Page<${className}> page);
+     Page<${className}> list(${className} ${classNameLower}, Page<${className}> page);
      int count(${className} ${classNameLower});
 }
