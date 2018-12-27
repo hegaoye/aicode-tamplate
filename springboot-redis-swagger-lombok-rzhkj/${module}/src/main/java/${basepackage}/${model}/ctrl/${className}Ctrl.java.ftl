@@ -29,7 +29,7 @@ import ${basePackage}.${model}.service.${className}SV;
 @RestController
 @RequestMapping("/${className?uncap_first}")
 @Slf4j
-@Api(tags = "${notes}控制器", description = "${notes}控制器")
+@Api(tags = "${className}Ctrl", description = "${notes}控制器")
 public class ${className}Ctrl {
 
     @Resource
@@ -49,15 +49,15 @@ public class ${className}Ctrl {
     @ApiImplicitParams({
        @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}",dataType = "${pkField.fieldType}", paramType = "path")
     })
-    @GetMapping(value = "/load/{${pkField.field}}")
+    @GetMapping(value = "/loadBy${pkField.field?cap_first}")
     @ResponseBody
-    public ${className} loadBy${pkField.field?cap_first}(@PathVariable ${pkField.fieldType} ${pkField.field}) {
-        if(${pkField.field}==null){
-           return null;
+    public BeanRet loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
+        if(${pkField.field} == null){
+           return BeanRet.create(false, "${pkField.field}不能为空");
         }
         ${className} ${classNameLower} = ${className?uncap_first}SV.loadBy${pkField.field?cap_first}(${pkField.field});
         log.info(JSON.toJSONString(${classNameLower}));
-        return ${classNameLower};
+        return BeanRet.create(true, "查询成功"，${classNameLower});
     }
     </#list>
 
@@ -80,7 +80,7 @@ public class ${className}Ctrl {
     })
     @GetMapping(value = "/list")
     @ResponseBody
-    public BeanRet list(@RequestBody @ApiIgnore ${className} ${classNameLower},@ApiIgnore Page<${className}> page) {
+    public BeanRet list(@ApiIgnore ${className} ${classNameLower},@ApiIgnore Page<${className}> page) {
         page = ${className?uncap_first}SV.list(${classNameLower},page);
         log.info(JSON.toJSONString(page));
         return BeanRet.create(true, "查询成功", page);
