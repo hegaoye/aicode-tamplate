@@ -57,7 +57,7 @@ public class ${className}Ctrl {
         }
         ${className} ${classNameLower} = ${className?uncap_first}SV.loadBy${pkField.field?cap_first}(${pkField.field});
         log.info(JSON.toJSONString(${classNameLower}));
-        return BeanRet.create(true, "查询成功"，${classNameLower});
+        return BeanRet.create(true, "查询成功",${classNameLower});
     }
     </#list>
 
