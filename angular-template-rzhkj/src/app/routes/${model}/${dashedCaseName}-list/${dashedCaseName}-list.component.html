@@ -1,0 +1,78 @@
+<div class="page-title clearfix">
+  <div class="title">${className}管理</div>
+  <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="{{'Btn0003'| translate}}">
+    <i nz-icon type="plus" theme="outline"></i>
+    {{'Btn0003'| translate}}
+  </button>
+</div>
+
+<div class="panel panel-body">
+  <!--搜索 start-->
+  <form nz-form (submit)="query${className}List(1)">
+    <div class="search-group">
+      <span class="search-title">${classNameLower}名：</span>
+      <div class="search-main">
+        <input nz-input name="name"
+               [(ngModel)]="searchParams.name"
+               placeholder="{{'Supplier0001'| translate}}">
+      </div>
+    </div>
+    <div class="inline-block">
+      <button nz-button class="ml-20 mr" [nzType]="'primary'" title="{{'Btn0001'| translate}}" type="submit">
+        <i nz-icon type="search" theme="outline"></i><span>{{'Btn0001'| translate}}</span>
+      </button>
+      <button nz-button class="mr" title="{{'Btn0002'| translate}}" type="reset" (click)="resetSearch()">
+        <i nz-icon type="sync" theme="outline"></i><span>{{'Btn0002'| translate}}</span>
+      </button>
+    </div>
+  </form>
+  <!--搜索 end-->
+</div>
+<div class="panel">
+  <nz-table #nzTable
+            [nzData]="${classNameLower}List.voList"
+            [nzLoading]="_loading"
+            [nzFrontPagination]="false"
+            [nzShowTotal]="totalRow"
+            [nzPageSize]="${classNameLower}List.pageSize"
+            [nzTotal]="${classNameLower}List.totalRow"
+            [nzPageIndex]="${classNameLower}List.curPage"
+            (nzPageIndexChange)="query${className}List($event)">
+    <thead>
+    <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
+    <tr>
+      <th class="text-center" nzWidth=""><span>{{'Th0001' | translate}}</span></th><!--序号-->
+      <#list tableFields as field>
+      <th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
+      </#list>
+      <th class="text-center" nzWidth=""><span>{{'Th0003' | translate}}</span></th><!--状态-->
+      <th class="text-center" nzWidth=""><span>{{'Th0006' | translate}}</span></th><!--操作-->
+    </tr>
+    </thead>
+    <tbody>
+    <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
+      <tr>
+        <td class="text-center">{{i+1}}</td>
+        <#list tableFields as field>
+        <td class="text-center">{{data.${field.field}}}</td>
+        </#list>
+        <td class="text-center">
+          <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
+                     (ngModelChange)="modify${className}State(data.code, $event)"
+                     [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+          <ng-template #checkedTemplate><i nz-icon type="check" theme="outline"></i></ng-template>
+          <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
+        </td>
+        <td class="text-center">
+          <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
+                  title="{{'Btn0004'| translate}}"></button>
+          <i nz-icon type="edit" theme="outline"></i>
+          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
+                  title="{{'Btn0005'| translate}}"></button>
+          <i nz-icon type="eye" theme="outline"></i>
+        </td>
+      </tr>
+    </ng-template>
+    </tbody>
+  </nz-table>
+</div>

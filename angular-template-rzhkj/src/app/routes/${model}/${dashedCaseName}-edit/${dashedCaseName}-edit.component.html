@@ -1,0 +1,40 @@
+<app-back-btn></app-back-btn>
+<div class="page-title">
+  <span class="title" *ngIf="!this.code">添加${className}</span>
+  <span class="title" *ngIf="this.code">修改${className}</span>
+</div>
+
+<div class="panel panel-body">
+  <form nz-form [formGroup]="validateForm" class="form-wrap" (submit)="add${className}($event)">
+    <h2 class="subtitle">${className}信息</h2>
+    <#list fields as field>
+    <#if field.field!='id' && field.field!='code' && field.field!='state' && !field.checkDate>
+
+    <!--${field.field} start-->
+    <nz-form-item>
+      <nz-form-label [nzSm]="7" nzFor="${field.field}" nzRequired><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></nz-form-label>
+      <nz-form-control [nzSm]="10" [nzValidateStatus]="getFormControl('${field.field}')">
+        <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.notes}">
+        <nz-form-explain *ngIf="getFormControl('${field.field}').dirty&&getFormControl('${field.field}').errors">
+          <ng-container *ngIf="getFormControl('${field.field}').hasError('required')">请输入${field.notes}</ng-container>
+        </nz-form-explain>
+      </nz-form-control>
+      <nz-form-control [nzSm]="7" class="font12 pl color-gray">
+        ${field.notes}
+      </nz-form-control>
+    </nz-form-item>
+    </#if>
+    </#list>
+
+    <!--表单底部start-->
+    <nz-form-item class="action-button">
+      <nz-form-control class="text-center">
+        <button nz-button nzSize="large" [nzType]="'primary'" type="submit" class="pl-30 pr-30" [nzLoading]="isConfirmLoading">
+          {{'Btn0009'| translate}}
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+    <!--表单底部end-->
+  </form>
+
+</div>
