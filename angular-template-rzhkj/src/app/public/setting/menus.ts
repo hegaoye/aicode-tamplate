@@ -14,7 +14,7 @@ const ${modelData.model}: MenuItem = {
     <#list modelData.classes as class>
     <#if modelData.classes?size gt 1>
     {
-      menuName: "${class.className?uncap_first}",
+      menuName: "${class.notes}",
       menuUrl: '/main/${modelData.model}/${class.dashedCaseName}'
     }<#if class_has_next>,</#if>
     </#if>
