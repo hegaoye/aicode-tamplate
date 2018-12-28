@@ -8,7 +8,7 @@ export class Setting {
     name: '${projectName}-后台管理系统',
     description: '${projectName}-后台管理系统',
     copyright: '© 2018 - 仁中和科技',
-    logo: '',
+    logo: '../../../assets/img/logo.png',
     contactInformation: {
       qq: "1234567893",
       wx: "15045678912",
