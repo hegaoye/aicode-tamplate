@@ -129,6 +129,7 @@ export class ${model?cap_first}Service {
     })
   }
 
+  
   /**
    * 查询${modelClass.className}详细信息
    * @param code ${modelClass.className}编码
@@ -138,7 +139,10 @@ export class ${model?cap_first}Service {
     let me = this;
     return new Promise(function (resolve) {
       me.ajaxService.get({
-        url: SettingUrl.URL.${modelClass.className?uncap_first}.load + code,
+        url: SettingUrl.URL.${modelClass.className?uncap_first}.load,
+        data: {
+          id: code
+        },
         success: (res) => {
           if (res.success && res.code === HttpCodesEnum.Success) {
             resolve(res.data);
