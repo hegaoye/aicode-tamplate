@@ -11,7 +11,7 @@ import {${model?cap_first}Service} from "../${model}.service";
 })
 export class ${className}EditComponent implements OnInit {
   public isConfirmLoading: boolean = false;
-  public code: string; //${classNameLower}
+  public id: string; //${classNameLower}
   public validateForm: FormGroup;//企业登录的表单
 
   constructor(private fb: FormBuilder, private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, public location: Location) {
@@ -28,7 +28,7 @@ export class ${className}EditComponent implements OnInit {
     this.route.url.subscribe(url => {
       const curPath = url[0].path;
       if (curPath === 'modify') {
-        this.code = this.route.snapshot.params.code;//获取参数
+        this.id = this.route.snapshot.params.id;//获取参数
         this.load${className}Info();
       }//修改前查询出供应商信息
     })
@@ -48,8 +48,8 @@ export class ${className}EditComponent implements OnInit {
     this.isConfirmLoading = true;
     let formData = Object.assign({},this.validateForm.value);
     //添加${classNameLower}
-    if (this.code) {
-      formData.code = this.code;
+    if (this.id) {
+      formData.id = this.id;
       this.${model}Service.modify${className}(formData).then((data: any) => {
         this.isConfirmLoading = false;
         this.validateForm.reset();
@@ -67,7 +67,7 @@ export class ${className}EditComponent implements OnInit {
    * 查询${classNameLower}信息
    */
   load${className}Info() {
-    this.${model}Service.load${className}ByCode(this.code).then((data: any) => {
+    this.${model}Service.load${className}(this.id).then((data: any) => {
       this.validateForm.patchValue(data);
     })
   }

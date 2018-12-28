@@ -33,7 +33,7 @@ export class ${className}DetailComponent implements OnInit {
    * 修改未设置数据
    */
   toModifyTheUnSetData() {
-    this.router.navigate([SettingUrl.ROUTERLINK.${classNameLower}.modify, this.code])
+    this.router.navigate([SettingUrl.ROUTERLINK.${classNameLower}.modify, this.id])
   }
 
 }
