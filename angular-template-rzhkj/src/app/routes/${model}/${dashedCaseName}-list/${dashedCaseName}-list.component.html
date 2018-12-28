@@ -1,5 +1,5 @@
 <div class="page-title clearfix">
-  <div class="title">${className}管理</div>
+  <div class="title">${notes}管理</div>
   <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="{{'Btn0003'| translate}}">
     <i nz-icon type="plus" theme="outline"></i>
     {{'Btn0003'| translate}}
@@ -10,7 +10,7 @@
   <!--搜索 start-->
   <form nz-form (submit)="query${className}List(1)">
     <div class="search-group">
-      <span class="search-title">${classNameLower}名：</span>
+      <span class="search-title">${notes}名：</span>
       <div class="search-main">
         <input nz-input name="name"
                [(ngModel)]="searchParams.name"
