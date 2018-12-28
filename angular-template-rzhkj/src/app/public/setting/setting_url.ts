@@ -32,7 +32,7 @@ export class SettingUrl {
       list: '/${class.className?uncap_first}/list',//${class.className}列表
       add: '/${class.className?uncap_first}/save',//添加${class.className}
       modify: '/${class.className?uncap_first}/update',//修改${class.className}
-      load: '/${class.className?uncap_first}/load',//查询${class.className}信息
+      load: '/${class.className?uncap_first}/loadById',//查询${class.className}信息
       updateState: '/${class.className?uncap_first}/updateState'//修改${class.className}状态
     }<#if class_has_next>,</#if>
     </#list>

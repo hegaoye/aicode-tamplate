@@ -64,11 +64,11 @@
           <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
         </td>
         <td class="text-center">
-          <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
+          <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.id]"
                   title="{{'Btn0004'| translate}}">
             <i nz-icon type="edit" theme="outline"></i>
           </button>
-          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
+          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.id]"
                   title="{{'Btn0005'| translate}}">
             <i nz-icon type="eye" theme="outline"></i>
           </button>

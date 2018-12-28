@@ -9,14 +9,14 @@ import {SettingUrl} from "../../../public/setting/setting_url";
   styleUrls: ['./${dashedCaseName}-detail.component.css']
 })
 export class ${className}DetailComponent implements OnInit {
-  private code: string;
+  private id: string;
   public ${classNameLower}Info: any = {};//${classNameLower}信息
 
   constructor(private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
-    this.code = this.route.snapshot.params.code;//获取参数
+    this.id = this.route.snapshot.params.id;//获取参数
     this.load${className}Info();//查询${classNameLower}类型列表
   }
 
@@ -24,7 +24,7 @@ export class ${className}DetailComponent implements OnInit {
    * 查询${classNameLower}信息
    */
   load${className}Info() {
-    this.${model}Service.load${className}ByCode(this.code).then((data: any) => {
+    this.${model}Service.load${className}(this.id).then((data: any) => {
       if (data) this.${classNameLower}Info = data;
     })
   }

@@ -17,8 +17,8 @@ const routes: Routes = [
         {path: '', redirectTo: 'list'},
         {path: 'list', component: ${class.className}ListComponent},
         {path: 'add', component: ${class.className}EditComponent},
-        {path: 'modify/:code', component: ${class.className}EditComponent},
-        {path: 'detail/:code', component: ${class.className}DetailComponent}
+        {path: 'modify/:id', component: ${class.className}EditComponent},
+        {path: 'detail/:id', component: ${class.className}DetailComponent}
     <#if modelClasses?size gt 1>
     ]}<#if class_has_next>,</#if>
     </#if>
