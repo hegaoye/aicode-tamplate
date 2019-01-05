@@ -78,13 +78,13 @@ export class Setting {
       {
         text: '${modelData.model}',
         icon: 'anticon anticon-dashboard',
-        link: SettingUrl.ROUTERLINK.admin.${modelData.model},
+        link: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${modelData.model}Main,
         children: [
           <#list modelData.classes as class>
             <#if modelData.classes?size gt 1>
               {
                 text: '${class.notes}',
-                link: SettingUrl.ROUTERLINK.admin.${modelData.model}.${class.className?uncap_first}.listFull,
+                link: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${class.className?uncap_first}.listFull,
               }<#if class_has_next>,</#if>
             </#if>
           </#list>
