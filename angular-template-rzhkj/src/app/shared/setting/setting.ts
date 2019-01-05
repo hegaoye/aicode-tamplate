@@ -1,5 +1,6 @@
 /*基本属性配置*/
 import { SettingUrl } from '@shared/setting/setting_url';
+import { Menu } from '@delon/theme';
 
 export class Setting {
 
@@ -68,7 +69,7 @@ export class Setting {
   public static enumData = {};
 
   //菜单列表
-  public static MENUDATAS = [
+  public static MENUDATAS: Menu[] = [
     {
       text: '系统首页',
       link: SettingUrl.ROUTERLINK.admin.dashboardFull,

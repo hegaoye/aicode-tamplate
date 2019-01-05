@@ -168,17 +168,17 @@ export class UserLoginComponent implements OnDestroy {
   //   else callback = 'http://localhost:4200/callback/' + type;
   //   switch (type) {
   //     case 'auth0':
-  //       url = `//cipchk.auth0.com/login?client=8gcNydIDzGBYxzqV0Vm1CX_RXH-wsWo5&redirect_uri=${decodeURIComponent(
+  //       url = `//cipchk.auth0.com/login?client=8gcNydIDzGBYxzqV0Vm1CX_RXH-wsWo5&redirect_uri=${r"${"}decodeURIComponent(
   //         callback,
   //       )}`;
   //       break;
   //     case 'github':
-  //       url = `//github.com/login/oauth/authorize?client_id=9d6baae4b04a23fcafa2&response_type=code&redirect_uri=${decodeURIComponent(
+  //       url = `//github.com/login/oauth/authorize?client_id=9d6baae4b04a23fcafa2&response_type=code&redirect_uri=${r"${"}decodeURIComponent(
   //         callback,
   //       )}`;
   //       break;
   //     case 'weibo':
-  //       url = `https://api.weibo.com/oauth2/authorize?client_id=1239507802&response_type=code&redirect_uri=${decodeURIComponent(
+  //       url = `https://api.weibo.com/oauth2/authorize?client_id=1239507802&response_type=code&redirect_uri=${r"${"}decodeURIComponent(
   //         callback,
   //       )}`;
   //       break;
