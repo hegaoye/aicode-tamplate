@@ -47,7 +47,7 @@ export class SettingUrl {
             listFull: '/admin/${class.classModel}/${class.dashedCaseName}/list'//${class.className}列表
           }<#if modelData_has_next || class_has_next>,</#if>
           </#list>
-        }
+        },
       </#list>
 
     },
