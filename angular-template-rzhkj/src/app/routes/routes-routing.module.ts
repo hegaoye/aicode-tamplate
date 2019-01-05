@@ -33,12 +33,9 @@ const routes: Routes = [
         data: { title: '首页', titleI18n: SettingUrl.ROUTERLINK.admin.dashboard },
       },
       // 业务子模块
-
       <#list modelDatas as modelData>
-        {path: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${modelData.model}Main, loadChildren: './${modelData.model}/${modelData.model}.module#${modelData.model?cap_first}Module'}, //供应商
+        {path: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${modelData.model}Main, loadChildren: './${modelData.model}/${modelData.model}.module#${modelData.model?cap_first}Module'},
       </#list>
-
-      // { path: SettingUrl.ROUTERLINK.admin.basic.basic, loadChildren: './basic/basic.module#BasicModule' }
     ],
   },
   // 全屏布局

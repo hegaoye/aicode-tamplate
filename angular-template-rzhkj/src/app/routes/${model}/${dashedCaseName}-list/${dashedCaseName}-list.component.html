@@ -39,7 +39,7 @@
             (nzPageIndexChange)="query${className}List($event)">
     <thead>
     <tr>
-      <th class="text-center" nzWidth=""><span></span></th><!--序号-->
+      <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
       <#list tableFields as field>
       <th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
       </#list>
