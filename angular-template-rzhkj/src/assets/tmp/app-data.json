@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "仁中和科技",
+    "description": "企业级信息解决服务商"
+  },
+  "user": {
+    "name": "仁中和",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "rzhkj@163.com"
+  },
+  "menu": [
+    {
+      "text": "主导航",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "基础设置",
+          "icon": "anticon anticon-dashboard",
+          "children": [
+            {
+              "text": "信息设置",
+              "link": "/dashboard/analysis"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

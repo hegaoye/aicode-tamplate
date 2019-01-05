@@ -1,46 +1,79 @@
-import {ModuleWithProviders, NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RouterModule} from "@angular/router";
-import {TranslateModule} from "@ngx-translate/core";
-import {NgZorroAntdModule} from "ng-zorro-antd";
-import {ImgSizePipe} from "../public/pipes/img-size.pipe";
-import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
-import {ImgPreviewPipe} from "../public/pipes/img-preview.pipe";
-import {BackBtnComponent} from "./compontents/back-btn.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+// delon
+import { AlainThemeModule } from '@delon/theme';
+import { DelonABCModule } from '@delon/abc';
+import { DelonACLModule } from '@delon/acl';
+import { DelonFormModule } from '@delon/form';
+
+// #region third libs
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { CountdownModule } from 'ngx-countdown';
+import { MainService } from '@shared/service/main.service';
+import { StateNamePipe } from '@shared/pipes/state-name.pipe';
+import { ImgErrDirective } from '@shared/directives/img-err.directive';
+import { DashboardComponent } from '../routes/dashboard/dashboard.component';
+
+const THIRDMODULES = [
+  NgZorroAntdModule,
+  CountdownModule,
+];
+// #endregion
+
+// #region your componets & directives
+const COMPONENTS = [];
+const DIRECTIVES = [
+  ImgErrDirective,
+];
+const PIPES = [
+  StateNamePipe,
+];
+const SERVICES = [
+  MainService,
+];
+
+// #endregion
 
 @NgModule({
   imports: [
-    CommonModule,                 //核心模块，必须
-    FormsModule,                  //表单支持
-    RouterModule,           //路由依赖模块
-    TranslateModule,           //国际化
-    ReactiveFormsModule,         //表单支持
-    NgZorroAntdModule,            //zorro
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    AlainThemeModule.forChild(),
+    DelonABCModule,
+    DelonACLModule,
+    DelonFormModule,
+    // third libs
+    ...THIRDMODULES,
   ],
   declarations: [
-    BackBtnComponent,         //返回按钮
-    ImgSizePipe,              //图片尺寸
-    ImgPreviewPipe,           //图片预览
-    EnumNamePipe,
+    // your components
+    ...COMPONENTS,
+    ...DIRECTIVES,
+    ...PIPES,
   ],
   exports: [
-    CommonModule,           //核心模块，必须
-    RouterModule,           //路由依赖模块
-    FormsModule,            //表单支持
-    ReactiveFormsModule,    //表单支持
-    TranslateModule,            //国际化
-    NgZorroAntdModule,            //zorro
-    ImgSizePipe,              //图片尺寸
-    ImgPreviewPipe,           //图片预览
-    EnumNamePipe,
-    BackBtnComponent,         //返回按钮
-  ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    AlainThemeModule,
+    DelonABCModule,
+    DelonACLModule,
+    DelonFormModule,
+    // third libs
+    ...THIRDMODULES,
+    // your components
+    ...COMPONENTS,
+    ...DIRECTIVES,
+    ...PIPES,
+  ],
+  providers: [
+    ...SERVICES,
+  ],
 })
 export class SharedModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule
-    };
-  }
 }

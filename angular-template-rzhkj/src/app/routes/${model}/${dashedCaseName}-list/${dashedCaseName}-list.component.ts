@@ -1,26 +1,44 @@
-import {Component, OnInit} from "@angular/core";
-import {Page} from "../../../public/util/page";
-import {${model?cap_first}Service} from "../${model}.service";
-import {States} from "../../../public/setting/enums";
-import {SettingUrl} from "../../../public/setting/setting_url";
+import { Component, OnInit } from '@angular/core';
+import { Page } from '@shared/util/page';
+import { NzNotificationService } from 'ng-zorro-antd';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { PatternService } from '@shared/service/pattern.service';
+import { ${model?cap_first}Service } from '../${model}.service';
 
 @Component({
   selector: 'app-${dashedCaseName}-list',
   templateUrl: './${dashedCaseName}-list.component.html',
-  styleUrls: ['./${dashedCaseName}-list.component.scss']
+  styles: [],
 })
-export class ${className}ListComponent implements OnInit {
-  public searchParams: any = {};//搜索参数
-  public ${classNameLower}List: Page = new Page(); //供应商
-  public _loading: boolean = false;
-  public routerLinks = SettingUrl.ROUTERLINK;//路由
-  public states = States;       // 状态
+export class ${className}SettingsListComponent implements OnInit {
+  searchData: string; //搜索参数
+  ${classNameLower}List: Page = new Page(); //数据源
+  _loading: boolean = false;
+  isAdd: boolean = false;
+  addForm: FormGroup;
+  isEdit: boolean = false;
+  editForm: FormGroup;
 
-  constructor(private ${model}Service: ${model?cap_first}Service) {
+  constructor(private ${model}Service: ${model?cap_first}Service, private notification: NzNotificationService, private fb: FormBuilder) {
+    let me = this;
+    me.addForm = me.fb.group({
+      phone: [null, [Validators.required, Validators.pattern(PatternService.phone)]],
+    });
+    me.editForm = me.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+    });
   }
 
   ngOnInit() {
-    this.query${className}List()
+    let me = this;
+    me.query${className}List(); //查询数据集合
+  }
+
+  /**
+   * 搜索
+   */
+  search() {
+    console.log(this.searchData);
   }
 
   /**
@@ -28,37 +46,70 @@ export class ${className}ListComponent implements OnInit {
    * @param curPage 当前页
    */
   query${className}List(curPage?: number) {
-    this._loading = true;
-    if (curPage) this.${classNameLower}List.curPage = curPage;//当有页码时，查询该页数据
-    this.${classNameLower}List.params = {
-      curPage: this.${classNameLower}List.curPage, //目标页码
-      pageSize: this.${classNameLower}List.pageSize, //每页条数
+    let me = this;
+    me._loading = true;
+    if (curPage) me.${classNameLower}List.curPage = curPage;//当有页码时，查询该页数据
+    me.${classNameLower}List.params = {
+      curPage: me.${classNameLower}List.curPage, //目标页码
+      pageSize: me.${classNameLower}List.pageSize, //每页条数
     };
-    this.${model}Service.get${className}List(this.${classNameLower}List.params).then((res: Page) => {
-      this._loading = false;
-      this.${classNameLower}List = res;
-    }).catch(err => {
-      this._loading = false;
-    })
+    me.${model}Service.get${className}List(this.${classNameLower}List.params).subscribe((res: any) => {
+      me._loading = false;
+      res.success ? me.${classNameLower}List = res.data : me.notification.error('操作有误', res.info);
+    });
   }
 
   /**
-   * 修改禁用状态
-   * @param code
-   * @param event:boolean
+   * 开启添加信息弹框
    */
-  modify${className}State(code, event) {
-    let state = event ? States.enable : States.disable;//转换为对应的枚举
-    this.${model}Service.modify${className}State(code, state).catch((res) => {
-      this.query${className}List();//由于switch的特殊性，因此在失败的时候刷新页面
-    })
+  showAdd() {
+    this.isAdd = true;
   }
 
   /**
-   * 重置搜索
+   * 关闭添加信息弹框
    */
-  resetSearch() {
-    this.searchParams = {};
-    this.query${className}List(1)
+  closeAdd() {
+    this.isAdd = false;
   }
+
+  /**
+   * 添加信息
+   */
+  add() {
+    let me = this;
+    me.addForm.valid ? console.log('ok') : console.log('no');
+    me.addForm.reset();
+  }
+
+  /**
+   * 开启编辑信息弹框
+   */
+  showEdit() {
+    this.isEdit = true;
+  }
+
+  /**
+   * 关闭编辑信息弹框
+   */
+  closeEdit() {
+    this.isEdit = false;
+  }
+
+  /**
+   * 编辑信息
+   */
+  edit() {
+    let me = this;
+    me.editForm.valid ? console.log('ok') : console.log('no');
+    me.editForm.reset();
+  }
+
+  /**
+   * 删除数据
+   */
+  del() {
+    console.log('del...');
+  }
+
 }

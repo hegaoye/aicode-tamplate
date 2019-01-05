@@ -1,0 +1,61 @@
+<div class="alain-default__content-title">
+  <h1>
+    仁中和
+    <small>为梦想,永不止步!</small>
+  </h1>
+</div>
+
+
+<div nz-row>
+  <p class="mt ml-30 font30 color-gray text-center">此处首页,需要自定义布局!</p>
+  <hr/>
+  <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+    <div class="mt-30 font24 color-gray">
+      使用此框架需完善以下公共处:
+    </div>
+    <div class="mt-30 ml-30">
+      <nz-steps [nzCurrent]="0" nzDirection="vertical">
+        <nz-step nzTitle="顶部：更换logo" nzDescription="目录：src/assets/img"></nz-step>
+        <nz-step nzTitle="顶部：实现或屏蔽锁屏功能" nzDescription="目录：src/app/routes/passport/lock"></nz-step>
+        <nz-step nzTitle="顶部：实现或屏蔽搜索功能"
+                 nzDescription="目录：src/app/layout/default/header/components/search.component.ts"></nz-step>
+        <nz-step nzTitle="顶部：实现或屏蔽系统通知功能"
+                 nzDescription="目录：src/app/layout/default/header/components/notify.component.ts"></nz-step>
+        <nz-step nzTitle="顶部：实现或屏蔽快捷菜单功能"
+                 nzDescription="目录：src/app/layout/default/header/components/icon.component.ts"></nz-step>
+        <nz-step nzTitle="顶部：实现登录用户功能"
+                 nzDescription="目录：src/app/layout/default/header/components/user.component.ts"></nz-step>
+        <nz-step nzTitle="左侧菜单栏：实现登录用户功能" nzDescription="目录：src/app/layout/default/sidebar"></nz-step>
+      </nz-steps>
+    </div>
+  </div>
+
+  <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+    <div class="mt-30 ml-30 font24 color-gray">
+      本框架目录指南
+    </div>
+    <div class="mt-30 ml-30">
+      <nz-timeline>
+        <nz-timeline-item>_mock：数据源及结构信息（真实项目时不需要）</nz-timeline-item>
+        <nz-timeline-item>scripts：js脚本业务信息</nz-timeline-item>
+        <nz-timeline-item>src/app/core：核心模块</nz-timeline-item>
+        <nz-timeline-item>src/app/core/i18n：国际化文件</nz-timeline-item>
+        <nz-timeline-item>src/app/core/net/default.interceptor.ts：默认http拦截器</nz-timeline-item>
+        <nz-timeline-item>src/app/core/services/startup.service.ts：初始化项目配置</nz-timeline-item>
+        <nz-timeline-item>src/app/layout：通用布局（头、左菜单）</nz-timeline-item>
+        <nz-timeline-item>src/app/routes：路由中心（业务功能此处实现）</nz-timeline-item>
+        <nz-timeline-item>src/app/shared：共享模块</nz-timeline-item>
+        <nz-timeline-item>src/assets：本地静态资源</nz-timeline-item>
+        <nz-timeline-item>src/environments：环境变量配置</nz-timeline-item>
+        <nz-timeline-item>src/styles：样式目录</nz-timeline-item>
+      </nz-timeline>
+    </div>
+  </div>
+
+  <p class="text-center">本框架由仁中和的小伙伴提供强大的技术支持 ^_~</p>
+  <p class="text-center">-- 响应式哦 --</p>
+
+</div>
+
+
+

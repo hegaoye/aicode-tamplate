@@ -1,55 +1,96 @@
-# pps
-${projectName} Production System
-<H4>代码规范说明</H4>
+<p align="center">
+  <a href="https://ng-alain.com">
+    <img width="100" src="https://ng-alain.com/assets/img/logo-color.png">
+  </a>
+</p>
 
-1.严格遵守typescript代码开发规范，驼峰命名法 例如：   xxxXXX  xxx_xxxx  XXXDDDD
+<h1 align="center">
+Ng Alain
+</h1>
 
-2.接口/类/枚举命名采用大驼峰命名：Xxxx
+<div align="center">
 
-3.方法命名：操作类型+目标名+数据类型，并使用小驼峰式命名  例如：getGoodsList, modifyGoodsState
+  Out-of-box UI solution for enterprise applications, Let developers focus on business.
 
-4.注释说明：</br>
+  [![Build Status](https://travis-ci.org/ng-alain/ng-alain.svg?branch=master)](https://travis-ci.org/ng-alain/ng-alain)
+  [![Dependency Status](https://david-dm.org/ng-alain/ng-alain/status.svg)](https://david-dm.org/ng-alain/ng-alain)
+  [![GitHub Release Date](https://img.shields.io/github/release-date/ng-alain/ng-alain.svg?style=flat-square)](https://github.com/ng-alain/ng-alain/releases)
+  [![NPM version](https://img.shields.io/npm/v/ng-alain.svg)](https://www.npmjs.com/package/ng-alain)
+  [![NPM version](https://img.shields.io/npm/v/ng-alain/next.svg)](https://www.npmjs.com/package/ng-alain)
+  [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
+  [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/ng-alain/ng-alain/blob/master/LICENSE)
+  [![Gitter](https://img.shields.io/gitter/room/ng-alain/ng-alain.svg?style=flat-square)](https://gitter.im/ng-alain/ng-alain)
+  [![extension-for-VSCode](https://img.shields.io/badge/extension%20for-VSCode-blue.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode)
+  [![Backers on Open Collective](https://opencollective.com/ng-alain/backers/badge.svg)](#backers) 
+  [![Sponsors on Open Collective](https://opencollective.com/ng-alain/sponsors/badge.svg)](#sponsors) 
 
-方法注释范例 </br>
+</div>
 
-  /**
-   * 修改材料状态(网络请求方法注释)
-   * @param code 材料编码
-   * @param state 材料状态 ('Enable' | 'Disable')
-   * @returns {Promise<T>}
-   */
-  modifyMaterialState(code:string, state:string) {
-       return new Promise(function (resolve, reject) {
-         ......//具体请求方法
-       }
-  }
+English | [简体中文](README-zh_CN.md)
 
-  /**
-   * 添加材料品牌（方法调用注释）
-   * 1.检测数据完整性和正确定，进行提示
-   * 2.验证通过提交数据
-   * 3.成功之后进行处理
-   * 4.错误处理
-   */
-  addMaterialBrand() {
-    //1.进行脏检查，提示未填的必填字段
-    for (const key in this.validateForm.controls) {
-      this.validateForm.controls[key].markAsDirty();
-      this.validateForm.controls[key].updateValueAndValidity();
-    }
-    if (this.validateForm.invalid) return;
-    // 2.表单验证通过之后提交
-    this.materialService.addMaterialBrand(this.validateForm.value).then(data => {
-      //3.添加成功要刷新第一页
-      this.queryMaterailBrandList(1);
-    }).catch(err => {
-      //4.错误处理
-    )
-  }
+## Quick start
 
-	 注意注释中的1，2，3，4，5的代码实现步骤描述非常重要,并且代码编写过程中要把注释引入到方法体中按照步骤进行逐步实现,
-	 同时注意@param的变量注释
+```bash
+# Make sure you are using the latest version of Angular cli
+ng new demo --style less
+cd demo
+ng add ng-alain
+ng serve
+# or hmr mode
+npm run hmr
+```
 
-5.凡是状态，变量影响到过程的，不能写死，需要统一声明，并注释清晰，进行分类管理。
+> Please refer to [Cli](https://ng-alain.com/cli) for more details.
+>
+> [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) & [ng-alain-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-alain-vscode) plugins.
 
-6.公共样式分类写到公共文件中，保持项目整体风格一致
+## Links
+
++ [Document](https://ng-alain.com)
++ [DEMO](https://ng-alain.github.io/ng-alain/)
+
+## Features
+
++ `ng-zorro-antd` based
++ Responsive Layout
++ I18n
++ [@delon](https://github.com/ng-alain/delon)
++ Lazy load Assets
++ UI Router States
++ Customize Theme
++ Less preprocessor
++ Well organized & commented code
++ Simple upgrade
++ Support Docker deploy
+
+## Architecture
+
+![Architecture](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/architecture.png)
+
+> [delon](https://github.com/ng-alain/delon) is a production-ready solution for admin business components packages, Built on the design principles developed by Ant Design.
+
+## App Shots
+
+![desktop](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/desktop.png)
+![ipad](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/ipad.png)
+![iphone](https://raw.githubusercontent.com/ng-alain/delon/master/_screenshot/iphone.png)
+
+## Donation
+
+ng-alain is an MIT-licensed open source project. In order to achieve better and sustainable development of the project, we expect to gain more backers. You can support us in any of the following ways:
+
+- [opencollective](https://opencollective.com/ng-alain)
+- [paypal](https://www.paypal.me/cipchk)
+- [支付宝或微信](https://ng-alain.com/assets/donate.png)
+
+Or purchasing our [business theme](https://e.ng-alain.com/).
+
+## Backers
+
+Thank you to all our backers! 🙏
+
+<a href="https://opencollective.com/ng-alain#backers" target="_blank"><img src="https://opencollective.com/ng-alain/backers.svg?width=890"></a>
+
+### License
+
+The MIT License (see the [LICENSE](https://github.com/ng-alain/ng-alain/blob/master/LICENSE) file for the full text)

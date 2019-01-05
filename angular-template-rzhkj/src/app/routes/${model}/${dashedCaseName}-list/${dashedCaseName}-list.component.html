@@ -1,34 +1,33 @@
-<div class="page-title clearfix">
-  <div class="title">${notes}管理</div>
-  <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="{{'Btn0003'| translate}}">
-    <i nz-icon type="plus" theme="outline"></i>
-    {{'Btn0003'| translate}}
+<!--页面标头 start-->
+<div class="alain-default__content-title">
+  <h1 class="font16">
+    ${notes}管理
+    <small class="font12">${notes}管理</small>
+  </h1>
+  <button nz-button nzType="primary" (click)="showAdd()">
+    <i nz-icon type="plus" theme="outline"></i>添加
   </button>
 </div>
+<!--页面标头 end-->
 
-<div class="panel panel-body">
-  <!--搜索 start-->
-  <form nz-form (submit)="query${className}List(1)">
-    <div class="search-group">
-      <span class="search-title">${notes}名：</span>
-      <div class="search-main">
-        <input nz-input name="name"
-               [(ngModel)]="searchParams.name"
-               placeholder="{{'Supplier0001'| translate}}">
-      </div>
-    </div>
-    <div class="inline-block">
-      <button nz-button class="ml-20 mr" [nzType]="'primary'" title="{{'Btn0001'| translate}}" type="submit">
-        <i nz-icon type="search" theme="outline"></i><span>{{'Btn0001'| translate}}</span>
-      </button>
-      <button nz-button class="mr" title="{{'Btn0002'| translate}}" type="reset" (click)="resetSearch()">
-        <i nz-icon type="sync" theme="outline"></i><span>{{'Btn0002'| translate}}</span>
-      </button>
-    </div>
-  </form>
-  <!--搜索 end-->
-</div>
-<div class="panel">
+<!--业务操作 start-->
+<nz-card>
+  <nz-input-group [nzSuffix]="suffixTemplate" [nzPrefix]="prefixTemplate">
+    <input type="text" nz-input placeholder="搜索[search]" [(ngModel)]="searchData" class="input-w200">
+  </nz-input-group>
+  <ng-template #prefixTemplate><i nz-icon type="search"></i></ng-template>
+  <ng-template #suffixTemplate>
+    <i nz-icon type="close-circle" (click)="searchData=null" *ngIf="searchData"></i>
+  </ng-template>
+  <button nz-button nzType="primary" nzGhost class="ml" (click)="search()">
+    <i nz-icon type="search" theme="outline"></i>搜索
+  </button>
+</nz-card>
+<!--业务操作 end-->
+
+<!--数据列表 start-->
+<div class="bg-white pl-5 pr-5">
+  <ng-template #totalRow>共 {{${classNameLower}List.totalRow}} 条</ng-template>
   <nz-table #nzTable
             [nzData]="${classNameLower}List.voList"
             [nzLoading]="_loading"
@@ -39,17 +38,15 @@
             [nzPageIndex]="${classNameLower}List.curPage"
             (nzPageIndexChange)="query${className}List($event)">
     <thead>
-    <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
     <tr>
-      <th class="text-center" nzWidth=""><span>{{'Th0001' | translate}}</span></th><!--序号-->
+      <th class="text-center" nzWidth=""><span></span></th><!--序号-->
       <#list tableFields as field>
       <th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
       </#list>
-      <th class="text-center" nzWidth=""><span>{{'Th0003' | translate}}</span></th><!--状态-->
-      <th class="text-center" nzWidth=""><span>{{'Th0006' | translate}}</span></th><!--操作-->
+      <th class="text-center" nzWidth=""><span>操作</span></th><!--操作-->
     </tr>
     </thead>
-    <tbody>
+    <tbody class="p">
     <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
       <tr>
         <td class="text-center">{{i+1}}</td>
@@ -57,24 +54,48 @@
         <td class="text-center">{{data.${field.field}}}</td>
         </#list>
         <td class="text-center">
-          <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
-                     (ngModelChange)="modify${className}State(data.code, $event)"
-                     [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
-          <ng-template #checkedTemplate><i nz-icon type="check" theme="outline"></i></ng-template>
-          <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
-        </td>
-        <td class="text-center">
-          <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.id]"
-                  title="{{'Btn0004'| translate}}">
-            <i nz-icon type="edit" theme="outline"></i>
-          </button>
-          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.id]"
-                  title="{{'Btn0005'| translate}}">
-            <i nz-icon type="eye" theme="outline"></i>
-          </button>
+          <span class="cursor" title="修改" (click)="showEdit()">
+            <i nz-icon type="edit" class="color-main font16" theme="outline"></i>
+          </span>
+          <span class="ml cursor" title="删除" nz-popconfirm nzTitle="确定要删除吗？" (nzOnConfirm)="del()">
+            <i nz-icon type="close" class="color-red font16" theme="outline"></i>
+          </span>
         </td>
       </tr>
     </ng-template>
     </tbody>
   </nz-table>
 </div>
+<!--数据列表 start-->
+
+<!--添加数据 start-->
+<nz-modal [(nzVisible)]="isAdd" nzTitle="新增" (nzOnCancel)="closeAdd()" (nzOnOk)="add()">
+  <form nz-form [formGroup]="addForm" class="login-form">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" nzRequired nzFor="email">名字很长长长</nz-form-label>
+      <nz-form-control [nzSm]="18">
+        <input type="text" nz-input formControlName="phone" placeholder="程序哥哥累了，你自己实现吧">
+        <nz-form-explain *ngIf="addForm.get('phone').dirty && addForm.get('phone').errors">
+          填个手机号我就消失了
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
+<!--添加数据 start-->
+
+<!--修改数据 start-->
+<nz-modal [(nzVisible)]="isEdit" nzTitle="编辑" (nzOnCancel)="closeEdit()" (nzOnOk)="edit()">
+  <form nz-form [formGroup]="editForm" class="login-form">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" nzRequired nzFor="email">编辑</nz-form-label>
+      <nz-form-control [nzSm]="18">
+        <input type="text" nz-input formControlName="email" placeholder="程序哥哥累了，你自己实现吧">
+        <nz-form-explain *ngIf="editForm.get('email').dirty && editForm.get('email').errors">
+          填个正确的email试试
+        </nz-form-explain>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-modal>
+<!--修改数据 start-->

@@ -1,21 +1,40 @@
-import {Component} from '@angular/core';
-import {Router} from "@angular/router";
-import {Setting} from "./public/setting/setting";
-import {MENUS} from "./public/setting/menus";
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { TitleService } from '@delon/theme';
+import { VERSION as VERSION_ALAIN } from '@delon/theme';
+import { VERSION as VERSION_ZORRO, NzModalService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `<router-outlet></router-outlet>`,
 })
-export class AppComponent {
-
-  constructor(public router: Router) {
-    //判断是否已经登录，已经登录，引导进入首页
-    // let menusInfo: any = localStorage.getItem(Setting.cookie.menusInfo); //localStorage中取出menu菜单
-    // if (menusInfo) Setting.MENUS = JSON.parse(menusInfo); //menu菜单
-
-    Setting.MENUS = MENUS;//开发菜单
+export class AppComponent implements OnInit {
+  constructor(
+    el: ElementRef,
+    renderer: Renderer2,
+    private router: Router,
+    private titleSrv: TitleService,
+    private modalSrv: NzModalService,
+  ) {
+    renderer.setAttribute(
+      el.nativeElement,
+      'ng-alain-version',
+      VERSION_ALAIN.full,
+    );
+    renderer.setAttribute(
+      el.nativeElement,
+      'ng-zorro-version',
+      VERSION_ZORRO.full,
+    );
   }
 
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(evt => evt instanceof NavigationEnd))
+      .subscribe(() => {
+        this.titleSrv.setTitle();
+        this.modalSrv.closeAll();
+      });
+  }
 }
