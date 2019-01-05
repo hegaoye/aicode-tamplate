@@ -69,29 +69,36 @@ export class Setting {
   public static enumData = {};
 
   //菜单列表
-  public static MENUDATAS: Menu[] = [
-    {
-      text: '系统首页',
-      link: SettingUrl.ROUTERLINK.admin.dashboardFull,
-      icon: { type: 'icon', value: 'appstore' },
-    },
-    <#list modelDatas as modelData>
+  public static MENUDATAS: Menu[] =
+    [
       {
-        text: '${modelData.model}',
-        icon: 'anticon anticon-dashboard',
-        link: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${modelData.model}Main,
-        children: [
-          <#list modelData.classes as class>
-            <#if modelData.classes?size gt 1>
-              {
-                text: '${class.notes}',
-                link: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${class.className?uncap_first}.listFull,
-              }<#if class_has_next>,</#if>
-            </#if>
+        text: '导航栏',
+        group: true,
+        hideInBreadcrumb: true,
+        children:  [
+          {
+            text: '系统首页',
+            link: SettingUrl.ROUTERLINK.admin.dashboardFull,
+            icon: { type: 'icon', value: 'appstore' },
+          },
+          <#list modelDatas as modelData>
+          {
+            text: '${modelData.model}',
+            icon: 'anticon anticon-file',
+            link: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${modelData.model}Main,
+            children: [
+            <#list modelData.classes as class>
+          <#if modelData.classes?size gt 1>
+          {
+            text: '${class.notes}',
+            link: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${class.className?uncap_first}.listFull,
+          }<#if class_has_next>,</#if>
+          </#if>
           </#list>
-        ],
-      },
-    </#list>
-
-  ];
+            ],
+          },
+          </#list>
+          ]
+      }
+    ];
 }
