@@ -35,7 +35,7 @@ const routes: Routes = [
       // 业务子模块
 
       <#list modelDatas as modelData>
-        {path: SettingUrl.ROUTERLINK.admin.${modelData.model}.${modelData.model}, loadChildren: './${modelData.model}/${modelData.model}.module#${modelData.model?cap_first}Module'}, //供应商
+        {path: SettingUrl.ROUTERLINK.admin.${modelData.model}Model.${modelData.model}Main, loadChildren: './${modelData.model}/${modelData.model}.module#${modelData.model?cap_first}Module'}, //供应商
       </#list>
 
       // { path: SettingUrl.ROUTERLINK.admin.basic.basic, loadChildren: './basic/basic.module#BasicModule' }

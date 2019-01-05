@@ -10,7 +10,7 @@ import { ${model?cap_first}Service } from '../${model}.service';
   templateUrl: './${dashedCaseName}-list.component.html',
   styles: [],
 })
-export class ${className}SettingsListComponent implements OnInit {
+export class ${className}ListComponent implements OnInit {
   searchData: string; //搜索参数
   ${classNameLower}List: Page = new Page(); //数据源
   _loading: boolean = false;

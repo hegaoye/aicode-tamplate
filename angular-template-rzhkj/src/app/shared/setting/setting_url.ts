@@ -38,8 +38,8 @@ export class SettingUrl {
       // },
 
       <#list modelDatas as modelData>
-        ${modelData.model}:{
-          ${modelData.model}:'${modelData.model}',
+        ${modelData.model}Model:{
+          ${modelData.model}Main:'${modelData.model}',
           <#list modelData.classes as class>
             ${class.className?uncap_first}: {
             ${class.className?uncap_first}: '${class.dashedCaseName}',
