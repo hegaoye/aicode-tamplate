@@ -12,14 +12,14 @@ for (let i = 0; i < total; i += 1) {
       'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
       'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
     ][i % 2],
-    no: `TradeCode ${i}`,
-    title: `一个任务名称 ${i}`,
+    no: `TradeCode ${r"${"}i}`,
+    title: `一个任务名称 ${r"${"}i}`,
     owner: '曲丽丽',
     description: '这是一段描述',
     callNo: Math.floor(Math.random() * 1000),
     status: Math.floor(Math.random() * 10) % 4,
-    updatedAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
-    createdAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
+    updatedAt: new Date(`2017-07-${r"${"}Math.floor(i / 2) + 1}`),
+    createdAt: new Date(`2017-07-${r"${"}Math.floor(i / 2) + 1}`),
     progress: Math.ceil(Math.random() * 100),
   });
 }
@@ -112,7 +112,7 @@ export const USERS = {
       user: {
         token: '123456789',
         name: data.userName,
-        email: `${data.userName}@qq.com`,
+        email: `${r"${"}data.userName}@qq.com`,
         id: 10000,
         time: +new Date(),
       },

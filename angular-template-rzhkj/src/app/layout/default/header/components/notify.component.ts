@@ -187,10 +187,10 @@ export class HeaderNotifyComponent {
   }
 
   clear(type: string) {
-    this.msg.success(`清空了 ${type}`);
+    this.msg.success(`清空了 ${r"${"}type}`);
   }
 
   select(res: any) {
-    this.msg.success(`点击了 ${res.title} 的 ${res.item.title}`);
+    this.msg.success(`点击了 ${r"${"}res.title} 的 ${r"${"}res.item.title}`);
   }
 }

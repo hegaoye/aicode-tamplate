@@ -272,7 +272,7 @@ export class SettingDrawerComponent {
     };
     validKeys
       .filter(key => key !== 'primary-color')
-      .forEach(key => (vars[`@${key}`] = data[key].value));
+      .forEach(key => (vars[`@${r"${"}key}`] = data[key].value));
     this.setLayout(ALAINDEFAULTVAR, vars);
     return vars;
   }
@@ -301,7 +301,7 @@ export class SettingDrawerComponent {
     this.color = color;
     Object.keys(DEFAULT_VARS)
       .filter(key => DEFAULT_VARS[key].default === '@primary-color')
-      .forEach(key => delete this.cachedData[`@${key}`]);
+      .forEach(key => delete this.cachedData[`@${r"${"}key}`]);
     this.resetData(this.cachedData, false);
   }
 
@@ -313,7 +313,7 @@ export class SettingDrawerComponent {
     nowData = nowData || {};
     const data = deepCopy(DEFAULT_VARS);
     Object.keys(data).forEach(key => {
-      const value = nowData[`@${key}`] || data[key].default || '';
+      const value = nowData[`@${r"${"}key}`] || data[key].default || '';
       data[key].value = value === `@primary-color` ? this.color : value;
     });
     this.data = data;
@@ -342,7 +342,7 @@ export class SettingDrawerComponent {
   copyVar() {
     const vars = this.genVars();
     const copyContent = Object.keys(vars)
-      .map(key => `${key}: ${vars[key]};`)
+      .map(key => `${r"${"}key}: ${r"${"}vars[key]};`)
       .join('\n');
     copy(copyContent);
     this.msg.success('Copy success');

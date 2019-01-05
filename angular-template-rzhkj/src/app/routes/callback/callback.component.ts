@@ -28,7 +28,7 @@ export class CallbackComponent implements OnInit, OnDestroy {
     this.socialService.callback({
       token: '123456789',
       name: 'cipchk',
-      email: `${this.type}@${this.type}.com`,
+      email: `${r"${"}this.type}@${r"${"}this.type}.com`,
       id: 10000,
       time: +new Date(),
     });

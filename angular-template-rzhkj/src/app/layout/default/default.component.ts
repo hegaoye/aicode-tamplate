@@ -106,7 +106,7 @@ export class LayoutDefaultComponent
       if (evt instanceof NavigationError || evt instanceof NavigationCancel) {
         this.isFetching = false;
         if (evt instanceof NavigationError) {
-          _message.error(`无法加载${evt.url}路由`, { nzDuration: 1000 * 3 });
+          _message.error(`无法加载${r"${"}evt.url}路由`, { nzDuration: 1000 * 3 });
         }
         return;
       }
