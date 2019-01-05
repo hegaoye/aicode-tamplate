@@ -54,13 +54,14 @@ export class SettingUrl {
     passport: {
       passport: 'passport',
       login: 'login',
+      lock: 'lock',
       register: 'register',
       registerResult: 'register-result',
       loginFull: '/passport/login', //登录
+      lockFull: '/passport/lock', //锁屏
     },
     page: {
       callback: 'callback/:type',
-      lock: 'lock',
       p403: '403',
       p404: '404',
       p500: '500',

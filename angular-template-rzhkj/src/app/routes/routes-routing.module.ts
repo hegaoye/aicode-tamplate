@@ -57,11 +57,11 @@ const routes: Routes = [
         component: UserRegisterResultComponent,
         data: { title: '注册结果', titleI18n: 'pro-register-result' },
       },
+      { path: SettingUrl.ROUTERLINK.passport.lock, component: UserLockComponent, data: { title: '锁屏', titleI18n: 'lock' } }
     ],
   },
   // 单页不包裹Layout
   { path: SettingUrl.ROUTERLINK.page.callback, component: CallbackComponent },
-  { path: SettingUrl.ROUTERLINK.page.lock, component: UserLockComponent, data: { title: '锁屏', titleI18n: 'lock' } },
   { path: SettingUrl.ROUTERLINK.page.p403, component: Exception403Component },
   { path: SettingUrl.ROUTERLINK.page.p404, component: Exception404Component },
   { path: SettingUrl.ROUTERLINK.page.p500, component: Exception500Component },

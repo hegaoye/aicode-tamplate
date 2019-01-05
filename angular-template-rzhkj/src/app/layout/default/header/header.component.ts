@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { SettingsService } from '@delon/theme';
+import { SettingUrl } from '@shared/setting/setting_url';
 
 @Component({
   selector: 'layout-header',
@@ -7,6 +8,7 @@ import { SettingsService } from '@delon/theme';
 })
 export class HeaderComponent {
   searchToggleStatus: boolean;
+  lockUrl: string = SettingUrl.ROUTERLINK.passport.lockFull;
 
   constructor(public settings: SettingsService) {}
 
