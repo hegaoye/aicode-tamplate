@@ -22,15 +22,9 @@ export class ${model?cap_first}Service {
    */
   get${modelClass.className}List(params) {
     let me = this;
-    return new Observable((observer: Observer<any>) => {
-      me.http
-        .get(SettingUrl.URL.${modelClass.className?uncap_first}.list, params)
-        .pipe(catchError((err: HttpErrorResponse) => Setting.RETURNINFO))
-        .subscribe((res: any) => {
-          observer.next(res);
-          observer.complete();
-        });
-    });
+    return me.http
+      .get(SettingUrl.URL.${modelClass.className?uncap_first}.list, params)
+      .pipe(catchError((err: HttpErrorResponse) => Setting.RETURNINFO));
   }
 </#list>
 }
