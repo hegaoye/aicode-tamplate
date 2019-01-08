@@ -53,7 +53,7 @@ export class ${className}ListComponent implements OnInit {
       curPage: me.${classNameLower}List.curPage, //目标页码
       pageSize: me.${classNameLower}List.pageSize, //每页条数
     };
-    me.${model}Service.get${className}List(this.${classNameLower}List.params).subscribe((res: any) => {
+    me.${model}Service.get${className}List(me.${classNameLower}List.params).subscribe((res: any) => {
       me._loading = false;
       res.success ? me.${classNameLower}List = res.data : me.notification.error('操作有误', res.info);
     });
