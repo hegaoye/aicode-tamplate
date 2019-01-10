@@ -72,7 +72,7 @@
 <nz-modal [(nzVisible)]="isAdd" nzTitle="新增" (nzOnCancel)="closeAdd()" (nzOnOk)="add()">
   <form nz-form [formGroup]="addForm" class="login-form">
     <nz-form-item>
-      <nz-form-label [nzSm]="6" nzRequired nzFor="email">名字很长长长</nz-form-label>
+      <nz-form-label [nzSm]="6" nzRequired>名字很长长长</nz-form-label>
       <nz-form-control [nzSm]="18">
         <input type="text" nz-input formControlName="phone" placeholder="程序哥哥累了，你自己实现吧">
         <nz-form-explain *ngIf="addForm.get('phone').dirty && addForm.get('phone').errors">
@@ -88,7 +88,7 @@
 <nz-modal [(nzVisible)]="isEdit" nzTitle="编辑" (nzOnCancel)="closeEdit()" (nzOnOk)="edit()">
   <form nz-form [formGroup]="editForm" class="login-form">
     <nz-form-item>
-      <nz-form-label [nzSm]="6" nzRequired nzFor="email">编辑</nz-form-label>
+      <nz-form-label [nzSm]="6" nzRequired>编辑</nz-form-label>
       <nz-form-control [nzSm]="18">
         <input type="text" nz-input formControlName="email" placeholder="程序哥哥累了，你自己实现吧">
         <nz-form-explain *ngIf="editForm.get('email').dirty && editForm.get('email').errors">
