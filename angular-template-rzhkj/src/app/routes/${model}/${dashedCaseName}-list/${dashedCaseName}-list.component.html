@@ -54,10 +54,10 @@
         <td class="text-center">{{data.${field.field}}}</td>
         </#list>
         <td class="text-center">
-          <span class="cursor" title="修改" (click)="showEdit()">
+          <span class="cursor" nz-tooltip nzTitle="修改" (click)="showEdit()">
             <i nz-icon type="edit" class="color-main font16" theme="outline"></i>
           </span>
-          <span class="ml cursor" title="删除" nz-popconfirm nzTitle="确定要删除吗？" (nzOnConfirm)="del()">
+          <span class="ml cursor" nz-tooltip nzTitle="删除" nz-popconfirm nzTitle="确定要删除吗？" (nzOnConfirm)="del()">
             <i nz-icon type="close" class="color-red font16" theme="outline"></i>
           </span>
         </td>

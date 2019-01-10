@@ -78,7 +78,9 @@ export class ${className}ListComponent implements OnInit {
    */
   add() {
     let me = this;
-    me.addForm.valid ? console.log('ok') : console.log('no');
+    if(me.addForm.valid){
+      console.log('ok');
+    }else me.notification.error('操作有误', '您输入的信息不合法，请认真检查');
     me.addForm.reset();
   }
 
@@ -101,7 +103,9 @@ export class ${className}ListComponent implements OnInit {
    */
   edit() {
     let me = this;
-    me.editForm.valid ? console.log('ok') : console.log('no');
+    if(me.editForm.valid){
+      console.log('ok');
+    }else me.notification.error('操作有误', '您输入的信息不合法，请认真检查');
     me.editForm.reset();
   }
 
