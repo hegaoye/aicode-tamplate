@@ -1,0 +1,101 @@
+<nz-layout class="layout">
+  <!--menu 信息 start-->
+  <nz-sider nzCollapsible [nzBreakpoint]="'lg'" [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" [nzWidth]="220">
+    <div class="sider">
+      <div class="logo cursor mb" [routerLink]="home">
+        <img *ngIf="!isCollapsed" src="{{app.logo}}">
+        <img *ngIf="isCollapsed" class="collapsed" src="{{app.logo}}">
+      </div>
+      <ul nz-menu [nzTheme]="'dark'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+        <!--循环显示menu start-->
+        <ng-container *ngFor="let menu of menus;let i = index;">
+          <!--有下级menu start-->
+          <li nz-submenu *ngIf="menu.subMenuList && menu.subMenuList.length>0" [(nzOpen)]="menu.isOpen"
+              (nzOpenChange)="openHandler(i)">
+          <span title>
+            <i nz-icon [type]="menu.menuIcon" theme="outline" class="font18"></i>
+            <span class="nav-text">{{menu.menuName | translate}}</span>
+          </span>
+            <ul>
+              <li nz-menu-item *ngFor="let child of menu.subMenuList" [ngClass]="{'ant-menu-item-selected':child.isSel}"
+                  (click)="goUrl(child.menuUrl)">
+                {{child.menuName | translate}}
+              </li>
+            </ul>
+          </li>
+          <!--有下级menu end-->
+          <!--无下级menu start-->
+          <li nz-menu-item *ngIf="!menu.subMenuList || menu.subMenuList.length<1" [ngClass]="{'ant-menu-item-selected':menu.isSel}" (click)="goUrl(menu.menuUrl)">
+          <span>
+            <i nz-icon [type]="menu.menuIcon" theme="outline" class="font18"></i>
+            <span class="nav-text">{{menu.menuName | translate}}</span>
+          </span>
+          </li>
+          <!--无下级menu end-->
+        </ng-container>
+        <!--循环显示menu end-->
+      </ul>
+    </div>
+  </nz-sider>
+  <!--menu 信息 end-->
+  <nz-layout>
+    <!--顶部信息 start-->
+    <nz-header class="p0 bg-white">
+      <i nz-icon class="ml" [type]="!isCollapsed?'menu-fold':'menu-unfold'" theme="outline" (click)="isCollapsed=!isCollapsed"></i>
+      <ul class="fr mr">
+        <li>
+          <i nz-icon type="home" theme="outline" class="font18" [routerLink]="home" title="{{'Layout0000'| translate}}"></i></li>
+
+        <!--消息通知-->
+        <!--<li>
+          <nz-dropdown [nzTrigger]="'hover'">
+            <nz-badge [nzCount]="msgNum" nz-dropdown>
+              <i class="anticon anticon-bell" title="{{'Layout0001'| translate}}"></i>
+            </nz-badge>
+            <ul nz-menu>
+              <ng-container *ngFor="let news of msg">
+                <li nz-menu-item *ngIf="news.num > 0 && news.isShow" [routerLink]="news.url">
+                  <i class="{{news.icon}} mr-5"></i> {{news.info}}
+                  （<span class="main-color">{{news.num}}</span>）
+                </li>
+              </ng-container>
+            </ul>
+          </nz-dropdown>
+        </li>-->
+
+        <!--用户操作-->
+        <li>
+          <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomRight'" class="inline-block">
+
+            <div class="cursor" nz-dropdown>
+              <nz-avatar [nzSrc]="settings.user.avatar"
+                         [nzText]="settings.user.name"
+                         [ngStyle]="{'background-color':'#00a2ae'}"
+                         class="mr-sm"></nz-avatar>
+              <!--鸡肋 by likun-->
+              <!--<i nz-icon type="down" theme="outline" class="font12"></i>-->
+            </div>
+            <ul nz-menu class="user-infos">
+              <li class="p">{{settings.user.name}}</li>
+              <li nz-menu-item><i nz-icon type="setting" theme="outline" class="color-blue mr-5"></i>{{'Layout0003'| translate}}</li>
+              <li nz-menu-divider></li>
+              <li nz-menu-item (click)="logout()"><i nz-icon type="logout" theme="outline" class="color-red mr-5"></i>{{'Layout0004'| translate}}</li>
+            </ul>
+          </nz-dropdown>
+        </li>
+      </ul>
+    </nz-header>
+    <!--顶部信息 end-->
+    <!--业务中心 start-->
+    <nz-content>
+      <!--路由嵌套-业务处理区域 start-->
+      <router-outlet (activate)="activate($event)"></router-outlet>
+      <!--路由嵌套-业务处理区域 end-->
+    </nz-content>
+    <!--业务中心 end-->
+    <!--底部信息 start-->
+    <nz-footer class="footer">{{app.copyright}}</nz-footer>
+    <!--底部信息 end-->
+  </nz-layout>
+</nz-layout>
+

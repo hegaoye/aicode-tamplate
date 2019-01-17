@@ -1,0 +1,22 @@
+<nz-layout class="layout">
+  <!--顶部 start-->
+  <nz-header class="header">
+    <div class="logo fl">
+      <img src="{{app.logo}}">
+    </div>
+  </nz-header>
+  <!--顶部 end-->
+
+  <!--业务中心 start-->
+  <nz-content>
+    <!--路由嵌套-业务处理区域 start-->
+    <router-outlet></router-outlet>
+    <!--路由嵌套-业务处理区域 end-->
+  </nz-content>
+
+  <!--底部 copyright start-->
+  <nz-footer class="text-center footer">
+    {{app.copyright}}
+  </nz-footer>
+  <!--底部 copyright end-->
+</nz-layout>

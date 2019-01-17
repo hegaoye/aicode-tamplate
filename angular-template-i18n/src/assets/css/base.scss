@@ -1,0 +1,30 @@
+/**
+ * 此文件定义公共的全局样式
+ */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100% !important;
+}
+
+.origin-route {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/*兼容页面中有UMEditor的情况*/
+.origin-route .ant-back-top {
+  z-index: 1000;
+}
+
+
+/*去掉数字输入框的上下小箭头*/
+.origin-route input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.origin-route input[type=number]::-webkit-inner-spin-button,
+.origin-route input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

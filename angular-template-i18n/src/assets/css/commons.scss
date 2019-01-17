@@ -1,0 +1,143 @@
+/*搜索框*/
+.search-group {
+  display: inline-block;
+  padding: 5px;
+}
+
+.search-group .search-title {
+  width: 150px;
+  line-height: 32px;
+  text-align: right;
+  display: inline-block;
+}
+
+.search-group .search-main {
+  width: 220px;
+  display: inline-block;
+}
+
+/*编辑器*/
+.editor textarea {
+  position: relative;
+  display: inline-block;
+  padding: 4px 7px;
+  width: 100%;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  transition: all .3s, height 0s;
+}
+
+.editor textarea:focus {
+  border-color: #49a9ee;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(16, 142, 233, 0.2);
+}
+
+.editor textarea:hover {
+  border-color: #49a9ee;
+}
+
+.ant-table-content .ant-table-thead > tr > th,
+.ant-table-content .ant-table-tbody > tr > td {
+  padding: 15px 10px;
+}
+
+.data-item .ant-card-body {
+  padding: 15px;
+}
+
+.data-item .ant-card-head-title {
+  padding: 12px 0;
+}
+
+/***************************************公共样式定义 start*************************************************************/
+/*页面顶部信息*/
+.page-title {
+  padding: 15px 25px;
+  border-bottom: 1px solid #dedede;
+  background-color: #ffffff;
+  .title {
+    font-size: 22px;
+    color: #009688;
+    display: inline;
+    font-weight: normal;
+  }
+}
+
+.subtitle {
+  border-left: 4px solid #f70;
+  padding-left: 10px;
+}
+
+.panel {
+  margin: 15px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 2px 2px #dedede;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+/*页面提示信息*/
+.page-msg {
+  background-color: #E8F5E9;
+  border: 1px solid #C8E6C9;
+  padding: 10px;
+  position: relative;
+  zoom: 1;
+}
+
+.page-msg ul {
+  margin-bottom: 5px;
+}
+
+/*返回页面*/
+.page-back.ant-btn-circle {
+  position: fixed;
+  top: 85px;
+  right: 35px;
+  width: 40px;
+  height: 40px;
+  z-index: 101;
+}
+
+/*遮罩样式*/
+.main-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.5)
+}
+
+.main-mask.ant-spin-nested-loading {
+  position: fixed;
+}
+
+.pop.ant-modal-footer {
+  margin: 0 -24px -24px;
+}
+
+
+/***************************************公共样式定义 end***************************************************************/
+.ant-table-pagination.ant-pagination {
+  padding: 0 16px;
+}
+
+.ant-pagination-total-text {
+  margin-right: 30px;
+}
+

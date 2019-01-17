@@ -1,0 +1,85 @@
+.layout {
+  min-height: 100%;
+}
+
+/*设置sider*/
+.layout .sider {
+  background: #009688;
+  padding-bottom: 100px;
+  min-height:100%;
+  /*border-bottom-right-radius: 50px;*/
+}
+
+.layout .ant-layout-sider {
+  /*background: none;*/
+}
+
+.layout .ant-menu-dark {
+  background: #009688;
+}
+
+.layout .ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background: #00695C;
+  /*border-right: 3px #1BBC9B solid;*/
+}
+
+/*.layout .ant-menu-dark .ant-menu-inline.ant-menu-sub{
+  background: #2f2f2f;
+}*/
+
+
+.layout .ant-layout-header {
+  background: white;
+  font-size: 16px;
+  border-bottom: 1px solid #1BBC9B;
+}
+
+.layout .ant-layout-header ul li {
+  display: inline;
+  padding: 0 20px;
+  font-size: 20px;
+  border-left: 1px solid darkgray;
+}
+
+.layout .ant-layout-header ul li:hover {
+  color: #1BBC9B;
+  cursor: pointer;
+}
+
+.layout .logo img {
+  width: 100%;
+  padding: 20px 35px;
+}
+
+.layout .logo img.collapsed {
+  padding: 15px 10px 0;
+}
+
+.layout .ant-layout-sider-collapsed .nav-text {
+  display: none;
+}
+
+.layout .ant-layout-sider-collapsed .ant-menu-submenu-title:after {
+  display: none;
+}
+
+.layout .trigger {
+  font-size: 20px;
+  line-height: 64px;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+.layout .ant-layout-footer {
+  text-align: center;
+  padding: 5px 20px 15px 20px;
+}
+
+.user-infos, .languages {
+  width: 120px;
+}
+
+.ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title {
+  line-height: 26px;
+}
