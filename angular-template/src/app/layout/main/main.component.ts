@@ -1,5 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from "@angular/core";
-import {TranslateService} from "@ngx-translate/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {NavigationStart, Router} from "@angular/router";
 import {Setting} from "../../public/setting/setting";
 import {SettingUrl} from "../../public/setting/setting_url";
@@ -13,13 +12,12 @@ import {AjaxService} from "../../public/service/ajax.service";
 export class MainComponent implements OnInit, OnDestroy {
   public isCollapsed = false; //menu折叠
   public app = Setting.APP; //平台信息
-  public menus: Array<any> = new Array(); //菜单信息
+  public menus: Array<any> = []; //菜单信息
   public home: string = SettingUrl.ROUTERLINK.basic.home; //首页路由
   public curComponent: any;
   public listenedRouter: any;//路由监听
 
   constructor(public router: Router,
-              public translate: TranslateService,
               public settings: Setting,
               private ajaxService: AjaxService) {
   }

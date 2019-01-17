@@ -1,8 +1,6 @@
 import {NgModule} from "@angular/core";
 
 import {AppComponent} from "./app.component";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./shared/shared.module";
 import {RoutesModule} from "./routes/routes.module";

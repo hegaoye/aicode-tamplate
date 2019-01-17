@@ -4,17 +4,17 @@
   <form nz-form [formGroup]="validateForm" class="login-form" (submit)="login($event)">
     <!--表单头部start-->
     <div class="headings">
-      <h1 class="color-theme">{{'Login0000' | translate}}</h1>
+      <h1 class="color-theme">登录</h1>
     </div>
     <!--表单头部end-->
     <!--表单用户名input框start-->
     <nz-form-item>
       <nz-form-control [nzValidateStatus]="validateForm.controls['loginCode']" nzHasFeedback>
         <nz-input-group nzPrefixIcon="anticon anticon-user" [nzSize]="'large'">
-          <input nz-input formControlName="loginCode" type="text" placeholder="{{'Login0001' | translate}}">
+          <input nz-input formControlName="loginCode" type="text" placeholder="账号">
         </nz-input-group>
         <nz-form-explain *ngIf="getFormControl('loginCode').dirty&&getFormControl('loginCode').hasError('required')">
-          {{'Login0001' | translate}}
+          请输入账号
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
@@ -23,9 +23,9 @@
     <nz-form-item>
       <nz-form-control [nzValidateStatus]="validateForm.controls['pwd']" nzHasFeedback>
         <nz-input-group nzPrefixIcon="anticon anticon-lock" [nzSize]="'large'">
-          <input nz-input formControlName="pwd" type="password" placeholder="{{'Login0002' | translate}}">
+          <input nz-input formControlName="pwd" type="password" placeholder="密码">
         </nz-input-group>
-        <nz-form-explain *ngIf="getFormControl('pwd').dirty&&getFormControl('pwd').hasError('required')">{{'Login0002' | translate}}
+        <nz-form-explain *ngIf="getFormControl('pwd').dirty&&getFormControl('pwd').hasError('required')">请输入密码
         </nz-form-explain>
       </nz-form-control>
     </nz-form-item>
@@ -34,7 +34,7 @@
     <!--表单底部start-->
     <nz-form-item class="pt">
       <nz-form-control>
-        <button nz-button [nzSize]="'large'" class="login-form-button w100" [nzType]="'primary'">{{'Login0003' | translate}}</button>
+        <button nz-button [nzSize]="'large'" class="login-form-button w100" [nzType]="'primary'">登录</button>
       </nz-form-control>
     </nz-form-item>
     <!--表单底部end-->

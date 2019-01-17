@@ -3,17 +3,12 @@ import {AjaxService} from "./ajax.service";
 import {SettingUrl} from "../setting/setting_url";
 import {isNullOrUndefined} from "util";
 import {AREA_LEVEL_3_JSON} from "../util/area_level_3";
-import {TranslateService} from "@ngx-translate/core";
 import {Injectable} from "@angular/core";
-import {en_US, NzI18nService, zh_CN} from "ng-zorro-antd";
-import {Setting} from "../setting/setting";
 
 @Injectable()
 export class MainService {
 
-  constructor(public translate: TranslateService,
-              private ajaxService: AjaxService,
-              private nzI18nService: NzI18nService) {
+  constructor(private ajaxService: AjaxService) {
   }
 
   /**
@@ -69,41 +64,6 @@ export class MainService {
       return '';
     }
   };
-
-  /**
-   * 国际化语言支持
-   */
-  public languageSupport() {
-    //添加语言支持
-    this.translate.addLangs(['zh_CN', 'en_US']);//这里语言名要与json文件名相同，记得在i18n里配置相应的中英文
-    //获取获取上次修改语言存入本地的值，优先选用此值
-    const lastLanguage = localStorage.getItem(Setting.storage.language);
-    //设置默认语言，一般在无法匹配的时候使用
-    const defaultLanguage = 'zh_CN';
-    this.translate.setDefaultLang(defaultLanguage);
-
-    //获取当前浏览器环境的语言比如en、 zh
-    let broswerLang = this.translate.getBrowserCultureLang().replace('-', '_');
-    let lang = lastLanguage ? lastLanguage : broswerLang.match(/en|zh/) ? broswerLang : defaultLanguage;
-    console.log("█ lang ►►►", broswerLang.match(/en|zh/));
-    this.translate.use(lang);//设置管理后台语言
-    this.setZorroLanguage(lang);//设置Zorro框架语言
-  }
-
-  /**
-   * 设置Zorro框架语言
-   * @param lang
-   */
-  setZorroLanguage(lang) {
-    switch (lang) {
-      case 'en':
-        this.nzI18nService.setLocale(en_US);
-        break;
-      case 'zh':
-        this.nzI18nService.setLocale(zh_CN);
-        break;
-    }
-  }
 
   /**
    * 根据区域编码查询区域（3级）

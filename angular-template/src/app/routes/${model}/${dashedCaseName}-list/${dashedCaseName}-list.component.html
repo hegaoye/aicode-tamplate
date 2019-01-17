@@ -1,8 +1,8 @@
 <div class="page-title clearfix">
   <div class="title">${className}管理</div>
-  <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="{{'Btn0003'| translate}}">
+  <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="添加">
     <i nz-icon type="plus" theme="outline"></i>
-    {{'Btn0003'| translate}}
+    添加
   </button>
 </div>
 
@@ -14,15 +14,15 @@
       <div class="search-main">
         <input nz-input name="name"
                [(ngModel)]="searchParams.name"
-               placeholder="{{'Supplier0001'| translate}}">
+               placeholder="请输入">
       </div>
     </div>
     <div class="inline-block">
-      <button nz-button class="ml-20 mr" [nzType]="'primary'" title="{{'Btn0001'| translate}}" type="submit">
-        <i nz-icon type="search" theme="outline"></i><span>{{'Btn0001'| translate}}</span>
+      <button nz-button class="ml-20 mr" [nzType]="'primary'" title="提交" type="submit">
+        <i nz-icon type="search" theme="outline"></i><span>提交</span>
       </button>
-      <button nz-button class="mr" title="{{'Btn0002'| translate}}" type="reset" (click)="resetSearch()">
-        <i nz-icon type="sync" theme="outline"></i><span>{{'Btn0002'| translate}}</span>
+      <button nz-button class="mr" title="重置" type="reset" (click)="resetSearch()">
+        <i nz-icon type="sync" theme="outline"></i><span>重置</span>
       </button>
     </div>
   </form>
@@ -39,14 +39,14 @@
             [nzPageIndex]="${classNameLower}List.curPage"
             (nzPageIndexChange)="query${className}List($event)">
     <thead>
-    <ng-template #totalRow>{{'Th0000' | translate : {totalRow: ${classNameLower}List.totalRow} }}</ng-template>
+    <ng-template #totalRow>共${classNameLower}List.totalRow}条</ng-template>
     <tr>
-      <th class="text-center" nzWidth=""><span>{{'Th0001' | translate}}</span></th><!--序号-->
+      <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
       <#list tableFields as field>
       <th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
       </#list>
-      <th class="text-center" nzWidth=""><span>{{'Th0003' | translate}}</span></th><!--状态-->
-      <th class="text-center" nzWidth=""><span>{{'Th0006' | translate}}</span></th><!--操作-->
+      <th class="text-center" nzWidth=""><span>状态</span></th><!--状态-->
+      <th class="text-center" nzWidth=""><span>操作</span></th><!--操作-->
     </tr>
     </thead>
     <tbody>
@@ -65,11 +65,11 @@
         </td>
         <td class="text-center">
           <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
-                  title="{{'Btn0004'| translate}}">
+                  title="修改">
             <i nz-icon type="edit" theme="outline"></i>
           </button>
           <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
-                  title="{{'Btn0005'| translate}}">
+                  title="查看">
             <i nz-icon type="eye" theme="outline"></i>
           </button>
         </td>
