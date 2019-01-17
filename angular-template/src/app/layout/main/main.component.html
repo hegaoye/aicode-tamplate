@@ -63,18 +63,6 @@
           </nz-dropdown>
         </li>-->
 
-        <!--语言设置-->
-        <li>
-          <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomCenter'" class="inline-block">
-            <div class="cursor" nz-dropdown><span class="font14">{{'Layout0002'| translate}}</span>
-              <i nz-icon type="down" theme="outline" class="font12"></i>
-            </div>
-            <ul nz-menu class="languages">
-              <li nz-menu-item *ngFor="let lang of translate.getLangs()" (click)="changeLang(lang)">{{lang | translate}}</li>
-            </ul>
-          </nz-dropdown>
-        </li>
-
         <!--用户操作-->
         <li>
           <nz-dropdown [nzTrigger]="'hover'" [nzPlacement]="'bottomRight'" class="inline-block">

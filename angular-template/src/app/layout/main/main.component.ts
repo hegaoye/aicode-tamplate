@@ -4,13 +4,11 @@ import {NavigationStart, Router} from "@angular/router";
 import {Setting} from "../../public/setting/setting";
 import {SettingUrl} from "../../public/setting/setting_url";
 import {AjaxService} from "../../public/service/ajax.service";
-import {MainService} from "../../public/service/main.service";
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit, OnDestroy {
   public isCollapsed = false; //menu折叠
@@ -23,9 +21,7 @@ export class MainComponent implements OnInit, OnDestroy {
   constructor(public router: Router,
               public translate: TranslateService,
               public settings: Setting,
-              private ajaxService: AjaxService,
-              private mainService: MainService) {
-    this.mainService.languageSupport();//添加语言支持
+              private ajaxService: AjaxService) {
   }
 
   ngOnInit() {
@@ -40,13 +36,6 @@ export class MainComponent implements OnInit, OnDestroy {
         _this.selMenu(_this.menus, event["url"]);
       }
     })
-  }
-
-  changeLang(lang) {
-    this.translate.use(lang);
-    //以下是为zorro框架切换语言环境
-    this.mainService.setZorroLanguage(lang);
-    localStorage.setItem(Setting.storage.language, lang);//存入本地
   }
 
   ngOnDestroy(): void {

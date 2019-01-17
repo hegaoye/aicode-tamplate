@@ -206,6 +206,32 @@
   border-color: #7265e6;
 }
 
+//hover颜色
+.hover-white:hover{
+  color: #ffffff;
+}
+.hover-red:hover{
+  color: #f04134;
+}
+.hover-theme:hover{
+  color: $primary-color;
+}
+.hover-green:hover{
+  color: #00a854;
+}
+.hover-blue:hover{
+  color: #108ee9;
+}
+.hover-orange:hover{
+  color: #f56a00;
+}
+.hover-cyan:hover{
+  color: #00a2ae;
+}
+.hover-purple:hover{
+  color: #7265e6;
+}
+
 /*信息位置*/
 .text-center{text-align: center !important;}
 .text-right{text-align: right !important;}

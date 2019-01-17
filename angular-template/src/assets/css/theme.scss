@@ -124,9 +124,22 @@
   border-color: #108ee9;
   box-shadow: 0 0 2px #49b0e9 inset;
 }
-
 /*实心蓝色按钮 end*/
 
+/*实心暗色按钮 start*/
+.btn-dark.ant-btn {
+  border-color: #444444;
+  background-color: #444444;
+  color: yellow;
+}
+
+.btn-dark.ant-btn:hover, .btn-dark.ant-btn:focus, .btn-dark.ant-btn:active {
+  color: yellow;
+  background-color: #222222;
+  border-color: #444444;
+  box-shadow: 0 0 2px #555555 inset;
+}
+/*实心暗色按钮 end*/
 
 
 /*主题色空心按钮 start*/
