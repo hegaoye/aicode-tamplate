@@ -41,7 +41,7 @@
   <nz-layout>
     <!--顶部信息 start-->
     <nz-header class="p0 bg-white">
-      <i nz-icon [type]="!isCollapsed?'menu-fold':'menu-unfold'" theme="outline" (click)="isCollapsed=!isCollapsed"></i>
+      <i nz-icon class="ml" [type]="!isCollapsed?'menu-fold':'menu-unfold'" theme="outline" (click)="isCollapsed=!isCollapsed"></i>
       <ul class="fr mr">
         <li>
           <i nz-icon type="home" theme="outline" class="font18" [routerLink]="home" title="{{'Layout0000'| translate}}"></i></li>
@@ -71,7 +71,8 @@
                          [nzText]="settings.user.name"
                          [ngStyle]="{'background-color':'#00a2ae'}"
                          class="mr-sm"></nz-avatar>
-              <i nz-icon type="down" theme="outline" class="font12"></i>
+              <!--鸡肋 by likun-->
+              <!--<i nz-icon type="down" theme="outline" class="font12"></i>-->
             </div>
             <ul nz-menu class="user-infos">
               <li class="p">{{settings.user.name}}</li>
