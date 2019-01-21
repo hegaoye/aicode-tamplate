@@ -7,7 +7,7 @@ import {${model?cap_first}Service} from "../${model}.service";
 @Component({
   selector: 'app-${dashedCaseName}-edit',
   templateUrl: './${dashedCaseName}-edit.component.html',
-  styleUrls: ['./${dashedCaseName}-edit.component.css']
+  styleUrls: ['./${dashedCaseName}-edit.component.less']
 })
 export class ${className}EditComponent implements OnInit {
   public isConfirmLoading: boolean = false;

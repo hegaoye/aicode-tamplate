@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AjaxService} from "../../public/service/ajax.service";
 import {SettingUrl} from "../../public/setting/setting_url";
-import {HttpCodesEnum} from "../../public/setting/enums";
+import {HttpCodesEnum} from "../../public/util/enums";
 import {NzMessageService, NzNotificationService} from "ng-zorro-antd";
 
 @Injectable({

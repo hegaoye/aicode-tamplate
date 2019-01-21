@@ -1,15 +1,13 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Setting} from "../../../public/setting/setting";
 import {HomeService} from "../home.service";
 import {SettingUrl} from "../../../public/setting/setting_url";
 import {Util} from "../../../public/util/util";
-import {Page} from "../../../public/util/page";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
   public homeInfo: any;

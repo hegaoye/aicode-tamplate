@@ -1,6 +1,7 @@
 /*基本属性配置*/
 export class Setting {
-  public user: any = {
+  public static isSpinning:boolean = false;
+  public static user: any = {
     name: 'Andy'
   };
 

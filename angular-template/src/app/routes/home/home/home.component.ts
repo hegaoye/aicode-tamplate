@@ -3,12 +3,12 @@ import {Setting} from "../../../public/setting/setting";
 import {HomeService} from "../home.service";
 import {SettingUrl} from "../../../public/setting/setting_url";
 import {Util} from "../../../public/util/util";
-import {Page} from "../../../public/util/page";
+import {Page} from "../../../public/util/model";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.less'],
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit {

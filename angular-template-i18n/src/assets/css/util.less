@@ -8,31 +8,36 @@
 .mr0 { margin-right: 0 !important; }
 .mt0 { margin-top: 0 !important; }
 .mb0 { margin-bottom: 0 !important; }
-.m-1{margin: 1px !important;}
-.m-2{margin: 2px !important;}
-.m-3{margin: 3px !important;}
-.m-4{margin: 4px !important;}
+
 .m-5  { margin: 5px !important; }
 .ml-5 { margin-left: 5px !important; }
 .mr-5 { margin-right: 5px !important; }
 .mt-5 { margin-top: 5px !important; }
 .mb-5 { margin-bottom: 5px !important; }
+
 .m  { margin: 10px !important; }
 .ml { margin-left: 10px !important; }
 .mr { margin-right: 10px !important; }
 .mt { margin-top: 10px !important; }
 .mb { margin-bottom: 10px !important; }
+
 .m-15  { margin: 15px !important; }
 .ml-15 { margin-left: 15px !important; }
 .mr-15 { margin-right: 15px !important; }
 .mt-15 { margin-top: 15px !important; }
 .mb-15 { margin-bottom: 15px !important; }
+
 .m-20  { margin: 20px !important; }
 .ml-20 { margin-left: 20px !important; }
 .mr-20 { margin-right: 20px !important; }
 .mt-20 { margin-top: 20px !important; }
-.mt-30 { margin-top: 30px !important; }
 .mb-20 { margin-bottom: 20px !important; }
+
+.m-30 { margin: 30px !important; }
+.mt-30 { margin-top: 30px !important; }
+.ml-30 { margin-left: 30px !important; }
+.mr-30 { margin-right: 30px !important; }
+.mb-30 { margin-bottom: 30px !important; }
 
 /*定义padding基础属性*/
 .p0 { padding: 0 !important; }
@@ -40,34 +45,35 @@
 .pr0 { padding-right: 0 !important; }
 .pt0 { padding-top: 0 !important; }
 .pb0 { padding-bottom: 0 !important; }
-.p-1{padding: 1px !important;}
-.p-2{padding: 2px !important;}
-.p-3{padding: 3px !important;}
-.p-4{padding: 4px !important;}
+
 .p-5  { padding: 5px !important; }
 .pl-5 { padding-left: 5px !important; }
 .pr-5 { padding-right: 5px !important; }
 .pt-5 { padding-top: 5px !important; }
 .pb-5 { padding-bottom: 5px !important; }
+
+.p  { padding: 10px !important; }
 .pl { padding-left: 10px !important; }
 .pr { padding-right: 10px !important; }
 .pt { padding-top: 10px !important; }
 .pb { padding-bottom: 10px !important; }
-.p  { padding: 10px !important; }
+
 .p-15  { padding: 15px !important; }
-.p-20  { padding: 20px !important; }
-.p-30  { padding: 30px !important; }
 .pl-15 { padding-left: 15px !important; }
-.pl-20 { padding-left: 20px !important; }
-.pl-30 { padding-left: 30px !important; }
 .pr-15 { padding-right: 15px !important; }
-.pr-20 { padding-right: 20px !important; }
-.pr-30 { padding-right: 30px !important; }
 .pt-15 { padding-top: 15px !important; }
-.pt-20 { padding-top: 20px !important; }
-.pt-30 { padding-top: 30px !important; }
 .pb-15 { padding-bottom: 15px !important; }
+
+.p-20  { padding: 20px !important; }
+.pl-20 { padding-left: 20px !important; }
+.pr-20 { padding-right: 20px !important; }
+.pt-20 { padding-top: 20px !important; }
 .pb-20 { padding-bottom: 20px !important; }
+
+.p-30  { padding: 30px !important; }
+.pl-30 { padding-left: 30px !important; }
+.pr-30 { padding-right: 30px !important; }
+.pt-30 { padding-top: 30px !important; }
 .pb-30 { padding-bottom: 30px !important; }
 
 /*定义border基础属性*/
@@ -90,19 +96,19 @@
 .inline-block {
   display: inline-block;
 }
-.d-inline {
+._inline {
   display: inline;
 }
-.d-block {
+._block {
   display: block;
 }
-.d-flex{
+._flex{
   display: flex;
 }
-.d-table{
+._table{
   display: table;
 }
-.d-inherit{
+._inherit{
   display: inherit;
 }
 
@@ -112,40 +118,6 @@
 /*清除浮动*/
 .float-none{float: none;}
 
-/*字体颜色*/
-.color-gray {
-  color: #999;
-}
-.color-gray-dark {
-  color: #666;
-}
-.color-success{
-  color: #6c2;
-}
-.color-pink{
-  color: #f5317f;
-}
-.color-red{
-  color: #f04134;
-}
-.color-white{
-  color: #ffffff;
-}
-.color-orange{
-  color: #f56a00;
-}
-.color-green{
-  color: #00a854;
-}
-.color-cyan{
-  color: #00a2ae;
-}
-.color-blue{
-  color: #108ee9;
-}
-.color-purple{
-  color: #7265e6;
-}
 /*a标签的蓝色下划线*/
 .underline {
   text-decoration: underline;
@@ -157,79 +129,124 @@
 /*鼠标手型*/
 .cursor{cursor: pointer;}
 
+
+/*字体颜色*/
+.color-gray {
+  color: @gray-color;
+}
+.color-gray-dark {
+  color: @gray-dark-color;
+}
+.color-pink{
+  color: @pink-color;
+}
+.color-red{
+  color: @red-color;
+}
+.color-white{
+  color: @white-color;
+}
+.color-orange{
+  color: @orange-color;
+}
+.color-green{
+  color: @green-color;
+}
+.color-cyan{
+  color: @cyan-color;
+}
+.color-blue{
+  color: @blue-color;
+}
+.color-purple{
+  color: @purple-color;
+}
 /*背景色*/
-.bg-white{background-color: #ffffff;}
-.bg-light-gray{background-color: #fbfbfb;}
-.bg-f8{background: #f8f8f8 }
+.bg-white{
+  background-color: @white-color
+}
+.bg-light-gray{
+  background-color: @gray-light-color;
+}
+.bg-f8{
+  background: @bg-light-color;
+}
 .bg-pink{
-  background: #f5317f;
+  background: @pink-color;
 }
 .bg-red{
-  background: #f04134;
+  background: @red-color;
 }
 .bg-orange{
-  background: #f56a00;
+  background: @orange-color;
 }
 .bg-green{
-  background: #00a854;
+  background: @green-color;
 }
 .bg-cyan{
-  background: #00a2ae;
+  background: @cyan-color;
 }
 .bg-blue{
-  background: #108ee9;
+  background: @blue-color;
 }
 .bg-purple{
-  background: #7265e6;
+  background: @purple-color;
 }
 
 /*边框颜色*/
 .bd-pink{
-  border-color: #f5317f;
+  border-color: @pink-color;
 }
 .bd-red{
-  border-color: #f04134;
+  border-color: @red-color;
 }
 .bd-orange{
-  border-color: #f56a00;
+  border-color: @orange-color;
 }
 .bd-green{
-  border-color: #00a854;
+  border-color: @green-color;
 }
 .bd-cyan{
-  border-color: #00a2ae;
+  border-color: @cyan-color;
 }
 .bd-blue{
-  border-color: #108ee9;
+  border-color: @blue-color;
 }
 .bd-purple{
-  border-color: #7265e6;
+  border-color: @purple-color;
 }
 
 //hover颜色
-.hover-white:hover{
-  color: #ffffff;
+.hover-white:hover {
+  color: @white-color;
 }
-.hover-red:hover{
-  color: #f04134;
+
+.hover-red:hover {
+  color: @red-color;
 }
-.hover-theme:hover{
-  color: $primary-color;
+
+.hover-theme:hover {
+  color: @theme-color;
 }
-.hover-green:hover{
-  color: #00a854;
+
+.hover-green:hover {
+  color: @green-color;
 }
-.hover-blue:hover{
-  color: #108ee9;
+
+.hover-blue:hover {
+  color: @blue-color;
 }
-.hover-orange:hover{
-  color: #f56a00;
+
+.hover-orange:hover {
+  color: @orange-color;
 }
-.hover-cyan:hover{
-  color: #00a2ae;
+
+.hover-cyan:hover {
+  color: @cyan-color;
 }
-.hover-purple:hover{
-  color: #7265e6;
+
+.hover-purple:hover {
+  color: @purple-color;
 }
 
 /*信息位置*/

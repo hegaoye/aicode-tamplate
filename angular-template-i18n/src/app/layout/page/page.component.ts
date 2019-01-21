@@ -6,8 +6,7 @@ import {Setting} from "../../public/setting/setting";
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./page.component.less']
 })
 export class PageComponent implements OnInit {
   public app = Setting.APP; //平台信息

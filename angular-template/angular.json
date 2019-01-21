@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "styleext": "less"
         }
       },
       "architect": {
@@ -39,7 +39,7 @@
             "styles": [
               "node_modules/ng-zorro-antd/src/ng-zorro-antd.min.css",
               "src/theme.less",
-              "src/styles.scss"
+              "src/styles.less"
             ],
             "scripts": []
           },

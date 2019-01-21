@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {MainService} from "../service/main.service";
+import {MainService} from "../../public/service/main.service";
 
 @Pipe({
   name: 'enumName'

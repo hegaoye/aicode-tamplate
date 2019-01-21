@@ -1,128 +1,113 @@
 /****************************************定义不同状态的空心按钮************************************************/
 
-/*主题色外发光按钮*/
-.thc-btn-w.ant-btn {
-  border-color: #E51C23;
-  background-color: #fff;
-  color: #E51C23;
-}
-
-.thc-btn-w.ant-btn:hover, .thc-btn-w.ant-btn:focus {
-  color: #E51C23;
-  border-color: #E51C23;
-  box-shadow: 0 0 10px #a0a0a0;
-}
-
-/*主题色外发光按钮 end*/
-
 /*主题色实心按钮 start*/
 .btn-thc.ant-btn {
-  border-color: #E51C23;
-  background-color: #E51C23;
+  border-color: @theme-color;
+  background-color: @theme-color;
   color: #ffffff;
 }
 
 .btn-thc.ant-btn:hover, .btn-thc.ant-btn:focus, .btn-thc.ant-btn:active {
   color: #ffffff;
-  background-color: #E51C23;
-  border-color: #E51C23;
-  box-shadow: 0 0 2px #ff1c23 inset;
+  background-color: @theme-color;
+  border-color: @theme-color;
+  box-shadow: 0 0 2px @theme-light-color inset;
 }
 
 /*主题色实心按钮 end*/
 
 /*danger红色按钮 start*/
 .btn-danger.ant-btn {
-  border-color: #f04134;
-  background-color: #f04134;
-  color: #fff;
+  border-color: @red-color;
+  background-color: @red-color;
+  color: #ffffff;
 }
 
 .btn-danger.ant-btn:hover, .btn-danger.ant-btn:focus, .btn-danger.ant-btn:active {
-  color: #fff;
-  background-color: #f04134;
-  border-color: #f04134;
-  box-shadow: 0 0 2px #f0604e inset;
+  color: #ffffff;
+  background-color: @red-color;
+  border-color: @red-color;
+  box-shadow: 0 0 2px @red-light-color inset;
 }
 
 /*danger红色按钮 end*/
 
 /*实心绿色按钮 start*/
 .btn-green.ant-btn {
-  border-color: #37bc9b;
-  background-color: #37bc9b;
+  border-color: @green-color;
+  background-color: @green-color;
   color: #fff;
 }
 
 .btn-green.ant-btn:hover, .btn-green.ant-btn:focus, .btn-green.ant-btn:active {
   color: #fff;
-  background-color: #37bc9b;
-  border-color: #37bc9b;
-  box-shadow: 0 0 2px #50bc9e inset;
+  background-color: @green-color;
+  border-color: @green-color;
+  box-shadow: 0 0 2px @green-light-color inset;
 }
 
 /*实心绿色按钮 end*/
 
 /*实心success按钮 start*/
 .btn-success.ant-btn {
-  border-color: #27c24c;
-  background-color: #27c24c;
+  border-color: @success-color;
+  background-color: @success-color;
   color: #fff;
 }
 
 .btn-success.ant-btn:hover, .btn-success.ant-btn:focus, .btn-success.ant-btn:active {
   color: #fff;
-  background-color: #27c24c;
-  border-color: #27c24c;
-  box-shadow: 0 0 2px #53c257 inset;
+  background-color: @success-color;
+  border-color: @success-color;
+  box-shadow: 0 0 2px @success-light-color inset;
 }
 
 /*实心success按钮 end*/
 
 /*实心橙色按钮 start*/
 .btn-warning.ant-btn {
-  border-color: #ff902b;
-  background-color: #ff902b;
+  border-color: @orange-color;
+  background-color: @orange-color;
   color: #fff;
 }
 
 .btn-warning.ant-btn:hover, .btn-warning.ant-btn:focus, .btn-warning.ant-btn:active {
   color: #fff;
-  background-color: #ff902b;
-  border-color: #ff902b;
-  box-shadow: 0 0 2px #ffa340 inset;
+  background-color: @orange-color;
+  border-color: @orange-color;
+  box-shadow: 0 0 2px @orange-light-color inset;
 }
 
 /*实心橙色按钮 end*/
 
 /*实心蓝色按钮 start*/
 .btn-purple.ant-btn {
-  border-color: #7265e6;
-  background-color: #7265e6;
+  border-color: @purple-color;
+  background-color: @purple-color;
   color: #fff;
 }
 
 .btn-purple.ant-btn:hover, .btn-purple.ant-btn:focus, .btn-purple.ant-btn:active {
   color: #fff;
-  background-color: #7265e6;
-  border-color: #7265e6;
-  box-shadow: 0 0 2px #836fba inset;
+  background-color: @purple-color;
+  border-color: @purple-color;
+  box-shadow: 0 0 2px @purple-light-color inset;
 }
 
 /*实心蓝色按钮 end*/
 
 /*实心蓝色按钮 start*/
 .btn-blue.ant-btn {
-  border-color: #108ee9;
-  background-color: #108ee9;
+  border-color: @blue-color;
+  background-color: @blue-color;
   color: #fff;
 }
 
 .btn-blue.ant-btn:hover, .btn-blue.ant-btn:focus, .btn-blue.ant-btn:active {
   color: #fff;
-  background-color: #108ee9;
-  border-color: #108ee9;
-  box-shadow: 0 0 2px #49b0e9 inset;
+  background-color: @blue-color;
+  border-color: @blue-color;
+  box-shadow: 0 0 2px @blue-light-color inset;
 }
 /*实心蓝色按钮 end*/
 
@@ -130,12 +115,12 @@
 .btn-dark.ant-btn {
   border-color: #444444;
   background-color: #444444;
-  color: yellow;
+  color: @yellow-color;
 }
 
 .btn-dark.ant-btn:hover, .btn-dark.ant-btn:focus, .btn-dark.ant-btn:active {
-  color: yellow;
-  background-color: #222222;
+  color: @yellow-color;
+  background-color: @dark-color;
   border-color: #444444;
   box-shadow: 0 0 2px #555555 inset;
 }
@@ -144,92 +129,92 @@
 
 /*主题色空心按钮 start*/
 .btn-thc-o.ant-btn {
-  border-color: #E51C23;
+  border-color: @theme-color;
   background-color: #fff;
-  color: #E51C23;
+  color: @theme-color;
 }
 
 .btn-thc-o.ant-btn:hover, .btn-thc-o.ant-btn:focus, .btn-thc-o.ant-btn:active {
-  color: #E51C23;
+  color: @theme-color;
   background-color: #fff;
-  border-color: #E51C23;
-  box-shadow: 0 0 2px #ff1c23 inset;
+  border-color: @theme-color;
+  box-shadow: 0 0 2px @theme-light-color inset;
 }
 
 
 /*danger红色按钮 start*/
 .btn-danger-o.ant-btn {
-  border-color: #f04134;
+  border-color: @red-color;
   background-color: #fff;
-  color: #f04134;
+  color: @red-color;
 }
 
 .btn-danger-o.ant-btn:hover, .btn-danger-o.ant-btn:focus, .btn-danger-o.ant-btn:active {
-  color: #f04134;
+  color: @red-colorcolor;
   background-color: #fff;
-  border-color: #f04134;
-  box-shadow: 0 0 2px #f0604e inset;
+  border-color: @red-color;
+  box-shadow: 0 0 2px @red-light-color inset;
 }
 
 /*空心绿色按钮 start*/
 .btn-green-o.ant-btn {
-  border-color: #37bc9b;
+  border-color: @green-color;
   background-color: #fff;
-  color: #37bc9b;
+  color: @green-color;
 }
 
 .btn-green-o.ant-btn:hover, .btn-green-o.ant-btn:focus, .btn-green-o.ant-btn:active {
-  color: #37bc9b;
+  color: @green-color;
   background-color: #fff;
-  border-color: #37bc9b;
-  box-shadow: 0 0 2px #50bc9e inset;
+  border-color: @green-color;
+  box-shadow: 0 0 2px @green-light-color inset;
 }
 
 /*空心绿色按钮 end*/
 
 /*空心success按钮 start*/
 .btn-success-o.ant-btn {
-  border-color: #27c24c;
+  border-color: @success-color;
   background-color: #fff;
-  color: #27c24c;
+  color: @success-color;
 }
 
 .btn-success-o.ant-btn:hover, .btn-success-o.ant-btn:focus, .btn-success-o.ant-btn:active {
-  color: #27c24c;
+  color: @success-color;
   background-color: #fff;
-  border-color: #27c24c;
-  box-shadow: 0 0 2px #53c257 inset;
+  border-color: @success-color;
+  box-shadow: 0 0 2px @success-light-color inset;
 }
 
 /*空心success按钮 end*/
 
 /*空心橙色按钮 start*/
 .btn-warning-o.ant-btn {
-  border-color: #ff902b;
+  border-color: @orange-color;
   background-color: #fff;
-  color: #ff902b;
+  color: @orange-color;
 }
 
 .btn-warning-o.ant-btn:hover, .btn-warning-o.ant-btn:focus, .btn-warning-o.ant-btn:active {
-  color: #ff902b;
+  color: @orange-color;
   background-color: #fff;
-  border-color: #ff902b;
-  box-shadow: 0 0 2px #ffa340 inset;
+  border-color: @orange-color;
+  box-shadow: 0 0 2px @orange-light-color inset;
 }
 
 /*空心橙色按钮 end*/
 
 /*空心蓝色按钮 start*/
 .btn-purple-o.ant-btn {
-  border-color: #7265e6;
+  border-color: @purple-color;
   background-color: #fff;
-  color: #7265e6;
+  color: @purple-color;
 }
 
 .btn-purple-o.ant-btn:hover, .btn-purple-o.ant-btn:focus, .btn-purple-o.ant-btn:active {
-  color: #7265e6;
+  color: @purple-color;
   background-color: #fff;
-  border-color: #7265e6;
+  border-color: @purple-color;
   box-shadow: 0 0 2px #836fba inset;
 }
 
@@ -237,15 +222,15 @@
 
 /*空心蓝色按钮 start*/
 .btn-blue-o.ant-btn {
-  border-color: #108ee9;
+  border-color: @blue-color;
   background-color: #fff;
-  color: #108ee9;
+  color: @blue-color;
 }
 
 .btn-blue-o.ant-btn:hover, .btn-blue-o.ant-btn:focus, .btn-blue-o.ant-btn:active {
-  color: #108ee9;
+  color: @blue-color;
   background-color: #fff;
-  border-color: #108ee9;
+  border-color: @blue-color;
   box-shadow: 0 0 2px #49b0e9 inset;
 }
 
@@ -253,35 +238,40 @@
 
 /*主题色按钮，点击状态的水波颜色*/
 .btn-thc.ant-btn-clicked:after {
-  border: 0 solid #E51C23;
+  border: 0 solid @theme-color;
 }
 
 /*danger按钮，点击状态的水波颜色*/
 .btn-danger.ant-btn-clicked:after {
-  border: 0 solid #f04134;
+  border: 0 solid @red-color;
 }
 
 /*绿色按钮，点击状态的水波颜色*/
 .btn-green.ant-btn-clicked:after {
-  border: 0 solid #37bc9b;
+  border: 0 solid @green-color;
 }
 
 /*success按钮，点击状态的水波颜色*/
 .btn-success.ant-btn-clicked:after {
-  border: 0 solid #27c24c;
+  border: 0 solid @success-color;
 }
 
 /*橙色按钮，点击状态的水波颜色*/
 .btn-warning.ant-btn-clicked:after {
-  border: 0 solid #F57C00;
+  border: 0 solid @orange-color;
 }
 
 /*紫色按钮，点击状态的水波颜色*/
 .btn-purple.ant-btn-clicked:after {
-  border: 0 solid #7265e6;
+  border: 0 solid @purple-color;
 }
 
 /*蓝色按钮，点击状态的水波颜色*/
 .btn-blue.ant-btn-clicked:after {
-  border: 0 solid #108ee9;
+  border: 0 solid @blue-color;
+}
+
+/*暗色按钮，点击状态的水波颜色*/
+.btn-dark.ant-btn-clicked:after {
+  border: 0 solid @dark-color;
 }

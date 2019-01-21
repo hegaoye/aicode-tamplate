@@ -9,20 +9,19 @@ import {MainService} from "../../public/service/main.service";
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./main.component.less']
 })
 export class MainComponent implements OnInit, OnDestroy {
   public isCollapsed = false; //menu折叠
   public app = Setting.APP; //平台信息
-  public menus: Array<any> = new Array(); //菜单信息
+  public menus: Array<any> = []; //菜单信息
   public home: string = SettingUrl.ROUTERLINK.basic.home; //首页路由
   public curComponent: any;
   public listenedRouter: any;//路由监听
+  public settings = Setting;
 
   constructor(public router: Router,
               public translate: TranslateService,
-              public settings: Setting,
               private ajaxService: AjaxService,
               private mainService: MainService) {
     this.mainService.languageSupport();//添加语言支持

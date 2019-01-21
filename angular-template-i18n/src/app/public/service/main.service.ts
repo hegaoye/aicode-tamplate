@@ -2,7 +2,7 @@ import {Util} from "../util/util";
 import {AjaxService} from "./ajax.service";
 import {SettingUrl} from "../setting/setting_url";
 import {isNullOrUndefined} from "util";
-import {AREA_LEVEL_3_JSON} from "../util/area_level_3";
+import {AREA_LEVEL_3_JSON} from "../../../assets/data/area_level_3";
 import {TranslateService} from "@ngx-translate/core";
 import {Injectable} from "@angular/core";
 import {en_US, NzI18nService, zh_CN} from "ng-zorro-antd";

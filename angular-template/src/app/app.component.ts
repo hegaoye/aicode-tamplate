@@ -1,14 +1,15 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {Setting} from "./public/setting/setting";
-import {MENUS} from "./public/setting/menus";
+import {MENUS} from "./public/util/menus";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+  public isSpinning = Setting.isSpinning;
 
   constructor(public router: Router) {
     //判断是否已经登录，已经登录，引导进入首页

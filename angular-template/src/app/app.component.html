@@ -1,5 +1,17 @@
 <!--全局的遮罩 start-->
-<nz-spin class="main-mask"></nz-spin>
+<div class="load-mask" [hidden]="!isSpinning">
+  <!--<div class="close" (click)="close()">
+    <i nz-icon type="close-circle" theme="fill" class="font40 cursor"></i>
+  </div>-->
+  <!--<div class="message font20 color-white text-center">
+    The device is restarting.
+  </div>-->
+  <div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
 <!--全局的遮罩 end-->
 
 <!--路由嵌套 start-->

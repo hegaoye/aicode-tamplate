@@ -3,9 +3,9 @@ import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {NgZorroAntdModule} from "ng-zorro-antd";
-import {ImgSizePipe} from "../public/pipes/img-size.pipe";
-import {EnumNamePipe} from "../public/pipes/enum-name.pipe";
-import {ImgPreviewPipe} from "../public/pipes/img-preview.pipe";
+import {ImgSizePipe} from "./pipes/img-size.pipe";
+import {EnumNamePipe} from "./pipes/enum-name.pipe";
+import {ImgPreviewPipe} from "./pipes/img-preview.pipe";
 import {BackBtnComponent} from "./compontents/back-btn.component";
 
 @NgModule({

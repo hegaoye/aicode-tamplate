@@ -1,13 +1,13 @@
 import {Component, OnInit} from "@angular/core";
-import {Page} from "../../../public/util/page";
 import {${model?cap_first}Service} from "../${model}.service";
-import {States} from "../../../public/setting/enums";
+import {States} from "../../../public/util/enums";
 import {SettingUrl} from "../../../public/setting/setting_url";
+import {Page} from "../../../public/util/model";
 
 @Component({
   selector: 'app-${dashedCaseName}-list',
   templateUrl: './${dashedCaseName}-list.component.html',
-  styleUrls: ['./${dashedCaseName}-list.component.scss']
+  styleUrls: ['./${dashedCaseName}-list.component.less']
 })
 export class ${className}ListComponent implements OnInit {
   public searchParams: any = {};//搜索参数

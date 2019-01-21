@@ -1,10 +1,4 @@
-import {Injectable} from '@angular/core';
-
-/**
- * 用来定义表单验证的正则表达式
- */
-@Injectable()
-export class PatternService {
+export class Pattern {
   public static num: string = '^[0-9]*$'; //数字正则
   public static letter: string = '^[A-Za-z]*$'; //字母正则
   public static idCard: string = '^(^[1-9][0-9]{7}((0[0-9])|(1[0-2]))(([0|1|2][0-9])|3[0-1])[0-9]{3}$)|(^[1-9][0-9]{5}[1-9][0-9]{3}((0[0-9])|(1[0-2]))(([0|1|2][0-9])|3[0-1])(([0-9]{4})|[0-9]{3}[Xx])$)$'; //身份证正则
@@ -28,7 +22,6 @@ export class PatternService {
   public static PHONE_REGEXP: RegExp = /^1[0-9]{10}$/;//手机号
   public static IDCARD_REGEXP: RegExp = /^(^[1-9][0-9]{7}((0[0-9])|(1[0-2]))(([0|1|2][0-9])|3[0-1])[0-9]{3}$)|(^[1-9][0-9]{5}[1-9][0-9]{3}((0[0-9])|(1[0-2]))(([0|1|2][0-9])|3[0-1])(([0-9]{4})|[0-9]{3}[Xx])$)$/;//身份证号
   public static POSITIVE_REGEXP: RegExp = /^[0-9]+\.?[0-9]{0,9}$/;//只能正数
-
 
 
 }

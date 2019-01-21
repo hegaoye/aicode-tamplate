@@ -1,6 +1,7 @@
 /*基本属性配置*/
 export class Setting {
-  public user: any = {
+  public static isSpinning: boolean = false;
+  public static user: any = {
     name: 'Andy'
   };
 
@@ -16,7 +17,7 @@ export class Setting {
       email: "15045678912@163.com"
     },
   };
-  public static MENUS: Array<any> = new Array();      //平台菜单
+  public static MENUS: Array<any> = [];      //平台菜单
 
   /**
    * 表单校验的状态，配合Util.ngValidateErrorMsg方法使用，此状态一般用来判断显示表单提示信息

@@ -6,7 +6,7 @@ import {SettingUrl} from "../../../public/setting/setting_url";
 @Component({
   selector: 'app-${dashedCaseName}-detail',
   templateUrl: './${dashedCaseName}-detail.component.html',
-  styleUrls: ['./${dashedCaseName}-detail.component.css']
+  styleUrls: ['./${dashedCaseName}-detail.component.less']
 })
 export class ${className}DetailComponent implements OnInit {
   private code: string;

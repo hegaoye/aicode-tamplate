@@ -7,7 +7,7 @@ import {AjaxService} from "../../public/service/ajax.service";
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.less']
 })
 export class MainComponent implements OnInit, OnDestroy {
   public isCollapsed = false; //menu折叠
@@ -16,9 +16,9 @@ export class MainComponent implements OnInit, OnDestroy {
   public home: string = SettingUrl.ROUTERLINK.basic.home; //首页路由
   public curComponent: any;
   public listenedRouter: any;//路由监听
+  public settings = Setting;
 
   constructor(public router: Router,
-              public settings: Setting,
               private ajaxService: AjaxService) {
   }
 

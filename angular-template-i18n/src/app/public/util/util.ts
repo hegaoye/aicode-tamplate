@@ -1,17 +1,13 @@
 /*公共JS库*/
-import {Injectable} from "@angular/core";
 import {FormControl} from "@angular/forms";
-import {PatternService} from "../service/pattern.service";
-import {Observable} from "rxjs/index";
-import * as $ from "jquery";
+import {Pattern} from "./pattern";
+import {Setting} from "../setting/setting";
 import {isNullOrUndefined} from "util";
+import {Observable} from "rxjs";
+import {AREA_LEVEL_3_JSON} from "../../../assets/data/area_level_3";
 
-@Injectable()
 export class Util {
   public static enumData = {};
-
-  constructor() {
-  }
 
   /**
    * 格式化日期
@@ -19,8 +15,8 @@ export class Util {
    * @param fmt  格式化形式
    * @returns {any}
    */
-  public static dataFormat = function (date: Date, fmt) {
-    var o = {
+  public static dataFormat (date: Date, fmt) {
+    let o = {
       "M+": date.getMonth() + 1, //月份
       "d+": date.getDate(), //日
       "H+": date.getHours(), //小时
@@ -30,27 +26,23 @@ export class Util {
       "S": date.getMilliseconds() //毫秒
     };
     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
+    for (let k in o)
       if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-  }
+  };
 
   /**
    * 显示遮罩层（全局）
    */
   static showMask() {
-    setTimeout(() => {
-      $(".main-mask").show();
-    });
+    Setting.isSpinning = true;
   }
 
   /**
    * 隐藏遮罩层（全局）
    */
   static hideMask() {
-    setTimeout(() => {
-      $(".main-mask").hide();
-    });
+    Setting.isSpinning = false;
   }
 
   /**
@@ -63,8 +55,88 @@ export class Util {
       item.label = item.areaName;
       if (item.children) this.transAreas(item.children); else item.isLeaf = true;
       return item;
-    })
+    });
     return areas;
+  }
+
+  /**
+   * 根据区域编码查询区域（3级）
+   * @param code  12位区域编码
+   * @returns {any}
+   */
+  public static getAreaByTwelveBitCode(code) {
+    let areaList = AREA_LEVEL_3_JSON;
+    let level = this.getLevelByCode(code);
+    if (level == 1) {
+      for (let levelOneItem of areaList) {
+        if (levelOneItem.areaCode == code) {
+          return levelOneItem;
+        }
+      }
+    } else if (level == 2) {
+      let parentCode = code.substring(0, 2) + '0000000000';//获取父级编码
+      for (let area of areaList) {
+        if (area.areaCode === parentCode) {
+          for (let levelTwoItem of area.children) {
+            if (levelTwoItem.areaCode == code) return levelTwoItem;
+          }
+        }
+      }
+    } else if (level == 3) {
+      let parentsCode = code.substring(0, 2) + '0000000000';//获取祖父级编码
+      let parentCode = code.substring(0, 4) + '00000000';//获取父级编码
+      for (let area of areaList) {
+        if (area.areaCode === parentsCode) {
+          for (let levelTwoItem of area.children) {
+            if (levelTwoItem.areaCode == parentCode) {
+              for (let levelThreeItem of levelTwoItem.children) {
+                if (levelThreeItem.areaCode == code) return levelThreeItem;
+              }
+            }
+          }
+        }
+      }
+    } else {
+      return null
+    }
+  }
+
+  /**
+   * 12位的区域编码根据code查询级别
+   * @param areaCode
+   * @returns {number}
+   */
+  public static getLevelByCode(areaCode) {
+    let level = 0;
+    if (isNullOrUndefined(areaCode)) {
+      return level;
+    }
+    areaCode = areaCode.toString();
+    if (areaCode.length != 12) return level;
+    if (areaCode.substr(2, 4) == '0000') level = 1;
+    else if (areaCode.substr(4, 2) == '00') level = 2;
+    else if (areaCode.substr(6, 6) == '000000') level = 3;
+    else level = 4;
+    return level;
+  }
+
+  /**
+   * 通过区域编码找到区域选择器需要的三级区域数据
+   * 参数：第三级区域编码
+   */
+  public static getAreaArrayByCode(levelThreeAreaCode: string) {
+    let levelThreeArea: any = this.getAreaByTwelveBitCode(levelThreeAreaCode),//获取当前区域
+      levelThreeAreaName: string = levelThreeArea.areaName,//获取当前区域名
+      levelOneAreaCode: string = levelThreeArea.province, //当前区域的省级区域编码
+      levelTwoAreaCode: string = levelThreeArea.city, //当前区域的市级区域编码
+      levelOneAreaName: string = this.getAreaByTwelveBitCode(levelOneAreaCode).areaName,//当前区域的省级区域名
+      levelTwoAreaName: string = this.getAreaByTwelveBitCode(levelTwoAreaCode).areaName,//当前区域的市级区域名
+      _value = [
+        {value: levelOneAreaCode, label: levelOneAreaName},
+        {value: levelTwoAreaCode, label: levelTwoAreaName},
+        {value: levelThreeAreaCode, label: levelThreeAreaName},
+      ];//级联选择器默认值
+    return _value;
   }
 
   /**
@@ -118,7 +190,7 @@ export class Util {
    * @returns {any}
    */
   public static requiredPhoneValidator = (control: FormControl): any => {
-    return Util.asyncPatternsValidate(PatternService.PHONE_REGEXP, control, {error: true, phone: true});
+    return Util.asyncPatternsValidate(Pattern.PHONE_REGEXP, control, {error: true, phone: true});
   };
 
   /**
@@ -127,7 +199,7 @@ export class Util {
    * @returns {any}
    */
   public static smsCodeValidator = (control: FormControl): any => {
-    return Util.asyncPatternsValidate(PatternService.SMS_REGEXP, control, {error: true, smsCode: true});
+    return Util.asyncPatternsValidate(Pattern.SMS_REGEXP, control, {error: true, smsCode: true});
   };
 
   /**
@@ -136,12 +208,12 @@ export class Util {
    * @returns {any}
    */
   public static idCardNumValidator = (control: FormControl): any => {
-    return Util.asyncPatternsValidate(PatternService.IDCARD_REGEXP, control, {error: true, idCard: true});
+    return Util.asyncPatternsValidate(Pattern.IDCARD_REGEXP, control, {error: true, idCard: true});
   };
 
   /**
    * 有输入中状态的需要正则校验的异步校验方法封装，
-   * 用法（Util.asyncPatternsValidate(PatternService.IDCARD_REGEXP, control, { error: true, idCard: true })
+   * 用法（Util.asyncPatternsValidate(Pattern.IDCARD_REGEXP, control, { error: true, idCard: true })
    * @param exp （需要匹配的正则表达式）
    * @param control （FormGroup的表单项）
    * @param obj （需要的返回对象，eg:{ error: true, idCard: true }）
@@ -166,7 +238,7 @@ export class Util {
    * @param {string} url 需要判断的路径url
    */
   public static haveJurisdiction(list: Array<any>, url: string) {
-    let _this = this, isTrue = false;
+    let isTrue = false;
     list.forEach(item => {
       if (item.menuUrl == url) isTrue = true;
       else if (item.subMenuList && item.subMenuList.length > 0) {

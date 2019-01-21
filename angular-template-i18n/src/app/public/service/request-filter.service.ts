@@ -3,7 +3,7 @@ import {Setting} from "../setting/setting";
 import {Util} from "../util/util";
 import {SettingUrl} from "../setting/setting_url";
 import * as $ from "jquery";
-import {HttpCodesEnum} from "../setting/enums";
+import {HttpCodesEnum} from "../util/enums";
 import {Router} from "@angular/router";
 import {NzNotificationService} from "ng-zorro-antd";
 

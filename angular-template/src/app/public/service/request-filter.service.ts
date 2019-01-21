@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {Setting} from "../setting/setting";
 import {Util} from "../util/util";
 import {SettingUrl} from "../setting/setting_url";
-import * as $ from "jquery";
-import {HttpCodesEnum} from "../setting/enums";
+import {HttpCodesEnum} from "../util/enums";
 import {Router} from "@angular/router";
 import {NzNotificationService} from "ng-zorro-antd";
 
@@ -20,15 +19,21 @@ export class RequestFilterService {
    * @param config
    * mask: false,//是否需要显示遮罩层
    * auth: false,//是否需要权限验证
-   * shtml: false,//是否需要添加.shtml后缀
+   * suffix: string = '.shtml',//是否需要添加.shtml后缀
    */
   requestConfigFilter(config) {
     const me = this;
-    if (!config.hasOwnProperty('shtml')) config.url += ".shtml"; //如果没有指定shtml参数为false，则会为请求URL添加.shtml后缀
-    let async = true, method = 'post', dataType = 'json';
+    if (!config.hasOwnProperty('suffix')) {
+      if (config.url.indexOf('***') === 0) config.url += '.do'; //特定类型接口，统一为请求URL添加指定(eg. .do)后缀
+      else config.url += ".shtml"; //如果没有指定suffix参数，则会为请求URL添加.shtml后缀
+    } else {
+      config.url += config.suffix
+    }
+    let async = true, method = 'post', dataType = 'json', timeout = 10000;
     if (!config.hasOwnProperty('async')) config.async = async;
     if (!config.method) config.method = method;
     if (!config.dataType) config.dataType = dataType;
+    // if (!config.timeout) config.timeout = timeout;
     let token = localStorage.getItem(Setting.storage.authorizationToken);
     // 当没有单独指定headers，并且auth参数不为空且不为false，并且token存在，给请求加headers
     if (!config.headers && !(config.hasOwnProperty('auth') && !config.auth) && token) {

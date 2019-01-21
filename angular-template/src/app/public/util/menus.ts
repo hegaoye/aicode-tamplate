@@ -1,7 +1,7 @@
 import {MenuItem} from "./model";
 
 /**
- * Created by Administrator on 2018/9/4 0004.
+ * Created by Jane on 2018/9/4 0004.
  * 本地开发使用菜单
  * 生产环境中菜单信息将由登录接口返回
  */
