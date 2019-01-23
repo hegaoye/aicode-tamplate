@@ -24,8 +24,9 @@ export class RequestFilterService {
   requestConfigFilter(config) {
     const me = this;
     if (!config.hasOwnProperty('suffix')) {
-      if (config.url.indexOf('***') === 0) config.url += '.do'; //特定类型接口，统一为请求URL添加指定(eg. .do)后缀
-      else config.url += ".shtml"; //如果没有指定suffix参数，则会为请求URL添加.shtml后缀
+      // if (config.url.indexOf('***') === 0) config.url += '.do'; //特定类型接口，统一为请求URL添加指定(eg. .do)后缀
+      // else
+        config.url += ".shtml"; //如果没有指定suffix参数，则会为请求URL添加.shtml后缀
     } else {
       config.url += config.suffix
     }

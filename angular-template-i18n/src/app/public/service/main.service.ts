@@ -26,6 +26,7 @@ export class MainService {
       this.ajaxService.get({
         async: false,
         url: SettingUrl.URL.base.enum + code,
+        suffix: '',
         success: function (result) {
           if (isNullOrUndefined(result)) return ''; else Util.enumData[code] = result;
         }
