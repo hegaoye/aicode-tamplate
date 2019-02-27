@@ -229,7 +229,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
            map = new HashMap<>();
         }
        return ${classNameLower}DAO.count(map);
-     }
+    }
 
     /**
      * 查询${className}分页
