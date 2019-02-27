@@ -20,19 +20,38 @@ public interface ${className}SV extends BaseSV<${className},Long> {
 
     /**
      * 加载一个对象${className}
-     * <#list pkFields as pkField>@param ${pkField.field} ${pkField.notes}</#list>
+    <#list pkFields as field>
+     * @param ${field.field} ${field.notes}
+    </#list>
      * @return ${className}
      */
      ${className} load(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
 
-    <#list pkFields as pkField>
+    /**
+    * 加载一个对象${className}详情，(将查询关联数据)
+    <#list pkFields as field>
+    * @param ${field.field} ${field.notes}
+    </#list>
+    * @return ${className}
+    */
+    ${className} get(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
+
+
+<#list pkFields as pkField>
     /**
      * 加载一个对象${className} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
      * @return ${className}
      */
      ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field});
-   </#list>
+
+    /**
+    * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
+    * @param ${pkField.field} ${pkField.notes}
+    * @return ${className}
+    */
+    ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field});
+</#list>
 
 
     <#list pkFields as pkField>
