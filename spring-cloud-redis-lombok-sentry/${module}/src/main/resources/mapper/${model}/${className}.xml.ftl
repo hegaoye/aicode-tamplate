@@ -11,42 +11,49 @@
     </resultMap>
     <!--查询表信息关联信息-->
 <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
-    <resultMap id="rs_base_all" type="${className}" extends="rs_base">
+    <resultMap id="rs_base_relation" type="${className}" extends="rs_base">
     <#if oneToOneList??&&(oneToOneList?size>0)>
        <#list oneToOneList as oneToOne>
-        <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.ClassName}.load${oneToOne.ClassName}"/>
+        <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.ClassName}.loadForOneToOne"/>
        </#list>
     </#if>
 
     <#if oneToManyList??&&(oneToManyList?size>0)>
         <#list oneToManyList as oneToMany>
-        <collection property="${oneToMany.classNameLower}" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.ClassName}.query${oneToMany.ClassName}List"/>
+        <collection property="${oneToMany.classNameLower}" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.ClassName}.queryForOneToMany"/>
         </#list>
     </#if>
     </resultMap>
 
 
     <#if oneToOneList??&&(oneToOneList?size>0)>
-        <#list oneToOneList as oneToOne>
-            <select id="load${oneToOne.ClassName}" resultMap="rs_base">
-                SELECT <include refid="columns" />
-                FROM `${tableName}`
-                <include refid="where"/>
-            </select>
-        </#list>
+
+      <!--查询关联数据-->
+      <select id="getDetail" resultMap="rs_base_relation">
+            SELECT <include refid="columns" />
+            FROM `${tableName}`
+            <include refid="where"/>
+      </select>
+
+      <!--关联查询一条记录使用-->
+      <select id="loadForOneToOne" resultMap="rs_base">
+            SELECT <include refid="columns" />
+            FROM `${tableName}`
+            <include refid="where"/>
+      </select>
+
     </#if>
     <#if oneToManyList??&&(oneToManyList?size>0)>
-        <#list oneToManyList as oneToMany>
-           <select id="query${oneToMany.ClassName}List" resultMap="rs_base">
-                SELECT <include refid="columns" />
-                FROM `${tableName}`
-                <include refid="where"/>
+      <!--关联查询集合使用-->
+      <select id="queryForOneToMany" resultMap="rs_base">
+            SELECT <include refid="columns" />
+            FROM `${tableName}`
+            <include refid="where"/>
 
-                <if test="sortColumns!=null and sortColumns!=''">
-                    ORDER BY <@sort 'sortColumns'/>
-                </if>
-           </select>
-        </#list>
+            <if test="sortColumns!=null and sortColumns!=''">
+                ORDER BY <@sort 'sortColumns'/>
+            </if>
+      </select>
     </#if>
 </#if>
 

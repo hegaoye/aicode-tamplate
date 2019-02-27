@@ -64,6 +64,22 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
 
 </#if>
 
+
+<#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
+        <#if (pkFields?size>1)>
+          <#list oneToOneList as oneToOne>
+    /**
+    * 加载一个对象${className} 通过${pkField.field},所有关联数据都将被查询
+    * @param ${pkField.field} ${pkField.notes}
+    * @return ${className}
+    */
+    ${className} getDetail(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field});
+           </#list>
+         </#if>
+    </#list>
+</#if>
+
    /**
     * 查询${className}列表
     * @param rowBounds 分页参数
