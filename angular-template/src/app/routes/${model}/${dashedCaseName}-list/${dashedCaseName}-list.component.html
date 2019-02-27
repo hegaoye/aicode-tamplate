@@ -9,17 +9,21 @@
 <div class="panel panel-body">
   <!--搜索 start-->
   <form nz-form (submit)="query${className}List(1)">
+    <#list displayAttributes as field>
+    <#if (field.isQueryRequired?? && field.isQueryRequired == 'Y')>
     <div class="search-group">
-      <span class="search-title">${classNameLower}名：</span>
+      <span class="search-title">${field.displayName}：</span>
       <div class="search-main">
         <input nz-input name="name"
                [(ngModel)]="searchParams.name"
-               placeholder="请输入">
+               placeholder="${field.displayName}">
       </div>
     </div>
+    </#if>
+    </#list>
     <div class="inline-block">
-      <button nz-button class="ml-20 mr" [nzType]="'primary'" title="提交" type="submit">
-        <i nz-icon type="search" theme="outline"></i><span>提交</span>
+      <button nz-button class="ml-20 mr" [nzType]="'primary'" title="搜索" type="submit">
+        <i nz-icon type="search" theme="outline"></i><span>搜索</span>
       </button>
       <button nz-button class="mr" title="重置" type="reset" (click)="resetSearch()">
         <i nz-icon type="sync" theme="outline"></i><span>重置</span>
@@ -42,8 +46,8 @@
     <ng-template #totalRow>共${classNameLower}List.totalRow}条</ng-template>
     <tr>
       <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
-      <#list tableFields as field>
-      <th class="text-center" nzWidth=""><span><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></span></th><!--${field.notes}-->
+      <#list displayAttributes as field>
+      <th class="text-center" nzWidth=""><span><#if (field.isListPageDisplay?? && field.isListPageDisplay=='Y' && field.displayName??)>${field.displayName}</#if></span></th>
       </#list>
       <th class="text-center" nzWidth=""><span>状态</span></th><!--状态-->
       <th class="text-center" nzWidth=""><span>操作</span></th><!--操作-->
