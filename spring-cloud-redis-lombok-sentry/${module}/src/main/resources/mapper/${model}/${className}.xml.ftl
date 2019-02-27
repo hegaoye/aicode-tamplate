@@ -9,6 +9,47 @@
         <result property="${field.field}" column="${field.column}"/>
     </#list>
     </resultMap>
+    <!--查询表信息关联信息-->
+<#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <resultMap id="rs_base_all" type="${className}" extends="rs_base">
+    <#if oneToOneList??&&(oneToOneList?size>0)>
+       <#list oneToOneList as oneToOne>
+        <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.ClassName}.load${oneToOne.ClassName}"/>
+       </#list>
+    </#if>
+
+    <#if oneToManyList??&&(oneToManyList?size>0)>
+        <#list oneToManyList as oneToMany>
+        <collection property="${oneToMany.classNameLower}" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.ClassName}.query${oneToMany.ClassName}List"/>
+        </#list>
+    </#if>
+    </resultMap>
+
+
+    <#if oneToOneList??&&(oneToOneList?size>0)>
+        <#list oneToOneList as oneToOne>
+            <select id="load${oneToOne.ClassName}" resultMap="rs_base">
+                SELECT <include refid="columns" />
+                FROM `${tableName}`
+                <include refid="where"/>
+            </select>
+        </#list>
+    </#if>
+    <#if oneToManyList??&&(oneToManyList?size>0)>
+        <#list oneToManyList as oneToMany>
+           <select id="query${oneToMany.ClassName}List" resultMap="rs_base">
+                SELECT <include refid="columns" />
+                FROM `${tableName}`
+                <include refid="where"/>
+
+                <if test="sortColumns!=null and sortColumns!=''">
+                    ORDER BY <@sort 'sortColumns'/>
+                </if>
+           </select>
+        </#list>
+    </#if>
+</#if>
+
 
     <sql id="columns">
     <#list columns as column>${column.column}<#if column_has_next>,</#if></#list>
