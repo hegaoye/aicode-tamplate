@@ -12,8 +12,8 @@ import ${basePackage}.${oneToOne.model}.entity.${oneToOne.className};
 <#elseif oneToManyList??&&(oneToManyList?size>0)>
 <#list oneToManyList as oneToMany>
 import ${basePackage}.${oneToMany.model}.entity.${oneToMany.className};
-</#list>
 import java.util.List;
+</#list>
 </#if>
 
 /**
