@@ -38,17 +38,29 @@ public class ${className}SVImpl {
         }
         return ${classNameLower}FeignApi.load(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
     }
+
+    /**
+     * 加载一个对象${className},(将查询关联数据)
+     <#list pkFields as field>* @param ${field.field} ${field.notes}</#list>
+     * @return ${className}
+     */
+    public ${className} get(<#list pkFields as field>${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>) {
+        if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+        }
+        return ${classNameLower}FeignApi.get(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
+    }
     <#list pkFields as pkField>
     /**
-     * 加载一个对象${className} 通过${pkField.field}
+     * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
      * @param ${pkField.field} ${pkField.notes}
      * @return ${className}
      */
-    public ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
+    public ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
         if(${pkField.field}==null){
             throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
-        return ${classNameLower}FeignApi.loadBy${pkField.field?cap_first}(${pkField.field});
+        return ${classNameLower}FeignApi.getBy${pkField.field?cap_first}(${pkField.field});
     }
 
     </#list>

@@ -43,7 +43,7 @@ public class ${className}Ctrl {
 
 
     <#if (pkFields?size>0)>
-    /**
+   /**
     * 查询${className}一个详情信息
     <#list pkFields as pkField>
     * @param ${pkField.field} ${pkField.notes}
@@ -69,9 +69,35 @@ public class ${className}Ctrl {
         return BeanRet.create(true, BaseException.BaseExceptionEnum.Success, ${classNameLower});
     }
 
+   /**
+    * 查询${className}一个详情信息
+    <#list pkFields as pkField>
+    * @param ${pkField.field} ${pkField.notes}
+    </#list>
+    * @return BeanRet
+    */
+    @ApiOperation(value = "查询${className}一个详情信息", notes = "查询${className}一个详情信息")
+    @ApiImplicitParams({
+        <#list pkFields as pkField>
+        @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}",dataType = "${pkField.fieldType}", paramType = "query")<#if pkField_has_next>,</#if>
+        </#list>
+    })
+    @GetMapping(value = "/get")
+    @ResponseBody
+    public BeanRet get(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
+    <#list pkFields as pkField>
+        if(${pkField.field}==null){
+          return null;
+        }
+    </#list>
+        ${className} ${classNameLower} = ${classNameLower}SVImpl.get(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
+        log.info(JSON.toJSONString(${classNameLower}));
+        return BeanRet.create(true, BaseException.BaseExceptionEnum.Success, ${classNameLower});
+    }
+
 
     <#list pkFields as pkField>
-    /**
+   /**
     * 根据条件${pkField.field}查询${className}一个详情信息
     *
     * @param ${pkField.field} ${pkField.notes}
@@ -94,6 +120,33 @@ public class ${className}Ctrl {
         }
         </#if>
         ${className} ${classNameLower} = ${classNameLower}SVImpl.loadBy${pkField.field?cap_first}(${pkField.field});
+        log.info(JSON.toJSONString(${classNameLower}));
+        return BeanRet.create(true, BaseException.BaseExceptionEnum.Success, ${classNameLower});
+    }
+
+   /**
+    * 根据条件${pkField.field}查询${className}一个详情信息
+    *
+    * @param ${pkField.field} ${pkField.notes}
+    * @return BeanRet
+    */
+    @ApiOperation(value = "查询${className}一个详情信息", notes = "查询${className}一个详情信息")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}",dataType = "${pkField.fieldType}", paramType = "path")
+    })
+    @GetMapping(value = "/get/${pkField.field}/{${pkField.field}}")
+    @ResponseBody
+    public BeanRet getBy${pkField.field?cap_first}(@PathVariable ${pkField.fieldType} ${pkField.field}) {
+        <#if pkField.field!='id' && !pkField.checkDigit>
+        if(StringUtils.isEmpty(${pkField.field})){
+            return BeanRet.create(BaseException.BaseExceptionEnum.Empty_Param);
+        }
+        <#else>
+        if(${pkField.field}==null||${pkField.field}==0){
+            return BeanRet.create(BaseException.BaseExceptionEnum.Empty_Param);
+        }
+        </#if>
+        ${className} ${classNameLower} = ${classNameLower}SVImpl.getBy${pkField.field?cap_first}(${pkField.field});
         log.info(JSON.toJSONString(${classNameLower}));
         return BeanRet.create(true, BaseException.BaseExceptionEnum.Success, ${classNameLower});
     }
