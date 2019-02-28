@@ -42,6 +42,8 @@ export class ${className}ListComponent implements OnInit {
   }
 
   <#list fields as field>
+  // ${field}
+
   <#if (field.isState)>
   /**
    * 修改禁用状态
@@ -54,8 +56,6 @@ export class ${className}ListComponent implements OnInit {
       this.query${className}List();//由于switch的特殊性，因此在失败的时候刷新页面
     })
   }
-  <#else>
-  <#if (field.isQueryRequired)>
   <#elseif (field.isDate || field.displayType == 'DatePicker')>
   /**
    * 日期选择变更
@@ -70,7 +70,6 @@ export class ${className}ListComponent implements OnInit {
     }
   }
   <#elseif (field.displayType == 'TimePicker')>
-
   /**
    * 时间选择变更
    */
@@ -116,8 +115,8 @@ export class ${className}ListComponent implements OnInit {
   onChanges(event){
     console.log("█ event ►►►", event);
   }
-
-  </#if>
+  <#else>
+  //else
   </#if>
   </#list>
   /**
