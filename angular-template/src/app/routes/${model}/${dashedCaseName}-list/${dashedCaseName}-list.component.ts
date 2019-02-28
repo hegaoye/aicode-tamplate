@@ -56,7 +56,7 @@ export class ${className}ListComponent implements OnInit {
   }
   <#else>
   <#if (field.isQueryRequired)>
-  <#elseif (field.isDate || field.displayType == 'datePicker')>
+  <#elseif (field.isDate || field.displayType == 'DatePicker')>
   /**
    * 日期选择变更
    */
@@ -69,7 +69,7 @@ export class ${className}ListComponent implements OnInit {
       this.searchParams.dateEnd = undefined;
     }
   }
-  <#elseif (field.displayType == 'timePicker')>
+  <#elseif (field.displayType == 'TimePicker')>
 
   /**
    * 时间选择变更
@@ -77,7 +77,7 @@ export class ${className}ListComponent implements OnInit {
   timeChange(time:Date){
     console.log(time && time.toTimeString());
   }
-  <#elseif (field.displayType == 'cascader')>
+  <#elseif (field.displayType == 'Cascader')>
 
   //模拟数据，请移到上方
   public options = [{
@@ -116,7 +116,6 @@ export class ${className}ListComponent implements OnInit {
   onChanges(event){
     console.log("█ event ►►►", event);
   }
-  <#else>
 
   </#if>
   </#if>
