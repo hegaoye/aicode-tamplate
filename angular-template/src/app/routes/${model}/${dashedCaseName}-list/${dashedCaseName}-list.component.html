@@ -14,25 +14,25 @@
     <div class="search-group">
       <span class="search-title">${field.displayName}：</span>
       <div class="search-main">
-        <#if (field.isState || field.displayType == 'select')>
+        <#if (field.isState || field.displayType == 'Select')>
         <nz-select name="${field.field}" [(ngModel)]="searchParams.${field.field}" nzAllowClear
                    nzPlaceHolder="${field.field}">
           <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
         </nz-select>
-        <#elseif (field.displayType == 'cascader')>
+        <#elseif (field.displayType == 'Cascader')>
         <nz-cascader
           [nzOptions]="options"
           [(ngModel)]="searchParams.${field.field}"
           (ngModelChange)="onChanges($event)">
         </nz-cascader>
-        <#elseif (field.displayType == 'radio')>
+        <#elseif (field.displayType == 'Radio')>
         <nz-radio-group [(ngModel)]="searchParams.${field.field}" [nzButtonStyle]="'solid'">
           <label nz-radio-button nzValue="A">选项1</label>
           <label nz-radio-button nzValue="B">选项2</label>
         </nz-radio-group>
-        <#elseif (field.isDate || field.displayType == 'datePicker')>
+        <#elseif (field.isDate || field.displayType == 'DatePicker')>
         <nz-range-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="dateChange($event)" [nzFormat]="'yyyy-MM-dd'"></nz-range-picker>
-        <#elseif (field.displayType == 'timePicker')>
+        <#elseif (field.displayType == 'TimePicker')>
         <nz-time-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="timeChange($event)"></nz-time-picker>
         <#else>
         <input nz-input name="${field.field}"
