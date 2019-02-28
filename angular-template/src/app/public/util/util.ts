@@ -282,7 +282,7 @@ export class Util {
    * 将中国标准时间转换成 yyyy/MM/dd 格式
    * @param timeGB
    */
-  public static formateGBtime(timeGB) {
+  public static formateGBDate(timeGB) {
     let d = new Date(timeGB);
     return d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDate();
   }

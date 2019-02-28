@@ -9,14 +9,36 @@
 <div class="panel panel-body">
   <!--搜索 start-->
   <form nz-form (submit)="query${className}List(1)">
-    <#list displayAttributes as field>
-    <#if (field.isQueryRequired?? && field.isQueryRequired == 'Y')>
+    <#list fields as field>
+    <#if (field.isQueryRequired)>
     <div class="search-group">
       <span class="search-title">${field.displayName}：</span>
       <div class="search-main">
-        <input nz-input name="name"
-               [(ngModel)]="searchParams.name"
+        <#if (field.isState || field.displayType == 'select')>
+        <nz-select name="${field.field}" [(ngModel)]="searchParams.${field.field}" nzAllowClear
+                   nzPlaceHolder="${field.field}">
+          <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
+        </nz-select>
+        <#elseif (field.displayType == 'cascader')>
+        <nz-cascader
+          [nzOptions]="options"
+          [(ngModel)]="searchParams.${field.field}"
+          (ngModelChange)="onChanges($event)">
+        </nz-cascader>
+        <#elseif (field.displayType == 'radio')>
+        <nz-radio-group [(ngModel)]="searchParams.${field.field}" [nzButtonStyle]="'solid'">
+          <label nz-radio-button nzValue="A">选项1</label>
+          <label nz-radio-button nzValue="B">选项2</label>
+        </nz-radio-group>
+        <#elseif (field.isDate || field.displayType == 'datePicker')>
+        <nz-range-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="dateChange($event)" [nzFormat]="'yyyy-MM-dd'"></nz-range-picker>
+        <#elseif (field.displayType == 'timePicker')>
+        <nz-time-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="timeChange($event)"></nz-time-picker>
+        <#else>
+        <input nz-input name="${field.field}"
+               [(ngModel)]="searchParams.${field.field}"
                placeholder="${field.displayName}">
+        </#if>
       </div>
     </div>
     </#if>
@@ -46,10 +68,11 @@
     <ng-template #totalRow>共${classNameLower}List.totalRow}条</ng-template>
     <tr>
       <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
-      <#list displayAttributes as field>
-      <th class="text-center" nzWidth=""><span><#if (field.isListPageDisplay?? && field.isListPageDisplay=='Y' && field.displayName??)>${field.displayName}</#if></span></th>
+      <#list fields as field>
+      <#if (field.isListPageDisplay)>
+      <th class="text-center" nzWidth=""><span>${field.displayName}</span></th>
+      </#if>
       </#list>
-      <th class="text-center" nzWidth=""><span>状态</span></th><!--状态-->
       <th class="text-center" nzWidth=""><span>操作</span></th><!--操作-->
     </tr>
     </thead>
@@ -57,9 +80,9 @@
     <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
       <tr>
         <td class="text-center">{{i+1}}</td>
-        <#list tableFields as field>
-        <td class="text-center">{{data.${field.field}}}</td>
-        </#list>
+        <#list fields as field>
+        <#if (field.isListPageDisplay)>
+        <#if (field.isState)>
         <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
                      (ngModelChange)="modify${className}State(data.code, $event)"
@@ -67,6 +90,15 @@
           <ng-template #checkedTemplate><i nz-icon type="check" theme="outline"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
         </td>
+        <#elseif (field.displayType == 'Website')>
+        <td class="text-center"><a [href]="data.${field.field}">{{data.${field.field}}}</a></td>
+        <#elseif (field.displayType == 'Rate')>
+        <td class="text-center"><nz-rate [ngModel]="data.${field.field}" nzDisabled></nz-rate></td>
+        <#else>
+        <td class="text-center">{{data.${field.field}}}</td>
+        </#if>
+        </#if>
+        </#list>
         <td class="text-center">
           <button nz-button class="btn-blue-o mr" [routerLink]="[routerLinks.${classNameLower}.modify,data.code]"
                   title="修改">
