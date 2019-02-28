@@ -17,44 +17,38 @@
         <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.className}.loadForOneToOne"/>
        </#list>
     </#if>
-
     <#if oneToManyList??&&(oneToManyList?size>0)>
         <#list oneToManyList as oneToMany>
-        <collection property="${oneToMany.classNameLower}" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.className}.queryForOneToMany"/>
+        <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.className}.queryForOneToMany"/>
         </#list>
     </#if>
     </resultMap>
 
 
-    <#if oneToOneList??&&(oneToOneList?size>0)>
-
       <!--查询关联数据-->
-      <select id="getDetail" resultMap="rs_base_relation">
-            SELECT <include refid="columns" />
-            FROM `${tableName}`
-            <include refid="where"/>
-      </select>
+    <select id="getDetail" resultMap="rs_base_relation">
+          SELECT <include refid="columns" />
+          FROM `${tableName}`
+          <include refid="where"/>
+    </select>
 
       <!--关联查询一条记录使用-->
-      <select id="loadForOneToOne" resultMap="rs_base">
-            SELECT <include refid="columns" />
-            FROM `${tableName}`
-            <include refid="where"/>
-      </select>
+    <select id="loadForOneToOne" resultMap="rs_base">
+          SELECT <include refid="columns" />
+          FROM `${tableName}`
+          <include refid="where"/>
+    </select>
 
-    </#if>
-    <#if oneToManyList??&&(oneToManyList?size>0)>
       <!--关联查询集合使用-->
-      <select id="queryForOneToMany" resultMap="rs_base">
-            SELECT <include refid="columns" />
-            FROM `${tableName}`
-            <include refid="where"/>
+    <select id="queryForOneToMany" resultMap="rs_base">
+          SELECT <include refid="columns" />
+          FROM `${tableName}`
+          <include refid="where"/>
 
-            <if test="sortColumns!=null and sortColumns!=''">
-                ORDER BY <@sort 'sortColumns'/>
-            </if>
-      </select>
-    </#if>
+          <if test="sortColumns!=null and sortColumns!=''">
+             ORDER BY ${r'${sortColumns}'}
+          </if>
+     </select>
 </#if>
 
 
