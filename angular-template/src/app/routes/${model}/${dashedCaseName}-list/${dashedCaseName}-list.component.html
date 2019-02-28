@@ -14,9 +14,26 @@
     <div class="search-group">
       <span class="search-title">${field.displayName}：</span>
       <div class="search-main">
+        <#if (field.isState || field.displayType == 'select')>
+        <nz-select name="${field.field}" [(ngModel)]="searchParams.${field.field}" nzAllowClear
+                   nzPlaceHolder="${field.field}">
+          <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
+        </nz-select>
+        <#elseif (field.displayType == 'cascader')>
+        <nz-cascader
+          [nzOptions]="options"
+          [(ngModel)]="searchParams.${field.field}"
+          (ngModelChange)="onChanges($event)">
+        </nz-cascader>
+        <#elseif (field.isDate || field.displayType == 'datePicker')>
+        <nz-range-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="dateChange($event)" [nzFormat]="'yyyy-MM-dd'"></nz-range-picker>
+        <#elseif (field.displayType == 'timePicker')>
+        <nz-time-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="timeChange($event)"></nz-time-picker>
+        <#else>
         <input nz-input name="${field.field}"
                [(ngModel)]="searchParams.${field.field}"
                placeholder="${field.displayName}">
+        </#if>
       </div>
     </div>
     </#if>
@@ -47,7 +64,9 @@
     <tr>
       <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
       <#list fields as field>
-      <th class="text-center" nzWidth=""><span><#if (field.isListPageDisplay)>${field.displayName}</#if></span></th>
+      <#if (field.isListPageDisplay)>
+      <th class="text-center" nzWidth=""><span>${field.displayName}</span></th>
+      </#if>
       </#list>
       <th class="text-center" nzWidth=""><span>操作</span></th><!--操作-->
     </tr>
@@ -58,7 +77,6 @@
         <td class="text-center">{{i+1}}</td>
         <#list fields as field>
         <#if (field.isListPageDisplay)>
-        <!--<td class="text-center">{{data.${field.field}}}</td>-->
         <#if (field.isState)>
         <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
