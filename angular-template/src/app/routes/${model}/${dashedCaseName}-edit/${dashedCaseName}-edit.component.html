@@ -11,7 +11,7 @@
     <#if (field.isAllowUpdate)>
 
     <!--${field.displayName} start-->
-    <!--${field.isRequired}-->
+    <!--${field}-->
     <nz-form-item>
       <nz-form-label [nzSm]="7" nzFor="${field.field}" [nzRequired]="true">${field.displayName}</nz-form-label>
       <nz-form-control [nzSm]="10" [nzValidateStatus]="getFormControl('${field.field}')">
