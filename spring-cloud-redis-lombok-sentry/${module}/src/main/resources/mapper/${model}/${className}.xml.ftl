@@ -14,13 +14,13 @@
     <resultMap id="rs_base_relation" type="${className}" extends="rs_base">
     <#if oneToOneList??&&(oneToOneList?size>0)>
        <#list oneToOneList as oneToOne>
-        <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.ClassName}.loadForOneToOne"/>
+        <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.className}.loadForOneToOne"/>
        </#list>
     </#if>
 
     <#if oneToManyList??&&(oneToManyList?size>0)>
         <#list oneToManyList as oneToMany>
-        <collection property="${oneToMany.classNameLower}" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.ClassName}.queryForOneToMany"/>
+        <collection property="${oneToMany.classNameLower}" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.className}.queryForOneToMany"/>
         </#list>
     </#if>
     </resultMap>
