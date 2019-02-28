@@ -25,6 +25,11 @@
           [(ngModel)]="searchParams.${field.field}"
           (ngModelChange)="onChanges($event)">
         </nz-cascader>
+        <#elseif (field.displayType == 'radio')>
+        <nz-radio-group [(ngModel)]="searchParams.${field.field}" [nzButtonStyle]="'solid'">
+          <label nz-radio-button nzValue="A">选项1</label>
+          <label nz-radio-button nzValue="B">选项2</label>
+        </nz-radio-group>
         <#elseif (field.isDate || field.displayType == 'datePicker')>
         <nz-range-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="dateChange($event)" [nzFormat]="'yyyy-MM-dd'"></nz-range-picker>
         <#elseif (field.displayType == 'timePicker')>

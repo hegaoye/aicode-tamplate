@@ -16,35 +16,6 @@ export class ${className}ListComponent implements OnInit {
   public _loading: boolean = false;
   public routerLinks = SettingUrl.ROUTERLINK;//路由
   public states = States;       // 状态
-  public options = [{
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [{
-      value: 'hangzhou',
-      label: 'Hangzhou',
-      children: [{
-        value: 'xihu',
-        label: 'West Lake',
-        isLeaf: true
-      }]
-    }, {
-      value: 'ningbo',
-      label: 'Ningbo',
-      isLeaf: true
-    }]
-  }, {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [{
-      value: 'nanjing',
-      label: 'Nanjing',
-      children: [{
-        value: 'zhonghuamen',
-        label: 'Zhong Hua Men',
-        isLeaf: true
-      }]
-    }]
-  }];
 
   constructor(private ${model}Service: ${model?cap_first}Service) {
   }
@@ -107,6 +78,38 @@ export class ${className}ListComponent implements OnInit {
     console.log(time && time.toTimeString());
   }
   <#elseif (field.displayType == 'cascader')>
+
+  //模拟数据，请移到上方
+  public options = [{
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [{
+      value: 'hangzhou',
+      label: 'Hangzhou',
+      children: [{
+        value: 'xihu',
+        label: 'West Lake',
+        isLeaf: true
+      }]
+    }, {
+      value: 'ningbo',
+      label: 'Ningbo',
+      isLeaf: true
+    }]
+  }, {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [{
+      value: 'nanjing',
+      label: 'Nanjing',
+      children: [{
+        value: 'zhonghuamen',
+        label: 'Zhong Hua Men',
+        isLeaf: true
+      }]
+    }]
+  }];
+
   /**
    * 级联选择
    */
