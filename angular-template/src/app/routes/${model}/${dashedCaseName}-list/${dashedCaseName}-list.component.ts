@@ -56,7 +56,6 @@ export class ${className}ListComponent implements OnInit {
       this.query${className}List();//由于switch的特殊性，因此在失败的时候刷新页面
     })
   }
-  <#elseif (field.isQueryRequired)>
   <#elseif (field.isDate || field.displayType == 'DatePicker')>
   /**
    * 日期选择变更

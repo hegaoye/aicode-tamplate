@@ -13,6 +13,16 @@ export class ${className}EditComponent implements OnInit {
   public isConfirmLoading: boolean = false;
   public code: string; //${classNameLower}
   public validateForm: FormGroup;//企业登录的表单
+  autocompleteOptions = [];
+  multiSelectListOfOption = [{label:a1,value:a1},{label:a2,value:a2},{label:a11,value:a11},{label:b1,value:b1}];
+
+  autocompleteOnChange(value: string): void {
+    if (!value || value.indexOf('@') >= 0) {
+      this.autocompleteOptions = [];
+    } else {
+      this.autocompleteOptions = ['gmail.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`);
+    }
+  }
 
   constructor(private fb: FormBuilder, private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, public location: Location) {
     this.validateForm = this.fb.group({
