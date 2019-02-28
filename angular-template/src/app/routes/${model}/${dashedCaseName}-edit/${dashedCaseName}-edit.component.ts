@@ -94,7 +94,7 @@ export class ${className}EditComponent implements OnInit {
     <#if (field.isAllowUpdate)>
     <#else>
       ${field.field}: [null<#if (field.isRequired)>,
-      <#if (field.isRequired && field.displayType == 'Mobile')>
+      <#if (field.displayType == 'Mobile')>
       Validators.compose([Validators.required,Validators.pattern(PatternService.mobile)])
       <#elseif (field.displayType == 'Phone')>
       Validators.compose([Validators.required,Validators.pattern(PatternService.phone)])
