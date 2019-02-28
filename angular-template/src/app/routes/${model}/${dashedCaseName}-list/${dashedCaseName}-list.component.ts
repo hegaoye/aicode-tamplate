@@ -42,7 +42,7 @@ export class ${className}ListComponent implements OnInit {
   }
 
   <#list fields as field>
-${field}
+  // ${field}
 
   <#if (field.isState)>
   /**
