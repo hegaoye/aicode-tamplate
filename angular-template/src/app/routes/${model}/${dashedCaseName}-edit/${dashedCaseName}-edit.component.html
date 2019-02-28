@@ -10,16 +10,16 @@
     <#list fields as field>
     <#if (field.isAllowUpdate)>
 
-    <!--${field.field} start-->
+    <!--${field.displayName} start-->
     <nz-form-item>
-      <nz-form-label [nzSm]="7" nzFor="${field.field}" nzRequired><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if></nz-form-label>
+      <nz-form-label [nzSm]="7" nzFor="${field.field}" [nzRequired]="${field.isRequired}">${field.displayName}</nz-form-label>
       <nz-form-control [nzSm]="10" [nzValidateStatus]="getFormControl('${field.field}')">
 
         <#if (field.isState || field.displayType == 'Select')>
         <nz-select nzAllowClear nzPlaceHolder="请选择${field.displayName}" formControlName="${field.field}">
           <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
         </nz-select>
-        <#elseif (field.displayType == 'multiSelect')>
+        <#elseif (field.displayType == 'MultiSelect')>
         <nz-select [nzMaxMultipleCount]="3" class="w100" nzMode="multiple" nzPlaceHolder="请选择" formControlName="${field.field}">
           <nz-option *ngFor="let option of multiSelectListOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
         </nz-select>
@@ -40,42 +40,78 @@
         <nz-date-picker [nzFormat]="yyyy/MM/dd" formControlName="${field.field}"></nz-date-picker>
         <#elseif (field.displayType == 'TimePicker')>
         <nz-time-picker formControlName="${field.field}"></nz-time-picker>
-        <#elseif (field.displayType == 'autocomplete')>
+        <#elseif (field.displayType == 'Autocomplete')>
         <input placeholder="input here" nz-input formControlName="${field.field}" (ngModelChange)="autocompleteOnChange($event)" [nzAutocomplete]="auto">
         <nz-autocomplete #auto>
           <nz-auto-option *ngFor="let option of autocompleteOptions" [nzValue]="option">{{option}}</nz-auto-option>
         </nz-autocomplete>
-        <#elseif (field.displayType == 'mention')>
-        <#elseif (field.displayType == 'checkbox')>
-        <#elseif (field.displayType == 'rate')>
-        <#elseif (field.displayType == 'silder')>
-        <#elseif (field.displayType == 'switch')>
-        <#elseif (field.displayType == 'treeSelect')>
-        <#elseif (field.displayType == 'upload')>
-        <#elseif (field.displayType == 'input')>
+        <#elseif (field.displayType == 'Mention')>
+        <nz-mention
+          [nzSuggestions]="webFrameworks"
+          [nzValueWith]="valueWith"
+          (nzOnSelect)="onMentionSelect($event)">
+          <input nz-input nzMentionTrigger formControlName="${field.field}">
+          <ng-container *nzMentionSuggestion="let framework">
+            <nz-avatar nzSize="small" [nzText]="framework.name" [nzSrc]="framework.icon"></nz-avatar>
+            <span>{{ framework.name }} - {{ framework.type }}</span>
+          </ng-container>
+        </nz-mention>
+        <#elseif (field.displayType == 'Checkbox')>
+        <nz-checkbox-group formControlName="${field.field}"></nz-checkbox-group>
+        <#elseif (field.displayType == 'Rate')>
+        <nz-rate formControlName="${field.field}" nzAllowHalf [nzCharacter]="characterIcon"></nz-rate>
+        <ng-template #characterIcon><i nz-icon type="heart"></i></ng-template>
+        <#elseif (field.displayType == 'Silder')>
+        <nz-slider [nzDefaultValue]="30" [nzDisabled]="false"></nz-slider>
+        <#elseif (field.displayType == 'Switch')>
+        <nz-switch formControlName="${field.field}"></nz-switch>
+        <#elseif (field.displayType == 'TreeSelect')>
+        <nz-tree-select class="w100"
+          [nzDefaultExpandedKeys]="expandKeys"
+          [nzNodes]="treeNodes"
+          nzShowSearch
+          nzPlaceHolder="Please select"
+          formControlName="${field.field}"
+          (ngModelChange)="onTreeSelectChange($event)">
+        </nz-tree-select>
+        <#elseif (field.displayType == 'Upload')>
+        <nz-upload
+          nzAction="https://jsonplaceholder.typicode.com/posts/"
+          nzListType="picture-card"
+          [(nzFileList)]="fileList"
+          [nzShowButton]="fileList.length < 3"
+          [nzPreview]="handlePreview">
+          <i nz-icon type="plus"></i>
+          <div class="ant-upload-text">Upload</div>
+        </nz-upload>
+        <nz-modal [nzVisible]="previewVisible" [nzContent]="modalContent" [nzFooter]="null" (nzOnCancel)="previewVisible=false">
+          <ng-template #modalContent>
+            <img [src]="previewImage" [ngStyle]="{ 'width': '100%' }" />
+          </ng-template>
+        </nz-modal>
+        <#elseif (field.displayType == 'Input')>
         <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.displayName}">
-        <#elseif (field.displayType == 'phone')>
+        <#elseif (field.displayType == 'Phone')>
         <input nz-input formControlName="${field.field}" type="tel" id="${field.field}" placeholder="${field.displayName}">
-        <#elseif (field.displayType == 'mobileOrPhone')>
+        <#elseif (field.displayType == 'MobileOrPhone')>
         <input nz-input formControlName="${field.field}" type="tel" id="${field.field}" placeholder="${field.displayName}">
-        <#elseif (field.displayType == 'password')>
-        <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.displayName}">
-        <#elseif (field.displayType == 'email')>
+        <#elseif (field.displayType == 'Password')>
+        <input nz-input formControlName="${field.field}" type="password" id="${field.field}" placeholder="${field.displayName}">
+        <#elseif (field.displayType == 'Email')>
         <input nz-input formControlName="${field.field}" type="email" id="${field.field}" placeholder="${field.displayName}">
-        <#elseif (field.displayType == 'inputNumber')>
+        <#elseif (field.displayType == 'InputNumber')>
         <nz-input-number formControlName="${field.field}" [nzMin]="1" [nzMax]="10" [nzStep]="1" class="w100" placeholder="${field.displayName}"></nz-input-number>
-        <#elseif (field.displayType == 'textarea')>
+        <#elseif (field.displayType == 'Textarea')>
         <textarea nz-input formControlName="${field.field}" [nzAutosize]="{ minRows: 2, maxRows: 6 }" placeholder="${field.displayName}"></textarea>
         <#else>
         <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.displayName}">
         </#if>
 
+        <#if (field.isRequired)>
         <nz-form-explain *ngIf="getFormControl('${field.field}').dirty&&getFormControl('${field.field}').errors">
-          <ng-container *ngIf="getFormControl('${field.field}').hasError('required')">请输入${field.notes}</ng-container>
+          <ng-container *ngIf="getFormControl('${field.field}').hasError('required')">请输入${field.validateText}</ng-container>
         </nz-form-explain>
-      </nz-form-control>
-      <nz-form-control [nzSm]="7" class="font12 pl color-gray">
-        ${field.notes}
+        </#if>
       </nz-form-control>
     </nz-form-item>
     </#if>

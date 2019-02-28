@@ -42,7 +42,6 @@ export class ${className}ListComponent implements OnInit {
   }
 
   <#list fields as field>
-  // ${field}
 
   <#if (field.isState)>
   /**
@@ -116,7 +115,6 @@ export class ${className}ListComponent implements OnInit {
     console.log("█ event ►►►", event);
   }
   <#else>
-  //else
   </#if>
   </#list>
   /**
