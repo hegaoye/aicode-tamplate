@@ -1,7 +1,3 @@
-include 'core', 'base-facade', 'base-sv','base-web'
-
-include 'eureka-server',
-        'zipkin-server',
-        '${projectName}',
-        '${projectName}-api',
-        'facade'
+include 'core', 'base-facade', 'base-sv','facade','base-web'
+include '${projectName}','${projectName}-api'
+include 'eureka-server','zipkin-server'
