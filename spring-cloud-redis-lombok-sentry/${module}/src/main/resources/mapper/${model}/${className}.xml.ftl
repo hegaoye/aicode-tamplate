@@ -9,6 +9,7 @@
         <result property="${field.field}" column="${field.column}"/>
     </#list>
     </resultMap>
+
     <!--查询表信息关联信息-->
 <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     <resultMap id="rs_base_relation" type="${className}" extends="rs_base">
