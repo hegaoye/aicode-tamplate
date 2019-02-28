@@ -114,7 +114,8 @@ export class ${className}ListComponent implements OnInit {
   onChanges(event){
     console.log("█ event ►►►", event);
   }
-
+  <#else>
+  //else
   </#if>
   </#list>
   /**
