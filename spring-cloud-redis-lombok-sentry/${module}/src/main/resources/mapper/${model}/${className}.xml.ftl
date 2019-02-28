@@ -25,7 +25,6 @@
     </#if>
     </resultMap>
 
-
       <!--查询关联数据-->
     <select id="getDetail" resultMap="rs_base_relation">
           SELECT <include refid="columns" />
