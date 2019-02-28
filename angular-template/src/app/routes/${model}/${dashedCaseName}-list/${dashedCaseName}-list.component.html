@@ -9,8 +9,8 @@
 <div class="panel panel-body">
   <!--搜索 start-->
   <form nz-form (submit)="query${className}List(1)">
-    <#list tableFields as field>
-    <#if (field.displayAttribute?? && field.displayAttribute.isQueryRequired == 'Y')>
+    <#list fields as field>
+    <#if (field.isQueryRequired)>
     <div class="search-group">
       <span class="search-title">${field.displayName}：</span>
       <div class="search-main">
@@ -46,8 +46,8 @@
     <ng-template #totalRow>共${classNameLower}List.totalRow}条</ng-template>
     <tr>
       <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
-      <#list displayAttributes as field>
-      <th class="text-center" nzWidth=""><span><#if (field.isListPageDisplay?? && field.isListPageDisplay=='Y' && field.displayName??)>${field.displayName}</#if></span></th>
+      <#list fields as field>
+      <th class="text-center" nzWidth=""><span><#if (field.isListPageDisplay)>${field.displayName}</#if></span></th>
       </#list>
       <th class="text-center" nzWidth=""><span>操作</span></th><!--操作-->
     </tr>
@@ -56,9 +56,9 @@
     <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
       <tr>
         <td class="text-center">{{i+1}}</td>
-        <#list tableFields as field>
-        <#if (field.displayAttribute?? && field.displayAttribute.isListPageDisplay == 'Y')>
-        <#if (field.isState?? && field.isState == 'Y')>
+        <#list fields as field>
+        <#if (field.isListPageDisplay)>
+        <#if (field.isState)>
         <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
                      (ngModelChange)="modify${className}State(data.code, $event)"
@@ -66,8 +66,13 @@
           <ng-template #checkedTemplate><i nz-icon type="check" theme="outline"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
         </td>
-        </#if>
+        <#elseif (field.displayType === 'Website')>
+        <td class="text-center"><a [href]="data.${field.field}">{{data.${field.field}}}</a></td>
+        <#elseif (field.displayType === 'Rate')>
+        <td class="text-center"><nz-rate [ngModel]="data.${field.field}" nzDisabled></nz-rate></td>
+        <#else>
         <td class="text-center">{{data.${field.field}}}</td>
+        </#if>
         </#if>
         </#list>
         <td class="text-center">
