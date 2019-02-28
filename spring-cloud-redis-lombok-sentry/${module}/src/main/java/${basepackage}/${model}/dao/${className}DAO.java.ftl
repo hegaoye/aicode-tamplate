@@ -75,7 +75,7 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
     </#list>
     * @return ${className}
     */
-    ${className} getDetail(<#list pkFields as field>@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field}<#if field_has_next>,</#if></#list>);
+    ${className} getDetail(<#list pkFields as field>@Param("${field.field}") ${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>);
         </#list>
     </#if>
 </#if>
