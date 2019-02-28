@@ -96,7 +96,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
         <#list pkFields as field>
         param.put("${field.field}",${field.field});
         </#list>
-        return ${classNameLower}DAO.getDetail(<#list pkFields as field>${pkField.field}<#if field_has_next>,</#if></#list>);
+        return ${classNameLower}DAO.getDetail(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
     }
 
     <#list pkFields as pkField>
