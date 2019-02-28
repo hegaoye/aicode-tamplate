@@ -9,13 +9,13 @@
 <div class="panel panel-body">
   <!--搜索 start-->
   <form nz-form (submit)="query${className}List(1)">
-    <#list displayAttributes as field>
-    <#if (field.isQueryRequired?? && field.isQueryRequired == 'Y')>
+    <#list tableFields as field>
+    <#if (field.displayAttribute?? && field.displayAttribute.isQueryRequired == 'Y')>
     <div class="search-group">
       <span class="search-title">${field.displayName}：</span>
       <div class="search-main">
-        <input nz-input name="name"
-               [(ngModel)]="searchParams.name"
+        <input nz-input name="${field.field}"
+               [(ngModel)]="searchParams.${field.field}"
                placeholder="${field.displayName}">
       </div>
     </div>
@@ -57,7 +57,7 @@
       <tr>
         <td class="text-center">{{i+1}}</td>
         <#list tableFields as field>
-        <#if (field.displayAttribute?? && field.displayAttribute == 'Y')>
+        <#if (field.displayAttribute?? && field.displayAttribute.isListPageDisplay == 'Y')>
         <#if (field.isState?? && field.isState == 'Y')>
         <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
