@@ -58,6 +58,7 @@
         <td class="text-center">{{i+1}}</td>
         <#list fields as field>
         <#if (field.isListPageDisplay)>
+        <!--<td class="text-center">{{data.${field.field}}}</td>-->
         <#if (field.isState)>
         <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
@@ -66,9 +67,9 @@
           <ng-template #checkedTemplate><i nz-icon type="check" theme="outline"></i></ng-template>
           <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
         </td>
-        <#elseif (field.displayType === 'Website')>
+        <#elseif (field.displayType == 'Website')>
         <td class="text-center"><a [href]="data.${field.field}">{{data.${field.field}}}</a></td>
-        <#elseif (field.displayType === 'Rate')>
+        <#elseif (field.displayType == 'Rate')>
         <td class="text-center"><nz-rate [ngModel]="data.${field.field}" nzDisabled></nz-rate></td>
         <#else>
         <td class="text-center">{{data.${field.field}}}</td>
