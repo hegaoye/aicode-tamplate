@@ -30,6 +30,7 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
         return new ${className}();
     }
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     /**
      * 查询${className}一个详情信息,(将查询关联数据)
      <#list pkFields as pkField>
@@ -41,6 +42,7 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
     public  ${className} get(<#list pkFields as pkField>@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>){
         return new ${className}();
     }
+    </#if>
 
     <#list pkFields as pkField>
 
@@ -54,18 +56,22 @@ public class ${className}FeignApiImpl implements ${className}FeignApi {
     public   ${className} loadBy${pkField.field?cap_first}(@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}){
         return new ${className}();
     }
+    </#list>
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
     /**
-     * 根据条件${pkField.field}查询${className}一个详情信息,(将查询关联数据)
-     *
-     * @param ${pkField.field} ${pkField.notes}
-     * @return ${className}
-     */
+    * 根据条件${pkField.field}查询${className}一个详情信息,(将查询关联数据)
+    *
+    * @param ${pkField.field} ${pkField.notes}
+    * @return ${className}
+    */
     @Override
     public   ${className} getBy${pkField.field?cap_first}(@RequestParam("${pkField.field}") ${pkField.fieldType} ${pkField.field}){
         return new ${className}();
     }
     </#list>
+    </#if>
     </#if>
 
     /**

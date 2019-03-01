@@ -39,6 +39,21 @@ public class ${className}SVImpl {
         return ${classNameLower}FeignApi.load(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
     }
 
+    <#list pkFields as pkField>
+    /**
+    * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
+    * @param ${pkField.field} ${pkField.notes}
+    * @return ${className}
+    */
+    public ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
+        if(${pkField.field}==null){
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+        }
+        return ${classNameLower}FeignApi.loadBy${pkField.field?cap_first}(${pkField.field});
+    }
+    </#list>
+
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     /**
      * 加载一个对象${className},(将查询关联数据)
      <#list pkFields as field>* @param ${field.field} ${field.notes}</#list>
@@ -50,6 +65,7 @@ public class ${className}SVImpl {
         }
         return ${classNameLower}FeignApi.get(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
     }
+
     <#list pkFields as pkField>
     /**
      * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
@@ -62,8 +78,8 @@ public class ${className}SVImpl {
         }
         return ${classNameLower}FeignApi.getBy${pkField.field?cap_first}(${pkField.field});
     }
-
     </#list>
+    </#if>
 
     /**
      * 删除对象${className}
@@ -76,9 +92,7 @@ public class ${className}SVImpl {
         }
         ${classNameLower}FeignApi.delete(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
     }
-
 </#if>
-
 
     /**
      * 查询${className}分页
@@ -117,16 +131,13 @@ public class ${className}SVImpl {
         return ${classNameLower}FeignApi.list(${classNameLower},curPage,pageSize);
     }
 
-
     public int count(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         return ${classNameLower}FeignApi.count(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
     }
 
-
     public int count(${className} ${classNameLower}) {
         return ${classNameLower}FeignApi.count(${classNameLower});
     }
-
 
     /**
      * 保存
@@ -149,5 +160,4 @@ public class ${className}SVImpl {
         if(${classNameLower}==null){ throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);}
         ${classNameLower}FeignApi.modify(${classNameLower});
     }
-
 }
