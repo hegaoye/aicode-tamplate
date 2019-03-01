@@ -1,6 +1,6 @@
 <app-back-btn></app-back-btn>
 <div class="page-title">
-  <span class="title">${classNameLower}详情</span>
+  <span class="title">${notes}详情</span>
 </div>
 
 <!--Extra0006:[未设置]-->
@@ -8,14 +8,14 @@
 <div class="panel panel-body">
   <!--供应商信息-->
   <section class="mb-20">
-    <h3 class="subtitle">${classNameLower}详细信息</h3>
+    <h3 class="subtitle">${notes}详细信息</h3>
     <div nz-row class="p-15">
 
-      <div nz-col nzSm="12" nzXXl="10" [nzXs]="24">
+      <div nz-col [nzXs]="12">
       <#list fields as field>
-      <#if field.field!='id' && field.field!='code'>
+      <#if field.isDetailPageDisplay>
         <p>
-          <strong class="pr"><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if>：</strong><!--${field.notes}-->
+          <strong class="pr">${field.displayName}：</strong><!--${field.displayName}-->
           <span *ngIf="${classNameLower}Info.${field.field}">{{${classNameLower}Info.${field.field}}}</span>
           <a class="color-gray" [title]="'[未设置]'" *ngIf="!${classNameLower}Info.${field.field}"
              (click)="toModifyTheUnSetData()">[未设置]</a><!--[未设置]-->

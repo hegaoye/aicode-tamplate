@@ -1,12 +1,12 @@
 <app-back-btn></app-back-btn>
 <div class="page-title">
-  <span class="title" *ngIf="!this.code">添加${className}</span>
-  <span class="title" *ngIf="this.code">修改${className}</span>
+  <span class="title" *ngIf="!this.code">添加${notes}</span>
+  <span class="title" *ngIf="this.code">修改${notes}</span>
 </div>
 
 <div class="panel panel-body">
   <form nz-form [formGroup]="validateForm" class="form-wrap" (submit)="add${className}($event)">
-    <h2 class="subtitle">${className}信息</h2>
+    <h2 class="subtitle">${notes}信息</h2>
     <#list fields as field>
     <#if (field.isAllowUpdate)>
 
