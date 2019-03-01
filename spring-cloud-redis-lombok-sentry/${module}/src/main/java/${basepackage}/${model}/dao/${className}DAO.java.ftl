@@ -75,7 +75,6 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
 
 
 <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
-    <#list oneToOneList as oneToOne>
     /**
     * 加载一个对象${className},所有关联数据都将被查询
     <#list pkFields as field>
@@ -84,7 +83,6 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
     * @return ${className}
     */
     ${className} getDetail(<#list pkFields as field>@Param("${field.field}") ${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>);
-    </#list>
 </#if>
 
    /**
