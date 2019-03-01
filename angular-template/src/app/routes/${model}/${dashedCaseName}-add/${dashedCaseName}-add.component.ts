@@ -68,7 +68,7 @@ export class ${className}AddComponent implements OnInit {
     console.log($event);
   }
 
-  <#elseif (field.displayType == 'Checkbox')
+  <#elseif (field.displayType == 'Checkbox')>
   checkOptionsOne = [
     {label: 'Apple', value: 'Apple', checked: true},
     {label: 'Pear', value: 'Pear'},
