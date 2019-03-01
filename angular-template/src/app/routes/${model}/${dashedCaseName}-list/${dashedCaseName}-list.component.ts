@@ -31,9 +31,9 @@ export class ${className}ListComponent implements OnInit {
    */
   query${className}List(curPage?: number) {
     this._loading = true;
-    if (curPage) { this.${classNameLower}List.curPage = curPage };//当有页码时，查询该页数据
-    this.searchParams.curPage = this.${classNameLower}List.curPage; //目标页码
-    this.searchParams.pageSize = this.${classNameLower}List.pageSize; //每页条数
+    if (curPage) { this.${classNameLower}List.curPage = curPage; }// 当有页码时，查询该页数据
+    this.searchParams.curPage = this.${classNameLower}List.curPage; // 目标页码
+    this.searchParams.pageSize = this.${classNameLower}List.pageSize; // 每页条数
     this.${model}Service.get${className}List(this.searchParams).then((res: Page) => {
       this._loading = false;
       this.${classNameLower}List = res;
@@ -130,6 +130,6 @@ export class ${className}ListComponent implements OnInit {
    */
   resetSearch() {
     this.searchParams = {};
-    this.query${className}List(1)
+    this.query${className}List(1);
   }
 }
