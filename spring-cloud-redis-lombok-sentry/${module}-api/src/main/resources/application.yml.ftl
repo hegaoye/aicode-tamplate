@@ -50,7 +50,7 @@ eureka:
         lease-renewal-interval-in-seconds: 5 #心跳过期时间5s
     client:
         serviceUrl:
-        defaultZone: http://${r'${'}security.user.name}:${r'${'}security.user.password}@${r'${'}eureka.instance.hostname}:8761/eureka/
+            defaultZone: http://${r'${'}security.user.name}:${r'${'}security.user.password}@${r'${'}eureka.instance.hostname}:8761/eureka/
 
 #启用密码保护
 security:
