@@ -69,7 +69,7 @@ export class ${className}ModifyComponent implements OnInit {
   }
 
   <#elseif (field.displayType == 'Checkbox')>
-  checkOptionsOne = [
+  checkOptions = [
     {label: 'Apple', value: 'Apple', checked: true},
     {label: 'Pear', value: 'Pear'},
     {label: 'Orange', value: 'Orange'}
@@ -187,6 +187,15 @@ export class ${className}ModifyComponent implements OnInit {
     let formData = Object.assign({},this.validateForm.value);
     //修改${classNameLower}
     formData.code = this.code;
+  <#list fields as field>
+  <#if (field.isAllowUpdate && field.displayType == 'Checkbox')>
+    let checkedData = '';
+    formData.${field.field}.forEach{item => {
+      if(item.checked) checkedData += item.value + ',';
+    }}
+    formData.${field.field} = checkedData.substring(0,checkedData.length-1);
+  </#if>
+  </#list>
     this.${model}Service.modify${className}(formData).then((data: any) => {
       this.isConfirmLoading = false;
       this.validateForm.reset();
@@ -199,6 +208,11 @@ export class ${className}ModifyComponent implements OnInit {
    */
   load${className}Info() {
     this.${model}Service.load${className}ByCode(this.code).then((data: any) => {
+    <#list fields as field>
+    <#if (field.isAllowUpdate && field.displayType == 'Checkbox')>
+    data.${field.field} = this.checkOptions;
+    </#if>
+    </#list>
       this.validateForm.patchValue(data);
     })
   }

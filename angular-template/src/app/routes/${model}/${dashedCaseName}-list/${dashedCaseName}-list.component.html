@@ -105,7 +105,7 @@
                   title="修改">
             <i nz-icon type="edit" theme="outline"></i>
           </button>
-          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
+          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.${field.joinField}]"
                   title="查看">
             <i nz-icon type="eye" theme="outline"></i>
           </button>
