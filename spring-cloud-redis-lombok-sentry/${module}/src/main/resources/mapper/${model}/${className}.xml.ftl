@@ -233,6 +233,18 @@
     </#list>
 
 
+    <#if (pkFields?size>0)>
+        <#list pkFields as pkfield>
+            <!--查询一条${tableName} loadBy${pkfield.field?cap_first}  通过${pkfield.field} -->
+            <select id="getBy${pkfield.field?cap_first}" resultMap="rs_base_relation" parameterType="${pkfield.fieldType}">
+                SELECT
+                <include refid="columns"/>
+                FROM `${tableName}`
+                where ${pkfield.column} = <@mapperEl pkfield.field/>
+            </select>
+        </#list>
+
+
         <!--查询一条${tableName} countByPk -->
         <select id="listByPk" resultMap="rs_base">
             SELECT
