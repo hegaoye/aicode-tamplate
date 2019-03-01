@@ -5,8 +5,8 @@ import {SharedModule} from "../../shared/shared.module";
 <#list modelClasses as class>
 import {${class.className}ListComponent} from "./${class.dashedCaseName}-list/${class.dashedCaseName}-list.component";
 import {${class.className}DetailComponent} from "./${class.dashedCaseName}-detail/${class.dashedCaseName}-detail.component";
-import {${class.className}AddComponent} from "./${class.dashedCaseName}-edit/${class.dashedCaseName}-add.component";
-import {${class.className}ModifyComponent} from "./${class.dashedCaseName}-edit/${class.dashedCaseName}-modify.component";
+import {${class.className}AddComponent} from "./${class.dashedCaseName}-add/${class.dashedCaseName}-add.component";
+import {${class.className}ModifyComponent} from "./${class.dashedCaseName}-modify/${class.dashedCaseName}-modify.component";
 </#list>
 
 const routes: Routes = [
