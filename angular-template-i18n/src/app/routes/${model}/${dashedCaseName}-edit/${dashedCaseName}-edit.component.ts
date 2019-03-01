@@ -5,9 +5,9 @@ import {Location} from "@angular/common";
 import {${model?cap_first}Service} from "../${model}.service";
 
 @Component({
-  selector: 'app-${dashedCaseName}-edit',
-  templateUrl: './${dashedCaseName}-edit.component.html',
-  styleUrls: ['./${dashedCaseName}-edit.component.less']
+  selector: 'app-${dashedCaseName}-add',
+  templateUrl: './${dashedCaseName}-modify.component.html',
+  styleUrls: ['./${dashedCaseName}-modify.component.less']
 })
 export class ${className}EditComponent implements OnInit {
   public isConfirmLoading: boolean = false;

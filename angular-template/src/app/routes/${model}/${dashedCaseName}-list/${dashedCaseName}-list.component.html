@@ -1,6 +1,6 @@
 <ng-container *ngIf="showList">
 <div class="page-title clearfix">
-  <div class="title">${className}管理</div>
+  <div class="title">${notes}管理</div>
   <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="添加">
     <i nz-icon type="plus" theme="outline"></i>
     添加
@@ -15,7 +15,7 @@
     <div class="search-group">
       <span class="search-title">${field.displayName}：</span>
       <div class="search-main">
-        <#if (field.isState || field.displayType == 'Select')>
+        <#if (field.checkState || field.displayType == 'Select')>
         <nz-select name="${field.field}" [(ngModel)]="searchParams.${field.field}" nzAllowClear
                    nzPlaceHolder="${field.field}">
           <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
@@ -31,7 +31,7 @@
           <label nz-radio-button nzValue="A">选项1</label>
           <label nz-radio-button nzValue="B">选项2</label>
         </nz-radio-group>
-        <#elseif (field.isDate || field.displayType == 'DatePicker')>
+        <#elseif (field.checkDate || field.displayType == 'DatePicker')>
         <nz-range-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="dateChange($event)" [nzFormat]="'yyyy-MM-dd'"></nz-range-picker>
         <#elseif (field.displayType == 'TimePicker')>
         <nz-time-picker name="${field.field}" [(ngModel)]="searchParams.${field.field}" (ngModelChange)="timeChange($event)"></nz-time-picker>
@@ -83,7 +83,7 @@
         <td class="text-center">{{i+1}}</td>
         <#list fields as field>
         <#if (field.isListPageDisplay)>
-        <#if (field.isState)>
+        <#if (field.checkState)>
         <td class="text-center">
           <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
                      (ngModelChange)="modify${className}State(data.code, $event)"
@@ -105,7 +105,7 @@
                   title="修改">
             <i nz-icon type="edit" theme="outline"></i>
           </button>
-          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
+          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.${field.joinField}]"
                   title="查看">
             <i nz-icon type="eye" theme="outline"></i>
           </button>

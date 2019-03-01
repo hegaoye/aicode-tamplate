@@ -1,4 +1,4 @@
-const berton = 'http://192.168.19.96:';  //berton
+const berton = 'http://192.168.1.96:';  //berton
 
 /**
  * 配置代理

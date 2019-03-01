@@ -43,7 +43,7 @@ export class ${className}ListComponent implements OnInit {
   }
 
   <#list fields as field>
-  <#if (field.isState)>
+  <#if (field.checkState)>
   /**
    * 修改禁用状态
    * @param code
@@ -55,7 +55,7 @@ export class ${className}ListComponent implements OnInit {
       this.query${className}List();//由于switch的特殊性，因此在失败的时候刷新页面
     })
   }
-  <#elseif (field.isDate || field.displayType == 'DatePicker')>
+  <#elseif (field.checkDate || field.displayType == 'DatePicker')>
   /**
    * 日期选择变更
    */

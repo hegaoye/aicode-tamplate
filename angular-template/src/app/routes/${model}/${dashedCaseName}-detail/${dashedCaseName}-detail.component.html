@@ -1,6 +1,6 @@
 <app-back-btn></app-back-btn>
 <div class="page-title">
-  <span class="title">${classNameLower}详情</span>
+  <span class="title">${notes}详情</span>
 </div>
 
 <!--Extra0006:[未设置]-->
@@ -8,25 +8,99 @@
 <div class="panel panel-body">
   <!--供应商信息-->
   <section class="mb-20">
-    <h3 class="subtitle">${classNameLower}详细信息</h3>
+    <h3 class="subtitle">${notes}详细信息</h3>
     <div nz-row class="p-15">
 
-      <div nz-col nzSm="12" nzXXl="10" [nzXs]="24">
       <#list fields as field>
-      <#if field.field!='id' && field.field!='code'>
+      <#if field.isDetailPageDisplay>
+      <div nz-col [nzXs]="12">
         <p>
-          <strong class="pr"><#if (field.notes?? && field.notes?length>4)>${field.notes?substring(0,4)}<#else> ${field.notes}</#if>：</strong><!--${field.notes}-->
+          <strong class="pr">${field.displayName}：</strong><!--${field.displayName}-->
           <span *ngIf="${classNameLower}Info.${field.field}">{{${classNameLower}Info.${field.field}}}</span>
           <a class="color-gray" [title]="'[未设置]'" *ngIf="!${classNameLower}Info.${field.field}"
              (click)="toModifyTheUnSetData()">[未设置]</a><!--[未设置]-->
         </p>
+      </div>
 
       </#if>
       </#list>
-      </div>
-
     </div>
   </section>
+
+  <#if oneToOneList??&&(oneToOneList?size>0)>
+  <#list oneToOneList as oneToOne>
+    <section class="mb-20">
+      <h3 class="subtitle">${oneToOne.notes}</h3>
+      <div nz-row [nzGutter]="16">
+      <#list oneToOne.fields as field>
+      <#if field.isDetailPageDisplay>
+        <div nz-col [nzXs]="12">
+          <p>
+            <strong class="pr">${field.displayName}：</strong><!--${field.displayName}-->
+            <span>{{${classNameLower}Info.${field.field} || '[未设置]'}}</span>
+          </p>
+        </div>
+      </#if>
+      </#list>
+      </div>
+      </section>
+  </#list>
+  </#if>
+
+  <#if oneToManyList??&&(oneToManyList?size>0)>
+  <#list oneToManyList as oneToMany>
+    <section class="mb-20">
+      <h3 class="subtitle">${oneToMany.notes}</h3>
+      <nz-table #nzTable
+                [nzData]="${oneToMany.classNameLower}List.voList"
+                [nzLoading]="_${oneToMany.classNameLower}Loading"
+                [nzFrontPagination]="false"
+                [nzShowTotal]="totalRow"
+                [nzPageSize]="${oneToMany.classNameLower}List.pageSize"
+                [nzTotal]="${oneToMany.classNameLower}List.totalRow"
+                [nzPageIndex]="${oneToMany.classNameLower}List.curPage"
+                (nzPageIndexChange)="query${oneToMany.className}List($event)">
+        <thead>
+        <ng-template #totalRow>共{{${oneToMany.classNameLower}List.totalRow}}条</ng-template>
+        <tr>
+          <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
+          <#list oneToMany.fields as field>${field.displayName}
+          <#if (field.isListPageDisplay)>
+          <th class="text-center" nzWidth=""><span>${field.displayName}</span></th><!--${field.displayName}-->
+        </#if>
+        </#list>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-template ngFor let-data [ngForOf]="nzTable.data" let-i="index">
+          <tr>
+            <td class="text-center">{{i+1}}</td>
+            <#list oneToMany.fields as field>
+            <#if (field.isListPageDisplay)>
+            <#if (field.checkState)>
+            <td class="text-center">
+              <nz-switch class="thc" [ngModel]="data.state === states.enable" [ngModelOptions]="{standalone: true}"
+                         (ngModelChange)="modify${className}State(data.code, $event)"
+                         [nzCheckedChildren]="checkedTemplate" [nzUnCheckedChildren]="unCheckedTemplate"></nz-switch>
+              <ng-template #checkedTemplate><i nz-icon type="check" theme="outline"></i></ng-template>
+              <ng-template #unCheckedTemplate><i nz-icon type="close" theme="outline"></i></ng-template>
+            </td>
+            <#elseif (field.displayType == 'Website')>
+            <td class="text-center"><a [href]="data.${field.field}">{{data.${field.field}}}</a></td>
+            <#elseif (field.displayType == 'Rate')>
+            <td class="text-center"><nz-rate [ngModel]="data.${field.field}" nzDisabled></nz-rate></td>
+            <#else>
+            <td class="text-center">{{data.${field.field}}}</td>
+          </#if>
+        </#if>
+        </#list>
+        </tr>
+        </ng-template>
+        </tbody>
+      </nz-table>
+      </section>
+  </#list>
+  </#if>
 </div>
 
 

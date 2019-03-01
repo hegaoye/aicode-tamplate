@@ -232,6 +232,17 @@
         </select>
     </#list>
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+        <#list pkFields as pkfield>
+            <!--查询一条${tableName} getBy${pkfield.field?cap_first}  通过${pkfield.field} -->
+            <select id="getBy${pkfield.field?cap_first}" resultMap="rs_base_relation" parameterType="${pkfield.fieldType}">
+                SELECT
+                <include refid="columns"/>
+                FROM `${tableName}`
+                where ${pkfield.column} = <@mapperEl pkfield.field/>
+            </select>
+        </#list>
+    </#if>
 
         <!--查询一条${tableName} countByPk -->
         <select id="listByPk" resultMap="rs_base">
