@@ -4,7 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Location} from "@angular/common";
 import {${model?cap_first}Service} from "../${model}.service";
 import { UploadFile } from 'ng-zorro-antd';
-import {PatternService} from "../../../../../../angular-template-rzhkj/src/app/shared/service/pattern.service";
+import {Pattern} from '../../../public/util/pattern';
 
 @Component({
   selector: 'app-${dashedCaseName}-edit',
@@ -68,6 +68,44 @@ export class ${className}EditComponent implements OnInit {
     console.log($event);
   }
 
+  <#elseif (field.displayType == 'Cascader')>
+  //模拟数据，请移到上方
+  public options = [{
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [{
+      value: 'hangzhou',
+      label: 'Hangzhou',
+      children: [{
+        value: 'xihu',
+        label: 'West Lake',
+        isLeaf: true
+      }]
+    }, {
+      value: 'ningbo',
+      label: 'Ningbo',
+      isLeaf: true
+    }]
+  }, {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [{
+      value: 'nanjing',
+      label: 'Nanjing',
+      children: [{
+        value: 'zhonghuamen',
+        label: 'Zhong Hua Men',
+        isLeaf: true
+      }]
+    }]
+  }];
+  /**
+   * 级联选择
+   */
+  onChanges(event){
+    console.log("█ event ►►►", event);
+  }
+
   <#elseif (field.displayType == 'Upload')>
   //Upload 模拟数据
   fileList = [
@@ -93,30 +131,30 @@ export class ${className}EditComponent implements OnInit {
     <#list fields as field>
     <#if (field.isAllowUpdate)>
       ${field.field}: [null<#if (field.isRequired)><#if (field.displayType == 'Mobile')>
-      ,Validators.compose([Validators.required,Validators.pattern(PatternService.mobile)])
+      ,Validators.compose([Validators.required,Validators.pattern(Pattern.mobile)])
       <#elseif (field.displayType == 'Phone')>
-      ,Validators.compose([Validators.required,Validators.pattern(PatternService.phone)])
+      ,Validators.compose([Validators.required,Validators.pattern(Pattern.phone)])
       <#elseif (field.displayType == 'MobileOrPhone')>
-      ,Validators.compose([Validators.required,Validators.pattern(PatternService.tel)])
+      ,Validators.compose([Validators.required,Validators.pattern(Pattern.tel)])
       <#elseif (field.displayType == 'Email')>
-      ,Validators.compose([Validators.required,Validators.pattern(PatternService.email)])
+      ,Validators.compose([Validators.required,Validators.pattern(Pattern.email)])
       <#elseif (field.displayType == 'Website')>
-      ,Validators.compose([Validators.required,Validators.pattern(PatternService.website)])
+      ,Validators.compose([Validators.required,Validators.pattern(Pattern.website)])
       <#elseif (field.displayType == 'IdCard')>
-      ,Validators.compose([Validators.required,Validators.pattern(PatternService.idCard)])
+      ,Validators.compose([Validators.required,Validators.pattern(Pattern.idCard)])
       <#else>, [Validators.required]</#if>
       <#else><#if (field.isRequired && field.displayType == 'Mobile')>
-      ,Validators.compose([Validators.pattern(PatternService.mobile)])
+      ,Validators.compose([Validators.pattern(Pattern.mobile)])
       <#elseif (field.displayType == 'Phone')>
-      ,Validators.compose([Validators.pattern(PatternService.phone)])
+      ,Validators.compose([Validators.pattern(Pattern.phone)])
       <#elseif (field.displayType == 'MobileOrPhone')>
-      ,Validators.compose([Validators.pattern(PatternService.tel)])
+      ,Validators.compose([Validators.pattern(Pattern.tel)])
       <#elseif (field.displayType == 'Email')>
-      ,Validators.compose([Validators.pattern(PatternService.email)])
+      ,Validators.compose([Validators.pattern(Pattern.email)])
       <#elseif (field.displayType == 'Website')>
-      ,Validators.compose([Validators.pattern(PatternService.website)])
+      ,Validators.compose([Validators.pattern(Pattern.website)])
       <#elseif (field.displayType == 'IdCard')>
-      ,Validators.compose([Validators.pattern(PatternService.idCard)])
+      ,Validators.compose([Validators.pattern(Pattern.idCard)])
       </#if></#if>]<#if field_has_next>,</#if> // ${field.displayName}
     </#if>
     </#list>

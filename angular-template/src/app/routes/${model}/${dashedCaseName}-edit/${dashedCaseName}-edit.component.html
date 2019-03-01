@@ -25,9 +25,8 @@
           <nz-option *ngFor="let option of multiSelectListOfOption" [nzLabel]="option.label" [nzValue]="option.value"></nz-option>
         </nz-select>
         <#elseif (field.displayType == 'Cascader')>
-        <nz-cascader
+        <nz-cascader formControlName="${field.field}"
           [nzOptions]="options"
-          [(ngModel)]="searchParams.${field.field}"
           (ngModelChange)="onChanges($event)">
         </nz-cascader>
         <#elseif (field.displayType == 'Radio')>
@@ -38,7 +37,7 @@
           <label nz-radio nzValue="D">D</label>
         </nz-radio-group>
         <#elseif (field.displayType == 'DatePicker')>
-        <nz-date-picker [nzFormat]="yyyy/MM/dd" formControlName="${field.field}"></nz-date-picker>
+        <nz-date-picker [nzFormat]="'yyyy/MM/dd'" formControlName="${field.field}"></nz-date-picker>
         <#elseif (field.displayType == 'TimePicker')>
         <nz-time-picker formControlName="${field.field}"></nz-time-picker>
         <#elseif (field.displayType == 'Autocomplete')>
