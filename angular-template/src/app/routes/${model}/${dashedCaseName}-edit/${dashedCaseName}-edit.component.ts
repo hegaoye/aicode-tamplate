@@ -24,7 +24,7 @@ export class ${className}EditComponent implements OnInit {
     if (!value || value.indexOf('@') >= 0) {
       this.autocompleteOptions = [];
     } else {
-      this.autocompleteOptions = ['gmail.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`);
+      this.autocompleteOptions = ['gmail.com', '163.com', 'qq.com'].map(domain => `${r'${value}@${domain}'}`);
     }
   }
   <#elseif (field.displayType == 'MultiSelect')>
