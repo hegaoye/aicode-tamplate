@@ -14,28 +14,36 @@ export class ${className}DetailComponent implements OnInit {
   public ${classNameLower}Info: any = {};//${classNameLower}信息
   public searchParams: any = {};//搜索参数
 
-<#if oneToManyList>
+<#if oneToManyList??&&(oneToManyList?size>0)>
 <#list oneToManyList as oneToMany>
   public ${oneToMany.classNameLower}List: Page = new Page(); //供应商
   public _${oneToMany.classNameLower}Loading: boolean = false;
 </#list>
 </#if>
 
-  constructor(private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, private router: Router) {
+  constructor(private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute,
+  <#if oneToManyList??&&(oneToManyList?size>0)>
+  <#list oneToManyList as oneToMany>
+  <#if oneToMany.model?cap_first != model?cap_first>
+  ${oneToMany.model}Service:${oneToMany.model?cap_first}Service,
+  </#if>
+  </#list>
+  </#if>
+  private router: Router) {
   }
 
   ngOnInit() {
     this.code = this.route.snapshot.params.code;//获取参数
     this.load${className}Info();//查询${classNameLower}类型列表
 
-    <#if oneToManyList>
+    <#if oneToManyList??&&(oneToManyList?size>0)>
     <#list oneToManyList as oneToMany>
     this.query${oneToMany.className}List()
     </#list>
     </#if>
   }
 
-<#if oneToManyList>
+<#if oneToManyList??&&(oneToManyList?size>0)>
 <#list oneToManyList as oneToMany>
   /**
    * 查询${oneToMany.classNameLower}列表
