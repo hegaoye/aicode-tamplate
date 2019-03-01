@@ -29,7 +29,7 @@ export class ${className}ModifyComponent implements OnInit {
   }
   <#elseif (field.displayType == 'MultiSelect')>
   //多选模拟数据
-  multiSelectListOfOption = [{label:a1,value:a1},{label:a2,value:a2},{label:a11,value:a11},{label:b1,value:b1}];
+  multiSelectListOfOption = [{label:'a1',value:'a1'},{label:'a2',value:'a2'},{label:'a11',value:'a11'},{label:'b1',value:'b1'}];
 
   <#elseif (field.displayType == 'Mention')>
   //Mention模拟数据
