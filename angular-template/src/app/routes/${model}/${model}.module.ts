@@ -17,8 +17,8 @@ const routes: Routes = [
     <#if class_index == 0>{path: '', redirectTo: ' ${class.dashedCaseName}'},</#if>
     {path: '${class.dashedCaseName}', component: ${class.className}ListComponent, children: [
     </#if>
-        {path: 'add', component: ${class.className}EditComponent},
-        {path: 'modify/:code', component: ${class.className}EditComponent},
+        {path: 'add', component: ${class.className}AddComponent},
+        {path: 'modify/:code', component: ${class.className}ModifyComponent},
         {path: 'detail/:code', component: ${class.className}DetailComponent}
     <#if modelClasses?size gt 1>
     ]}<#if class_has_next>,</#if>

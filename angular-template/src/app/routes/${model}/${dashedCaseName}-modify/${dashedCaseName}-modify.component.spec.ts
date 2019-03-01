@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ${className}EditComponent } from './${dashedCaseName}-edit.component';
+import { ${className}EditComponent } from './${dashedCaseName}-modify.component';
 
 describe('${className}EditComponent', () => {
   let component: ${className}EditComponent;

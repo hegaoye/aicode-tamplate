@@ -7,17 +7,17 @@ import { UploadFile } from 'ng-zorro-antd';
 import {Pattern} from '../../../public/util/pattern';
 
 @Component({
-  selector: 'app-${dashedCaseName}-edit',
-  templateUrl: './${dashedCaseName}-edit.component.html',
-  styleUrls: ['./${dashedCaseName}-edit.component.less']
+  selector: 'app-${dashedCaseName}-add',
+  templateUrl: './${dashedCaseName}-modify.component.html',
+  styleUrls: ['./${dashedCaseName}-modify.component.less']
 })
-export class ${className}EditComponent implements OnInit {
+export class ${className}AddComponent implements OnInit {
   public isConfirmLoading: boolean = false;
   public code: string; //${classNameLower}
   public validateForm: FormGroup;//企业登录的表单
 
   <#list fields as field>
-  <#if (field.isAllowUpdate)>
+  <#if (field.isInsert)>
   <#if (field.displayType == 'Autocomplete')>
   autocompleteOptions = [];
   autocompleteOnChange(value: string): void {
@@ -68,6 +68,12 @@ export class ${className}EditComponent implements OnInit {
     console.log($event);
   }
 
+  <#elseif (field.displayType == 'Checkbox')
+  checkOptionsOne = [
+    {label: 'Apple', value: 'Apple', checked: true},
+    {label: 'Pear', value: 'Pear'},
+    {label: 'Orange', value: 'Orange'}
+  ];
   <#elseif (field.displayType == 'Cascader')>
   //模拟数据，请移到上方
   public options = [{
@@ -126,10 +132,10 @@ export class ${className}EditComponent implements OnInit {
   </#if>
   </#list>
 
-  constructor(private fb: FormBuilder, private ${model}Service: ${model?cap_first}Service, private route: ActivatedRoute, public location: Location) {
+  constructor(private fb: FormBuilder, private ${model}Service: ${model?cap_first}Service, public location: Location) {
     this.validateForm = this.fb.group({
     <#list fields as field>
-    <#if (field.isAllowUpdate)>
+    <#if (field.isInsert)>
       ${field.field}: [null<#if (field.isRequired)><#if (field.displayType == 'Mobile')>
       ,Validators.compose([Validators.required,Validators.pattern(Pattern.mobile)])
       <#elseif (field.displayType == 'Phone')>
@@ -162,13 +168,6 @@ export class ${className}EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.url.subscribe(url => {
-      const curPath = url[0].path;
-      if (curPath === 'modify') {
-        this.code = this.route.snapshot.params.code;//获取参数
-        this.load${className}Info();
-      }//修改前查询出供应商信息
-    })
   }
 
   /**
@@ -185,30 +184,11 @@ export class ${className}EditComponent implements OnInit {
     this.isConfirmLoading = true;
     let formData = Object.assign({},this.validateForm.value);
     //添加${classNameLower}
-    if (this.code) {
-      formData.code = this.code;
-      this.${model}Service.modify${className}(formData).then((data: any) => {
-        this.isConfirmLoading = false;
-        this.validateForm.reset();
-        this.location.back();
-      }).catch(res => this.isConfirmLoading = false)
-    } else {
-      this.${model}Service.add${className}(formData).then((data: any) => {
-        this.isConfirmLoading = false;
-        this.location.back();
-      }).catch(res => this.isConfirmLoading = false)
-    }
+    this.${model}Service.add${className}(formData).then((data: any) => {
+      this.isConfirmLoading = false;
+      this.location.back();
+    }).catch(res => this.isConfirmLoading = false);
   }
-
-  /**
-   * 查询${classNameLower}信息
-   */
-  load${className}Info() {
-    this.${model}Service.load${className}ByCode(this.code).then((data: any) => {
-      this.validateForm.patchValue(data);
-    })
-  }
-
 
   getFormControl(name) {
     return this.validateForm.controls[name];
