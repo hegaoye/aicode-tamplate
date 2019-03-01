@@ -5,7 +5,8 @@ import {SharedModule} from "../../shared/shared.module";
 <#list modelClasses as class>
 import {${class.className}ListComponent} from "./${class.dashedCaseName}-list/${class.dashedCaseName}-list.component";
 import {${class.className}DetailComponent} from "./${class.dashedCaseName}-detail/${class.dashedCaseName}-detail.component";
-import {${class.className}EditComponent} from "./${class.dashedCaseName}-edit/${class.dashedCaseName}-edit.component";
+import {${class.className}AddComponent} from "./${class.dashedCaseName}-edit/${class.dashedCaseName}-add.component";
+import {${class.className}ModifyComponent} from "./${class.dashedCaseName}-edit/${class.dashedCaseName}-modify.component";
 </#list>
 
 const routes: Routes = [
@@ -35,7 +36,8 @@ const routes: Routes = [
     <#list modelClasses as class>
     ${class.className}ListComponent,
     ${class.className}DetailComponent,
-    ${class.className}EditComponent<#if class_has_next>,</#if>
+    ${class.className}AddComponent,
+    ${class.className}ModifyComponent<#if class_has_next>,</#if>
     </#list>
   ],
   providers: []
