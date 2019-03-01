@@ -49,8 +49,9 @@
 
   <#if oneToManyList??&&(oneToManyList?size>0)>
   <#list oneToManyList as oneToMany>
-    <section class="mb-20">
-      <h3 class="subtitle">${oneToMany.notes}</h3>
+  <section class="mb-20">
+    <h3 class="subtitle">${oneToMany.notes}</h3>
+    <div class="b">
       <nz-table #nzTable
                 [nzData]="${oneToMany.classNameLower}List.voList"
                 [nzLoading]="_${oneToMany.classNameLower}Loading"
@@ -98,7 +99,8 @@
         </ng-template>
         </tbody>
       </nz-table>
-      </section>
+    </div>
+  </section>
   </#list>
   </#if>
 </div>
