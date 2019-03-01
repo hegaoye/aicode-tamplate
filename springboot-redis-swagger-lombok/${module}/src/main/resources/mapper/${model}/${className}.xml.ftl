@@ -10,6 +10,46 @@
     </#list>
     </resultMap>
 
+<#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <resultMap id="rs_base_relation" type="${className}" extends="rs_base">
+        <#if oneToOneList??&&(oneToOneList?size>0)>
+            <#list oneToOneList as oneToOne>
+                <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.className}.loadForOneToOne"/>
+            </#list>
+        </#if>
+        <#if oneToManyList??&&(oneToManyList?size>0)>
+            <#list oneToManyList as oneToMany>
+                <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.className}.queryForOneToMany"/>
+            </#list>
+        </#if>
+    </resultMap>
+
+    <!--查询关联数据-->
+    <select id="getDetail" resultMap="rs_base_relation">
+        SELECT <include refid="columns" />
+        FROM `${tableName}`
+        <include refid="where"/>
+    </select>
+
+    <!--关联查询一条记录使用-->
+    <select id="loadForOneToOne" resultMap="rs_base">
+        SELECT <include refid="columns" />
+        FROM `${tableName}`
+        <include refid="where"/>
+    </select>
+
+    <!--关联查询集合使用-->
+    <select id="queryForOneToMany" resultMap="rs_base">
+        SELECT <include refid="columns" />
+        FROM `${tableName}`
+        <include refid="where"/>
+
+        <if test="sortColumns!=null and sortColumns!=''">
+            ORDER BY ${r'${sortColumns}'}
+        </if>
+    </select>
+</#if>
+
     <sql id="columns">
     <#list columns as column>${column.column}<#if column_has_next>,</#if></#list>
     </sql>
