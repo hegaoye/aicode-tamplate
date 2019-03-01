@@ -92,8 +92,7 @@ export class ${className}EditComponent implements OnInit {
     this.validateForm = this.fb.group({
     <#list fields as field>
     <#if (field.isAllowUpdate)>
-      ${field.field}: [null<#if (field.isRequired)>
-      <#if (field.displayType == 'Mobile')>,
+      ${field.field}: [null<#if (field.isRequired)><#if (field.displayType == 'Mobile')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.mobile)])
       <#elseif (field.displayType == 'Phone')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.phone)])

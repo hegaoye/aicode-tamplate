@@ -92,6 +92,10 @@
         </nz-modal>
         <#elseif (field.displayType == 'Input')>
         <input nz-input formControlName="${field.field}" type="text" id="${field.field}" placeholder="${field.displayName}">
+        <#elseif (field.displayType == 'InputNumber')>
+        <nz-input-number formControlName="${field.field}" [nzMin]="1" [nzMax]="10" [nzStep]="1" class="w100" placeholder="${field.displayName}"></nz-input-number>
+        <#elseif (field.displayType == 'Mobile')>
+        <input nz-input formControlName="${field.field}" type="tel" id="${field.field}" placeholder="${field.displayName}">
         <#elseif (field.displayType == 'Phone')>
         <input nz-input formControlName="${field.field}" type="tel" id="${field.field}" placeholder="${field.displayName}">
         <#elseif (field.displayType == 'MobileOrPhone')>
@@ -100,8 +104,6 @@
         <input nz-input formControlName="${field.field}" type="password" id="${field.field}" placeholder="${field.displayName}">
         <#elseif (field.displayType == 'Email')>
         <input nz-input formControlName="${field.field}" type="email" id="${field.field}" placeholder="${field.displayName}">
-        <#elseif (field.displayType == 'InputNumber')>
-        <nz-input-number formControlName="${field.field}" [nzMin]="1" [nzMax]="10" [nzStep]="1" class="w100" placeholder="${field.displayName}"></nz-input-number>
         <#elseif (field.displayType == 'Textarea')>
         <textarea nz-input formControlName="${field.field}" [nzAutosize]="{ minRows: 2, maxRows: 6 }" placeholder="${field.displayName}"></textarea>
         <#else>
