@@ -79,6 +79,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
        return ${classNameLower}DAO.load(param);
     }
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     /**
     * 加载一个对象${className},(将查询关联数据)
     <#list pkFields as field>
@@ -98,6 +99,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
         </#list>
         return ${classNameLower}DAO.getDetail(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
     }
+    </#if>
 
     <#list pkFields as pkField>
     /**
@@ -112,22 +114,24 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
        }
        return ${classNameLower}DAO.loadBy${pkField.field?cap_first}(${pkField.field});
     }
-
-
-    /**
-     * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
-     * @param ${pkField.field} ${pkField.notes}
-     * @return ${className}
-     */
-    @Override
-    public ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
-       if(${pkField.field}==null){
-           throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
-       }
-       return ${classNameLower}DAO.getBy${pkField.field?cap_first}(${pkField.field});
-    }
-
     </#list>
+
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
+        /**
+        * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
+        * @param ${pkField.field} ${pkField.notes}
+        * @return ${className}
+        */
+        @Override
+        public ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
+        if(${pkField.field}==null){
+        throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+        }
+        return ${classNameLower}DAO.getBy${pkField.field?cap_first}(${pkField.field});
+        }
+    </#list>
+    </#if>
 
     <#list pkFields as pkField>
     /**
@@ -165,10 +169,10 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     */
     @Override
     public void updateBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field},${className}State state){
-            if(${pkField.field}==null){
-               throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
-            }
-          ${classNameLower}DAO.updateBy${pkField.field?cap_first}(${pkField.field},state.name(),new Date());
+        if(${pkField.field}==null){
+           throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+        }
+        ${classNameLower}DAO.updateBy${pkField.field?cap_first}(${pkField.field},state.name(),new Date());
     }
     </#list>
 
@@ -180,14 +184,14 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
      */
     @Override
     public void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
-            if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
-                throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
-            }
-            Map<String,Object> param=new HashMap<>();
-            <#list pkFields as pkField>
-            param.put("${pkField.field}",${pkField.field});
-            </#list>
-            ${classNameLower}DAO.delete(param);
+       if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
+           throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+       }
+       Map<String,Object> param=new HashMap<>();
+       <#list pkFields as pkField>
+       param.put("${pkField.field}",${pkField.field});
+       </#list>
+       ${classNameLower}DAO.delete(param);
     }
 
 </#if>
@@ -203,20 +207,20 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     */
     @Override
     public List<${className}> list(${className} ${classNameLower}, int offset, int limit) {
-            if (offset < 0) {
-               offset = 0;
-            }
+        if (offset < 0) {
+           offset = 0;
+        }
 
-            if (limit < 0) {
-               limit = Page.limit;
-            }
+        if (limit < 0) {
+           limit = Page.limit;
+        }
 
-            Map<String, Object> map = null;
-            if (${classNameLower} != null) {
-               map = JSON.parseObject(JSON.toJSONString(${classNameLower}, SerializerFeature.WriteDateUseDateFormat));
-            } else {
-               map = new HashMap<>();
-            }
+        Map<String, Object> map = null;
+        if (${classNameLower} != null) {
+           map = JSON.parseObject(JSON.toJSONString(${classNameLower}, SerializerFeature.WriteDateUseDateFormat));
+        } else {
+           map = new HashMap<>();
+        }
         return ${classNameLower}DAO.list(map, new RowBounds(offset, limit));
     }
 
@@ -241,27 +245,27 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
      */
     @Override
     public List<${className}> list(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field},</#list>int offset, int limit) {
-            if (offset < 0) {
-              offset = 0;
-            }
+        if (offset < 0) {
+          offset = 0;
+        }
 
-            if (limit < 0) {
-              limit = Page.limit;
-            }
-            Map<String,Object> param=new HashMap<>();
-            <#list pkFields as pkField>
-            param.put("${pkField.field}",${pkField.field});
-            </#list>
-            return ${classNameLower}DAO.list(param,new RowBounds(offset, limit));
+        if (limit < 0) {
+          limit = Page.limit;
+        }
+        Map<String,Object> param=new HashMap<>();
+        <#list pkFields as pkField>
+        param.put("${pkField.field}",${pkField.field});
+        </#list>
+        return ${classNameLower}DAO.list(param,new RowBounds(offset, limit));
     }
 
     @Override
     public int count(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
-            Map<String,Object> param=new HashMap<>();
-            <#list pkFields as pkField>
-            param.put("${pkField.field}",${pkField.field});
-            </#list>
-            return ${classNameLower}DAO.count(param);
+        Map<String,Object> param=new HashMap<>();
+        <#list pkFields as pkField>
+        param.put("${pkField.field}",${pkField.field});
+        </#list>
+        return ${classNameLower}DAO.count(param);
     }
 
 }

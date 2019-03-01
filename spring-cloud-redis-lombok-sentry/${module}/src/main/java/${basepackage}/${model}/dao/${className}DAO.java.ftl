@@ -25,15 +25,24 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
 
 <#if (pkFields?size>0)>
     <#list pkFields as pkField>
-    <#if (pkFields?size>1)>
     /**
      * 加载一个对象${className} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
      * @return ${className}
      */
      ${className} loadBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field});
-    </#if>
     </#list>
+
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
+    /**
+     * 加载一个对象${className} 通过${pkField.field}
+     * @param ${pkField.field} ${pkField.notes}
+     * @return ${className}
+     */
+     ${className} getBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field});
+    </#list>
+    </#if>
 
     <#list pkFields as pkField>
     /**

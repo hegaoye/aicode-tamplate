@@ -17,7 +17,6 @@ import ${basePackage}.${model}.entity.${className};
 public interface ${className}SV extends BaseSV<${className},Long> {
 
 <#if (pkFields?size>0)>
-
     /**
      * 加载一个对象${className}
     <#list pkFields as field>
@@ -27,6 +26,7 @@ public interface ${className}SV extends BaseSV<${className},Long> {
      */
      ${className} load(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     /**
     * 加载一个对象${className}详情，(将查询关联数据)
     <#list pkFields as field>
@@ -35,24 +35,27 @@ public interface ${className}SV extends BaseSV<${className},Long> {
     * @return ${className}
     */
     ${className} get(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
+    </#if>
 
-
-<#list pkFields as pkField>
+    <#list pkFields as pkField>
     /**
      * 加载一个对象${className} 通过${pkField.field}
      * @param ${pkField.field} ${pkField.notes}
      * @return ${className}
      */
      ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field});
+    </#list>
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
     /**
     * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
     * @param ${pkField.field} ${pkField.notes}
     * @return ${className}
     */
     ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field});
-</#list>
-
+    </#list>
+    </#if>
 
     <#list pkFields as pkField>
     /**
@@ -75,9 +78,6 @@ public interface ${className}SV extends BaseSV<${className},Long> {
     void updateBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field},${className}State state);
     </#list>
 
-
-
-
     /**
      * 删除对象${className}
      * <#list pkFields as pkField>@param ${pkField.field} ${pkField.notes}</#list>
@@ -85,8 +85,6 @@ public interface ${className}SV extends BaseSV<${className},Long> {
      */
      void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
 </#if>
-
-
 
     /**
      * 查询${className}分页
@@ -109,7 +107,4 @@ public interface ${className}SV extends BaseSV<${className},Long> {
      */
      List<${className}> list(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field},</#list>int offset, int limit);
      int count(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
-
-
-
 }

@@ -65,6 +65,7 @@ public class ${className}Ctrl {
         return ${classNameLower};
     }
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
    /**
     * 查询${className}一个详情信息，(将查询关联数据)
     <#list pkFields as pkField>
@@ -83,14 +84,14 @@ public class ${className}Ctrl {
     public ${className} get(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         <#list pkFields as pkField>
         if(${pkField.field}==null){
-        return null;
+            return null;
         }
         </#list>
         ${className} ${classNameLower} = ${className?uncap_first}SV.get(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
         log.info(JSON.toJSONString(${classNameLower}));
         return ${classNameLower};
     }
-
+    </#if>
 
     <#list pkFields as pkField>
     /**
@@ -113,7 +114,10 @@ public class ${className}Ctrl {
         log.info(JSON.toJSONString(${classNameLower}));
         return ${classNameLower};
     }
+    </#list>
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
     /**
     * 根据条件${pkField.field}查询${className}一个详情信息
     *
@@ -122,21 +126,21 @@ public class ${className}Ctrl {
     */
     @ApiOperation(value = "查询${className}一个详情信息", notes = "查询${className}一个详情信息")
     @ApiImplicitParams({
-       @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}",dataType = "${pkField.fieldType}", paramType = "path")
+    @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}",dataType = "${pkField.fieldType}", paramType = "path")
     })
     @GetMapping(value = "/get/${pkField.field}/{${pkField.field}}")
     @ResponseBody
     public ${className} getBy${pkField.field?cap_first}(@PathVariable ${pkField.fieldType} ${pkField.field}) {
         if(${pkField.field}==null){
-           return null;
+            return null;
         }
         ${className} ${classNameLower} = ${className?uncap_first}SV.getBy${pkField.field?cap_first}(${pkField.field});
         log.info(JSON.toJSONString(${classNameLower}));
         return ${classNameLower};
     }
     </#list>
+    </#if>
 </#if>
-
 
     /**
     * 查询${className}信息集合
@@ -164,7 +168,6 @@ public class ${className}Ctrl {
         log.info(JSON.toJSONString(page));
         return ${classNameLower}s;
     }
-
 
     /**
     * 查询${className}信息集合
@@ -224,8 +227,6 @@ public class ${className}Ctrl {
         return ${className?uncap_first}SV.count(${classNameLower});
     }
 
-
-
     /**
     * 创建${className}
     *
@@ -243,7 +244,6 @@ public class ${className}Ctrl {
         ${className?uncap_first}SV.save(${classNameLower});
         return ${classNameLower};
     }
-
 
     /**
     * 修改${className}
