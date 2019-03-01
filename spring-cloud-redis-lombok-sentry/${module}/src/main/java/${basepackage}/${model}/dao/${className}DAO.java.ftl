@@ -77,7 +77,7 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
 <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     <#list oneToOneList as oneToOne>
     /**
-    * 加载一个对象${className} 通过${pkField.field},所有关联数据都将被查询
+    * 加载一个对象${className},所有关联数据都将被查询
     <#list pkFields as field>
     * @param ${field.field} ${field.notes}
     </#list>
