@@ -1,7 +1,6 @@
 package ${basePackage}.core.base;
 
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -18,7 +17,6 @@ import java.util.Map;
  *
  * @author lixin 11-12-12 下午10:37
  */
-@NoRepositoryBean
 public interface BaseDAO<E, PK extends Serializable> {
 
     /**
