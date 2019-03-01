@@ -64,7 +64,7 @@
         <ng-template #totalRow>共{{${oneToMany.classNameLower}List.totalRow}}条</ng-template>
         <tr>
           <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
-          <#list oneToMany.fields as field>
+          <#list oneToMany.fields as field>${field.displayName}
           <#if (field.isListPageDisplay)>
           <th class="text-center" nzWidth=""><span>${field.displayName}</span></th><!--${field.displayName}-->
         </#if>

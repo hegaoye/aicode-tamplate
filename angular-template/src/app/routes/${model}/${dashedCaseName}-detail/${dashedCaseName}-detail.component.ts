@@ -12,7 +12,6 @@ import {Page} from "../../../public/util/model";
 export class ${className}DetailComponent implements OnInit {
   private code: string;
   public ${classNameLower}Info: any = {};//${classNameLower}信息
-  public searchParams: any = {};//搜索参数
 
 <#if oneToManyList??&&(oneToManyList?size>0)>
 <#list oneToManyList as oneToMany>
@@ -52,10 +51,12 @@ export class ${className}DetailComponent implements OnInit {
   query${oneToMany.className}List(curPage?: number) {
     this._${oneToMany.classNameLower}Loading = true;
     if (curPage) { this.${oneToMany.classNameLower}List.curPage = curPage; }// 当有页码时，查询该页数据
-    this.searchParams.curPage = this.${oneToMany.classNameLower}List.curPage; // 目标页码
-    this.searchParams.pageSize = this.${oneToMany.classNameLower}List.pageSize; // 目标页码
-    this.searchParams.code = this.code;
-    this.${oneToMany.model}Service.get${oneToMany.className}List(this.searchParams).then((res: Page) => {
+    let params = {
+      curPage:this.${oneToMany.classNameLower}List.curPage,
+      pageSize:this.${oneToMany.classNameLower}List.pageSize,
+      code:this.code,
+    };
+    this.${oneToMany.model}Service.get${oneToMany.className}List(params).then((res: Page) => {
       this._${oneToMany.classNameLower}Loading = false;
       this.${oneToMany.classNameLower}List = res;
     }).catch(err => {
