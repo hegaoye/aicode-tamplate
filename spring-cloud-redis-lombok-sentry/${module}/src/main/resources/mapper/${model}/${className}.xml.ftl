@@ -15,12 +15,12 @@
     <resultMap id="rs_base_relation" type="${className}" extends="rs_base">
     <#if oneToOneList??&&(oneToOneList?size>0)>
        <#list oneToOneList as oneToOne>
-        <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.className}.loadForOneToOne"/>
+        <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.basePackage}.${oneToOne.model}.dao.${oneToOne.className}DAO.loadForOneToOne"/>
        </#list>
     </#if>
     <#if oneToManyList??&&(oneToManyList?size>0)>
         <#list oneToManyList as oneToMany>
-        <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.className}.queryForOneToMany"/>
+        <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.basePackage}.${oneToMany.model}.dao.${oneToMany.className}DAO.queryForOneToMany"/>
         </#list>
     </#if>
     </resultMap>
