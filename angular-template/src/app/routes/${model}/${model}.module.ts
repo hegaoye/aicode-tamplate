@@ -10,10 +10,13 @@ import {${class.className}EditComponent} from "./${class.dashedCaseName}-edit/${
 
 const routes: Routes = [
   <#list modelClasses as class>
+    <#if modelClasses?size gt == 0>
+      {path: '', component: ${class.className}ListComponent},
+    </#if>
+    <#if modelClasses?size gt 1>
     <#if class_index == 0>{path: '', redirectTo: ' ${class.dashedCaseName}'},</#if>
     {path: '${class.dashedCaseName}', component: ${class.className}ListComponent, children: [
-        {path: '', redirectTo: 'list'},
-        {path: 'list', component: ${class.className}ListComponent},
+    </#if>
         {path: 'add', component: ${class.className}EditComponent},
         {path: 'modify/:code', component: ${class.className}EditComponent},
         {path: 'detail/:code', component: ${class.className}DetailComponent}
