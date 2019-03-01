@@ -11,6 +11,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import {PageComponent} from "./layout/page/page.component";
 import {NgxEchartsModule} from "ngx-echarts";
+import { registerLocaleData } from '@angular/common';
+import zh from '@angular/common/locales/zh';
+registerLocaleData(zh);
 
 @NgModule({
   declarations: [

@@ -1,3 +1,4 @@
+<ng-container *ngIf="showList">
 <div class="page-title clearfix">
   <div class="title">${className}管理</div>
   <button nz-button class="fr btn-green" [routerLink]="routerLinks.${classNameLower}.add" title="添加">
@@ -20,13 +21,13 @@
           <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
         </nz-select>
         <#elseif (field.displayType == 'Cascader')>
-        <nz-cascader
+        <nz-cascader name="${field.field}"
           [nzOptions]="options"
           [(ngModel)]="searchParams.${field.field}"
           (ngModelChange)="onChanges($event)">
         </nz-cascader>
         <#elseif (field.displayType == 'Radio')>
-        <nz-radio-group [(ngModel)]="searchParams.${field.field}" [nzButtonStyle]="'solid'">
+        <nz-radio-group name="${field.field}" [(ngModel)]="searchParams.${field.field}" [nzButtonStyle]="'solid'">
           <label nz-radio-button nzValue="A">选项1</label>
           <label nz-radio-button nzValue="B">选项2</label>
         </nz-radio-group>
@@ -114,3 +115,8 @@
     </tbody>
   </nz-table>
 </div>
+</ng-container>
+
+<!--路由嵌套 begin-->
+<router-outlet (activate)="activate($event)" (deactivate)="onDeactivate($event)"></router-outlet>
+<!--路由嵌套 end-->

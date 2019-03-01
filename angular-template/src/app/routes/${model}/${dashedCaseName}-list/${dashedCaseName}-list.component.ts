@@ -16,6 +16,7 @@ export class ${className}ListComponent implements OnInit {
   public _loading: boolean = false;
   public routerLinks = SettingUrl.ROUTERLINK;//路由
   public states = States;       // 状态
+  public showList: boolean = true;    //是否显示列表
 
   constructor(private ${model}Service: ${model?cap_first}Service) {
   }
@@ -30,7 +31,7 @@ export class ${className}ListComponent implements OnInit {
    */
   query${className}List(curPage?: number) {
     this._loading = true;
-    if (curPage) this.${classNameLower}List.curPage = curPage;//当有页码时，查询该页数据
+    if (curPage) { this.${classNameLower}List.curPage = curPage };//当有页码时，查询该页数据
     this.searchParams.curPage = this.${classNameLower}List.curPage; //目标页码
     this.searchParams.pageSize = this.${classNameLower}List.pageSize; //每页条数
     this.${model}Service.get${className}List(this.searchParams).then((res: Page) => {
@@ -42,7 +43,6 @@ export class ${className}ListComponent implements OnInit {
   }
 
   <#list fields as field>
-
   <#if (field.isState)>
   /**
    * 修改禁用状态
@@ -76,7 +76,6 @@ export class ${className}ListComponent implements OnInit {
     console.log(time && time.toTimeString());
   }
   <#elseif (field.displayType == 'Cascader')>
-
   //模拟数据，请移到上方
   public options = [{
     value: 'zhejiang',
@@ -107,7 +106,6 @@ export class ${className}ListComponent implements OnInit {
       }]
     }]
   }];
-
   /**
    * 级联选择
    */
@@ -117,6 +115,16 @@ export class ${className}ListComponent implements OnInit {
   <#else>
   </#if>
   </#list>
+
+  activate(event) {
+    this.showList = false;
+  }
+
+  onDeactivate(event) {
+    this.showList = true;
+    this.query${className}List();
+  }
+
   /**
    * 重置搜索
    */
