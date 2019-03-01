@@ -190,9 +190,9 @@ export class ${className}ModifyComponent implements OnInit {
   <#list fields as field>
   <#if (field.isAllowUpdate && field.displayType == 'Checkbox')>
     let checkedData = '';
-    formData.${field.field}.forEach{item => {
+    formData.${field.field}.forEach(item => {
       if(item.checked) checkedData += item.value + ',';
-    }}
+    })
     formData.${field.field} = checkedData.substring(0,checkedData.length-1);
   </#if>
   </#list>
