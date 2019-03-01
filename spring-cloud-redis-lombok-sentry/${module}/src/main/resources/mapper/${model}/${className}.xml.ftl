@@ -20,7 +20,7 @@
     </#if>
     <#if oneToManyList??&&(oneToManyList?size>0)>
         <#list oneToManyList as oneToMany>
-        <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToOne.basePackage}.${oneToOne.model}.dao.${oneToMany.className}DAO.queryForOneToMany"/>
+        <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.basePackage}.${oneToMany.model}.dao.${oneToMany.className}DAO.queryForOneToMany"/>
         </#list>
     </#if>
     </resultMap>
