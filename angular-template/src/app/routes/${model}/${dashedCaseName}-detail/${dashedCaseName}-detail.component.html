@@ -29,21 +29,21 @@
 
   <#if oneToOneList??&&(oneToOneList?size>0)>
   <#list oneToOneList as oneToOne>
-    <section class="mb-20">
-      <h3 class="subtitle">${oneToOne.notes}</h3>
-      <div nz-row [nzGutter]="16">
+  <section class="mb-20">
+    <h3 class="subtitle">${oneToOne.notes}</h3>
+    <div nz-row [nzGutter]="16">
       <#list oneToOne.fields as field>
       <#if field.isDetailPageDisplay>
-        <div nz-col [nzXs]="12">
-          <p>
-            <strong class="pr">${field.displayName}：</strong><!--${field.displayName}-->
-            <span>{{${classNameLower}Info.${field.field} || '[未设置]'}}</span>
-          </p>
-        </div>
-      </#if>
-      </#list>
+      <div nz-col [nzXs]="12">
+        <p>
+          <strong class="pr">${field.displayName}：</strong><!--${field.displayName}-->
+          <span>{{${classNameLower}Info.${field.field} || '[未设置]'}}</span>
+        </p>
       </div>
-      </section>
+    </#if>
+  </#list>
+  </div>
+  </section>
   </#list>
   </#if>
 
@@ -64,7 +64,7 @@
         <ng-template #totalRow>共{{${oneToMany.classNameLower}List.totalRow}}条</ng-template>
         <tr>
           <th class="text-center" nzWidth=""><span>序号</span></th><!--序号-->
-          <#list oneToMany.fields as field>${field.displayName}
+          <#list oneToMany.fields as field>
           <#if (field.isListPageDisplay)>
           <th class="text-center" nzWidth=""><span>${field.displayName}</span></th><!--${field.displayName}-->
         </#if>

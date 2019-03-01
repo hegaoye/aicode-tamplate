@@ -52,9 +52,9 @@ export class ${className}DetailComponent implements OnInit {
     this._${oneToMany.classNameLower}Loading = true;
     if (curPage) { this.${oneToMany.classNameLower}List.curPage = curPage; }// 当有页码时，查询该页数据
     let params = {
-      curPage:this.${oneToMany.classNameLower}List.curPage,
-      pageSize:this.${oneToMany.classNameLower}List.pageSize,
-      code:this.code,
+      curPage: this.${oneToMany.classNameLower}List.curPage,
+      pageSize: this.${oneToMany.classNameLower}List.pageSize,
+      code: this.code,
     };
     this.${oneToMany.model}Service.get${oneToMany.className}List(params).then((res: Page) => {
       this._${oneToMany.classNameLower}Loading = false;
