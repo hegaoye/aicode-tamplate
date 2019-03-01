@@ -92,7 +92,6 @@ export class ${className}EditComponent implements OnInit {
     this.validateForm = this.fb.group({
     <#list fields as field>
     <#if (field.isAllowUpdate)>
-    <#else>
       ${field.field}: [null<#if (field.isRequired)>,
       <#if (field.displayType == 'Mobile')>
       Validators.compose([Validators.required,Validators.pattern(PatternService.mobile)])
@@ -107,6 +106,7 @@ export class ${className}EditComponent implements OnInit {
       <#elseif (field.displayType == 'IdCard')>
       Validators.compose([Validators.required,Validators.pattern(PatternService.idCard)])
       <#else> [Validators.required]
+      </#if>
       <#else>
       <#if (field.isRequired && field.displayType == 'Mobile')>
       Validators.compose([Validators.pattern(PatternService.mobile)])
@@ -120,8 +120,7 @@ export class ${className}EditComponent implements OnInit {
       Validators.compose([Validators.pattern(PatternService.website)])
       <#elseif (field.displayType == 'IdCard')>
       Validators.compose([Validators.pattern(PatternService.idCard)])
-      <#else>
-    </#if>
+      </#if>
     </#if>
     ]<#if field_has_next>,</#if> // ${field.displayName}
     </#if>
