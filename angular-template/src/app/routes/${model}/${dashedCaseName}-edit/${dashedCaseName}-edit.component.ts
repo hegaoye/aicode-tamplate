@@ -92,33 +92,33 @@ export class ${className}EditComponent implements OnInit {
     this.validateForm = this.fb.group({
     <#list fields as field>
     <#if (field.isAllowUpdate)>
-      ${field.field}: [null<#if (field.isRequired)>,
-      <#if (field.displayType == 'Mobile')>
+      ${field.field}: [null<#if (field.isRequired)>
+      <#if (field.displayType == 'Mobile')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.mobile)])
-      <#elseif (field.displayType == 'Phone')>
+      <#elseif (field.displayType == 'Phone')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.phone)])
-      <#elseif (field.displayType == 'MobileOrPhone')>
+      <#elseif (field.displayType == 'MobileOrPhone')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.tel)])
-      <#elseif (field.displayType == 'Email')>
+      <#elseif (field.displayType == 'Email')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.email)])
-      <#elseif (field.displayType == 'Website')>
+      <#elseif (field.displayType == 'Website')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.website)])
-      <#elseif (field.displayType == 'IdCard')>
+      <#elseif (field.displayType == 'IdCard')>,
       Validators.compose([Validators.required,Validators.pattern(PatternService.idCard)])
-      <#else> [Validators.required]
+      <#else>, [Validators.required]
       </#if>
       <#else>
-      <#if (field.isRequired && field.displayType == 'Mobile')>
+      <#if (field.isRequired && field.displayType == 'Mobile')>,
       Validators.compose([Validators.pattern(PatternService.mobile)])
-      <#elseif (field.displayType == 'Phone')>
+      <#elseif (field.displayType == 'Phone')>,
       Validators.compose([Validators.pattern(PatternService.phone)])
-      <#elseif (field.displayType == 'MobileOrPhone')>
+      <#elseif (field.displayType == 'MobileOrPhone')>,
       Validators.compose([Validators.pattern(PatternService.tel)])
-      <#elseif (field.displayType == 'Email')>
+      <#elseif (field.displayType == 'Email')>,
       Validators.compose([Validators.pattern(PatternService.email)])
-      <#elseif (field.displayType == 'Website')>
+      <#elseif (field.displayType == 'Website')>,
       Validators.compose([Validators.pattern(PatternService.website)])
-      <#elseif (field.displayType == 'IdCard')>
+      <#elseif (field.displayType == 'IdCard')>,
       Validators.compose([Validators.pattern(PatternService.idCard)])
       </#if>
     </#if>
