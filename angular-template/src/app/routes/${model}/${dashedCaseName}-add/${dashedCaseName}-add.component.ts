@@ -8,8 +8,8 @@ import {Pattern} from '../../../public/util/pattern';
 
 @Component({
   selector: 'app-${dashedCaseName}-add',
-  templateUrl: './${dashedCaseName}-modify.component.html',
-  styleUrls: ['./${dashedCaseName}-modify.component.less']
+  templateUrl: './${dashedCaseName}-add.component.html',
+  styleUrls: ['./${dashedCaseName}-add.component.less']
 })
 export class ${className}AddComponent implements OnInit {
   public isConfirmLoading: boolean = false;

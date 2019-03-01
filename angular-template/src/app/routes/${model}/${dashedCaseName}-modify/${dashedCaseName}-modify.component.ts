@@ -7,7 +7,7 @@ import { UploadFile } from 'ng-zorro-antd';
 import {Pattern} from '../../../public/util/pattern';
 
 @Component({
-  selector: 'app-${dashedCaseName}-add',
+  selector: 'app-${dashedCaseName}-modify',
   templateUrl: './${dashedCaseName}-modify.component.html',
   styleUrls: ['./${dashedCaseName}-modify.component.less']
 })
