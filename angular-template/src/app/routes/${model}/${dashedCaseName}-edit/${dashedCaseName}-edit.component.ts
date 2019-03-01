@@ -84,7 +84,7 @@ export class ${className}EditComponent implements OnInit {
     this.previewImage = file.url || file.thumbUrl;
     this.previewVisible = true;
   };
-  <#else>
+  </#if>
   </#if>
   </#list>
 
