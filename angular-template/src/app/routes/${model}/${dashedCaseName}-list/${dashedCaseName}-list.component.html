@@ -18,7 +18,7 @@
         <#if (field.checkState || field.displayType == 'Select')>
         <nz-select name="${field.field}" [(ngModel)]="searchParams.${field.field}" nzAllowClear
                    nzPlaceHolder="${field.field}">
-          <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
+          <nz-option [nzValue]="'value'" [nzLabel]="'label'"></nz-option>
         </nz-select>
         <#elseif (field.displayType == 'Cascader')>
         <nz-cascader name="${field.field}"
