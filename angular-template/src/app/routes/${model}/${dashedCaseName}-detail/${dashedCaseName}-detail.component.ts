@@ -54,7 +54,7 @@ export class ${className}DetailComponent implements OnInit {
     let params = {
       curPage: this.${oneToMany.classNameLower}List.curPage,
       pageSize: this.${oneToMany.classNameLower}List.pageSize,
-      code: this.code,
+      ${oneToMany.joinField}: this.code,
     };
     this.${oneToMany.model}Service.get${oneToMany.className}List(params).then((res: Page) => {
       this._${oneToMany.classNameLower}Loading = false;
