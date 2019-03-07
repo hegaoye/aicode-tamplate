@@ -18,7 +18,7 @@
         <#if (field.checkState || field.displayType == 'Select')>
         <nz-select name="${field.field}" [(ngModel)]="searchParams.${field.field}" nzAllowClear
                    nzPlaceHolder="${field.field}">
-          <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
+          <nz-option [nzValue]="'value'" [nzLabel]="'label'"></nz-option>
         </nz-select>
         <#elseif (field.displayType == 'Cascader')>
         <nz-cascader name="${field.field}"
@@ -105,7 +105,7 @@
                   title="修改">
             <i nz-icon type="edit" theme="outline"></i>
           </button>
-          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.${field.joinField}]"
+          <button nz-button class="btn-success-o" [routerLink]="[routerLinks.${classNameLower}.detail,data.code]"
                   title="查看">
             <i nz-icon type="eye" theme="outline"></i>
           </button>
