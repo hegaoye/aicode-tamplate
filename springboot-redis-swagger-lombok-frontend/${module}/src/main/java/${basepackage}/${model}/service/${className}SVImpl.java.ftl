@@ -115,6 +115,23 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
 
     </#list>
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
+    /**
+    * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
+    * @param ${pkField.field} ${pkField.notes}
+    * @return ${className}
+    */
+    @Override
+    public ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
+        if(${pkField.field}==null){
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+        }
+        return ${classNameLower}DAO.getBy${pkField.field?cap_first}(${pkField.field});
+    }
+    </#list>
+    </#if>
+
     <#list pkFields as pkField>
     /**
     * 根据主键${pkField.field},oldStates 共同更新 ${className} 的状态到newState状态
