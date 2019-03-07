@@ -35,6 +35,18 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
     </#if>
     </#list>
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+        <#list pkFields as pkField>
+        /**
+        * 加载一个对象${className} 通过${pkField.field}
+        * @param ${pkField.field} ${pkField.notes}
+        * @return ${className}
+        */
+        ${className} getBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field});
+        </#list>
+    </#if>
+
+
     <#list pkFields as pkField>
     /**
     * 根据主键${pkField.field},oldStates 共同更新 ${className} 的状态到newState状态
@@ -62,6 +74,17 @@ public  interface ${className}DAO extends BaseDAO<${className}, Long> {
      */
      void delete(Map<String, Object> params);
 
+</#if>
+
+<#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    /**
+    * 加载一个对象${className},所有关联数据都将被查询
+        <#list pkFields as field>
+    * @param ${field.field} ${field.notes}
+        </#list>
+    * @return ${className}
+    */
+    ${className} getDetail(<#list pkFields as field>@Param("${field.field}") ${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>);
 </#if>
 
    /**

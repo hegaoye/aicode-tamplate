@@ -57,13 +57,41 @@ public class ${className}Ctrl {
     public BeanRet load(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         <#list pkFields as pkField>
         if(${pkField.field}==null){
-        return null;
+            return null;
         }
         </#list>
         ${className} ${classNameLower} = ${className?uncap_first}SV.load(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
         log.info(JSON.toJSONString(${classNameLower}));
         return BeanRet.create(true, "查询成功", ${classNameLower});
     }
+
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    /**
+    * 查询${className}一个详情信息，(将查询关联数据)
+        <#list pkFields as pkField>
+        * @param ${pkField.field} ${pkField.notes}
+        </#list>
+    * @return BeanRet
+    */
+    @ApiOperation(value = "查询${className}一个详情信息", notes = "查询${className}一个详情信息")
+    @ApiImplicitParams({
+        <#list pkFields as pkField>
+        @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}",dataType = "${pkField.fieldType}", paramType = "query")<#if pkField_has_next>,</#if>
+        </#list>
+    })
+    @GetMapping(value = "/get")
+    @ResponseBody
+    public ${className} get(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
+        <#list pkFields as pkField>
+        if(${pkField.field}==null){
+            return null;
+        }
+        </#list>
+        ${className} ${classNameLower} = ${className?uncap_first}SV.get(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
+        log.info(JSON.toJSONString(${classNameLower}));
+        return ${classNameLower};
+    }
+    </#if>
 
 
     <#list pkFields as pkField>
@@ -88,6 +116,31 @@ public class ${className}Ctrl {
         return BeanRet.create(true, "查询成功", ${classNameLower});
     }
     </#list>
+
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
+    /**
+    * 根据条件${pkField.field}查询${className}一个详情信息
+    *
+    * @param ${pkField.field} ${pkField.notes}
+    * @return BeanRet
+    */
+    @ApiOperation(value = "查询${className}一个详情信息", notes = "查询${className}一个详情信息")
+    @ApiImplicitParams({
+    @ApiImplicitParam(name = "${pkField.field}", value = "${pkField.notes}",dataType = "${pkField.fieldType}", paramType = "path")
+    })
+    @GetMapping(value = "/get/${pkField.field}/{${pkField.field}}")
+    @ResponseBody
+    public ${className} getBy${pkField.field?cap_first}(@PathVariable ${pkField.fieldType} ${pkField.field}) {
+        if(${pkField.field}==null){
+            return null;
+        }
+        ${className} ${classNameLower} = ${className?uncap_first}SV.getBy${pkField.field?cap_first}(${pkField.field});
+        log.info(JSON.toJSONString(${classNameLower}));
+        return ${classNameLower};
+    }
+    </#list>
+    </#if>
 </#if>
 
 

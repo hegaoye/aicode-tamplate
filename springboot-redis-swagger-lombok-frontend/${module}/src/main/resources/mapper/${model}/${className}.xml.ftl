@@ -10,6 +10,47 @@
     </#list>
     </resultMap>
 
+    <!--查询表信息关联信息-->
+<#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <resultMap id="rs_base_relation" type="${className}" extends="rs_base">
+        <#if oneToOneList??&&(oneToOneList?size>0)>
+            <#list oneToOneList as oneToOne>
+                <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.basePackage}.${oneToOne.model}.dao.${oneToOne.className}DAO.loadForOneToOne"/>
+            </#list>
+        </#if>
+        <#if oneToManyList??&&(oneToManyList?size>0)>
+            <#list oneToManyList as oneToMany>
+                <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.basePackage}.${oneToMany.model}.dao.${oneToMany.className}DAO.queryForOneToMany"/>
+            </#list>
+        </#if>
+    </resultMap>
+
+    <!--查询关联数据-->
+    <select id="getDetail" resultMap="rs_base_relation">
+        SELECT <include refid="columns" />
+        FROM `${tableName}`
+        <include refid="where"/>
+    </select>
+
+    <!--关联查询一条记录使用-->
+    <select id="loadForOneToOne" resultMap="rs_base">
+        SELECT <include refid="columns" />
+        FROM `${tableName}`
+        <include refid="where"/>
+    </select>
+
+    <!--关联查询集合使用-->
+    <select id="queryForOneToMany" resultMap="rs_base">
+        SELECT <include refid="columns" />
+        FROM `${tableName}`
+        <include refid="where"/>
+
+        <if test="sortColumns!=null and sortColumns!=''">
+            ORDER BY ${r'${sortColumns}'}
+        </if>
+    </select>
+</#if>
+
     <sql id="columns">
     <#list columns as column>${column.column}<#if column_has_next>,</#if></#list>
     </sql>
@@ -190,6 +231,17 @@
         </select>
     </#list>
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+        <#list pkFields as pkfield>
+            <!--查询一条${tableName} getBy${pkfield.field?cap_first}  通过${pkfield.field} -->
+            <select id="getBy${pkfield.field?cap_first}" resultMap="rs_base_relation" parameterType="${pkfield.fieldType}">
+                SELECT
+                <include refid="columns"/>
+                FROM `${tableName}`
+                where ${pkfield.column} = <@mapperEl pkfield.field/>
+            </select>
+        </#list>
+    </#if>
 
         <!--查询一条${tableName} countByPk -->
         <select id="listByPk" resultMap="rs_base">
