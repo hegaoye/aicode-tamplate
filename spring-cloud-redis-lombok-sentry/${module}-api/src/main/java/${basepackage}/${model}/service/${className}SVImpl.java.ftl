@@ -34,7 +34,7 @@ public class ${className}SVImpl {
      */
     public ${className} load(<#list pkFields as field>${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>) {
         if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         return ${classNameLower}FeignApi.load(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
     }
@@ -47,7 +47,7 @@ public class ${className}SVImpl {
     */
     public ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
         if(${pkField.field}==null){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         return ${classNameLower}FeignApi.loadBy${pkField.field?cap_first}(${pkField.field});
     }
@@ -61,7 +61,7 @@ public class ${className}SVImpl {
      */
     public ${className} get(<#list pkFields as field>${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>) {
         if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         return ${classNameLower}FeignApi.get(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
     }
@@ -74,7 +74,7 @@ public class ${className}SVImpl {
      */
     public ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
         if(${pkField.field}==null){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         return ${classNameLower}FeignApi.getBy${pkField.field?cap_first}(${pkField.field});
     }
@@ -88,7 +88,7 @@ public class ${className}SVImpl {
     
     public void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         ${classNameLower}FeignApi.delete(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
     }
@@ -146,7 +146,7 @@ public class ${className}SVImpl {
      * @throws BaseException
      */
     public void save(${className} ${classNameLower}) {
-        if(${classNameLower}==null){ throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);}
+        if(${classNameLower}==null){ throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);}
         ${classNameLower}FeignApi.build(${classNameLower});
     }
 
@@ -157,7 +157,7 @@ public class ${className}SVImpl {
      * @throws BaseException
      */
     public void modify(${className} ${classNameLower}) {
-        if(${classNameLower}==null){ throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);}
+        if(${classNameLower}==null){ throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);}
         ${classNameLower}FeignApi.modify(${classNameLower});
     }
 }

@@ -25,6 +25,17 @@ public interface ${className}SV extends BaseSV<${className},Long> {
      */
      ${className} load(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
 
+    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    /**
+    * 加载一个对象${className}详情，(将查询关联数据)
+     <#list pkFields as field>
+    * @param ${field.field} ${field.notes}
+     </#list>
+    * @return ${className}
+    */
+    ${className} get(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>);
+    </#if>
+
     <#list pkFields as pkField>
     /**
      * 加载一个对象${className} 通过${pkField.field}
@@ -34,6 +45,16 @@ public interface ${className}SV extends BaseSV<${className},Long> {
      ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field});
    </#list>
 
+   <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
+    <#list pkFields as pkField>
+    /**
+    * 加载一个对象${className} 通过${pkField.field},(将查询关联数据)
+    * @param ${pkField.field} ${pkField.notes}
+    * @return ${className}
+    */
+    ${className} getBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field});
+    </#list>
+   </#if>
 
     <#list pkFields as pkField>
     /**
