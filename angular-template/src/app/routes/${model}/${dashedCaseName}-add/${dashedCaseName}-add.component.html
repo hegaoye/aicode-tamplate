@@ -17,7 +17,7 @@
 
         <#if (field.checkState || field.displayType == 'Select')>
         <nz-select nzAllowClear nzPlaceHolder="请选择${field.displayName}" formControlName="${field.field}">
-          <nz-option [nzValue]="'value'" [nzLabel]="'label"></nz-option>
+          <nz-option [nzValue]="'value'" [nzLabel]="'label'"></nz-option>
         </nz-select>
         <#elseif (field.displayType == 'MultiSelect')>
         <nz-select [nzMaxMultipleCount]="3" class="w100" nzMode="multiple" nzPlaceHolder="请选择" formControlName="${field.field}">
