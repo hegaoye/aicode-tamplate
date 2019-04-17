@@ -1,3 +1,4 @@
+此模板请与springboot-redis-swagger-lombok-fronted结合使用或者与springcloud-redis-lobmbok-sentry结合使用
 # pps
 ${projectName} Production System
 <H4>代码规范说明</H4>
