@@ -17,6 +17,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.HashMap;
 
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.entity.BeanRet;
