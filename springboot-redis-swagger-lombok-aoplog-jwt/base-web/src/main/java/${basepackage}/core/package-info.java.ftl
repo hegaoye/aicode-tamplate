@@ -1,0 +1,4 @@
+/*
+ * ${copyright}
+ */
+package ${basePackage}.core;

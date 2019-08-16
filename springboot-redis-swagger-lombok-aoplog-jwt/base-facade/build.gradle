@@ -1,0 +1,5 @@
+dependencies {
+    compile project(":core")
+    compile('org.springframework.data:spring-data-commons:1.13.12.RELEASE')
+    compile fileTree(dir: '../libs', include: ['*.jar'])
+}

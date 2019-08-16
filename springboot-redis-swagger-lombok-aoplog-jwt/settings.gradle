@@ -1,0 +1,6 @@
+include 'core', 'base-facade', 'base-sv', 'facade'
+
+include 'base-web'
+include '${projectName}-sv'
+include 'api-user'
+include 'api-admin'
