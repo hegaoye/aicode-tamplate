@@ -36,6 +36,14 @@ public enum EnvEnums {
     }
 
     /**
+     * 获得当前运行环境
+     * @return
+     */
+    public static EnvEnums getCurrent() {
+        return getEnum(Env.getActive());
+    }
+
+    /**
      * 通过枚举名 获得 枚举对象
      *
      * @param name

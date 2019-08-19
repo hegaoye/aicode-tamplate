@@ -138,6 +138,12 @@ qiniu:
   # 系统限制上传文件最大字节数（单位：字节；1mb=1048576b）
   upload_img_size: 10485760
 
+dingtalk:
+  robot:
+    # 多个以 英文 逗号 , 隔开
+    atMobilesDefault: 13460005569,
+    webhook: https://oapi.dingtalk.com/robot/send?access_token=e082372f39de14c91908965f6a2e763024dea1bb0926bf2ff52c19701e1a9ac4
+
 
 logging:
   level:
