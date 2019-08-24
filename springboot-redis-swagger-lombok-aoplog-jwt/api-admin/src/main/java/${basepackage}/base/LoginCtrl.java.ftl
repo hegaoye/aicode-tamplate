@@ -4,19 +4,17 @@
 package ${basePackage}.base;
 
 
-import com.alibaba.fastjson.JSON;
-import ${basePackage}.admin.entity.Admin;
-import ${basePackage}.admin.service.AdminSV;
 import ${basePackage}.core.annocation.PassToken;
 import ${basePackage}.core.entity.BeanRet;
 import ${basePackage}.core.enums.ActionTypeEnum;
 import ${basePackage}.core.enums.RoleTypeEnum;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.jwt.JWTTools;
-import ${basePackage}.core.jwt.vo.Account;
-import ${basePackage}.core.redis.RedisKey;
 import ${basePackage}.core.redis.RedisUtils;
+import ${basePackage}.rbac.entity.RbacAdmin;
+import ${basePackage}.rbac.service.RbacAdminSV;
 import ${basePackage}.syslog.annotation.SystemControllerLog;
+import ${basePackage}.syslog.service.SystemLogSv;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -37,18 +35,22 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("/admin")
 @Slf4j
-@Api(tags = "LoginCtrl", description = "管理员表控制器")
+@Api(tags = "LoginCtrl", description = "登录控制器")
 public class LoginCtrl {
 
     @Resource
     protected RedisUtils redisUtils;
+
     @Autowired
-    private AdminSV adminSV;
+    private RbacAdminSV rbacAdminSV;
+
+    @Autowired
+    private SystemLogSv systemLogsSv;
 
     /**
      * 管理员登录
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.login, roleType = RoleTypeEnum.Admin, description = "管理员登录")
+//    @SystemControllerLog(actionType = ActionTypeEnum.login, roleType = RoleTypeEnum.Admin, description = "管理员登录")
     @ApiOperation(value = "管理员登录", notes = "管理员登录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "account", value = "登录账户", dataType = "java.lang.String", paramType = "query", required = true),
@@ -57,31 +59,11 @@ public class LoginCtrl {
     @PostMapping(value = "/login")
     @PassToken
     @ResponseBody
-    public BeanRet login(String account, String password, HttpServletResponse response) {
-        //通过账户和密码查询用户信息
-        Admin admin = adminSV.load(account, password);
-        if (admin == null) {
-            throw new BaseException(BaseException.ExceptionEnums.account_login_error);
-        }
-        //中转加密后的密码
-        password = admin.getPassword();
+    public BeanRet login(String account, String password, HttpServletResponse response, HttpServletRequest request) {
+        RbacAdmin admin = rbacAdminSV.loginHandle(account, password, response);
 
-        //缓存至redis；用于再次请求接口时，jwt验证用户token信息
-        redisUtils.set(RedisKey.genPasswordKey(RoleTypeEnum.Admin, admin.getCode()), password);
-
-        //清空用户密码，禁止加密
-        admin.setPassword(null);
-
-        log.info("中转密码：" + password);
-
-        //实例化token中包含信息
-        Account<Admin> tokenAccount = new Account(admin.getId(), account, admin.getCode(), RoleTypeEnum.Admin, admin);
-        //用户账号和密码校验通过后，生成token
-        String token = JWTTools.genToken(tokenAccount, password, response);
-        //把token放入 header
-        response.setHeader(RoleTypeEnum.Admin.name() + JWTTools.getTokenName(), token);
-
-        log.info(JSON.toJSONString(admin));
+        // 记录登录日志
+        systemLogsSv.addLogWithLogin(RoleTypeEnum.Admin, admin.getCode(), request, this.getClass(), "login");
         return BeanRet.create(true, BaseException.ExceptionEnums.success, admin);
     }
 
@@ -113,7 +95,7 @@ public class LoginCtrl {
     @GetMapping(value = "/load")
     @ResponseBody
     public BeanRet load(HttpServletRequest request) {
-        Admin admin = JWTTools.decodeTokenToAccountWithAdmin(request);
+        RbacAdmin admin = JWTTools.decodeTokenToAccountWithAdmin(request);
         return BeanRet.create(true, BaseException.ExceptionEnums.success, admin);
     }
 }

@@ -76,10 +76,11 @@ enums_undefined(RequestCodeEnum.code_43),
 json_object_invalid(RequestCodeEnum.code_45),
 json_array_invalid(RequestCodeEnum.code_46),
 //-----------------账户登录异常，需要重新登录--------------------------
-token_is_null(RequestCodeEnum.code_71),
-token_expired(RequestCodeEnum.code_71),
-token_account_is_null(RequestCodeEnum.code_72),
-token_invalid(RequestCodeEnum.code_73),
+        token_is_null(RequestCodeEnum.code_71),
+        token_expired(RequestCodeEnum.code_71),
+        token_account_is_null(RequestCodeEnum.code_72),
+        token_invalid(RequestCodeEnum.code_73),
+        account_disable(RequestCodeEnum.code_74),
 //-----------------账户异常--------------------------
 account_login_error(RequestCodeEnum.code_47),
 request_invalid(RequestCodeEnum.code_44),
@@ -138,6 +139,11 @@ worker_cant_transfer(RequestCodeEnum.code_503),
 position_is_same(RequestCodeEnum.code_504),
 goods_cart_number_wrong(RequestCodeEnum.code_500),
 corporate_mall_opened(RequestCodeEnum.code_505),
+
+        menu_is_repeat(RequestCodeEnum.code_1000),
+        this_has_children_cant_delete(RequestCodeEnum.code_1001),
+        no_permission(RequestCodeEnum.code_1002),
+
 ;
 
 public RequestCodeEnum codeEnum;
@@ -318,6 +324,15 @@ return BaseExceptionDTO.toString(RequestCodeEnum.code_61, "[" + arg + "]超限�
         return BaseExceptionDTO.toString(RequestCodeEnum.code_63, "请上传[" + arg + "]");
     }
 
+    /**
+     * 信息提示：上传的文件过大
+     *
+     * @param maxSizeMb 图片最大MB
+     * @return
+     */
+    public static String uploadFileSizeOverrun(long maxSizeMb) {
+        return BaseExceptionDTO.toString(RequestCodeEnum.code_80, String.format("请上传不大于%sMb的文件", maxSizeMb));
+    }
 
 
     /**
@@ -333,7 +348,7 @@ return BaseExceptionDTO.toString(RequestCodeEnum.code_61, "[" + arg + "]超限�
     /**
      * 信息提示：枚举类型未定义
      *
-     * @param enums 枚举类型
+     * @param enums     枚举类型
      * @param enumClass 枚举类
      * @return
      */

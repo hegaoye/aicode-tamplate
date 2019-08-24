@@ -138,6 +138,15 @@ qiniu:
   # 系统限制上传文件最大字节数（单位：字节；1mb=1048576b）
   upload_img_size: 10485760
 
+# 文件上传相关配置
+upload:
+  # 本地存储路径
+  local_path: D:/MyPictures/upload_test/
+  # 系统限制上传文件最大字节数（单位：字节；1mb=1048576b）
+  file_max_byte: 10485760
+  # 空间域名
+  service: http://192.168.10.110/
+
 dingtalk:
   robot:
     # 多个以 英文 逗号 , 隔开

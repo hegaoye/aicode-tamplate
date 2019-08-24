@@ -7,6 +7,17 @@ import java.io.*;
 
 public class FileUtil {
 
+
+    //单例模式
+    private static FileUtil instance;
+
+    public static FileUtil getInstance() {
+        if (instance == null) {
+            instance = new FileUtil();
+        }
+        return instance;
+    }
+
     /**
      * @param path
      * @return

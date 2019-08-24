@@ -11,9 +11,11 @@ import ${basePackage}.core.exceptions.BaseException;
  * Created by borong on 2019/7/15.
  */
 public enum FormatEnum {
+    account("字母+数字组合，且字母开头；长度保持在5-16位"),
+    password("字母+数字组合；长度保持在6-20位"),
     json("JSON"),
     phone("11位手机号"),
-    email("email"),
+    email("email地址"),
     upload_limit_suffix_file("jpg,jpeg,png,gif,bmp,rar,zip,doc,docx,xls,xlsx,ppt,pptx,flv,swf,txt,json"),
     ;
     public String val;
@@ -29,6 +31,6 @@ public enum FormatEnum {
                 return enums;
             }
         }
-        throw new BaseException(BaseException.ExceptionEnums.enums_undefined);
+        throw new BaseException(BaseException.ExceptionEnums.enumUndefined(name));
     }
 }

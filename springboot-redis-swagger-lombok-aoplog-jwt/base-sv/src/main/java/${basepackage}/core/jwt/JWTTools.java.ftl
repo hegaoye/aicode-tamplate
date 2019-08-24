@@ -14,7 +14,6 @@ import com.auth0.jwt.impl.PublicClaims;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.google.common.collect.Maps;
-import ${basePackage}.admin.entity.Admin;
 import ${basePackage}.core.enums.RoleTypeEnum;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.tools.CookieUtil;
@@ -181,11 +180,11 @@ public class JWTTools {
      * @param request request对象
      * @return adminVO
      */
-    public static Admin decodeTokenToAccountWithAdmin(HttpServletRequest request) {
+    public static RbacAdmin decodeTokenToAccountWithAdmin(HttpServletRequest request) {
         Map<String, Claim> claimMap = decodeToken(request, RoleTypeEnum.Admin);
         //从map对象中取出账号信息
-        Account<Admin> account = decodeTokenToAccount(claimMap);
-        return JSON.parseObject(JSON.toJSONString(account.getObject()), Admin.class);
+        Account<RbacAdmin> account = decodeTokenToAccount(claimMap);
+        return JSON.parseObject(JSON.toJSONString(account.getObject()), RbacAdmin.class);
     }
 
     /**

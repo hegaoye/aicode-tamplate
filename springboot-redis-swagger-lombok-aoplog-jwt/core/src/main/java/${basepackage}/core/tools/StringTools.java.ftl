@@ -593,4 +593,33 @@ public class StringTools {
     public static int genRandomNumber(int min, int max) {
         return new Random().nextInt(max-min) + min;
     }
+
+    /**
+    * 检查字符串内容是否超限
+    * @param string 待查字符串
+    * @param max 最大长度
+    * @return
+    */
+    public static boolean checkLengthIsOverrun(String string, int max) {
+        int length = string.length();
+        if (length > max) {
+        return true;
+        }
+        return false;
+    }
+
+    /**
+    * 检查字符串内容是否超限
+    * @param string 待查字符串
+    * @param min 最小长度
+    * @param max 最大长度
+    * @return
+    */
+    public static boolean checkLengthIsOverrun(String string, int min, int max) {
+        int length = string.length();
+        if (length < min || length > max) {
+            return true;
+        }
+        return false;
+    }
 }

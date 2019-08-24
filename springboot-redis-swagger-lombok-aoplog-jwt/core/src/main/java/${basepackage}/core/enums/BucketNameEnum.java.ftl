@@ -15,27 +15,36 @@ public enum BucketNameEnum {
     /**
      * 上传文件的归类目录
      */
-    common("公共资源"),
-    admin("管理系统"),
-    index_wap("手机wap首页"),
-    index_web("手机web首页"),
-    index_app("手机app首页"),
-    index_js("小程序首页"),
-    wap_banners("手机wap_banners"),
-    goods("商品图片"),
-    goods_comment("商品评价图片"),
-    user("用户相关"),
-    corporate("企业相关"),
-    article("资讯"),
-    help("帮助中心"),
-    after("售后"),
-    activity("活动"),
-    advertisement("广告");
+    common("公共资源", "common/"),
+    admin("管理系统", "admin/"),
+    rbac("权限系统", "rbac/"),
+    avatar_user("用户头像", "avatar/user/"),
+    avatar_admin("管理员头像", "avatar/admin/"),
+    index_wap("手机wap首页", "html/index/wap/"),
+    index_web("手机web首页", "html/index/web/"),
+    index_app("手机app首页", "html/index/app/"),
+    index_js("小程序首页", "html/index/js/"),
+    banners_wap("手机wap_banners", "html/banner/wap/"),
+    goods("商品图片", "goods/"),
+    goods_comment("商品评价图片", "comment/goods/"),
+    article("资讯", "article/"),
+    help("帮助中心", "help/"),
+    after("售后","/after/"),
+    activity("活动", "activity/"),
+    advertisement("广告", "advertisement/"),
+    test("测试目录", "test/")
+    ;
 
-    public String val;
+    public String description;
+    public String path;
 
-    BucketNameEnum(String val) {
-        this.val = val;
+    BucketNameEnum(String description) {
+        this.description = description;
+    }
+
+    BucketNameEnum(String description, String path) {
+        this.description = description;
+        this.path = path;
     }
 
     //通过值获得枚举对象
@@ -45,6 +54,6 @@ public enum BucketNameEnum {
                 return enums;
             }
         }
-        throw new BaseException(BaseException.ExceptionEnums.enums_undefined);
+        throw new BaseException(BaseException.ExceptionEnums.enumUndefined(yn));
     }
 }

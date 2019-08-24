@@ -6,6 +6,7 @@ package ${basePackage}.thirdparty.upload;
 
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.tools.HandleFuncs;
+import ${basePackage}.core.upload.FileUploadUtil;
 import ${basePackage}.thirdparty.upload.config.QiniuConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;

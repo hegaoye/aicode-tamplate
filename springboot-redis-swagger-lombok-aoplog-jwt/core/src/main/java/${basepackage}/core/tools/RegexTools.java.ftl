@@ -27,7 +27,7 @@ public class RegexTools {
         if (StringUtils.isBlank(email)) {
             return false;
         }
-        Pattern pattern = compile("^[A-Za-z0-9\\_\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$");
+        Pattern pattern = compile("^\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}$");
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
@@ -85,6 +85,20 @@ public class RegexTools {
             return false;
         }
         Pattern pattern = compile("(^\\+?(\\d{2,5})-(\\d{7,8})$)|(^\\+?(\\d{2,5})-(\\d{7,8})-(\\d+)$)");
+        return pattern.matcher(str).matches();
+    }
+
+    /**
+     * 判断是否符合（字母数字组合，且以字母开关）
+     *
+     * @param str 被检查的字符串
+     * @return boolean
+     */
+    public static boolean isLetterAndNumberAndStartWithLetter(String str) {
+        if (StringUtils.isBlank(str)) {
+            return false;
+        }
+        Pattern pattern = compile("^[A-Za-z]+[0-9]*[A-Za-z0-9]*$");;
         return pattern.matcher(str).matches();
     }
 }

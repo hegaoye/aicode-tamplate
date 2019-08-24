@@ -24,6 +24,10 @@ public class EnumFactory {
         RequestCodeEnum(1004, RequestCodeEnum.class, "请求状态码及说明"),
         FormatEnum(1005, FormatEnum.class, "内容格式枚举"),
         BucketNameEnum(1006, BucketNameEnum.class, "上传文件的归类目录"),
+        FeatureStateEnum(1007, EnableStateEnum.class, "启用状态"),
+        PermissionTypeEnum(1008, PermissionTypeEnum.class, "权限类型"),
+        CheckboxEnum(1009, CheckboxEnum.class, "筛选框选择状态"),
+        AdminTypeEnum(1010, AdminTypeEnum.class, "管理员类型"),
 
         //业务枚举 2000 开始
         UserState(2000, UserState.class, "用户状态"),
