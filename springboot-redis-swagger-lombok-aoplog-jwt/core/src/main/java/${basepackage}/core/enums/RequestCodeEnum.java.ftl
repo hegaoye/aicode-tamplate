@@ -163,7 +163,7 @@ public enum RequestCodeEnum {
                 return enums;
             }
         }
-        throw new BaseException(BaseException.ExceptionEnums.enums_undefined);
+        throw new BaseException(BaseException.ExceptionEnums.enumUndefined(name));
     }
 
     /**
