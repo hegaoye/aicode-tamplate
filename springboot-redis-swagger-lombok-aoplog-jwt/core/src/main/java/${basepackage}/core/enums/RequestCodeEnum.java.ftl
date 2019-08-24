@@ -15,6 +15,7 @@ import static ${basePackage}.core.common.Constants.PERSONAL_CONTACTS_MAX;
  * Created by borong on 2019/7/15.
  */
 public enum RequestCodeEnum {
+    // 枚举key头 保证 以 code_开头
     code_200(200, "OK"),
 
     code_31(31, "服务器异常；"),
@@ -152,6 +153,9 @@ public enum RequestCodeEnum {
     //描述
     public String descs;
 
+    // 枚举key头
+    private final static String ENUM_KEY_HEADER = "code_";
+
     RequestCodeEnum(int code, String descs) {
         this.code = code;
         this.descs = descs;
@@ -174,6 +178,6 @@ public enum RequestCodeEnum {
      */
     public static int getCode(RequestCodeEnum enums) {
         //从 code_ 开始截取 数据状态
-        return Integer.parseInt(enums.name().substring(5, enums.name().length()));
+        return Integer.parseInt(enums.name().substring(ENUM_KEY_HEADER.length()));
     }
 }
