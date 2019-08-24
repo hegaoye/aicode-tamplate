@@ -143,6 +143,7 @@ corporate_mall_opened(RequestCodeEnum.code_505),
         menu_is_repeat(RequestCodeEnum.code_1000),
         this_has_children_cant_delete(RequestCodeEnum.code_1001),
         no_permission(RequestCodeEnum.code_1002),
+        old_password_error(RequestCodeEnum.code_1003);
 
 ;
 

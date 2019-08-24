@@ -57,10 +57,11 @@ public interface RbacAdminSV extends BaseSV<RbacAdmin, Long> {
      * 修改自己的登录密码
      *
      * @param admin
-     * @param password 新的登录密码
+     * @param oldPwd 老的登录密码
+     * @param newPwd 新的登录密码
      * @return
      */
-    void editPassword(RbacAdmin admin, String password);
+    void editPassword(RbacAdmin admin, String oldPwd, String newPwd);
 
     /**
      * 修改管理员资料
