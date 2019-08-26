@@ -82,13 +82,6 @@ public class UploadBasicCtrl extends BaseUploadCtrl {
         return uploadFileRetURL(limitFile, BucketNameEnum.common);
     }
 
-    @ApiOperation(value = "文件访问路径前缀")
-    @GetMapping("/prefix")
-    @ResponseBody
-    public BeanRet prefix() {
-        return BeanRet.create(true, QiniuConfig.getService());
-    }
-
     /**
      * ckEditor上传文件 返回处理信息，带有HTTP
      *
@@ -175,6 +168,13 @@ public class UploadBasicCtrl extends BaseUploadCtrl {
 
         String filePath = FileUploadUtil.getInstance().uploadFileToLocal(file, bucketName);
 
-        return BeanRet.create(true, "上传成功", String.format("%s%s", UploadConfig.getService(), filePath));
+        return BeanRet.create(true, "上传成功", filePath);
+    }
+
+    @ApiOperation(value = "文件访问路径前缀")
+    @GetMapping("/prefix")
+    @ResponseBody
+    public BeanRet prefix() {
+        return BeanRet.create(true, UploadConfig.getService());
     }
 }
