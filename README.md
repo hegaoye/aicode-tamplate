@@ -3,22 +3,24 @@
 #### 项目介绍
 aicode的各个框架的仓库，通过不同的目录来分开管理
 
-#### 软件架构
-软件架构说明
-
 
 #### 安装教程
+模板将根据aicode项目中构建时自动选择模板下载，这个仓库仅存放模板框架
 
-1. xxxx
-2. xxxx
-3. xxxx
-###1.运行方法：
+### 运行方法：
 请修改项目中的jdbc.properties 文件将数据库链接修改成自己的数据地址即可
 如:jdbc.url=jdbc:mysql://192.168.10.250:3306/ai_code_simple?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
 前提是执行了ai-code.sql 脚本，执行后会有原始数据被导入，用于生成过程中的必要数据，请务必保证数据完整未被修改
 
+### 新模板命名
+最外层目录命名如下：
+  {框架名 版本号}-{框架名}-{框架名}
+例如：
+  springcloud1.5.13-redis-swagger-lombok
+  springcloud2.1.5-redis-swagger-lombok
 
-###2.编写模板说明：
+
+### 编写模板说明：
 模板采用freemarker 
 模板可以拿到如下数据：
 ${projectName} //项目英文名
@@ -55,20 +57,3 @@ sort_by,  left_pad,  cap_first,  interpret,  children,  node_namespace,  chop_li
 1. xxxx
 2. xxxx
 3. xxxx
-
-#### 参与贡献
-
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [http://git.mydoc.io/](http://git.mydoc.io/)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
