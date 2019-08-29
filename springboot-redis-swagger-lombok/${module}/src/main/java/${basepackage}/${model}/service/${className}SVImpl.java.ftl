@@ -24,6 +24,11 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import com.baidu.fsg.uid.UidGenerator;
 
+/**
+* ${notes}
+*
+* @author ${author}
+*/
 @Service("${className?uncap_first}SV")
 @Slf4j
 public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implements ${className}SV {
@@ -40,7 +45,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     }
 
     /**
-    * 保存account对象
+    * 保存${classNameLower}对象
     *
     * @param entity 实体
     * @throws BaseException
