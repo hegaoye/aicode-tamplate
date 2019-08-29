@@ -3,7 +3,6 @@ buildscript {
         springBootVersion = '2.1.5.RELEASE'
     }
     repositories {
-        maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://repo.spring.io/milestone" }
         maven { url "http://maven.jahia.org/maven2" }
         mavenCentral()
@@ -23,7 +22,6 @@ sourceCompatibility = 1.8
 [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
 
 repositories {
-    maven { url "https://plugins.gradle.org/m2/" }
     maven { url "https://repo.spring.io/milestone" }
     maven { url "http://maven.jahia.org/maven2" }
     mavenCentral()
