@@ -969,7 +969,7 @@ public class DateTools {
      * @param date1
      * @param date2
      * @return Integer
-     * @version 1.0.0
+     * .0
      * @2017-3-22 15:04:17
      */
     public static Integer isBefore(Date date1, Date date2) {
@@ -993,7 +993,7 @@ public class DateTools {
     /**
      * 获取当前年
      *
-     * @version 1.0.0
+     * .0
      * @2017-3-22 16:13:15
      */
     public static Integer getCurYear() {
@@ -1006,7 +1006,7 @@ public class DateTools {
     /**
      * 获取当前月
      *
-     * @version 1.0.0
+     * .0
      * @2017-3-22 16:13:20
      */
     public static Integer getCurMonth() {
@@ -1018,7 +1018,7 @@ public class DateTools {
     /**
      * 获取当前日期
      *
-     * @version 1.0.0
+     * .0
      * @2017-3-22 16:13:24
      */
     public static Integer getCurDate() {
@@ -1030,7 +1030,7 @@ public class DateTools {
     /**
      * 获取当前周几
      *
-     * @version 1.0.0
+     * .0
      * @2017-3-22 16:13:29
      */
     public static String getCurDay() {

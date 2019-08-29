@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * uuid工具
  *
- * @author wangchuan
+ * @author ${author}
  */
 public class UuidTools {
 

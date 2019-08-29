@@ -5,9 +5,9 @@ import java.security.Security;
 /**
  * 加密基类
  * 
- * @author ShenHuaJie
- * @version 1.0
- * @since 1.0
+ * @author ${author}
+ *
+ *
  */
 public abstract class SecurityCoder {
     private static Byte ADDFLAG = 0;

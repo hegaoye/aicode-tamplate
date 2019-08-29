@@ -37,8 +37,8 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("${projectName} RESTful APIs")
                 .description("${projectName} system")
-                .contact(new Contact("${copyright}", "http://www.pi-top.com/", "${author}"))
-                .termsOfServiceUrl("http://www.xxxx.com/")
+                .contact(new Contact("${copyright}", "http://www.${projectName}.com/", "${author}"))
+                .termsOfServiceUrl("http://www.${projectName}.com/")
                 .version("1.0")
                 .build();
     }

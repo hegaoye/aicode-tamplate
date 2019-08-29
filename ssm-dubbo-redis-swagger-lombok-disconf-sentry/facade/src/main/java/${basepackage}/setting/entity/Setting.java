@@ -7,8 +7,8 @@ import lombok.Data;
  * 设置对象
  *
  * @author lixin hegaoye@qq.com
- * @version 1.0
- * @since 1.0
+ *
+ *
  */
 @Data
 public class Setting extends BaseEntity implements java.io.Serializable {

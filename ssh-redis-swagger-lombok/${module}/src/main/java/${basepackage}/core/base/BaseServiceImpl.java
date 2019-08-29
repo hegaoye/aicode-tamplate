@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @version 1.0.0
+ * .0
  *          2016年3月17日15:20:08
  */
 public class BaseServiceImpl<T> implements BaseService<T> {

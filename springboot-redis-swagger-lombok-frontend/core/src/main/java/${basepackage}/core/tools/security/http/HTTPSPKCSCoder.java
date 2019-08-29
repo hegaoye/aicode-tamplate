@@ -12,8 +12,8 @@ import java.security.SecureRandom;
  * HTTPS组件
  * 
  * @author ${author}
- * @version 1.0
- * @since 1.0
+ *
+ *
  */
 public abstract class HTTPSPKCSCoder {
 

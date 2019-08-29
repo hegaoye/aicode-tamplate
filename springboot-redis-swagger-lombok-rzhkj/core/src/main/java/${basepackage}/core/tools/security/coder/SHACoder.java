@@ -11,9 +11,9 @@ import java.security.MessageDigest;
 /**
  * SHA加密组件
  * 
- * @author ShenHuaJie
- * @version 1.0
- * @since 1.0
+ * @author ${author}
+ *
+ *
  */
 public abstract class SHACoder extends SecurityCoder {
 

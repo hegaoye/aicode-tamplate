@@ -13,10 +13,6 @@ import java.util.Set;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-/**
- * mybatis二级缓存
- * Created by shangze on 2017/6/15.
- */
 public class MybatisRedisCache implements Cache {
 
     private final static Logger logger = LoggerFactory.getLogger(MybatisRedisCache.class);

@@ -4,7 +4,7 @@ import java.util.Map;
 
 
 /**
- * @version 1.0.0
+ * .0
  *          2016年3月17日14:18:20
  */
 public interface BaseService<T> {
