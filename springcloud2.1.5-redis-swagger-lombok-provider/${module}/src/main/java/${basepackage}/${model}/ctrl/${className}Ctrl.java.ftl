@@ -8,6 +8,7 @@ import ${basePackage}.${model}.service.${className}SV;
 import ${basePackage}.core.entity.BeanRet;
 import ${basePackage}.core.entity.Page;
 import com.alibaba.fastjson.JSON;
+import java.util.HashMap;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
