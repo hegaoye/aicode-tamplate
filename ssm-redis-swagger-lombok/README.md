@@ -21,7 +21,8 @@ CREATE TABLE `worker_node` (
 
 
 框架配置有郑州仁中和科技有限公司提供
-作者@立心
+http://www.rzhkj.com/
+作者@立心 hegaoye@qq.com/hegaoye@gmail.com
 
 
 

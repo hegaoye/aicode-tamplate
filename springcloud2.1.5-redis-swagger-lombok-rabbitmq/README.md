@@ -1,4 +1,6 @@
-###Spring MVC + Spring + Mybatis 基础框架组合
+### 说明
+此框架以springcloud 2.1.5.RELEASE （Greenwich.RELEASE） 版本为基础进行整合，
+整合 springcloud的各个组件，eureka,feign,gateway,zuul,ribbon,config,kafka,rabbitmq 等
 
 ###注意
 libs 下的sql文件是 用于雪花算法的数据库表支持，请执行sql用于生成相关表
@@ -22,7 +24,7 @@ CREATE TABLE `worker_node` (
 
 框架配置有郑州仁中和科技有限公司提供
 http://www.rzhkj.com/
-作者@立心 hegaoye@qq.com/hegaoye@gmail.com
+作者@立心 hegaoye@qq.com/hegaoye@gmail.com 
 
 
 

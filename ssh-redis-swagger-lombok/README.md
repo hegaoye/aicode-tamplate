@@ -17,7 +17,8 @@ CREATE TABLE `worker_node` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1263 DEFAULT CHARSET=utf8 COMMENT='DB WorkerID Assigner for UID Generator';
 
 框架配置有郑州仁中和科技有限公司提供
-作者@立心
+http://www.rzhkj.com/
+作者@立心 hegaoye@qq.com/hegaoye@gmail.com
 
 
 
