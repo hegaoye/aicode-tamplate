@@ -49,7 +49,7 @@ public class RbacPermissionApiCtrl {
     * @param id 权限授权记录id
     * @return BeanRet
     */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询RbacPermissionApi一个详情信息")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询RbacPermissionApi一个详情信息")
     @ApiOperation(value = "查询RbacPermissionApi一个详情信息", notes = "查询RbacPermissionApi一个详情信息")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "menuId", value = "权限授权记录id",dataType = "java.lang.Long", paramType = "query", required = true)
@@ -70,7 +70,7 @@ public class RbacPermissionApiCtrl {
     *
     * @return 分页对象
     */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询RbacPermissionApi信息集合")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询RbacPermissionApi信息集合")
     @ApiOperation(value = "查询RbacPermissionApi信息集合", notes = "查询RbacPermissionApi信息集合")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query", defaultValue = "1"),
@@ -99,7 +99,7 @@ public class RbacPermissionApiCtrl {
     *
     * @return BeanRet
     */
-    @SystemControllerLog(actionType = ActionTypeEnum.insert, roleType = RoleTypeEnum.Admin, description = "创建RbacPermissionApi")
+    @SystemControllerLog(actionType = ActionTypeEnum.add, roleType = RoleTypeEnum.Admin, description = "创建RbacPermissionApi")
     @ApiOperation(value = "创建RbacPermissionApi", notes = "创建RbacPermissionApi")
     @ApiImplicitParams({
                 @ApiImplicitParam(name = "menuId", value = "权限授权记录id", paramType = "query"),
@@ -123,7 +123,7 @@ public class RbacPermissionApiCtrl {
     *
     * @return BeanRet
     */
-    @SystemControllerLog(actionType = ActionTypeEnum.delete, roleType = RoleTypeEnum.Admin, description = "删除RbacPermissionApi")
+    @SystemControllerLog(actionType = ActionTypeEnum.del, roleType = RoleTypeEnum.Admin, description = "删除RbacPermissionApi")
     @ApiOperation(value = "删除RbacPermissionApi", notes = "删除RbacPermissionApi")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "menuId", value = "权限授权记录id", paramType = "query", required = true)

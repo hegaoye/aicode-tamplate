@@ -60,7 +60,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      * @param code 管理员编码
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询管理员的详情")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询管理员的详情")
     @ApiOperation(value = "查询管理员的详情", notes = "查询管理员的详情")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "code", value = "管理员编码", dataType = "java.lang.String", paramType = "query", required = true)
@@ -77,7 +77,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return 分页对象
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询管理员信息集合")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询管理员信息集合")
     @ApiOperation(value = "查询管理员信息集合", notes = "查询管理员信息集合")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query", defaultValue = "1"),
@@ -106,7 +106,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.insert, roleType = RoleTypeEnum.Admin, description = "添加管理员")
+    @SystemControllerLog(actionType = ActionTypeEnum.add, roleType = RoleTypeEnum.Admin, description = "添加管理员")
     @ApiOperation(value = "添加管理员", notes = "添加管理员")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "account", value = "自定义登录账号 (长度限制5-16位，字母开头+数字)", paramType = "query"),
@@ -132,7 +132,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.update, roleType = RoleTypeEnum.Admin, description = "修改管理员信息")
+    @SystemControllerLog(actionType = ActionTypeEnum.edit, roleType = RoleTypeEnum.Admin, description = "修改管理员信息")
     @ApiOperation(value = "修改管理员信息", notes = "修改管理员信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "code", value = "管理员编码", paramType = "query", required = true),
@@ -159,7 +159,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.update, roleType = RoleTypeEnum.Admin, description = "修改自己的登录密码")
+    @SystemControllerLog(actionType = ActionTypeEnum.edit, roleType = RoleTypeEnum.Admin, description = "修改自己的登录密码")
     @ApiOperation(value = "修改自己的登录密码", notes = "修改自己的登录密码")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "oldPwd", value = "老密码：字母数字，长度6-20", paramType = "query", required = true),
@@ -181,7 +181,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "检查账号是否重复")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "检查账号是否重复")
     @ApiOperation(value = "检查账号是否重复", notes = "检查账号是否重复")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "account", value = "自定义登录账号|手机号|邮箱", paramType = "query", dataType = "string", required = true),
@@ -200,7 +200,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.update, roleType = RoleTypeEnum.Admin, description = "变更管理员的启用状态")
+    @SystemControllerLog(actionType = ActionTypeEnum.edit, roleType = RoleTypeEnum.Admin, description = "变更管理员的启用状态")
     @ApiOperation(value = "变更管理员的启用状态", notes = "变更管理员的启用状态")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "code", value = "管理员编码", dataType = "java.lang.String", paramType = "query", required = true)
@@ -219,7 +219,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询自己的所有权限菜单")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询自己的所有权限菜单")
     @ApiOperation(value = "查询自己的所有权限菜单", notes = "查询自己的所有权限菜单")
     @ApiImplicitParams({
     })
@@ -236,7 +236,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询自己的所有权限菜单-树结构")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询自己的所有权限菜单-树结构")
     @ApiOperation(value = "查询自己的所有权限菜单-树结构", notes = "查询自己的所有权限菜单-树结构")
     @ApiImplicitParams({
     })
@@ -249,11 +249,11 @@ public class RbacAdminCtrl extends BaseCtrl {
     }
 
     /**
-     * 为角色绑定权限
+     * 为管理员绑定角色
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.insert, roleType = RoleTypeEnum.Admin, description = "为角色绑定权限")
+    @SystemControllerLog(actionType = ActionTypeEnum.add, roleType = RoleTypeEnum.Admin, description = "为管理员绑定角色")
     @ApiOperation(value = "为管理员绑定角色", notes = "为管理员绑定角色")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "code", value = "管理员编码", paramType = "query", dataType = "string", required = true),
@@ -276,7 +276,7 @@ public class RbacAdminCtrl extends BaseCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询所有角色，并标记管理员拥有的角色")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询所有角色，并标记管理员拥有的角色")
     @ApiOperation(value = "查询所有角色，并标记管理员拥有的角色", notes = "查询所有角色，并标记管理员拥有的角色；\n checkbox 复选框-选择状态枚举：[枚举编号：1009](/resources/enum/1009)")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "code", value = "管理员编码", paramType = "query", dataType = "string", required = true),

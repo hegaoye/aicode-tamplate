@@ -38,7 +38,7 @@ public class SystemLog implements java.io.Serializable {
     private String roleCode;
 
     /**
-     * 数据库字段:type  属性显示:操作类型(insert,update,delete,select)
+     * 数据库字段:type  属性显示:操作类型(add,edit,del,query,login)
      */
     private String type;
 

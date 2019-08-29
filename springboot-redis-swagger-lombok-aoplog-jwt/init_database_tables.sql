@@ -196,7 +196,7 @@ create table system_log
    id                   int unsigned not null auto_increment comment '主键id',
    role_type            enum('user','admin','Tourist') not null comment '操作人类型',
    role_code            varchar(128) not null comment '操作人编码；当为游客时，保存请求操作的sessionid',
-   type                 enum('insert','update','delete','select','login') not null comment '操作类型(insert,update,delete,select,login)',
+   type                 enum('add','edit','del','query','login') not null comment '操作类型(add,edit,del,query,login)',
    response_state       SMALLINT not null comment '响应状态码',
    ip_address           int unsigned not null comment 'ip地址（二进制）',
    system               varchar(128) not null comment '操作系统',

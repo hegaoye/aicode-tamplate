@@ -88,7 +88,7 @@ public class LoginCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询当前登录管理员的信息")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询当前登录管理员的信息")
     @ApiOperation(value = "查询当前登录管理员的信息", notes = "查询当前登录管理员的信息")
     @ApiImplicitParams({
     })
