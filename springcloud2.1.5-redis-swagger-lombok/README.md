@@ -1,5 +1,5 @@
 ### 说明
-此框架以springcloud 2.1.5.RELEASE （Greenwich.RELEASE） 版本为基础进行整合，
+此框架以springcloud Greenwich.RELEASE，springboot 2.1.5.RELEASE 版本为基础进行整合，
 整合 springcloud的各个组件，eureka,feign,gateway,zuul,ribbon,config,kafka,rabbitmq 等
 
 ###注意

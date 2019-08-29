@@ -1,3 +1,4 @@
+### springboot 1.5.13 版本
 Spring cloud + Mybatis + Redis + Swagger + Lombok 基础框架组合
 1.修改jdbc 连接配置
 2.生成数据库，worker_node.sql 的生成，系统自动创建了sql可以直接使用
