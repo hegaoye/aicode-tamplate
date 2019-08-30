@@ -3,6 +3,6 @@ include 'base-facade'
 include 'base-sv'
 include 'facade'
 
-include 'eureka-server'//单注册中心实例，用于开发测试，生产时请参考 集群注册中心方案
-include '${module}' //可以连接数据库，可以使用feign访问其他的微服务实现微服务的分离，如果需要通讯异步消息，分布式事务，考虑结合kafka，rabbitmq配合使用
+include 'eureka-server'
+include '${projectName}'
 
