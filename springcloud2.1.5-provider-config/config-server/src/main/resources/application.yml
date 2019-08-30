@@ -1,7 +1,16 @@
+server:
+  port: 8092
+
 spring:
   profiles:
      active: native
-server:
-  port: 8092
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://gitee.com/helixin/spring-cloud-config.git
+#          searchPaths: "local"
+#      label: "master"
+
 
 
