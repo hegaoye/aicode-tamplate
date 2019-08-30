@@ -1,6 +1,6 @@
 ### 说明
 此框架以springcloud Greenwich.RELEASE，springboot 2.1.5.RELEASE 版本为基础进行整合，
-整合 springcloud的各个组件，eureka,feign等
+整合 springcloud的各个组件，eureka,feign,config等
 
 ###注意
 libs 下的sql文件是 用于雪花算法的数据库表支持，请执行sql用于生成相关表

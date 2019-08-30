@@ -1,0 +1,8 @@
+include 'core'
+include 'base-facade'
+include 'base-sv'
+include 'facade'
+
+include 'eureka-server'
+include '${projectName}'
+
