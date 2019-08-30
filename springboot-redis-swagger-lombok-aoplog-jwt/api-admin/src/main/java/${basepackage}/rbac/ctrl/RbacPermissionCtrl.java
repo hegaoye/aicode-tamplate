@@ -53,7 +53,7 @@ public class RbacPermissionCtrl {
      * @param permissionId 权限id
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询权限资源-菜单信息")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询权限资源-菜单信息")
     @ApiOperation(value = "查询权限资源-菜单信息", notes = "查询权限资源-菜单信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "permissionId", value = "权限id", dataType = "java.lang.Long", paramType = "query", required = true)
@@ -73,7 +73,7 @@ public class RbacPermissionCtrl {
      *
      * @return 分页对象
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询权限资源-菜单集合-树结构")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询权限资源-菜单集合-树结构")
     @ApiOperation(value = "查询权限资源-菜单集合-树结构", notes = "查询权限资源-菜单集合-树结构")
     @ApiImplicitParams({
             /*@ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query", defaultValue = "1"),
@@ -93,7 +93,7 @@ public class RbacPermissionCtrl {
      *
      * @return 分页对象
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询权限资源-菜单集合")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询权限资源-菜单集合")
     @ApiOperation(value = "查询权限资源-菜单集合", notes = "查询权限资源-菜单集合")
     @ApiImplicitParams({
             /*@ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query", defaultValue = "1"),
@@ -113,7 +113,7 @@ public class RbacPermissionCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.insert, roleType = RoleTypeEnum.Admin, description = "新增基础权限-菜单权限")
+    @SystemControllerLog(actionType = ActionTypeEnum.add, roleType = RoleTypeEnum.Admin, description = "新增基础权限-菜单权限")
     @ApiOperation(value = "新增基础权限-菜单权限", notes = "新增基础权限-菜单权限")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "menuName", value = "菜单名", paramType = "query", required = true),
@@ -136,7 +136,7 @@ public class RbacPermissionCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.update, roleType = RoleTypeEnum.Admin, description = "修改基础权限-菜单")
+    @SystemControllerLog(actionType = ActionTypeEnum.edit, roleType = RoleTypeEnum.Admin, description = "修改基础权限-菜单")
     @ApiOperation(value = "修改基础权限-菜单", notes = "修改基础权限-菜单")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "menuId", value = "菜单ID", paramType = "query", dataType = "long", required = true),
@@ -161,7 +161,7 @@ public class RbacPermissionCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.update, roleType = RoleTypeEnum.Admin, description = "修改基础权限-菜单父级")
+    @SystemControllerLog(actionType = ActionTypeEnum.edit, roleType = RoleTypeEnum.Admin, description = "修改基础权限-菜单父级")
     @ApiOperation(value = "修改基础权限-菜单父级", notes = "修改基础权限-菜单父级")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "menuId", value = "菜单ID", paramType = "query", dataType = "long", required = true),
@@ -180,7 +180,7 @@ public class RbacPermissionCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.delete, roleType = RoleTypeEnum.Admin, description = "删除基础权限菜单")
+    @SystemControllerLog(actionType = ActionTypeEnum.del, roleType = RoleTypeEnum.Admin, description = "删除基础权限菜单")
     @ApiOperation(value = "删除基础权限菜单", notes = "删除基础权限菜单")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "menuId", value = "菜单ID", paramType = "query", dataType = "long", required = true)

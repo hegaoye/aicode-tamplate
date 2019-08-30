@@ -54,7 +54,7 @@ public class RbacRoleCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.insert, roleType = RoleTypeEnum.Admin, description = "新增角色")
+    @SystemControllerLog(actionType = ActionTypeEnum.add, roleType = RoleTypeEnum.Admin, description = "新增角色")
     @ApiOperation(value = "新增角色", notes = "新增角色")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "roleName", value = "角色名", paramType = "query", required = true),
@@ -75,7 +75,7 @@ public class RbacRoleCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.insert, roleType = RoleTypeEnum.Admin, description = "为角色绑定权限")
+    @SystemControllerLog(actionType = ActionTypeEnum.add, roleType = RoleTypeEnum.Admin, description = "为角色绑定权限")
     @ApiOperation(value = "为角色绑定权限", notes = "为角色绑定权限")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "roleId", value = "角色id", paramType = "query", dataType = "long", required = true),
@@ -97,7 +97,7 @@ public class RbacRoleCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询所有权限，并标记角色拥有的权限")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询所有权限，并标记角色拥有的权限")
     @ApiOperation(value = "查询所有权限，并标记角色拥有的权限", notes = "查询所有权限，并标记角色拥有的权限；\n checkbox 复选框-选择状态枚举：[枚举编号：1009](/resources/enum/1009)")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "roleId", value = "角色id", paramType = "query", dataType = "long", required = true),
@@ -115,7 +115,7 @@ public class RbacRoleCtrl {
      * @param roleId 角色id
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询角色及拥有权限")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询角色及拥有权限")
     @ApiOperation(value = "查询角色及拥有权限", notes = "查询角色及拥有权限")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "roleId", value = "角色id", dataType = "java.lang.Long", paramType = "query", required = true)
@@ -135,7 +135,7 @@ public class RbacRoleCtrl {
      *
      * @return 分页对象
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.Admin, description = "查询角色集合")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.Admin, description = "查询角色集合")
     @ApiOperation(value = "查询角色集合", notes = "查询角色集合")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query", defaultValue = "1"),
@@ -161,7 +161,7 @@ public class RbacRoleCtrl {
      *
      * @return BeanRet
      */
-    @SystemControllerLog(actionType = ActionTypeEnum.delete, roleType = RoleTypeEnum.Admin, description = "删除角色")
+    @SystemControllerLog(actionType = ActionTypeEnum.del, roleType = RoleTypeEnum.Admin, description = "删除角色")
     @ApiOperation(value = "删除角色", notes = "删除角色")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "roleId", value = "角色id", paramType = "query", required = true)

@@ -35,7 +35,7 @@ public @interface SystemControllerLog {
      *
      * @return
      */
-    ActionTypeEnum actionType() default ActionTypeEnum.select;
+    ActionTypeEnum actionType() default ActionTypeEnum.query;
 
     /**
      * 角色类型

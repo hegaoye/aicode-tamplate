@@ -51,7 +51,7 @@ public class ${className}Ctrl {
     </#list>
     * @return BeanRet
     */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.User, description = "查询${className}一个详情信息")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.User, description = "查询${className}一个详情信息")
     @ApiOperation(value = "查询${className}一个详情信息", notes = "查询${className}一个详情信息")
     @ApiImplicitParams({
     <#list pkFields as pkField>
@@ -77,7 +77,7 @@ public class ${className}Ctrl {
     *
     * @return 分页对象
     */
-    @SystemControllerLog(actionType = ActionTypeEnum.select, roleType = RoleTypeEnum.User, description = "查询${className}信息集合")
+    @SystemControllerLog(actionType = ActionTypeEnum.query, roleType = RoleTypeEnum.User, description = "查询${className}信息集合")
     @ApiOperation(value = "查询${className}信息集合", notes = "查询${className}信息集合")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query", defaultValue = "1"),

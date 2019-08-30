@@ -14,13 +14,13 @@ import ${basePackage}.core.exceptions.BaseException;
  */
 public enum ActionTypeEnum {
     // 新增
-    insert("新增"),
+    add("新增"),
     // 修改
-    update("修改"),
+    edit("修改"),
     // 删除
     delete("删除"),
     // 查询
-    select("查询"),
+    query("查询"),
     // 登录
     login("登录"),
     ;
