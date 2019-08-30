@@ -38,6 +38,7 @@ dependencies {
     compile(
             "org.springframework.boot:spring-boot-starter-web",
             "org.springframework.cloud:spring-cloud-starter-feign:1.4.7.RELEASE",
+            "org.springframework.cloud:spring-cloud-starter-config",
             "com.alibaba:druid-spring-boot-starter:1.1.10"
     )
 
