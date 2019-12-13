@@ -26,17 +26,17 @@ public class UploadConfig {
     @Getter
     public static String service;
 
-    @Value("${upload.local_path}")
+    @Value("${r'${upload.local_path}'}")
     public void setLocal_path(String local_path) {
         UploadConfig.local_path = local_path;
     }
 
-    @Value("${upload.file_max_byte}")
+    @Value("${r'${upload.file_max_byte}'}")
     public void setFile_max_byte(long file_max_byte) {
         UploadConfig.file_max_byte = file_max_byte;
     }
 
-    @Value("${upload.service}")
+    @Value("${r'${upload.service}'}")
     public void setService(String service) {
         UploadConfig.service = service;
     }
