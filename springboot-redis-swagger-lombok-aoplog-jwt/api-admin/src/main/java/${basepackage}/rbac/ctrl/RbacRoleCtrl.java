@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019. 郑州仁中和科技有限公司.保留所有权利. http://www.rzhkj.com/ 郑州仁中和科技有限公司保留所有代码著作权.如有任何疑问请访问官方网站与我们联系. 代码只针对特定客户使用，不得在未经允许或授权的情况下对外传播扩散.恶意传播者，法律后果自行承担. 本代码仅用于练手学习.
  */
-package com.rzhkj.nt.ctrl;
+package ${basePackage}.ctrl;
 
 ${basePackage}.core.entity.BeanRet;
 ${basePackage}.core.entity.Page;
@@ -28,8 +28,8 @@ import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.rzhkj.nt.core.exceptions.BaseException.*;
-import static com.rzhkj.nt.rbac.common.ConstantsRbac.ID_PRE_PRESET;
+import static ${basePackage}.core.exceptions.BaseException.*;
+import static ${basePackage}.rbac.common.ConstantsRbac.ID_PRE_PRESET;
 
 /**
  * 权限系统-角色 控制器

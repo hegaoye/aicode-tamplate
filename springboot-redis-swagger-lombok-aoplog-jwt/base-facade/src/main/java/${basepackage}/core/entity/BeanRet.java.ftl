@@ -16,7 +16,7 @@ import java.io.Serializable;
 @Data
 public class BeanRet implements Serializable {
     private boolean success = false;
-    private String info = BaseException.ExceptionEnums.server_error.codeEnum.descs;
+    private String info = BaseException.ExceptionEnums.server_error.codeEnum.description;
     private Object data = null;
     private int code = BaseException.ExceptionEnums.server_error.codeEnum.code;
 
@@ -30,19 +30,19 @@ public class BeanRet implements Serializable {
     }
 
     public static BeanRet create(BaseException.ExceptionEnums exceptionEnums) {
-        return new BeanRet(false, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.descs);
+        return new BeanRet(false, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.description);
     }
 
     public static BeanRet create(boolean success, BaseException.ExceptionEnums exceptionEnums) {
-        return new BeanRet(success, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.descs);
+        return new BeanRet(success, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.description);
     }
 
     public static BeanRet create(boolean success, BaseException.ExceptionEnums exceptionEnums, String info) {
-        return new BeanRet(success, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.descs, info);
+        return new BeanRet(success, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.description, info);
     }
 
     public static BeanRet create(boolean success, BaseException.ExceptionEnums exceptionEnums, Object data) {
-        return new BeanRet(success, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.descs, data);
+        return new BeanRet(success, exceptionEnums.codeEnum.code, exceptionEnums.codeEnum.description, data);
     }
 
     public static BeanRet create(boolean success, String info) {

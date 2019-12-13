@@ -74,6 +74,16 @@ public class SystemLog implements java.io.Serializable {
     private String browser;
 
     /**
+    * 数据库字段:class_name  属性显示:类(包.类)
+    */
+    private String className;
+
+    /**
+    * 数据库字段:class_method  属性显示:类方法
+    */
+    private String classMethod;
+
+    /**
      * 数据库字段:create_time  属性显示:创建时间
      */
     private Date createTime;

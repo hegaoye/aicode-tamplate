@@ -85,21 +85,13 @@ public class SystemLogAspect {
         // 提取controller中 返回结果 BeanRet 的对象属性
         BeanRet beanRet = (BeanRet) joinPoint.proceed();
 
-        // 获取操作类型
-        ActionTypeEnum actionTypeEnum = systemControllerLog.actionType();
-
-        SystemLog systemLog = new SystemLog();
-
-        // 获取请求API所属类名
-        String requestClassName = joinPoint.getTarget().getClass().getName();
-        systemLog.setClassName(requestClassName);
-        // 获取请求API方法名
-        String requestMethodName = joinPoint.getSignature().getName();
-        systemLog.setClassMethod(requestMethodName);
+        // 如果不在以下预设范围，不增加日志记录
+        if (!ActionTypeEnum.isInSet(systemControllerLog.actionType(), ActionTypeEnum.login, ActionTypeEnum.add, ActionTypeEnum.edit, ActionTypeEnum.del)) {
+            return beanRet;
+        }
 
         // 获取请求API中传递参数
-        List
-<String> parameters = new ArrayList<>();
+        List<String> parameters = new ArrayList<>();
     Object[] params = joinPoint.getArgs();
     for (Object param : params) {
     if (param instanceof String
@@ -110,38 +102,29 @@ public class SystemLogAspect {
     }
     }
 
-    // 保存请求API信息
-    systemLog.setDescription(systemControllerLog.description());
-
     // 获取并保存 访问角色类型
     RoleTypeEnum roleTypeEnum = systemControllerLog.roleType();
-    systemLog.setRoleType(roleTypeEnum.name());
 
+    String roleCode = "";
+    String roleName = "";
     // 处理并保存 游客访问
     if (RoleTypeEnum.Tourist.equals(roleTypeEnum)) {
-    systemLog.setRoleCode(request.getSession().getId());
+    roleCode = request.getSession().getId();
+    roleName = RoleTypeEnum.Tourist.val;
     }
     // 处理并保存 角色用户访问
     else {
     Account account = JWTTools.decodeTokenToAccount(request, roleTypeEnum);
-    systemLog.setRoleCode(account.getCode());
+    roleCode = account.getCode();
+    roleName = account.getName();
     }
 
-
-    // 保存请求结果的状态码，及返回信息到日志中
-    systemLog.setResponseState(beanRet.getCode());
-
-    // 获取并保存 操作的类型
-    systemLog.setType(actionTypeEnum.name());
-
-
-    // 获取请求的客户端信息
-    RequestUtil.getRequestClientInfo(systemLog, request);
-
-    systemLog.setCreateTime(new Date());
-
     // 保存系统的访问日志
-    systemLogSv.save(systemLog);
+    systemLogSv.addLog(roleTypeEnum, roleCode, roleName, systemControllerLog.actionType(),
+    systemControllerLog.description(),
+    HttpCodeEnum.getEnum(beanRet.getCode()), request,
+    joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
+
     return beanRet;
     }
 
@@ -159,7 +142,7 @@ public class SystemLogAspect {
     }
 
     /**
-    * 拦截控制层的操作日志
+    * 拦截业务层的操作日志
     *
     * @param joinPoint
     * @throws Throwable
@@ -167,7 +150,7 @@ public class SystemLogAspect {
     @Deprecated
     @Around("serviceAspect()")
     public void serviceRecordLog(ProceedingJoinPoint joinPoint) throws Throwable {
-    SystemLog systemLog = new SystemLog();
+
     // 获取 Request 请求对象
     HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 
@@ -180,36 +163,22 @@ public class SystemLogAspect {
 
     // 获取并保存 访问角色类型
     RoleTypeEnum roleTypeEnum = systemControllerLog.roleType();
-    systemLog.setRoleType(roleTypeEnum.name());
 
+    String roleCode = "";
+    String roleName = "";
     // 处理并保存 游客访问
     if (RoleTypeEnum.Tourist.equals(roleTypeEnum)) {
-    systemLog.setRoleCode("");
+    roleName = RoleTypeEnum.Tourist.val;
     }
     // 处理并保存 角色用户访问
     else {
     Account account = JWTTools.decodeTokenToAccount(request, roleTypeEnum);
-    systemLog.setRoleCode(account.getCode());
+    roleCode = account.getCode();
+    roleName = account.getName();
     }
-
-    // 获取并保存 操作的类型
-    systemLog.setType(systemControllerLog.actionType().name());
-
-    // 获取请求API所属类名
-    String requestClassName = joinPoint.getTarget().getClass().getName();
-    systemLog.setClassName(requestClassName);
-    // 获取请求API方法名
-    String requestMethodName = joinPoint.getSignature().getName();
-    systemLog.setClassMethod(requestMethodName);
 
     // 提取controller中 返回结果 BeanRet 的对象属性
     BeanRet beanRet = (BeanRet) joinPoint.proceed();
-
-    // 保存请求结果的状态码，及返回信息到日志中
-    systemLog.setResponseState(beanRet.getCode());
-    systemLog.setDescription(systemControllerLog.description());
-
-    systemLog.setCreateTime(new Date());
 
     Object[] params = joinPoint.getArgs();
     StringBuffer returnString = new StringBuffer();
@@ -221,11 +190,11 @@ public class SystemLogAspect {
     }
     }
 
-    // 获取请求的客户端信息
-    RequestUtil.getRequestClientInfo(systemLog, request);
-
     // 保存系统的访问日志
-    systemLogSv.save(systemLog);
+    systemLogSv.addLog(roleTypeEnum, roleCode, roleName, systemControllerLog.actionType(),
+    systemControllerLog.description(),
+    HttpCodeEnum.getEnum(beanRet.getCode()), request,
+    joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
     }
 
     /**
@@ -237,7 +206,7 @@ public class SystemLogAspect {
     */
     @AfterThrowing(pointcut = "controllerAspect()", throwing = "throwable")
     public void doAfterThrowing(JoinPoint joinPoint, Throwable throwable) throws Throwable {
-    SystemLog systemLog = new SystemLog();
+
     // 获取 Request 请求对象
     HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 
@@ -248,39 +217,28 @@ public class SystemLogAspect {
     return;
     }
 
-    // 获取请求API所属类名
-    String requestClassName = joinPoint.getTarget().getClass().getName();
-    systemLog.setClassName(requestClassName);
-    // 获取请求API方法名
-    String requestMethodName = joinPoint.getSignature().getName();
-    systemLog.setClassMethod(requestMethodName);
-
     // 获取并保存 访问角色类型
     RoleTypeEnum roleTypeEnum = systemControllerLog.roleType();
-    systemLog.setRoleType(roleTypeEnum.name());
+
+    String roleCode = "";
+    String roleName = "";
 
     // 处理并保存 游客访问
     if (RoleTypeEnum.Tourist.equals(roleTypeEnum)) {
-    systemLog.setRoleCode("");
+    roleName = RoleTypeEnum.Tourist.val;
     }
     // 处理并保存 角色用户访问
     else {
     Account account = JWTTools.decodeTokenToAccount(request, roleTypeEnum);
-    systemLog.setRoleCode(account.getCode());
+    roleCode = account.getCode();
+    roleName = account.getName();
     }
 
-    // 获取并保存 操作的类型
-    systemLog.setType(systemControllerLog.actionType().name());
-    systemLog.setDescription(String.format("%s [请求异常] 原因：%s", systemControllerLog.description(),
-    throwable.getMessage()));
-
-    systemLog.setResponseState(RequestCodeEnum.code_33.code);
-
-    // 获取请求的客户端信息
-    RequestUtil.getRequestClientInfo(systemLog, request);
-
-    systemLog.setCreateTime(new Date());
-    systemLogSv.save(systemLog);
+    // 保存系统的访问日志
+    systemLogSv.addLog(roleTypeEnum, roleCode, roleName, systemControllerLog.actionType(),
+    String.format("%s [请求异常] 原因：%s", systemControllerLog.description(), throwable.getMessage()),
+    HttpCodeEnum.getEnum(HttpCodeEnum.code_33.code), request,
+    joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
     }
 
     /**
@@ -342,4 +300,4 @@ public class SystemLogAspect {
     }
     return systemControllerLog;
     }
-}
+    }

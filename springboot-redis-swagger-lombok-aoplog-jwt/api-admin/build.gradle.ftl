@@ -1,5 +1,13 @@
-apply plugin: 'war'
+//apply plugin: 'war'
 apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'api-admin'
+    manifest {
+        attributes "Manifest-Version": 1.0,
+                "Main-Class": '${basePackage}.AdminApplication'
+    }
+}
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')

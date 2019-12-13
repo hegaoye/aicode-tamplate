@@ -55,6 +55,6 @@ public enum EnvEnums {
                 return enums;
             }
         }
-        throw new BaseException(BaseException.ExceptionEnums.enums_undefined.codeEnum.descs + name);
+        throw new BaseException(BaseException.ExceptionEnums.enumUndefined(name));
     }
 }

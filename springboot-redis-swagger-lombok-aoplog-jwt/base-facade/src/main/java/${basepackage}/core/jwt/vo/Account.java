@@ -20,10 +20,14 @@ public class Account <T> implements Serializable {
     private String account;
     //账号对应编码
     private String code;
+    //名称
+    private String name;
     //角色类型
     private RoleTypeEnum roleTypeEnum;
     // token
     private String token;
+    // 校验时间戳
+    private long timestamp;
 
     //扩展对象
     private T object;
@@ -31,31 +35,13 @@ public class Account <T> implements Serializable {
     public Account() {
     }
 
-    public Account(Long id, String account, String code, RoleTypeEnum roleTypeEnum) {
+    public Account(Long id, String account, String code, String name, RoleTypeEnum roleTypeEnum, long timestamp, T object) {
         this.id = id;
         this.account = account;
         this.code = code;
+        this.name = name;
         this.roleTypeEnum = roleTypeEnum;
-    }
-
-    public Account(String account, String code, RoleTypeEnum roleTypeEnum) {
-        this.account = account;
-        this.code = code;
-        this.roleTypeEnum = roleTypeEnum;
-    }
-
-    public Account(String account, String code, RoleTypeEnum roleTypeEnum, T object) {
-        this.account = account;
-        this.code = code;
-        this.roleTypeEnum = roleTypeEnum;
-        this.object = object;
-    }
-
-    public Account(Long id, String account, String code, RoleTypeEnum roleTypeEnum, T object) {
-        this.id = id;
-        this.account = account;
-        this.code = code;
-        this.roleTypeEnum = roleTypeEnum;
+        this.timestamp = timestamp;
         this.object = object;
     }
 }

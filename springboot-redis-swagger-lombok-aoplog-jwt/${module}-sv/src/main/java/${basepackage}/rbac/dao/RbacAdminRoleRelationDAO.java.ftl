@@ -3,9 +3,9 @@
  */
 package ${basePackage}.rbac.dao;
 
-${basePackage}.core.base.BaseDAO;
-${basePackage}.rbac.entity.RbacAdminRoleRelation;
-${basePackage}.rbac.entity.RbacAdminRoleRelationState;
+import ${basePackage}.core.base.BaseDAO;
+import ${basePackage}.rbac.entity.RbacAdminRoleRelation;
+import ${basePackage}.rbac.entity.RbacAdminRoleRelationState;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

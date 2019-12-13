@@ -45,20 +45,20 @@ public class BaseExceptionDTO implements Serializable {
 
     public BaseExceptionDTO(BaseException.ExceptionEnums exceptionEnums) {
         this.code = exceptionEnums.codeEnum.code;
-        this.info = exceptionEnums.codeEnum.descs;
+        this.info = exceptionEnums.codeEnum.description;
     }
 
     public BaseExceptionDTO(BaseException.ExceptionEnums exceptionEnums, String info) {
         this.code = exceptionEnums.codeEnum.code;
-        this.info = exceptionEnums.codeEnum.descs + info;
+        this.info = exceptionEnums.codeEnum.description + info;
     }
 
-    public static String toString(RequestCodeEnum requestCodeEnum, String info) {
+    public static String toString(HttpCodeEnum requestCodeEnum, String info) {
         return JSON.toJSONString(new BaseExceptionDTO(requestCodeEnum.code, info));
     }
 
-    public static String toString(RequestCodeEnum requestCodeEnum) {
-        return JSON.toJSONString(new BaseExceptionDTO(requestCodeEnum.code, requestCodeEnum.descs));
+    public static String toString(HttpCodeEnum requestCodeEnum) {
+        return JSON.toJSONString(new BaseExceptionDTO(requestCodeEnum.code, requestCodeEnum.description));
     }
 
     public static String toString(int wxExceptionExceptionMessageCode, String message) {

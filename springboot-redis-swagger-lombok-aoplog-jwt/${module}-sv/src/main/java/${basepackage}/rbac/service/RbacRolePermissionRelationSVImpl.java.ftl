@@ -6,16 +6,16 @@ package ${basePackage}.rbac.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baidu.fsg.uid.UidGenerator;
-${basePackage}.core.base.BaseDAO;
-${basePackage}.core.base.BaseSVImpl;
-${basePackage}.core.entity.Page;
-${basePackage}.core.exceptions.BaseException;
-${basePackage}.rbac.dao.RbacRoleDAO;
-${basePackage}.rbac.dao.RbacRolePermissionRelationDAO;
-${basePackage}.rbac.entity.RbacPermission;
-${basePackage}.rbac.entity.RbacRole;
-${basePackage}.rbac.entity.RbacRolePermissionRelation;
-${basePackage}.rbac.vo.TreeMenuNodeVO;
+import ${basePackage}.core.base.BaseDAO;
+import ${basePackage}.core.base.BaseSVImpl;
+import ${basePackage}.core.entity.Page;
+import ${basePackage}.core.exceptions.BaseException;
+import ${basePackage}.rbac.dao.RbacRoleDAO;
+import ${basePackage}.rbac.dao.RbacRolePermissionRelationDAO;
+import ${basePackage}.rbac.entity.RbacPermission;
+import ${basePackage}.rbac.entity.RbacRole;
+import ${basePackage}.rbac.entity.RbacRolePermissionRelation;
+import ${basePackage}.rbac.vo.TreeMenuNodeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.*;
 
-import static com.rzhkj.nt.core.exceptions.BaseException.ExceptionEnums;
+import static ${basePackage}.core.exceptions.BaseException.ExceptionEnums;
 
 @Service("rbacRolePermissionRelationSV")
 @Slf4j

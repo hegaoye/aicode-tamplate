@@ -3,9 +3,9 @@
  */
 package ${basePackage}.rbac.util;
 
-${basePackage}.core.enums.AdminTypeEnum;
-${basePackage}.core.exceptions.BaseException;
-${basePackage}.rbac.entity.RbacAdmin;
+import ${basePackage}.core.enums.AdminTypeEnum;
+import ${basePackage}.core.exceptions.BaseException;
+import ${basePackage}.rbac.entity.RbacAdmin;
 import lombok.extern.slf4j.Slf4j;
 
 /**

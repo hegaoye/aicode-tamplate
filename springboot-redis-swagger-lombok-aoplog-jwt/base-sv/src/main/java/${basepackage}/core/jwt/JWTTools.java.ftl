@@ -120,7 +120,7 @@ public class JWTTools {
      */
     public static boolean verifyToken(String password, String token) {
         if (StringUtils.isBlank(token)) {
-            throw new BaseException(BaseException.ExceptionEnums.token_is_null.codeEnum.descs);
+            throw new BaseException(BaseException.ExceptionEnums.token_is_null.codeEnum.description);
         }
 
         boolean flag = true;
@@ -153,154 +153,136 @@ public class JWTTools {
     }
 
     /**
-     * 从token中获取登录的用户对象
-     *
-     * @param request request对象
-     * @return adminVO
-     */
-    public static Account decodeTokenToAccountWithUser(HttpServletRequest request) {
-        Map<String, Claim> claimMap = decodeToken(request, RoleTypeEnum.User);
-        //从map对象中取出账号信息
-        return decodeTokenToAccount(claimMap);
-    }
-
-    /**
-     * 从token中获取登录的用户对象的编码
-     *
-     * @param request request对象
-     * @return adminVO
-     */
-    public static String decodeTokenToAccountWithUserCode(HttpServletRequest request) {
-        return decodeTokenToAccountWithUser(request).getCode();
-    }
-
-    /**
      * 从token中获取登录的管理员对象
      *
      * @param request request对象
      * @return adminVO
      */
     public static RbacAdmin decodeTokenToAccountWithAdmin(HttpServletRequest request) {
+        // 解码token（管理员），获取内部参数
         Map<String, Claim> claimMap = decodeToken(request, RoleTypeEnum.Admin);
         //从map对象中取出账号信息
         Account<RbacAdmin> account = decodeTokenToAccount(claimMap);
-        return JSON.parseObject(JSON.toJSONString(account.getObject()), RbacAdmin.class);
+    return JSON.parseObject(JSON.toJSONString(account.getObject()), RbacAdmin.class);
     }
 
     /**
-     * 从token中获取登录的管理员对象
-     *
-     * @param request request对象
-     * @return adminVO
-     */
+    * 从token中获取登录的管理员对象
+    *
+    * @param request request对象
+    * @return adminVO
+    */
     public static String decodeTokenToAccountWithAdminCode(HttpServletRequest request) {
-        return decodeTokenToAccountWithAdmin(request).getCode();
+    return decodeTokenToAccountWithAdmin(request).getCode();
     }
 
     /**
-     * 对象转账号信息
-     *
-     * @param claimMap 从token中获取登录对象
-     * @return adminVO
-     */
+    * 对象转账号信息
+    *
+    * @param claimMap 从token中获取登录对象
+    * @return adminVO
+    */
+    @SuppressWarnings(value = "unchecked")
     public static Account decodeTokenToAccount(Map<String, Claim> claimMap) {
-        if (claimMap == null) {
-            throw new BaseException(BaseException.ExceptionEnums.objIsEmpty("解码 token"));
-        }
+    if (claimMap == null) {
+    throw new BaseException(BaseException.ExceptionEnums.objIsEmpty("解码 token"));
+    }
 
-        //取出过期时间信息，与当前时间进行比较
-        Date expiredTime = claimMap.get(PublicClaims.EXPIRES_AT).asDate();
-        if (expiredTime.compareTo(new Date()) <= 0) {
-            throw new BaseException(BaseException.ExceptionEnums.token_expired);
-        }
+    //取出过期时间信息，与当前时间进行比较
+    Date expiredTime = claimMap.get(PublicClaims.EXPIRES_AT).asDate();
+    if (expiredTime.compareTo(new Date()) <= 0) {
+    throw new BaseException(BaseException.ExceptionEnums.token_expired);
+    }
 
-        //取得token类型
-        Claim tokenType = claimMap.get(JWTTools.tokenType);
-        //通过token类型，取得对应的账号信息
-        Claim claim = claimMap.get(tokenType.asString());
-        if (claim == null) {
-            throw new BaseException(BaseException.ExceptionEnums.objIsEmpty("解码 token 获取的 Claim"));
-        }
-        return JSON.parseObject(claim.asString(), Account.class);
+    //取得token类型
+    Claim tokenType = claimMap.get(JWTTools.tokenType);
+    //通过token类型，取得对应的账号信息
+    Claim claim = claimMap.get(tokenType.asString());
+    if (claim == null) {
+    throw new BaseException(BaseException.ExceptionEnums.objIsEmpty("解码 token 获取的 Claim"));
+    }
+    return JSON.parseObject(claim.asString(), Account.class);
     }
 
     /**
-     * 解码token，获取内部参数
-     *
-     * @param token token
-     * @return map
-     */
+    * 解码token，获取内部参数
+    *
+    * @param token token
+    * @return map
+    */
     public static Map<String, Claim> decodeToken(String token) {
-        DecodedJWT jwt;
-        try {
-            jwt = JWT.decode(token);
-        } catch (JWTDecodeException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return jwt.getClaims();
+    DecodedJWT jwt;
+    try {
+    jwt = JWT.decode(token);
+    } catch (JWTDecodeException e) {
+    e.printStackTrace();
+    return null;
+    }
+    return jwt.getClaims();
     }
 
     /**
-     * 解码token，获取内部参数
-     *
-     * @param request request
-     * @param roleTypeEnum
-     * @return map
-     */
+    * 解码token，获取内部参数（按角色解码）
+    *
+    * @param request request
+    * @param roleTypeEnum 角色
+    * @return map
+    */
     private static Map<String, Claim> decodeToken(HttpServletRequest request, RoleTypeEnum roleTypeEnum) {
-        String token = gettoken(request, roleTypeEnum);
-        return decodeToken(token);
+    // 从request中取出token
+    String token = gettoken(request, roleTypeEnum);
+    // 解码token，获取内部参数
+    return decodeToken(token);
     }
 
     /**
-     * 注销token(仅对保存在cookie的有效)
-     *
-     * @param response response
-     * @param roleTypeEnum 角色枚举
-     */
+    * 注销token(仅对保存在cookie的有效)
+    *
+    * @param response response
+    * @param roleTypeEnum 角色枚举
+    */
     public static void invalidateToken(HttpServletResponse response, RoleTypeEnum roleTypeEnum) {
-        CookieUtil.getInstance().delCookie(roleTypeEnum.name() + tokenName, response);
+    CookieUtil.getInstance().delCookie(roleTypeEnum.name() + tokenName, response);
     }
 
     /**
-     * 从request中取出token
-     *
-     * @param request request
-     * @param roleTypeEnum
-     * @return token
-     */
+    * 从request中取出token
+    *
+    * @param request request
+    * @param roleTypeEnum
+    * @return token
+    */
     public static String gettoken(HttpServletRequest request, RoleTypeEnum roleTypeEnum) {
-        //从header中取出token,若没有，则从cookie中取
-        String token = request.getHeader(roleTypeEnum.name() + tokenName);
-        //验证请求头 token是否为空
-        if (StringUtils.isBlank(token)) {
-            //请求头为空，则从cookie中取出token，若不存在，则返回失败
-            token = CookieUtil.getInstance().getCookie(roleTypeEnum.name() + tokenName);
-            if (StringUtils.isBlank(token)) {
-                throw new BaseException(BaseException.ExceptionEnums.token_is_null);
-            }
-        }
-        return token;
+    //从header中取出token,若没有，则从cookie中取
+    String token = request.getHeader(roleTypeEnum.name() + tokenName);
+    //验证请求头 token是否为空
+    if (StringUtils.isBlank(token)) {
+    //请求头为空，则从cookie中取出token，若不存在，则返回失败
+    token = CookieUtil.getInstance().getCookie(roleTypeEnum.name() + tokenName);
+    if (StringUtils.isBlank(token)) {
+    throw new BaseException(BaseException.ExceptionEnums.token_is_null);
+    }
+    }
+    return token;
     }
 
-    @Value("${r'${jwt.secret}'}")
+    @Value("${jwt.secret}")
     public void setSecret(String secret) {
-        JWTTools.secret = secret;
+    JWTTools.secret = secret;
     }
 
-    @Value("${r'${jwt.tokenName}'}")
+    @Value("${jwt.tokenName}")
     public void setTokenName(String tokenName) {
-        JWTTools.tokenName = tokenName;
+    JWTTools.tokenName = tokenName;
     }
 
-    @Value("${r'${jwt.useCookie}'}")
+    @Value("${jwt.useCookie}")
     public void setUseCookie(boolean useCookie) {
-        JWTTools.useCookie = useCookie;
+    JWTTools.useCookie = useCookie;
     }
 
-    @Value("${r'${jwt.expiredSeconds}'}")
+    @Value("${jwt.expiredSeconds}")
     public void setExpiredSeconds(int expiredSeconds) {
-        JWTTools.expiredSeconds = expiredSeconds;
+    JWTTools.expiredSeconds = expiredSeconds;
     }
 }

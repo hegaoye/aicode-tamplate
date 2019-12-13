@@ -6,19 +6,19 @@ package ${basePackage}.rbac.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baidu.fsg.uid.UidGenerator;
-${basePackage}.core.base.BaseDAO;
-${basePackage}.core.base.BaseSVImpl;
-${basePackage}.core.entity.Page;
-${basePackage}.core.enums.EnableStateEnum;
-${basePackage}.core.enums.PermissionTypeEnum;
-${basePackage}.core.enums.YNEnum;
-${basePackage}.core.exceptions.BaseException;
-${basePackage}.rbac.common.ConstantsRbac;
-${basePackage}.rbac.dao.RbacPermissionDAO;
-${basePackage}.rbac.dao.RbacPermissionMenuDAO;
-${basePackage}.rbac.dao.RbacRolePermissionRelationDAO;
-${basePackage}.rbac.entity.RbacPermission;
-${basePackage}.rbac.entity.RbacPermissionMenu;
+import ${basePackage}.core.base.BaseDAO;
+import ${basePackage}.core.base.BaseSVImpl;
+import ${basePackage}.core.entity.Page;
+import ${basePackage}.core.enums.EnableStateEnum;
+import ${basePackage}.core.enums.PermissionTypeEnum;
+import ${basePackage}.core.enums.YNEnum;
+import ${basePackage}.core.exceptions.BaseException;
+import ${basePackage}.rbac.common.ConstantsRbac;
+import ${basePackage}.rbac.dao.RbacPermissionDAO;
+import ${basePackage}.rbac.dao.RbacPermissionMenuDAO;
+import ${basePackage}.rbac.dao.RbacRolePermissionRelationDAO;
+import ${basePackage}.rbac.entity.RbacPermission;
+import ${basePackage}.rbac.entity.RbacPermissionMenu;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.rzhkj.nt.core.exceptions.BaseException.ExceptionEnums;
+import static ${basePackage}.core.exceptions.BaseException.ExceptionEnums;
 
 @Service("rbacPermissionMenuSV")
 @Slf4j

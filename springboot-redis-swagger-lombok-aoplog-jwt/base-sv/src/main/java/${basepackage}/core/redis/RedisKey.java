@@ -103,8 +103,8 @@ public class RedisKey {
      *
      * @return
      */
-    public static String genPasswordKey(RoleTypeEnum roleTypeEnum, String code) {
-        return PASSWORD_KEY_HEADER + roleTypeEnum.name() + SPLIT + code;
+    public static String genPasswordKey(RoleTypeEnum roleTypeEnum, String code, long timestamp) {
+        return PASSWORD_KEY_HEADER + roleTypeEnum.name() + SPLIT + code + SPLIT + timestamp;
     }
 
     /**

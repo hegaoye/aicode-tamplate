@@ -3,9 +3,9 @@
  */
 package ${basePackage}.rbac.dao;
 
-${basePackage}.core.base.BaseDAO;
-${basePackage}.rbac.entity.RbacPermissionAction;
-${basePackage}.rbac.entity.RbacPermissionActionState;
+import ${basePackage}.core.base.BaseDAO;
+import ${basePackage}.rbac.entity.RbacPermissionAction;
+import ${basePackage}.rbac.entity.RbacPermissionActionState;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;

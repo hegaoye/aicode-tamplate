@@ -6,28 +6,28 @@ package ${basePackage}.rbac.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.baidu.fsg.uid.UidGenerator;
-${basePackage}.core.base.BaseDAO;
-${basePackage}.core.base.BaseSVImpl;
-${basePackage}.core.entity.Page;
-${basePackage}.core.enums.*;
-${basePackage}.core.exceptions.BaseException;
-${basePackage}.core.hutool.util.IdcardUtil;
-${basePackage}.core.hutool.util.StrUtil;
-${basePackage}.core.jwt.JWTTools;
-${basePackage}.core.jwt.vo.Account;
-${basePackage}.core.redis.RedisKey;
-${basePackage}.core.redis.RedisUtils;
-${basePackage}.core.tools.RegexTools;
-${basePackage}.core.tools.StringTools;
-${basePackage}.core.tools.security.Md5;
-${basePackage}.rbac.dao.RbacAdminDAO;
-${basePackage}.rbac.dao.RbacAdminRoleRelationDAO;
-${basePackage}.rbac.dao.RbacPermissionDAO;
-${basePackage}.rbac.entity.RbacAdmin;
-${basePackage}.rbac.entity.RbacPermission;
-${basePackage}.rbac.entity.RbacPermissionMenu;
-${basePackage}.rbac.util.RbacUtil;
-${basePackage}.rbac.vo.TreeMenuNodeVO;
+import ${basePackage}.core.base.BaseDAO;
+import ${basePackage}.core.base.BaseSVImpl;
+import ${basePackage}.core.entity.Page;
+import ${basePackage}.core.enums.*;
+import ${basePackage}.core.exceptions.BaseException;
+import ${basePackage}.core.hutool.util.IdcardUtil;
+import ${basePackage}.core.hutool.util.StrUtil;
+import ${basePackage}.core.jwt.JWTTools;
+import ${basePackage}.core.jwt.vo.Account;
+import ${basePackage}.core.redis.RedisKey;
+import ${basePackage}.core.redis.RedisUtils;
+import ${basePackage}.core.tools.RegexTools;
+import ${basePackage}.core.tools.StringTools;
+import ${basePackage}.core.tools.security.Md5;
+import ${basePackage}.rbac.dao.RbacAdminDAO;
+import ${basePackage}.rbac.dao.RbacAdminRoleRelationDAO;
+import ${basePackage}.rbac.dao.RbacPermissionDAO;
+import ${basePackage}.rbac.entity.RbacAdmin;
+import ${basePackage}.rbac.entity.RbacPermission;
+import ${basePackage}.rbac.entity.RbacPermissionMenu;
+import ${basePackage}.rbac.util.RbacUtil;
+import ${basePackage}.rbac.vo.TreeMenuNodeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
@@ -38,7 +38,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
-import static com.rzhkj.nt.core.exceptions.BaseException.ExceptionEnums;
+import static ${basePackage}.core.exceptions.BaseException.ExceptionEnums;
 
 @Service("rbacAdminSV")
 @Slf4j
@@ -127,9 +127,10 @@ public class RbacAdminSVImpl extends BaseSVImpl<RbacAdmin, Long> implements Rbac
 
         //中转加密后的密码
         password = admin.getPassword();
+        long timestamp = System.currentTimeMillis();
 
         //缓存至redis；用于再次请求接口时，jwt验证用户token信息
-        redisUtils.set(RedisKey.genPasswordKey(RoleTypeEnum.Admin, admin.getCode()), password);
+        redisUtils.set(RedisKey.genPasswordKey(RoleTypeEnum.Admin, admin.getCode(), timestamp), password);
 
         //清空用户密码，禁止加密
         admin.setPassword(null);
@@ -137,7 +138,7 @@ public class RbacAdminSVImpl extends BaseSVImpl<RbacAdmin, Long> implements Rbac
         log.info("中转密码：" + password);
 
         //实例化token中包含信息
-        Account<RbacAdmin> tokenAccount = new Account(admin.getId(), account, admin.getCode(), RoleTypeEnum.Admin, admin);
+        Account<RbacAdmin> tokenAccount = new Account(admin.getId(), account, admin.getCode(), admin.getName(), RoleTypeEnum.Admin, timestamp, admin);
         //用户账号和密码校验通过后，生成token
         String token = JWTTools.genToken(tokenAccount, password, response);
         //把token放入 header

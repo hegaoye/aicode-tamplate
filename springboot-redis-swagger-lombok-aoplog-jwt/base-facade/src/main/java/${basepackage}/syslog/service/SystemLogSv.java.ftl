@@ -22,33 +22,35 @@ public interface SystemLogSv extends BaseSV<SystemLog, Long> {
 
     /**
      * 添加登录日志
-     *
-     * @param roleType        角色类型
+     *  @param roleType        角色类型
      * @param roleCode        角色编码
+     * @param roleName
      * @param request         请求对象
      * @param clazz           类名
      * @param classMethodName 方法名
      */
-    void addLogWithLogin(RoleTypeEnum roleType, String roleCode, HttpServletRequest request, Class<?> clazz, String classMethodName);
+    void addLogWithLogin(RoleTypeEnum roleType, String roleCode, String roleName, HttpServletRequest request, Class<?> clazz, String classMethodName);
 
     /**
      * 添加系统日志
      *
      * @param roleType
      * @param roleCode
+     * @param roleName
      * @param type
      * @param description
      * @param httpCodeEnum
      * @param request
      * @return
      */
-    void addLog(RoleTypeEnum roleType, String roleCode, ActionTypeEnum type, String description, HttpCodeEnum httpCodeEnum, HttpServletRequest request);
+    void addLog(RoleTypeEnum roleType, String roleCode, String roleName, ActionTypeEnum type, String description, HttpCodeEnum httpCodeEnum, HttpServletRequest request);
 
     /**
      * 添加系统日志
      *
      * @param roleType
      * @param roleCode
+     * @param roleName
      * @param type
      * @param description
      * @param httpCodeEnum
@@ -56,13 +58,14 @@ public interface SystemLogSv extends BaseSV<SystemLog, Long> {
      * @param clazz        调用此接口的类名（包.类）
      * @return
      */
-    void addLog(RoleTypeEnum roleType, String roleCode, ActionTypeEnum type, String description, HttpCodeEnum httpCodeEnum, HttpServletRequest request, Class<?> clazz);
+    void addLog(RoleTypeEnum roleType, String roleCode, String roleName, ActionTypeEnum type, String description, HttpCodeEnum httpCodeEnum, HttpServletRequest request, Class<?> clazz);
 
     /**
      * 添加系统日志
      *
      * @param roleType
      * @param roleCode
+     * @param roleName
      * @param type
      * @param description
      * @param httpCodeEnum
@@ -71,7 +74,7 @@ public interface SystemLogSv extends BaseSV<SystemLog, Long> {
      * @param classMethodName 调用此接口的方法名
      * @return
      */
-    void addLog(RoleTypeEnum roleType, String roleCode, ActionTypeEnum type, String description, HttpCodeEnum httpCodeEnum, HttpServletRequest request, Class<?> clazz, String classMethodName);
+    void addLog(RoleTypeEnum roleType, String roleCode, String roleName, ActionTypeEnum type, String description, HttpCodeEnum httpCodeEnum, HttpServletRequest request, Class<?> clazz, String classMethodName);
 
     /**
      * 加载一个对象SystemLogs
@@ -100,4 +103,4 @@ public interface SystemLogSv extends BaseSV<SystemLog, Long> {
     List<SystemLog> list(SystemLog systemLog, int offset, int limit);
 
     int count(SystemLog systemLog);
-}
+    }

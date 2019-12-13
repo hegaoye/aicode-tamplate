@@ -95,7 +95,7 @@ public class LoginInterceptorTools {
         //获取管理员密码
         if (roleTypeEnum.equals(account.getRoleTypeEnum()) && RoleTypeEnum.Admin.equals(roleTypeEnum)) {
 
-            Object passwordObject = redisUtils.get(RedisKey.genPasswordKey(RoleTypeEnum.Admin, account.getCode()));
+            Object passwordObject = redisUtils.get(RedisKey.genPasswordKey(RoleTypeEnum.Admin, account.getCode(), account.getTimestamp()));
             if (passwordObject != null) {
                 return passwordObject.toString();
             }
@@ -105,7 +105,7 @@ public class LoginInterceptorTools {
         //获取用户密码
         if (roleTypeEnum.equals(account.getRoleTypeEnum()) && RoleTypeEnum.User.equals(roleTypeEnum)) {
 
-            Object passwordObject = redisUtils.get(RedisKey.genPasswordKey(RoleTypeEnum.User, account.getCode()));
+            Object passwordObject = redisUtils.get(RedisKey.genPasswordKey(RoleTypeEnum.User, account.getCode(), account.getTimestamp()));
             if (passwordObject != null) {
                 return passwordObject.toString();
             }

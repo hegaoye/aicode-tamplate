@@ -18,7 +18,7 @@ public enum ActionTypeEnum {
     // 修改
     edit("修改"),
     // 删除
-    delete("删除"),
+    del("删除"),
     // 查询
     query("查询"),
     // 登录
@@ -48,5 +48,24 @@ public enum ActionTypeEnum {
             }
         }
         throw new BaseException(BaseException.ExceptionEnums.enumUndefined(name));
+    }
+
+    /**
+     * 检查枚举类是否在预设参数中
+     *
+     * @param checkbox
+     * @param sets
+     * @return
+     */
+    public static boolean isInSet(ActionTypeEnum checkbox, ActionTypeEnum... sets) {
+        if (sets.length == 0) {
+            return false;
+        }
+        for (ActionTypeEnum set : sets) {
+            if (set.equals(checkbox)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

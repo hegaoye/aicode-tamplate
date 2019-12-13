@@ -3,10 +3,10 @@
  */
 package ${basePackage}.rbac.dao;
 
-${basePackage}.core.base.BaseDAO;
-${basePackage}.core.enums.YNEnum;
-${basePackage}.rbac.entity.RbacPermissionMenu;
-${basePackage}.rbac.entity.RbacPermissionMenuState;
+import ${basePackage}.core.base.BaseDAO;
+import ${basePackage}.core.enums.YNEnum;
+import ${basePackage}.rbac.entity.RbacPermissionMenu;
+import ${basePackage}.rbac.entity.RbacPermissionMenuState;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
