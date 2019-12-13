@@ -161,7 +161,7 @@
         <include refid="where"/>
 
         <if test="sortColumns!=null and sortColumns!=''">
-            ORDER BY ${sortColumns}
+            ORDER BY ${r'#{sortColumns}'}
         </if>
     </select>
 
