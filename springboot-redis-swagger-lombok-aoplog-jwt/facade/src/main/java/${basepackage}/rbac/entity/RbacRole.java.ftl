@@ -4,10 +4,12 @@
 package ${basePackage}.rbac.entity;
 
 import ${basePackage}.rbac.common.ConstantsRbac;
+import ${basePackage}.core.enums.YNEnum;
 import ${basePackage}.core.enums.CheckboxEnum;
 import ${basePackage}.core.enums.EnableStateEnum;
 import ${basePackage}.rbac.vo.TreeMenuNodeVO;
 import lombok.Data;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.Date;
 import java.util.List;
