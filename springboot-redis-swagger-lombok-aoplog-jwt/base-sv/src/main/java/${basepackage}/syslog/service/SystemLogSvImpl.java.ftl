@@ -10,6 +10,7 @@ import ${basePackage}.core.base.BaseDAO;
 import ${basePackage}.core.base.BaseSVImpl;
 import ${basePackage}.core.entity.Page;
 import ${basePackage}.core.exceptions.BaseException;
+import ${basePackage}.core.enums.RoleTypeEnum;
 import ${basePackage}.syslog.dao.SystemLogDAO;
 import ${basePackage}.syslog.entity.SystemLog;
 import lombok.extern.slf4j.Slf4j;

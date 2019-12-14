@@ -3,18 +3,14 @@
  */
 package ${basePackage}.syslog.aspect;
 
-import com.alibaba.fastjson.JSON;
-import ${basePackage}.core.dto.UserRequestClientDto;
 import ${basePackage}.core.entity.BeanRet;
-import ${basePackage}.core.enums.RequestCodeEnum;
+import ${basePackage}.core.enums.ActionTypeEnum;
+import ${basePackage}.core.enums.HttpCodeEnum;
 import ${basePackage}.core.enums.RoleTypeEnum;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.jwt.JWTTools;
 import ${basePackage}.core.jwt.vo.Account;
-import ${basePackage}.core.tools.IPGetter;
-import ${basePackage}.core.tools.UserAgentTools;
 import ${basePackage}.syslog.annotation.SystemControllerLog;
-import ${basePackage}.syslog.entity.SystemLog;
 import ${basePackage}.syslog.service.SystemLogSv;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -31,7 +27,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Copyright 2019 @http://www.rzhkj.com
@@ -47,7 +44,7 @@ import java.util.*;
 public class SystemLogAspect {
 
     @Autowired
-    private SystemLogSv systemLogsSv;
+    private SystemLogSv systemLogSv;
 
     /**
      * 定义service切入点拦截规则，拦截 SystemServiceLog 注解的方法
@@ -120,8 +117,7 @@ public class SystemLogAspect {
     }
 
     // 保存系统的访问日志
-    systemLogSv.addLog(roleTypeEnum, roleCode, roleName, systemControllerLog.actionType(),
-    systemControllerLog.description(),
+    systemLogSv.addLog(roleTypeEnum, roleCode, roleName, systemControllerLog.actionType(), systemControllerLog.description(),
     HttpCodeEnum.getEnum(beanRet.getCode()), request,
     joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
 
@@ -191,8 +187,7 @@ public class SystemLogAspect {
     }
 
     // 保存系统的访问日志
-    systemLogSv.addLog(roleTypeEnum, roleCode, roleName, systemControllerLog.actionType(),
-    systemControllerLog.description(),
+    systemLogSv.addLog(roleTypeEnum, roleCode, roleName, systemControllerLog.actionType(), systemControllerLog.description(),
     HttpCodeEnum.getEnum(beanRet.getCode()), request,
     joinPoint.getTarget().getClass(), joinPoint.getSignature().getName());
     }

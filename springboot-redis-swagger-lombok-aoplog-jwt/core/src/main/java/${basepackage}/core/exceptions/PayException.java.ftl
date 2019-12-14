@@ -5,7 +5,7 @@ package ${basePackage}.core.exceptions;
 
 import com.alibaba.fastjson.JSON;
 import ${basePackage}.core.dto.BaseExceptionDTO;
-import ${basePackage}.core.enums.RequestCodeEnum;
+import ${basePackage}.core.enums.HttpCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;

@@ -4,7 +4,7 @@
 package ${basePackage}.core.dto;
 
 import com.alibaba.fastjson.JSON;
-import ${basePackage}.core.enums.RequestCodeEnum;
+import ${basePackage}.core.enums.HttpCodeEnum;
 import ${basePackage}.core.exceptions.BaseException;
 import lombok.Data;
 
