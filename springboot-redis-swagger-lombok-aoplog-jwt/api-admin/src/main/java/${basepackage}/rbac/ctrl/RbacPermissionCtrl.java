@@ -3,18 +3,18 @@
  */
 package ${basePackage}.ctrl;
 
-${basePackage}.core.entity.BeanRet;
-${basePackage}.core.enums.ActionTypeEnum;
-${basePackage}.core.enums.PermissionTypeEnum;
-${basePackage}.core.enums.RoleTypeEnum;
-${basePackage}.core.exceptions.BaseException;
-${basePackage}.core.redis.RedisUtils;
-${basePackage}.rbac.entity.RbacPermission;
-${basePackage}.rbac.entity.RbacPermissionMenu;
-${basePackage}.rbac.service.RbacPermissionMenuSV;
-${basePackage}.rbac.service.RbacPermissionSV;
-${basePackage}.rbac.vo.TreeMenuNodeVO;
-${basePackage}.syslog.annotation.SystemControllerLog;
+import ${basePackage}.core.entity.BeanRet;
+import ${basePackage}.core.enums.ActionTypeEnum;
+import ${basePackage}.core.enums.PermissionTypeEnum;
+import ${basePackage}.core.enums.RoleTypeEnum;
+import ${basePackage}.core.exceptions.BaseException;
+import ${basePackage}.core.redis.RedisUtils;
+import ${basePackage}.rbac.entity.RbacPermission;
+import ${basePackage}.rbac.entity.RbacPermissionMenu;
+import ${basePackage}.rbac.service.RbacPermissionMenuSV;
+import ${basePackage}.rbac.service.RbacPermissionSV;
+import ${basePackage}.rbac.vo.TreeMenuNodeVO;
+import ${basePackage}.syslog.annotation.SystemControllerLog;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

@@ -19,6 +19,7 @@ import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.tools.CookieUtil;
 import ${basePackage}.core.tools.DateTools;
 import ${basePackage}.core.jwt.vo.Account;
+import ${basePackage}.rbac.entity.RbacAdmin;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

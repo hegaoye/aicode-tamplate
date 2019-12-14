@@ -63,7 +63,7 @@ public class LoginCtrl {
         RbacAdmin admin = rbacAdminSV.loginHandle(account, password, response);
 
         // 记录登录日志
-        systemLogsSv.addLogWithLogin(RoleTypeEnum.Admin, admin.getCode(), request, this.getClass(), "login");
+        systemLogsSv.addLogWithLogin(RoleTypeEnum.Admin, admin.getCode(), admin.getName(), request, this.getClass(), "login");
         return BeanRet.create(true, BaseException.ExceptionEnums.success, admin);
     }
 

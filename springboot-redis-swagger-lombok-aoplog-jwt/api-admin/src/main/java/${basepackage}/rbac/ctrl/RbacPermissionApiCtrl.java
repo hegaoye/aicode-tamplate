@@ -3,15 +3,15 @@
 */
 package ${basePackage}.ctrl;
 
-${basePackage}.core.entity.BeanRet;
-${basePackage}.core.entity.Page;
-${basePackage}.core.enums.ActionTypeEnum;
-${basePackage}.core.enums.RoleTypeEnum;
-${basePackage}.core.exceptions.BaseException;
-${basePackage}.core.redis.RedisUtils;
-${basePackage}.rbac.entity.RbacPermissionApi;
-${basePackage}.rbac.service.RbacPermissionApiSV;
-${basePackage}.syslog.annotation.SystemControllerLog;
+import ${basePackage}.core.entity.BeanRet;
+import ${basePackage}.core.entity.Page;
+import ${basePackage}.core.enums.ActionTypeEnum;
+import ${basePackage}.core.enums.RoleTypeEnum;
+import ${basePackage}.core.exceptions.BaseException;
+import ${basePackage}.core.redis.RedisUtils;
+import ${basePackage}.rbac.entity.RbacPermissionApi;
+import ${basePackage}.rbac.service.RbacPermissionApiSV;
+import ${basePackage}.syslog.annotation.SystemControllerLog;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

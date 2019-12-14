@@ -8,6 +8,7 @@ import ${basePackage}.core.common.Constants;
 import ${basePackage}.core.config.UploadConfig;
 import ${basePackage}.core.entity.BeanRet;
 import ${basePackage}.core.enums.BucketNameEnum;
+import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.tools.CookieUtil;
 import ${basePackage}.core.tools.UuidTools;
 import ${basePackage}.core.redis.RedisKey;
@@ -19,6 +20,7 @@ import ${basePackage}.thirdparty.upload.vo.ProgressVO;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
