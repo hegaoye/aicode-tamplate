@@ -73,7 +73,7 @@ public class LocalUpTools {
         for (InputStream inputStream : inputStreams) {
             //检查文件大小是否超出系统限制
             if (this.isOverflowFileSize(Long.parseLong(String.valueOf(inputStream.available())))) {
-                throw new BaseException(BaseException.ExceptionEnums.upload_file_size_overflow.codeEnum.descs + "；请确认上传文件在[" + Math.floor(getProjectFileUploadMaxMb()) + "Mb]以内");
+                throw new BaseException(BaseException.ExceptionEnums.upload_file_size_overflow.codeEnum.description + "；请确认上传文件在[" + Math.floor(getProjectFileUploadMaxMb()) + "Mb]以内");
             }
             String fileNewName = toSaveFileNewName.indexOf(".") == -1 ? toSaveFileNewName + "-" + i + "." + fileTypes[i - 1] : toSaveFileNewName.substring(0, toSaveFileNewName.indexOf(".")) + "-" + i + "." + fileTypes[i - 1];
             log.info(" fileNewName >> " + fileNewName);
