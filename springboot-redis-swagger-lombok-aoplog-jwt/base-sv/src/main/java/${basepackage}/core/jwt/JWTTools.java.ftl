@@ -266,22 +266,22 @@ public class JWTTools {
     return token;
     }
 
-    @Value("${jwt.secret}")
+    @Value("${r'${jwt.secret}'}")
     public void setSecret(String secret) {
     JWTTools.secret = secret;
     }
 
-    @Value("${jwt.tokenName}")
+    @Value("${r'${jwt.tokenName}'}")
     public void setTokenName(String tokenName) {
     JWTTools.tokenName = tokenName;
     }
 
-    @Value("${jwt.useCookie}")
+    @Value("${r'${jwt.useCookie}'}")
     public void setUseCookie(boolean useCookie) {
     JWTTools.useCookie = useCookie;
     }
 
-    @Value("${jwt.expiredSeconds}")
+    @Value("${r'${jwt.expiredSeconds}'}")
     public void setExpiredSeconds(int expiredSeconds) {
     JWTTools.expiredSeconds = expiredSeconds;
     }
