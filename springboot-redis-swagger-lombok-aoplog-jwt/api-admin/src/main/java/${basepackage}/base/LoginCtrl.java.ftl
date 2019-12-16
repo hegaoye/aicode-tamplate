@@ -53,8 +53,8 @@ public class LoginCtrl {
 //    @SystemControllerLog(actionType = ActionTypeEnum.login, roleType = RoleTypeEnum.Admin, description = "管理员登录")
     @ApiOperation(value = "管理员登录", notes = "管理员登录")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "account", value = "登录账户", dataType = "java.lang.String", paramType = "query", required = true),
-            @ApiImplicitParam(name = "password", value = "密码", dataType = "java.lang.String", paramType = "query", required = true)
+            @ApiImplicitParam(name = "account", value = "登录账户", dataType = "java.lang.String", paramType = "query", required = true, defaultValue = "admin"),
+            @ApiImplicitParam(name = "password", value = "密码", dataType = "java.lang.String", paramType = "query", required = true, defaultValue = "123456")
     })
     @PostMapping(value = "/login")
     @PassToken
