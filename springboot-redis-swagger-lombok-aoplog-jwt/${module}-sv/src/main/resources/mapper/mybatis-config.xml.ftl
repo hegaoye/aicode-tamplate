@@ -9,7 +9,7 @@
     </settings>
     <typeAliases>
         <!--系统管理员-->
-        <package name="${basePackage}.admin.entity"/>
+        <package name="${basePackage}.rbac.entity"/>
         <!--系统基础-->
         <package name="${basePackage}.basic.entity"/>
         <!--系统操作日志-->
