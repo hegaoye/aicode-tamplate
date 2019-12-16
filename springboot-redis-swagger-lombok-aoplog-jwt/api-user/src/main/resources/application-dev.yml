@@ -4,6 +4,14 @@ wx:
   js_appid: wxdac7ad67dd4a1044
   js_app_secret: 659dcfdb1cd4a5ff2a2071b89c8949f5
 
+spring:
+  auto:
+    openurl: true # 是否打开，想打开下边就写true
+  web:
+    loginurl: http://localhost:8762/swagger-ui.html # 浏览器自动打开swagger-ui可视界面
+    browserExcutePath: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" # 选择浏览器的路径
+
+
 # 七牛云账号与配置
 qiniu:
   # AccessKey|AK
