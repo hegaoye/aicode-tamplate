@@ -75,44 +75,6 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
         return ${classNameLower}DAO.load(param);
     }
 
-    <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
-    /**
-    * 加载一个对象${className},(将查询关联数据)
-        <#list pkFields as field>
-        * @param ${field.field} ${field.notes}
-        </#list>
-    * @return ${className}
-    */
-    @Override
-    public ${className} get(<#list pkFields as field>${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>) {
-        if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
-            throw new BaseException(BaseException.ExceptionEnums.paramIsInvalid(""));
-        }
-
-        Map<String,Object> param=new HashMap<>();
-        <#list pkFields as field>
-        param.put("${field.field}",${field.field});
-        </#list>
-        return ${classNameLower}DAO.getDetail(<#list pkFields as field>${field.field}<#if field_has_next>,</#if></#list>);
-    }
-    </#if>
-
-    <#list pkFields as pkField>
-    /**
-     * 加载一个对象${className} 通过${pkField.field}
-     * @param ${pkField.field} ${pkField.notes}
-     * @return ${className}
-     */
-    @Override
-    public ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
-            if(${pkField.field}==null){
-                 throw new BaseException(BaseException.ExceptionEnums.paramIsInvalid(""));
-            }
-            return ${classNameLower}DAO.loadBy${pkField.field?cap_first}(${pkField.field});
-    }
-
-    </#list>
-
     /**
      * 删除对象${className}
      <#list pkFields as pkField>* @param ${pkField.field} ${pkField.notes}</#list>
@@ -129,9 +91,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
         </#list>
         ${classNameLower}DAO.delete(param);
     }
-
 </#if>
-
 
     /**
     * 查询${className}分页
