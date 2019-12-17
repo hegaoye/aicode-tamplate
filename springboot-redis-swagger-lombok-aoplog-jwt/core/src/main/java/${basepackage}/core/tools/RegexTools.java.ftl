@@ -89,7 +89,7 @@ public class RegexTools {
     }
 
     /**
-     * 判断是否符合（字母数字组合，且以字母开关）
+     * 判断是否符合（字母数字组合，且以字母开头）
      *
      * @param str 被检查的字符串
      * @return boolean
