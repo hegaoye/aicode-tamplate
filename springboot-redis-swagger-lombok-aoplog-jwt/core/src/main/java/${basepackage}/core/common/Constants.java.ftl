@@ -9,6 +9,16 @@ package ${basePackage}.core.common;
 public class Constants {
 
     /**
+     * 字符串编码为空时填充内容
+     */
+    public final static String NO_CODE_FIX_STRING = "0";
+
+    /**
+     * 整型编码为空时填充数字
+     */
+    public final static int NO_CODE_FIX_INT = 0;
+
+    /**
      * 个人分组中的默认分组名称
      */
     public final static String DEFAULT_GROUPNAME_WITH_PERSONAL = "默认分组";

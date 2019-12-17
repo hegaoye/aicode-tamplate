@@ -24,17 +24,6 @@ import ${basePackage}.${model}.entity.${className};
 public  interface ${className}DAO extends BaseDAO<${className}, Long> {
 
 <#if (pkFields?size>0)>
-    <#list pkFields as pkField>
-    <#if (pkFields?size>0)>
-    /**
-     * 加载一个对象${className} 通过${pkField.field}
-     * @param ${pkField.field} ${pkField.notes}
-     * @return ${className}
-     */
-    ${className} loadBy${pkField.field?cap_first}(@Param("${pkField.field}") ${pkField.fieldType} ${pkField.field});
-    </#if>
-    </#list>
-
 
     <#list pkFields as pkField>
     /**
