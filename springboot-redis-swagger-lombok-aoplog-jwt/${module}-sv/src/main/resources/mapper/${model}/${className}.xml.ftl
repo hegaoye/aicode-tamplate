@@ -97,7 +97,7 @@
     </insert>
 
     <!-- 根据主键批量更新  ${tableName} -->
-    <update id="batchUpdate" parameterType="map">
+    <update id="batchUpdate" parameterType="list">
         update `${tableName}`
         <trim prefix="set" suffixOverrides=",">
             <#list columns as column>
@@ -113,7 +113,7 @@
             <#else>
                 <trim prefix="${column.column} = case" suffix="end,">
                     <foreach collection="list" item="item">
-                        <if test="${column.field}!=null and ${column.field}!=''">
+                        <if test="item.${column.field}!=null and item.${column.field}!=''">
                             when ${primaryKeyColumn} = ${r'#{item.'}${primaryKeyField}${'}'} then ${r'#{item.'}${column.field}${r'}'}
                         </if>
                     </foreach>

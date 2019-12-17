@@ -14,6 +14,7 @@ public class EnumFactory {
 
     /**
      * 枚举管理器
+     * [枚举编号：fix_number](/resources/enum/fix_number)
      */
     public enum Enums {
         //-- 通用枚举 --
