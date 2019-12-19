@@ -23,6 +23,10 @@ public enum ActionTypeEnum {
     query("查询"),
     // 登录
     login("登录"),
+    // 下载
+    download("下载"),
+    // 上传
+    upload("上传"),
     ;
 
     /**

@@ -7,17 +7,20 @@
         <result property="id" column="id"/>
         <result property="roleType" column="role_type"/>
         <result property="roleCode" column="role_code"/>
+        <result property="roleName" column="role_name"/>
         <result property="type" column="type"/>
         <result property="description" column="description"/>
         <result property="responseState" column="response_state"/>
         <result property="ipAddress" column="ip_address"/>
         <result property="system" column="system"/>
         <result property="browser" column="browser"/>
+        <result property="className" column="class_name"/>
+        <result property="classMethod" column="class_method"/>
         <result property="createTime" column="create_time"/>
     </resultMap>
 
     <sql id="columns">
-        id,role_type,role_code,type,description,response_state,ip_address,system,browser,create_time
+        id,role_type,role_code,role_name,type,description,response_state,ip_address,system,browser,class_name,class_method,create_time
     </sql>
 
 
@@ -31,6 +34,9 @@
             </if>
             <if test="roleCode!=null and roleCode!=''">
                 AND role_code = ${r'#{roleCode}'}
+            </if>
+            <if test="roleName!=null and roleName!=''">
+                AND role_name = ${r'#{roleName}'}
             </if>
             <if test="type!=null and type!=''">
                 AND type = ${r'#{type}'}
@@ -65,23 +71,29 @@
         id ,
         role_type ,
         role_code ,
+        role_name ,
         type ,
         description ,
         response_state ,
         ip_address ,
         system ,
         browser ,
+        class_name ,
+        class_method ,
         create_time
         ) VALUES (
     ${r'#{id}'} ,
     ${r'#{roleType}'} ,
     ${r'#{roleCode}'} ,
+    ${r'#{roleName}'} ,
     ${r'#{type}'} ,
     ${r'#{description}'} ,
     ${r'#{responseState}'} ,
     ${r'#{ipAddress}'} ,
     ${r'#{system}'} ,
     ${r'#{browser}'} ,
+    ${r'#{className}'} ,
+    ${r'#{classMethod}'} ,
     ${r'#{createTime}'}
         )
         <selectKey keyProperty="id" resultType="long">
@@ -95,12 +107,15 @@
         id ,
         role_type ,
         role_code ,
+        role_name ,
         type ,
         description ,
         response_state ,
         ip_address ,
         system ,
         browser ,
+        class_name ,
+        class_method ,
         create_time
         ) VALUES
         <foreach item='item' index='index' collection='list' separator=','>
@@ -108,12 +123,15 @@
         ${r'#{item.id}'},
         ${r'#{item.roleType}'},
         ${r'#{item.roleCode}'},
+        ${r'#{item.roleName}'},
         ${r'#{item.type}'},
         ${r'#{item.description}'},
         ${r'#{item.responseState}'},
         ${r'#{item.ipAddress}'},
         ${r'#{item.system}'},
         ${r'#{item.browser}'},
+        ${r'#{item.className}'},
+        ${r'#{item.classMethod}'},
         ${r'#{item.createTime}'}
             )
         </foreach>
