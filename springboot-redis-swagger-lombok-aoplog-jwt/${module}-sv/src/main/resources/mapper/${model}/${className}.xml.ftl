@@ -15,19 +15,25 @@
     </resultMap>
 
     <sql id="columns">
-    <#list columns as column>${column.column}<#if column_has_next>,</#if></#list>
+    <#list columns as column>
+        ${column.column}<#if column_has_next>,</#if>
+    </#list>
     </sql>
 
     <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     <resultMap id="rs_base_relation" type="${className}" extends="rs_base">
         <#if oneToOneList??&&(oneToOneList?size>0)>
             <#list oneToOneList as oneToOne>
-                <association property="${oneToOne.classNameLower}" column="{${oneToOne.joinField}=${oneToOne.mainField}}" select="${oneToOne.basePackage}.${oneToOne.model}.dao.${oneToOne.className}DAO.loadForOneToOne"/>
+                <association property="${oneToOne.classNameLower}"
+                             column="{${oneToOne.joinField}=${oneToOne.mainField}}"
+                             select="${oneToOne.basePackage}.${oneToOne.model}.dao.${oneToOne.className}DAO.loadForOneToOne"/>
             </#list>
         </#if>
         <#if oneToManyList??&&(oneToManyList?size>0)>
             <#list oneToManyList as oneToMany>
-                <collection property="${oneToMany.classNameLower}List" column="{${oneToMany.joinField}=${oneToMany.mainField}}" select="${oneToMany.basePackage}.${oneToMany.model}.dao.${oneToMany.className}DAO.queryForOneToMany"/>
+                <collection property="${oneToMany.classNameLower}List"
+                            column="{${oneToMany.joinField}=${oneToMany.mainField}}"
+                            select="${oneToMany.basePackage}.${oneToMany.model}.dao.${oneToMany.className}DAO.queryForOneToMany"/>
             </#list>
         </#if>
     </resultMap>
@@ -63,11 +69,11 @@
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="${className}">
         INSERT INTO `${tableName}` (
         <#list columns as column>
-        ${column.column} <#if column_has_next>,</#if>
+            ${column.column} <#if column_has_next>,</#if>
         </#list>
         ) VALUES (
         <#list fields as field>
-        <@mapperEl field.field/> <#if field_has_next>,</#if>
+            <@mapperEl field.field/> <#if field_has_next>,</#if>
         </#list>
         )
         <selectKey keyProperty="id" resultType="long">
@@ -79,14 +85,14 @@
     <insert id="batchInsert" useGeneratedKeys="true" keyProperty="id" parameterType="${className}">
         INSERT INTO `${tableName}` (
             <#list columns as column>
-            ${column.column} <#if column_has_next>,</#if>
+                ${column.column} <#if column_has_next>,</#if>
             </#list>
         )
         VALUES
         <foreach item='item' index='index' collection='list' separator=','>
             (
             <#list fields as field>
-            ${r'#{item.'}${field.field}${r'}'}<#if field_has_next>,</#if>
+                ${r'#{item.'}${field.field}${r'}'}<#if field_has_next>,</#if>
             </#list>
             )
         </foreach>
@@ -102,33 +108,35 @@
         <trim prefix="set" suffixOverrides=",">
             <#list columns as column>
             <#if !column.checkPk>
-            <#if column.checkDate>
+                <#if column.checkDate>
                 <trim prefix="${column.column} = case" suffix="end,">
                     <foreach collection="list" item="item">
                         <if test="item.${column.field}!=null">
-                            when ${primaryKeyColumn} = ${r'#{item.'}${primaryKeyField}${'}'} then ${r'#{item.'}${column.field}${r'}'}
+                            when ${primaryKeyColumn} = ${r'#{item.'}${primaryKeyField}${'}'}
+                            then ${r'#{item.'}${column.field}${r'}'}
                         </if>
                     </foreach>
                 </trim>
-            <#else>
+                <#else>
                 <trim prefix="${column.column} = case" suffix="end,">
                     <foreach collection="list" item="item">
                         <if test="item.${column.field}!=null and item.${column.field}!=''">
-                            when ${primaryKeyColumn} = ${r'#{item.'}${primaryKeyField}${'}'} then ${r'#{item.'}${column.field}${r'}'}
+                            when ${primaryKeyColumn} = ${r'#{item.'}${primaryKeyField}${'}'}
+                            then ${r'#{item.'}${column.field}${r'}'}
                         </if>
                     </foreach>
                 </trim>
-            </#if>
+                </#if>
             </#if>
             </#list>
         </trim>
         <#list columns as column>
-        <#if column.checkPk>
+            <#if column.checkPk>
             <!-- 批量更新 参照条件 -->
             <foreach collection="list" item="item" open="where ${column.column} in (" close=")" separator=",">
                 ${r'#{item.'}${column.field}${r'}'}
             </foreach>
-        </#if>
+            </#if>
         </#list>
 
         <selectKey keyProperty="${primaryKeyColumn}" resultType="long">
@@ -142,15 +150,15 @@
         <trim prefix="set" suffixOverrides=",">
         <#if (notPkFields?size>0)>
             <#list notPkFields as field>
-            <#if field.checkDate>
+                <#if field.checkDate>
                 <if test="${field.field}!=null">
-                ${field.column} = <@mapperEl field.field/> <#if field_has_next>,</#if>
+                    ${field.column} = <@mapperEl field.field/> <#if field_has_next>,</#if>
                 </if>
-            <#else>
+                <#else>
                 <if test="${field.field}!=null and ${field.field}!=''">
-                ${field.column} = <@mapperEl field.field/> <#if field_has_next>,</#if>
+                    ${field.column} = <@mapperEl field.field/> <#if field_has_next>,</#if>
                 </if>
-            </#if>
+                </#if>
             </#list>
         </#if>
         </trim>
@@ -183,21 +191,24 @@
 <#if oneToOneList??&&(oneToOneList?size>0) || oneToManyList??&&(oneToManyList?size>0)>
     <!--查询关联数据-->
     <select id="getDetail" resultMap="rs_base_relation">
-        SELECT <include refid="columns" />
+        SELECT
+        <include refid="columns"/>
         FROM `${tableName}`
         <include refid="where"/>
     </select>
 
     <!--关联查询一条记录使用-->
     <select id="loadForOneToOne" resultMap="rs_base">
-        SELECT <include refid="columns" />
+        SELECT
+        <include refid="columns"/>
         FROM `${tableName}`
         <include refid="where"/>
     </select>
 
     <!--关联查询集合使用-->
     <select id="queryForOneToMany" resultMap="rs_base">
-        SELECT <include refid="columns" />
+        SELECT
+        <include refid="columns"/>
         FROM `${tableName}`
         <include refid="where"/>
 
@@ -222,12 +233,12 @@
         </trim>
         <where>
             <if test="${pkField.field}!=null">
-               ${pkField.column} = <@mapperEl pkField.field/>
+                ${pkField.column} = <@mapperEl pkField.field/>
             </if>
             <if test="oldStates!=null">
                 AND state in
                 <foreach collection="oldStates" index="index" item="stateIn" open="(" separator="," close=")">
-                ${r'#{stateIn}'}
+                    ${r'#{stateIn}'}
                 </foreach>
             </if>
         </where>
