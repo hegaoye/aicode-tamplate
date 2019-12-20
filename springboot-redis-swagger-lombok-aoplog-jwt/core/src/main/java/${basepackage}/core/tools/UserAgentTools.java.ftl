@@ -54,7 +54,10 @@ public class UserAgentTools {
         }
 
         // 实例化返回结果
-        UserRequestClientDto userRequestClientDto = new UserRequestClientDto(operatingSystem.getName(), browser.getName(), version.getVersion());
+        UserRequestClientDto userRequestClientDto = new UserRequestClientDto(
+                null == operatingSystem ? "" : operatingSystem.getName(),
+                null == browser ? "" : browser.getName(),
+                null == version ? "" : version.getVersion());
         return userRequestClientDto;
     }
 }
