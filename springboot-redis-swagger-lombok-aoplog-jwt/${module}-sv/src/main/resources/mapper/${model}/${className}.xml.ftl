@@ -267,19 +267,6 @@
         <include refid="where"/>
     </select>
 
-<#if (pkFields?size>0)>
-    <#list pkFields as pkfield>
-    <!--查询一条${tableName} loadBy${pkfield.field?cap_first}  通过${pkfield.field} -->
-    <select id="loadBy${pkfield.field?cap_first}" resultMap="rs_base" parameterType="${pkfield.fieldType}">
-        SELECT
-        <include refid="columns"/>
-        FROM `${tableName}`
-        where ${pkfield.column} = <@mapperEl pkfield.field/>
-    </select>
-    </#list>
-</#if>
-
-
     <!--根据任何条件统计${tableName}数据条数-->
     <select id="count" resultType="integer">
         SELECT count(1) FROM `${tableName}`
