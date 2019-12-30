@@ -81,10 +81,6 @@ subprojects {
         compile "redis.clients:jedis:2.9.0"
         //-----------redis end--------------
 
-        // -----------lombok start--------------
-        compile "org.projectlombok:lombok:1.16.18"
-        //-----------lombok end--------------
-
         // -----------okhttp start--------------
         compile "com.squareup.okhttp3:okhttp:3.4.0-RC1"
         compile "com.squareup.okhttp3:logging-interceptor:3.4.0-RC1"
@@ -141,6 +137,12 @@ subprojects {
         //------------tomcat-embed-core start https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core------------
 //        complie "org.apache.tomcat.embed:tomcat-embed-core:8.5.31"
         //------------tomcat-embed-core end------------
+
+
+        /* 启用 lombok 插件 Begin */
+        compileOnly "org.projectlombok:lombok:1.18.10"
+        annotationProcessor "org.projectlombok:lombok:1.18.10"
+        /* 启用 lombok 插件 End */
 
         testCompile("org.testng:testng:6.10")
 
