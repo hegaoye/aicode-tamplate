@@ -14,7 +14,7 @@ public enum RoleTypeEnum {
     User("用户账号"),
     Corporate("企业账号"),
     Admin("管理员账号"),
-    Tourist("管理员账号"),
+    Tourist("游客"),
     ;
     public String val;
 
