@@ -98,7 +98,7 @@ public class RegexTools {
         if (StringUtils.isBlank(str)) {
             return false;
         }
-        Pattern pattern = compile("^[A-Za-z]+[0-9]*[A-Za-z0-9]*$");;
+        Pattern pattern = compile("^[A-Za-z_]+[0-9_]*[_]*[A-Za-z0-9_]*$");
         return pattern.matcher(str).matches();
     }
 }
