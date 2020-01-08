@@ -3,6 +3,8 @@
 */
 package ${basePackage}.${model}.ctrl;
 
+
+import com.alibaba.dubbo.config.annotation.Reference;
 import ${basePackage}.core.enums.ActionTypeEnum;
 import ${basePackage}.core.enums.RoleTypeEnum;
 import io.swagger.annotations.Api;
@@ -11,7 +13,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -21,7 +22,7 @@ import java.util.List;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.core.entity.BeanRet;
 import ${basePackage}.core.entity.Page;
-import ${basePackage}.core.redis.RedisUtils;
+import ${basePackage}.cache.redis.RedisUtils;
 import ${basePackage}.${model}.entity.${className};
 import ${basePackage}.${model}.service.${className}SV;
 import ${basePackage}.syslog.annotation.SystemControllerLog;
@@ -31,15 +32,16 @@ import ${basePackage}.syslog.annotation.SystemControllerLog;
  *
  * @author ${author}
  */
+@Slf4j
 @RestController
 @RequestMapping("/${className?uncap_first}")
-@Slf4j
 @Api(tags = "${className}Ctrl", description = "${notes}控制器")
 public class ${className}Ctrl {
 
     @Resource
     protected RedisUtils redisUtils;
-    @Autowired
+
+    @Reference(version = "${r'${dubbo.consumer.version}'}")
     private ${className}SV ${classNameLower}SV;
 
 
@@ -94,13 +96,13 @@ public class ${className}Ctrl {
     @ResponseBody
     public BeanRet list(@ApiIgnore ${className} ${classNameLower},@ApiIgnore Page<${className}> page) {
         if(page==null){
-            return BeanRet.create(BaseException.ExceptionEnums.paramIsEmpty("分页设置"));
+            throw new BaseException(BaseException.ExceptionEnums.param_is_null, "分页对象");
         }
         List<${className}> ${classNameLower}s = ${classNameLower}SV.list(${classNameLower},page.genRowStart(),page.getPageSize());
         int total = ${classNameLower}SV.count(${classNameLower});
         page.setTotalRow(total);
         page.setVoList(${classNameLower}s);
-        return BeanRet.create(true, BaseException.ExceptionEnums.success, "", page);
+        return BeanRet.success(page);
     }
 
     /**
@@ -121,7 +123,7 @@ public class ${className}Ctrl {
         <#list fields as field>
         <#if field.field!='id'  && !field.checkDate && !field.checkDigit>
         if (StringUtils.isEmpty(${classNameLower}.get${field.field?cap_first}())) {
-           return BeanRet.create(BaseException.ExceptionEnums.paramIsEmpty("${field.field}"));
+            throw new BaseException(BaseException.ExceptionEnums.param_is_null, "${field.field}");
         }
         </#if>
         </#list>
@@ -145,11 +147,11 @@ public class ${className}Ctrl {
     @ResponseBody
     public BeanRet delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         if (<#list pkFields as pkField><#if pkField.field=='id'>${pkField.field}!=null<#else>StringUtils.isEmpty(${pkField.field})</#if><#if pkField_has_next>&&</#if></#list>) {
-           return BeanRet.create(BaseException.ExceptionEnums.paramIsEmpty(""));
+            throw new BaseException(BaseException.ExceptionEnums.param_is_null, "${field.field}");
         }
 
         ${classNameLower}SV.delete(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
-        return BeanRet.create(true, "删除${className}成功");
+        return BeanRet.success();
     }
 
 }
