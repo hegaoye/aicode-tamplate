@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ponddy'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 依赖模块
+    compile project(':facade')
+
+    //⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩⇩ 主框架 依赖包(springCloud + nacos + dubbo + springboot)
+    compile("${springboot_starter}")
+    compile("${springboot_starter_web}")
+    compile("${springcloud_nacos_config}")
+    compile("${springcloud_nacos_discovery}")
+    compile("${alibaba_nacos_client}")
+    compile("${alibaba_dubbo_springboot_starter}")
+    compile("${alibaba_dubbo_registry_nacos}")
+    compile("${alibaba_dubbo_spring_context_support}")
+    compile("${alibaba_springboot_autoconfigure}")
+    //⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧⇧ 主框架 依赖包(springCloud + nacos + dubbo + springboot)
+
+//    compile("org.springframework.data:spring-data-redis:1.8.23.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-data-redis:1.5.22.RELEASE")
+
+    compile "io.netty:netty-all:4.1.32.Final"
+
+    // mysql驱动
+    compile("${mysql_connector_java}")
+
+}

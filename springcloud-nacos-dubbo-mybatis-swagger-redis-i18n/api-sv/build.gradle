@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ponddy'
+version '1.0-SNAPSHOT'
+
+jar {
+    baseName = 'api-sv'
+    manifest{
+        attributes(
+                "Manifest-Version": 1.0,
+                "Main-Class": 'com.ponddy.NacosProviderApplication'
+        )
+    }
+}
+
+dependencies {
+    // 依赖模块
+    compile project(':base-sv')
+    
+    // Druid数据库连接池
+    compile "com.alibaba:druid:1.1.21"
+
+    compile fileTree(dir: '../libs', include: ['*.jar'])
+}

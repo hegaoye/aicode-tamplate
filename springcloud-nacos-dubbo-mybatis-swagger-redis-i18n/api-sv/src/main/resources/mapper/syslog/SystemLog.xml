@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ponddy.logs.dao.SystemLogDAO">
+
+    <resultMap id="rs_base" type="SystemLog">
+        <result property="id" column="id"/>
+        <result property="roleType" column="role_type"/>
+        <result property="roleCode" column="role_code"/>
+        <result property="roleName" column="role_name"/>
+        <result property="type" column="type"/>
+        <result property="description" column="description"/>
+        <result property="responseState" column="response_state"/>
+        <result property="ipAddress" column="ip_address"/>
+        <result property="system" column="system"/>
+        <result property="browser" column="browser"/>
+        <result property="className" column="class_name"/>
+        <result property="classMethod" column="class_method"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,role_type,role_code,role_name,type,description,response_state,ip_address,system,browser,class_name,class_method,create_time
+    </sql>
+
+
+    <sql id="where">
+        <where>
+            <if test="id!=null and id!=''">
+                AND id = #{id}
+            </if>
+            <if test="roleType!=null and roleType!=''">
+                AND role_type = #{roleType}
+            </if>
+            <if test="roleCode!=null and roleCode!=''">
+                AND role_code = #{roleCode}
+            </if>
+            <if test="roleName!=null and roleName!=''">
+                AND role_name = #{roleName}
+            </if>
+            <if test="type!=null and type!=''">
+                AND type = #{type}
+            </if>
+            <if test="description!=null and description!=''">
+                AND description = #{description}
+            </if>
+            <if test="responseState!=null and responseState!=''">
+                AND response_state = #{responseState}
+            </if>
+            <if test="ipAddress!=null and ipAddress!=''">
+                AND ip_address = #{ipAddress}
+            </if>
+            <if test="system!=null and system!=''">
+                AND system = #{system}
+            </if>
+            <if test="browser!=null and browser!=''">
+                AND browser = #{browser}
+            </if>
+            <if test="className!=null and className!=''">
+                AND class_name = #{className}
+            </if>
+            <if test="classMethod!=null and classMethod!=''">
+                AND class_method = #{classMethod}
+            </if>
+            <if test="createTimeBegin!=null">
+                AND unix_timestamp(create_time) >= UNIX_TIMESTAMP(FROM_UNIXTIME(#{createTimeBegin}, CONCAT('%Y-%m-%d', '
+                00:00:00')))
+            </if>
+            <if test="createTimeEnd!=null">
+                AND unix_timestamp(create_time) &lt;= UNIX_TIMESTAMP(FROM_UNIXTIME(#{createTimeEnd}, CONCAT('%Y-%m-%d',
+                ' 23:59:59')))
+            </if>
+        </where>
+    </sql>
+
+    <!--向system_logs插入一条数据-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="SystemLog">
+        INSERT INTO `system_log` (
+        id ,
+        role_type ,
+        role_code ,
+        role_name ,
+        type ,
+        description ,
+        response_state ,
+        ip_address ,
+        system ,
+        browser ,
+        class_name ,
+        class_method ,
+        create_time
+        ) VALUES (
+        #{id} ,
+        #{roleType} ,
+        #{roleCode} ,
+        #{roleName} ,
+        #{type} ,
+        #{description} ,
+        #{responseState} ,
+        #{ipAddress} ,
+        #{system} ,
+        #{browser} ,
+        #{className} ,
+        #{classMethod} ,
+        #{createTime}
+        )
+        <selectKey keyProperty="id" resultType="long">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!--向system_logs批量插入数据-->
+    <insert id="batchInsert" useGeneratedKeys="true" keyProperty="id" parameterType="SystemLog">
+        INSERT INTO `system_log` (
+        id ,
+        role_type ,
+        role_code ,
+        role_name ,
+        type ,
+        description ,
+        response_state ,
+        ip_address ,
+        system ,
+        browser ,
+        class_name ,
+        class_method ,
+        create_time
+        ) VALUES
+        <foreach item='item' index='index' collection='list' separator=','>
+            (
+            #{item.id},
+            #{item.roleType},
+            #{item.roleCode},
+            #{item.roleName},
+            #{item.type},
+            #{item.description},
+            #{item.responseState},
+            #{item.ipAddress},
+            #{item.system},
+            #{item.browser},
+            #{className} ,
+            #{classMethod} ,
+            #{item.createTime}
+            )
+        </foreach>
+
+        <selectKey keyProperty="id" resultType="long">
+            select LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!--根据任意条件删除system_logs信息-->
+    <delete id="delete">
+        DELETE FROM `system_log`
+        <include refid="where"/>
+    </delete>
+
+    <!--根据任何条件加载一条system_logs的数据-->
+    <select id="load" resultMap="rs_base">
+        SELECT
+        <include refid="columns"/>
+        FROM `system_log`
+        <include refid="where"/>
+    </select>
+
+    <!--根据任何条件统计system_logs数据条数-->
+    <select id="count" resultType="integer">
+        SELECT count(1) FROM `system_log`
+        <include refid="where"/>
+    </select>
+
+    <!--根据任何条件分页查询system_logs-->
+    <select id="list" resultMap="rs_base">
+        SELECT
+        <include refid="columns"/>
+        FROM `system_log`
+        <include refid="where"/>
+
+        <if test="sortColumns!=null and sortColumns!=''">
+            ORDER BY ${sortColumns}
+        </if>
+    </select>
+</mapper>

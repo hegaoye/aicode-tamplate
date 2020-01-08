@@ -1,0 +1,21 @@
+rootProject.name = 'apis'
+
+include 'core'
+
+// 依赖 :core
+include 'base-facade'
+
+// 依赖 :base-facade
+include 'facade'
+
+// 依赖 :facade
+include 'base-sv'
+
+// 依赖 :base-sv
+include 'api-sv'
+
+// 依赖 :base-facade
+include 'base-web'
+
+// 依赖 :api-sv & :base-web
+include 'api'

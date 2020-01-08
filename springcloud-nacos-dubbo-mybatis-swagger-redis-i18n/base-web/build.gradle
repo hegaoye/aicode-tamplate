@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ponddy'
+version '1.0-SNAPSHOT'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile project(':base-sv')
+
+    compile("org.springframework:spring-webmvc:4.3.25.RELEASE")
+
+    // swagger动态生成在线API文档
+    compile("io.springfox:springfox-swagger-ui:2.9.2") {
+        exclude group: 'org.springframework.plugin', module: 'spring-plugin-core';
+    }
+    compile 'io.springfox:springfox-swagger2:2.9.2'
+    compile 'io.swagger:swagger-annotations:1.5.24'
+    compile 'io.swagger:swagger-models:1.5.24'
+}

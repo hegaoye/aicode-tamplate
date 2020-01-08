@@ -1,0 +1,80 @@
+server:
+  port: 8681
+  max-http-header-size: 31457280
+
+# 自定义 nacos 的参数
+nacos:
+  server-address: 192.168.10.250
+  port: 8848
+
+ponddy:
+  service:
+    version: 1.0.0
+  config:
+    domain:
+
+# Dubbo Application
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.server-address}:${nacos.port}
+  main:
+    allow-bean-definition-overriding: true
+  redis:
+    database: 15
+    host: 192.168.10.220
+    port: 6379
+    # 连接超时时间（毫秒）
+    timeout: 0
+    pool:
+      # 连接池最大连接数（使用负值表示没有限制）
+      max-active: 8
+      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: -1
+      # 连接池中的最大空闲连接
+      max-idle: 8
+      # 连接池中的最小空闲连接
+      min-idle: 0
+dubbo:
+  application:
+    name: ${spring.application.name}
+#  scan:
+#    base-packages: com.ponddy.*
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://${nacos.server-address}:${nacos.port}
+  consumer:
+    timeout: 10000
+    version: 1.0
+    # 不检查provider是否有可消费的provider服务
+    check: false
+
+logging:
+  level:
+    root: debug
+    javax.activation: warn
+    sun.net.www: warn
+    sun.rmi: warn
+    com.alibaba: info
+    com.baidu: warn
+    io.netty: warn
+    org.apache.catalina: warn
+    org.apache.tomcat: warn
+    org.github: warn
+    org.hibernate: warn
+    org.mybatis.spring: warn
+    org.mybatis.spring.SqlSessionUtils: debug
+    org.springframework: warn
+
+jwt:
+  # 加密盐
+  secret: 99)eq2<*>^(aem.(~JK3
+  # token名称；此处定义 仅是token全称的后半部分，使用时需要添加角色为前缀
+  tokenName: Authorization
+  # 是否使用cookie保存token
+  useCookie: true
+  # 过期时间（单位：秒）60s * 60min * 24hour * 30day
+  expiredSeconds: 2592000

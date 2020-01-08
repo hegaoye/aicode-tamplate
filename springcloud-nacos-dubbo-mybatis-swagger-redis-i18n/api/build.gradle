@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ponddy'
+version '1.0-SNAPSHOT'
+
+jar {
+    baseName = 'api'
+    manifest{
+        attributes(
+                "Manifest-Version": 1.0,
+                "Main-Class": 'com.ponddy.NacosConsumerApplication'
+        )
+    }
+}
+
+dependencies {
+    // 依赖模块
+    compile project(':base-web')
+    compile project(':base-sv')
+}

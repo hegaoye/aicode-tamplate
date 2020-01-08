@@ -1,0 +1,107 @@
+buildscript {
+    ext {
+
+    }
+
+    dependencies {
+        classpath "org.akhikhl.gretty:gretty:+"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.22.RELEASE")
+    }
+}
+
+plugins {
+    id 'idea'
+    id 'java'
+}
+
+allprojects {
+    group 'com.ponddy'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
+
+    task builder {
+        println " > Task : builer() -> Project Build starting... [:$project.name]"
+    }
+
+    //编译JAVA文件时采用UTF-8
+    tasks.withType(JavaCompile) {
+        options.encoding("UTF-8")
+    }
+
+
+    repositories {
+        mavenCentral()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
+        maven { url 'https://maven.mangoautomation.net/repository/ias-release/' }
+        maven { url 'http://maven.jahia.org/maven2' }
+    }
+
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    task subBuilder {
+        println " > Task : builer() -> SubProject Build starting... [$project.name]"
+    }
+    ext {
+        springcloud_nacos_config = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-config:0.1.2.RELEASE"
+        springcloud_nacos_discovery = "org.springframework.cloud:spring-cloud-starter-alibaba-nacos-discovery:0.1.2.RELEASE"
+        alibaba_springboot_autoconfigure = "com.alibaba.boot:dubbo-spring-boot-autoconfigure:0.1.2.RELEASE"
+        alibaba_dubbo_springboot_starter = "com.alibaba.boot:dubbo-spring-boot-starter:0.1.2.RELEASE"
+        alibaba_boot_actuator = "com.alibaba.boot:dubbo-spring-boot-actuator:0.1.2.RELEASE"
+
+        springboot_starter = "org.springframework.boot:spring-boot-starter:1.5.22.RELEASE"
+        springboot_starter_web = "org.springframework.boot:spring-boot-starter-web:1.5.22.RELEASE"
+        springboot_autoconfigure = "org.springframework.boot:spring-boot-autoconfigure:1.5.22.RELEASE"
+        springboot_starter_parent = "org.springframework.boot:spring-boot-starter-parent:1.5.22.RELEASE"
+
+        mysql_connector_java = "mysql:mysql-connector-java:8.0.11"
+
+//        apache_dubbo = "org.apache.dubbo:dubbo:2.7.4.1"
+//        apache_dubbo_registry_nacos = "org.apache.dubbo:dubbo-registry-nacos:2.7.4.1"
+        alibaba_dubbo = "com.alibaba:dubbo:2.6.5"
+        alibaba_dubbo_registry_nacos = "com.alibaba:dubbo-registry-nacos:2.6.7"
+        alibaba_dubbo_spring_context_support = 'com.alibaba.spring:spring-context-support:1.0.5'
+        alibaba_nacos_client = 'com.alibaba.nacos:nacos-client:1.1.4'
+        alibaba_cloud_nacos_config = "com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config:1.5.1.RELEASE"
+    }
+    dependencies {
+
+        compile "org.apache.commons:commons-lang3:3.9"
+
+        compile "com.alibaba:fastjson:1.2.58"
+        compile "com.google.guava:guava:22.0"
+
+        /* 启用 lombok 插件 Begin */
+        compileOnly "org.projectlombok:lombok:1.18.10"
+        // 注解处理器
+        annotationProcessor "org.projectlombok:lombok:1.18.10"
+
+        compile "org.slf4j:slf4j-api:1.7.26"
+        compile "ch.qos.logback:logback-classic:1.2.3"
+        compile "com.fasterxml.jackson.core:jackson-databind:2.10.1"
+
+        compile "com.auth0:java-jwt:3.9.0"
+        compile("com.google.code.findbugs:jsr305:3.0.1")
+
+
+        compile ("${alibaba_dubbo}")
+        compile("org.springframework:spring-context:4.3.25.RELEASE")
+
+        // AOP 切面
+        compile('org.aspectj:aspectjweaver:1.9.5')
+
+        /* 启用 lombok 插件 End */
+
+        testCompile("junit:junit:4.12")
+    }
+}
+

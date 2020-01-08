@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ponddy'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile ("${springboot_starter}")
+    compile "javax.servlet:javax.servlet-api:4.+"
+    compile "org.springframework:spring-websocket:4.3.25.RELEASE"
+
+    // 获取操作系统和浏览器信息
+    compile "eu.bitwalker:UserAgentUtils:1.21"
+
+    compile "com.belerweb:pinyin4j:2.5.1"
+}

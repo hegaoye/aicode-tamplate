@@ -1,0 +1,100 @@
+# 自定义 nacos 的参数
+nacos:
+  server-address: 192.168.10.250
+  port: 8848
+
+ponddy:
+  service:
+    version: 1.0.0
+  config:
+    domain:
+
+# Dubbo Application
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.server-address}:${nacos.port}
+        register-enabled: true
+        enabled: true
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://192.168.10.110:3306/i18n?useUnicode=true&characterEncoding=utf-8&characterSetResults=utf8&zeroDateTimeBehavior=exception&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysqladmin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource # 要使用的连接池实现的完全限定名称。默认情况下，它是从类路径自动检测的。
+    # 连接池
+    druid:
+      max-active: 20
+      initial-size: 1
+      min-idle: 3
+      max-wait: 60000
+      time-between-connect-error-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      filters: stat, wall, log4j
+  redis:
+    database: 15
+    host: 192.168.10.220
+    port: 6379
+    # 连接超时时间（毫秒）
+    timeout: 0
+    pool:
+      # 连接池最大连接数（使用负值表示没有限制）
+      max-active: 8
+      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: -1
+      # 连接池中的最大空闲连接
+      max-idle: 8
+      # 连接池中的最小空闲连接
+      min-idle: 0
+dubbo:
+  application:
+    name: ${spring.application.name}
+    qos-enable: true
+  scan:
+    base-packages: com.ponddy.*
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://${nacos.server-address}:${nacos.port}
+    # address: zookeeper://192.168.10.250:2181
+  provider:
+    filter: dubboExceptionFilter,-exception
+    version: 1.0
+#    timeout: 10000
+mybatis:
+  config-location: classpath:mapper/mybatis-config.xml
+  mapper-locations: classpath:mapper/*/*.xml, classpath:/META-INF/mybatis/mapper/WORKER*.xml
+  check-config-location: true
+
+jwt:
+  # 加密盐
+  secret: 99)eq2<*>^(aem.(~JK3
+  # token名称；此处定义 仅是token全称的后半部分，使用时需要添加角色为前缀
+  tokenName: Authorization
+  # 是否使用cookie保存token
+  useCookie: true
+  # 过期时间（单位：秒）60s * 60min * 24hour * 30day
+  expiredSeconds: 2592000
+
+logging:
+  level:
+    root: debug
+    sun.net.www: warn
+    sun.rmi: warn
+    com.alibaba: info
+    com.baidu: warn
+    io.netty: warn
+    org.apache.catalina: warn
+    org.apache.tomcat: warn
+    org.github: warn
+    org.hibernate: warn
+    org.mybatis.spring: warn
+    org.mybatis.spring.SqlSessionUtils: debug
+    org.springframework: warn
