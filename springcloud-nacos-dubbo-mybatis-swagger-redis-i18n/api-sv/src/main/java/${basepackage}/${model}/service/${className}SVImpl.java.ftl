@@ -3,6 +3,7 @@
  */
 package ${basePackage}.${model}.service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import ${basePackage}.core.entity.Page;
 import ${basePackage}.core.exceptions.BaseException;
 import ${basePackage}.${model}.dao.${className}DAO;
@@ -13,7 +14,6 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import lombok.extern.slf4j.Slf4j;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.HashMap;
@@ -22,8 +22,8 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import com.baidu.fsg.uid.UidGenerator;
 
-@Service("${className?uncap_first}SV")
 @Slf4j
+@Service(version = "${r'${dubbo.provider.version}'}")
 public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implements ${className}SV {
 
     @Autowired
