@@ -4,6 +4,7 @@
 package ${basePackage}.${model}.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.List;
 
 <#if oneToOneList??&&(oneToOneList?size>0)>
@@ -23,6 +24,7 @@ import java.util.List;
  * @author ${author}
  */
 @Data
+@NoArgsConstructor
 public class ${className} implements java.io.Serializable {
 
 <#if fields??&&(fields?size>0)>
