@@ -147,7 +147,7 @@ public class ${className}Ctrl {
     @ResponseBody
     public BeanRet delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         if (<#list pkFields as pkField><#if pkField.field=='id'>${pkField.field}!=null<#else>StringUtils.isEmpty(${pkField.field})</#if><#if pkField_has_next>&&</#if></#list>) {
-            throw new BaseException(BaseException.ExceptionEnums.param_is_null, "${field.field}");
+            throw new BaseException(BaseException.ExceptionEnums.param_is_null, "id");
         }
 
         ${classNameLower}SV.delete(<#list pkFields as pkField>${pkField.field}<#if pkField_has_next>,</#if></#list>);
