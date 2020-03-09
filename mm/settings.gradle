@@ -4,5 +4,5 @@ include 'base-sv'
 include 'facade'
 
 include 'eureka-server'
-include 'mm'
+include '$module$'
 
