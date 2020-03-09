@@ -22,14 +22,14 @@ public class $className$ implements java.io.Serializable {
      for(field in fields){
      ***/
     /**
-     * 数据库字段:${field.column}  属性显示:${field.notes}
+     * 数据库字段:$field.column$  属性显示:$field.notes$
      */
     /***
       if( field =="id"){
      ***/
     @TableId(type = IdType.AUTO)
      /***}***/
-    private ${field.fieldType} ${field.field};
+    private $field.fieldType$ $field.field$;
     /***}***/
 
 }

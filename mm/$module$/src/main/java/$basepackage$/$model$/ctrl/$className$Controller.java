@@ -30,13 +30,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/$classNameLower$")
 @Slf4j
-@Api(value = "${notes}控制器", description = "${notes}控制器")
+@Api(value = "$notes$控制器", description = "$notes$控制器")
 public class $className$Controller {
     @Autowired
     private $className$Service $classNameLower$Service;
 
     /**
-     * 创建 ${notes}
+     * 创建 $notes$
      *
      * @return R
      */
@@ -66,7 +66,7 @@ public class $className$Controller {
       if(pkField.field!="id"){
      ***/
     /**
-     * 根据条件$pkField.field$查询${notes}一个详情信息
+     * 根据条件$pkField.field$查询$notes$一个详情信息
      *
      * @param $pkField.field$ $pkField.notes$
      * @return $className$VO
@@ -94,7 +94,7 @@ public class $className$Controller {
 
 
     /**
-     * 查询${notes}信息集合
+     * 查询$notes$信息集合
      *
      * @return 分页对象
      */
@@ -140,7 +140,7 @@ public class $className$Controller {
 
 
     /**
-     * 统计 ${notes} 信息数量
+     * 统计 $notes$ 信息数量
      *
      * @return 总条数
      */
@@ -170,7 +170,7 @@ public class $className$Controller {
     }
 
     /**
-     * 修改 ${notes}
+     * 修改 $notes$
      *
      * @return R
      */
@@ -185,7 +185,7 @@ public class $className$Controller {
     }
 
     /**
-     * 删除 ${notes}
+     * 删除 $notes$
      *
      * @return R
      */
