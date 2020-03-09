@@ -100,12 +100,16 @@ public class $className$Controller {
      */
     @ApiOperation(value = "查询$className$信息集合", notes = "查询$className$信息集合")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "分页大小", required = true, paramType = "query"),
-            @ApiImplicitParam(name = "createTimeBegin", value = "", paramType = "query"),
-            @ApiImplicitParam(name = "createTimeEnd", value = "", paramType = "query"),
-            @ApiImplicitParam(name = "updateTimeBegin", value = "", paramType = "query"),
-            @ApiImplicitParam(name = "updateTimeEnd", value = "", paramType = "query")
+        @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query"),
+        @ApiImplicitParam(name = "pageSize", value = "分页大小", required = true, paramType = "query"),
+        /***
+         for(field in fields){
+           if(field.checkDate){
+        ***/
+        @ApiImplicitParam(name = "$field.field$Begin", value = "$field.notes$", paramType = "query"),
+        @ApiImplicitParam(name = "$field.field$End", value = "$field.notes$", paramType = "query")
+        /***if(!fieldLP.last){***/,
+        /***}}}***/
     })
     @GetMapping(value = "/list")
     @ResponseBody
@@ -142,11 +146,12 @@ public class $className$Controller {
      */
     @ApiOperation(value = "统计$className$信息数量", notes = "统计$className$信息数量")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "code", value = "账户编码", paramType = "query"),
-            @ApiImplicitParam(name = "account", value = "账户", paramType = "query"),
-            @ApiImplicitParam(name = "password", value = "密码", paramType = "query"),
-            @ApiImplicitParam(name = "status", value = "", paramType = "query"),
-            @ApiImplicitParam(name = "createTime", value = "", paramType = "query")
+        /***
+         for(field in fields){
+         ***/
+        @ApiImplicitParam(name = "$field.field$", value = "$field.notes$", paramType = "query")
+        /***if(!fieldLP.last){***/,
+        /***}}}***/
     })
     @GetMapping(value = "/count")
     @ResponseBody
@@ -186,15 +191,18 @@ public class $className$Controller {
      */
     @ApiOperation(value = "删除$className$", notes = "删除$className$")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", value = "", paramType = "query"),
-            @ApiImplicitParam(name = "code", value = "账户编码", paramType = "query")
+        /***
+         for(pkField in pkFields){
+        ***/
+        @ApiImplicitParam(name = "$pkField.field$", value = "$pkField.notes$", paramType = "query")/***if(!fieldLP.last){***/,
+        /***}}***/
     })
     @DeleteMapping("/delete")
     @ResponseBody
     public R delete(@ApiIgnore $className$VO $classNameLower$VO) {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
-        $classNameLower$Service.delete(new$className$, $className$::getCode);
+        $classNameLower$Service.delete(new$className$, /***for(pkField in pkFields){***/$className$::get$strutil.toUpperCase(pkField.field)$/***if(!fieldLP.last){***/,/***}}***/);
         return R.success("删除$classNameLower$成功");
     }
 
