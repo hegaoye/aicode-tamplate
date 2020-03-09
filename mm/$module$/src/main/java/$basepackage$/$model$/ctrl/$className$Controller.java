@@ -63,7 +63,7 @@ public class $className$Controller {
 
     /***
      for(pkField in pkFields){
-     if(pkField.field!="id"){
+      if(pkField.field!="id"){
      ***/
     /**
      * 根据条件$pkField.field$查询${notes}一个详情信息
@@ -163,7 +163,6 @@ public class $className$Controller {
         }
         return $classNameLower$Service.count(queryWrapper);
     }
-
 
     /**
      * 修改 ${notes}

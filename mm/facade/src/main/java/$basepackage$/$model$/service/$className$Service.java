@@ -8,9 +8,9 @@ import $basepackage$.core.base.BaseService;
 import $basepackage$.$model$.entity.$className$State;
 
 /**
- * 账户
+ * $notes$
  *
- * @author mm
+ * @author $author$
  */
 public interface $className$Service extends BaseService<$className$> {
 

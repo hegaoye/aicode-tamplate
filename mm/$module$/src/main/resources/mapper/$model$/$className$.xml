@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="$basepackage$.$model$.dao.mapper.$className$Mapper">
+    <resultMap id="rs_base" type="$basepackage$.$model$.entity.$className$">
+        /***
+        for(field in fields){
+        ***/
+        <result property="$field.field$" column="$field.column$"/>
+        /***}***/
+    </resultMap>
+
+    /***
+    if((oneToOneList!=null && oneToOneListLP.size>0) || (oneToManyList!=null &&oneToManyListLP.size>0 )){
+    ***/
+
+    <resultMap id="rs_base_relation" type="$className$" extends="rs_base">
+        /***
+        if(oneToOneList!=null && oneToOneListLP.size>0){
+        ***/
+        <association property="$oneToOne.classNameLower$" column="{$oneToOne.joinField$=$oneToOne.mainField$}"
+                     select="$oneToOne.className$.loadForOneToOne"/>
+        /***
+        }
+
+        if(oneToManyList!=null && oneToManyListLP.size>0){
+        ***/
+        <collection property="$oneToMany.classNameLower$List" column="{$oneToMany.joinField$=$oneToMany.mainField$}"
+                    select="$oneToMany.className$.queryForOneToMany"/>
+        /***}***/
+    </resultMap>
+    /***}***/
+
+    <sql id="columns">
+    /***for(column in columns){***/$column.column$/***if(!columnLP.last){***/,/***}}***/
+    </sql>
+
+    <sql id="where">
+        <where>
+            /***
+            for(field in fields){
+            if(field.checkDate){
+            ***/
+            <if test="$field.field$Begin!=null">
+                AND $field.column$ >= #{$field.field$+"Begin"}
+            </if>
+            <if test="$field.field$End!=null">
+                AND $field.column$ &lt;= #{$field.field$+"End"/>}
+            </if>
+            /***
+            }else if(field.checkState){
+            ***/
+            <if test="$field.field$s!=null and $field.field$s!=''">
+                AND $field.column$ in
+                <foreach collection="$field.field$s" index="index" item="stateIn" open="(" separator="," close=")">
+                    #{stateIn}
+                </foreach>
+            </if>
+            /***}else{***/
+            <if test="$field.field$!=null and $field.field$!=''">
+                AND $field.column$ = #{$field.field$}
+            </if>
+            /***}}***/
+        </where>
+    </sql>
+
+</mapper>

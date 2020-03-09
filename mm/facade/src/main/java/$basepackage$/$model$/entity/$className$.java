@@ -10,49 +10,26 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
 /**
- * 账户 的实体类
+ * $notes$ 的实体类
  *
- * @author mm
+ * @author $author$
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class $className$ implements java.io.Serializable {
-
+    /***
+     for(field in fields){
+     ***/
     /**
-     * 数据库字段:id  属性显示:
+     * 数据库字段:${field.column}  属性显示:${field.notes}
      */
+    /***
+      if( field =="id"){
+     ***/
     @TableId(type = IdType.AUTO)
-    private java.lang.Long id;
-
-    /**
-     * 数据库字段:code  属性显示:账户编码
-     */
-    private java.lang.String code;
-
-    /**
-     * 数据库字段:account  属性显示:账户
-     */
-    private java.lang.String account;
-
-    /**
-     * 数据库字段:password  属性显示:密码
-     */
-    private java.lang.String password;
-
-    /**
-     * 数据库字段:status  属性显示:
-     */
-    private java.lang.String status;
-
-    /**
-     * 数据库字段:createTime  属性显示:
-     */
-    private java.util.Date createTime;
-
-    /**
-     * 数据库字段:updateTime  属性显示:
-     */
-    private java.util.Date updateTime;
+     /***}***/
+    private ${field.fieldType} ${field.field};
+    /***}***/
 
 }

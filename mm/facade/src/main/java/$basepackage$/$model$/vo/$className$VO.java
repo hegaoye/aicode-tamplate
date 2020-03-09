@@ -6,26 +6,20 @@ package $basepackage$.$model$.vo;
 import lombok.Data;
 
 /**
- * $className$ VO
+ * $notes$ VO
  *
- * @author mm
+ * @author $author$
  */
 @Data
 public class $className$VO implements java.io.Serializable {
 
+    /***
+     for(field in fields){
+     ***/
     /**
-     * 数据库字段:code  属性显示:账户编码
+     * 数据库字段:${field.column}  属性显示:${field.notes}
      */
-    private String code;
-
-    /**
-     * 数据库字段:account  属性显示:账户
-     */
-    private String account;
-
-    /**
-     * 数据库字段:status
-     */
-    private String status;
+    private ${field.fieldType} ${field.field};
+    /***}***/
 
 }

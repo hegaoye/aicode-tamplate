@@ -7,9 +7,9 @@ import $basepackage$.$model$.entity.$className$;
 import lombok.Data;
 
 /**
- * $className$ VO
+ * $notes$ VO
  *
- * @author mm
+ * @author $author$
  */
 @Data
 public class $className$SaveVO extends $className$ implements java.io.Serializable {

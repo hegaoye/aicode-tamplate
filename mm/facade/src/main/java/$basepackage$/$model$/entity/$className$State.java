@@ -4,9 +4,9 @@
 package $basepackage$.$model$.entity;
 
 /**
- * 账户 的实体类的状态
+ * $notes$ 的实体类的状态
  *
- * @author mm
+ * @author $author$
  */
 public enum $className$State implements java.io.Serializable {
     //枚举定义在此
