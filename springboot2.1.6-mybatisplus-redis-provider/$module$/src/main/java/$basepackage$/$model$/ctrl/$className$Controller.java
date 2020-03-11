@@ -202,7 +202,7 @@ public class $className$Controller {
     public R delete(@ApiIgnore $className$VO $classNameLower$VO) {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
-        $classNameLower$Service.delete(new$className$, /***for(pkField in pkFields){***/$className$::get$strutil.toUpperCase(pkField.field)$/***if(!fieldLP.last){***/,/***}}***/);
+        $classNameLower$Service.delete(new$className$, /***for(pkField in pkFields){***/$className$::get$strutil.toUpperCase(pkField.field)$/***if(!pkFieldLP.last){***/,/***}}***/);
         return R.success("删除$classNameLower$成功");
     }
 
