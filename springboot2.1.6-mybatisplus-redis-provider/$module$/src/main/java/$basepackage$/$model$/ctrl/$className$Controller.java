@@ -108,8 +108,8 @@ public class $className$Controller {
         ***/
         @ApiImplicitParam(name = "$field.field$Begin", value = "$field.notes$", paramType = "query"),
         @ApiImplicitParam(name = "$field.field$End", value = "$field.notes$", paramType = "query")
-        /***if(!fieldLP.last){***/,
-        /***}}}***/
+        /***if(!fieldLP.last){***/,/***}***/
+        /***}}***/
     })
     @GetMapping(value = "/list")
     @ResponseBody
@@ -150,8 +150,8 @@ public class $className$Controller {
          for(field in fields){
          ***/
         @ApiImplicitParam(name = "$field.field$", value = "$field.notes$", paramType = "query")
-        /***if(!fieldLP.last){***/,
-        /***}}}***/
+        /***if(!fieldLP.last){***/,/***}***/
+        /***}}***/
     })
     @GetMapping(value = "/count")
     @ResponseBody
@@ -194,8 +194,8 @@ public class $className$Controller {
         /***
          for(pkField in pkFields){
         ***/
-        @ApiImplicitParam(name = "$pkField.field$", value = "$pkField.notes$", paramType = "query")/***if(!fieldLP.last){***/,
-        /***}}***/
+        @ApiImplicitParam(name = "$pkField.field$", value = "$pkField.notes$", paramType = "query")/***if(!fieldLP.last){***/,/***}***/
+        /***}***/
     })
     @DeleteMapping("/delete")
     @ResponseBody
