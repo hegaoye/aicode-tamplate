@@ -7,7 +7,6 @@ import java.io.UnsupportedEncodingException;
  * the default is set in
  *
  * @author mm
- * @version $Id: Hex.java, v 0.1 2014年3月25日 上午9:39:07 ShenHuaJie Exp $
  */
 public class Hex {
 
