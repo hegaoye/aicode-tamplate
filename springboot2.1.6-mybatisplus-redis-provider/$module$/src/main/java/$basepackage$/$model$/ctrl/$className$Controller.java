@@ -194,7 +194,7 @@ public class $className$Controller {
         /***
          for(pkField in pkFields){
         ***/
-        @ApiImplicitParam(name = "$pkField.field$", value = "$pkField.notes$", paramType = "query")/***if(!$pkFieldLP.last){***/,/***}***/
+        @ApiImplicitParam(name = "$pkField.field$", value = "$pkField.notes$", paramType = "query")/***if(!pkFieldLP.last){***/,/***}***/
         /***}***/
     })
     @DeleteMapping("/delete")
