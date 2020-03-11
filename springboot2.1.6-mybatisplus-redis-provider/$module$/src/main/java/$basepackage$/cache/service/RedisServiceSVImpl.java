@@ -1,4 +1,4 @@
-package $basepackage$.cache.service;
+package $package$.cache.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

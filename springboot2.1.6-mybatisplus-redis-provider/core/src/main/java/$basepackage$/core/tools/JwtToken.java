@@ -1,5 +1,5 @@
 
-package $basepackage$.core.tools;
+package $package$.core.tools;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;

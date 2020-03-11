@@ -22,7 +22,7 @@
  * 23 * questions.
  * 24 */
 
-package $basepackage$.core.tools.security;
+package $package$.core.tools.security;
 
 import java.io.*;
 import java.nio.ByteBuffer;

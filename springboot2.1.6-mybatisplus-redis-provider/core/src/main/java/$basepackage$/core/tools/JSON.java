@@ -1,4 +1,4 @@
-package $basepackage$.core.tools;
+package $package$.core.tools;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 

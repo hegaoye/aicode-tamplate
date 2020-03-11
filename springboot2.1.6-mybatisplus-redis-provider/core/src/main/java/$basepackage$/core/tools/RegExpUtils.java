@@ -1,4 +1,4 @@
-package $basepackage$.core.tools;
+package $package$.core.tools;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

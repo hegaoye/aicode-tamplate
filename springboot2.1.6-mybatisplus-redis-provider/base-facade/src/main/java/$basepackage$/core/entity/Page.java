@@ -1,7 +1,7 @@
-package $basepackage$.core.entity;
+package $package$.core.entity;
 
-import $basepackage$.core.tools.SortTools;
-import $basepackage$.core.tools.StringTools;
+import $package$.core.tools.SortTools;
+import $package$.core.tools.StringTools;
 import lombok.Data;
 
 import java.util.ArrayList;

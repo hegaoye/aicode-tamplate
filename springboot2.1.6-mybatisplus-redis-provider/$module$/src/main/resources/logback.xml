@@ -83,7 +83,7 @@
     /***
     for(class in classes){
     ***/
-    <logger name="$basepackage$.$class.classModel$.dao" level="DEBUG"/>
+    <logger name="$package$.$class.classModel$.dao" level="DEBUG"/>
     /***}***/
 
 

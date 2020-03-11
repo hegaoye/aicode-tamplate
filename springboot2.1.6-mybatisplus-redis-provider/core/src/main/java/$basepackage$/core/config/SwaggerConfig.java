@@ -1,7 +1,7 @@
 /*
  * $copyright$
  */
-package $basepackage$.core.config;
+package $package$.core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +27,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("$basepackage$")) // controller路径
+                .apis(RequestHandlerSelectors.basePackage("$package$")) // controller路径
                 .paths(PathSelectors.any())
                 .build()
                 .ignoredParameterTypes(ApiIgnore.class);

@@ -1,4 +1,4 @@
-package $basepackage$.core.annotation;
+package $package$.core.annotation;
 
 import java.io.Serializable;
 

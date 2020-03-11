@@ -1,7 +1,7 @@
-package $basepackage$.core.tools.security.coder;
+package $package$.core.tools.security.coder;
 
 
-import $basepackage$.core.tools.security.Hex;
+import $package$.core.tools.security.Hex;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;

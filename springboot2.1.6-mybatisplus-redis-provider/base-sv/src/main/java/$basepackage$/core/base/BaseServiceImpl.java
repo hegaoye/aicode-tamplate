@@ -1,8 +1,8 @@
-package $basepackage$.core.base;
+package $package$.core.base;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
-import $basepackage$.core.exceptions.BaseException;
+import $package$.core.exceptions.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,15 +1,15 @@
 /*
  * $copyright$
  */
-package $basepackage$.$model$.service;
+package $package$.$model$.service;
 
-import $basepackage$.$model$.dao.$className$DAO;
-import $basepackage$.$model$.entity.$className$;
-import $basepackage$.$model$.entity.$className$State;
-import $basepackage$.core.base.BaseDAO;
-import $basepackage$.core.base.BaseServiceImpl;
-import $basepackage$.core.exceptions.$className$Exception;
-import $basepackage$.core.exceptions.BaseException;
+import $package$.$model$.dao.$className$DAO;
+import $package$.$model$.entity.$className$;
+import $package$.$model$.entity.$className$State;
+import $package$.core.base.BaseDAO;
+import $package$.core.base.BaseServiceImpl;
+import $package$.core.exceptions.$className$Exception;
+import $package$.core.exceptions.BaseException;
 import com.baidu.fsg.uid.UidGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

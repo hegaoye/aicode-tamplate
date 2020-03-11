@@ -1,4 +1,4 @@
-package $basepackage$.core.tools;
+package $package$.core.tools;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;

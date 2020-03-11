@@ -1,16 +1,16 @@
 /*
  * $copyright$
  */
-package $basepackage$.$model$.ctrl;
+package $package$.$model$.ctrl;
 
-import $basepackage$.$model$.entity.$className$;
-import $basepackage$.$model$.service.$className$Service;
-import $basepackage$.$model$.vo.$className$PageVO;
-import $basepackage$.$model$.vo.$className$SaveVO;
-import $basepackage$.$model$.vo.$className$VO;
-import $basepackage$.core.entity.Page;
-import $basepackage$.core.entity.PageVO;
-import $basepackage$.core.entity.R;
+import $package$.$model$.entity.$className$;
+import $package$.$model$.service.$className$Service;
+import $package$.$model$.vo.$className$PageVO;
+import $package$.$model$.vo.$className$SaveVO;
+import $package$.$model$.vo.$className$VO;
+import $package$.core.entity.Page;
+import $package$.core.entity.PageVO;
+import $package$.core.entity.R;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.*;

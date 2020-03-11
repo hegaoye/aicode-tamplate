@@ -1,6 +1,6 @@
-package $basepackage$.core.tools.security.coder;
+package $package$.core.tools.security.coder;
 
-import $basepackage$.core.tools.security.BouncyCastleProvider;
+import $package$.core.tools.security.BouncyCastleProvider;
 
 import java.security.Security;
 

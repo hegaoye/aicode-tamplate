@@ -1,6 +1,6 @@
-package $basepackage$.core.tools.security;
+package $package$.core.tools.security;
 
-import $basepackage$.core.tools.security.coder.*;
+import $package$.core.tools.security.coder.*;
 
 import java.util.Map;
 

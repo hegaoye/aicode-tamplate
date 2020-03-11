@@ -1,11 +1,11 @@
 /*
 * $copyright$
  */
-package $basepackage$.$model$.service;
+package $package$.$model$.service;
 
-import $basepackage$.$model$.entity.$className$;
-import $basepackage$.core.base.BaseService;
-import $basepackage$.$model$.entity.$className$State;
+import $package$.$model$.entity.$className$;
+import $package$.core.base.BaseService;
+import $package$.$model$.entity.$className$State;
 
 /**
  * $notes$

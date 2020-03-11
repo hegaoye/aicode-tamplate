@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="$basepackage$.$model$.dao.mapper.$className$Mapper">
-    <resultMap id="rs_base" type="$basepackage$.$model$.entity.$className$">
+<mapper namespace="$package$.$model$.dao.mapper.$className$Mapper">
+    <resultMap id="rs_base" type="$package$.$model$.entity.$className$">
         /***
         for(field in fields){
         ***/

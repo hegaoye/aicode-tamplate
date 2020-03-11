@@ -1,7 +1,7 @@
 /*
 * $copyright$
  */
-package $basepackage$.$model$.entity;
+package $package$.$model$.entity;
 
 /**
  * $notes$ 的实体类的状态

@@ -1,6 +1,6 @@
-package $basepackage$.core.entity;
+package $package$.core.entity;
 
-import $basepackage$.core.base.BaseVO;
+import $package$.core.base.BaseVO;
 import lombok.Data;
 
 import java.util.List;

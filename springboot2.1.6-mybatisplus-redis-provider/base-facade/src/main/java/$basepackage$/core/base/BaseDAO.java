@@ -1,4 +1,4 @@
-package $basepackage$.core.base;
+package $package$.core.base;
 
 
 import cn.hutool.core.util.ReflectUtil;

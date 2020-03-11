@@ -1,7 +1,7 @@
-package $basepackage$.$model$.dao.mapper;
+package $package$.$model$.dao.mapper;
 
-import $basepackage$.$model$.entity.$className$;
-import $basepackage$.core.cache.MybatisRedisCache;
+import $package$.$model$.entity.$className$;
+import $package$.core.cache.MybatisRedisCache;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.springframework.stereotype.Repository;

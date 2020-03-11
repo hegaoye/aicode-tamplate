@@ -1,4 +1,4 @@
-package $basepackage$.core.cache;
+package $package$.core.cache;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

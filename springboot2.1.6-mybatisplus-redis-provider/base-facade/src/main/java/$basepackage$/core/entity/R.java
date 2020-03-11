@@ -1,6 +1,6 @@
-package $basepackage$.core.entity;
+package $package$.core.entity;
 
-import $basepackage$.core.exceptions.BaseException;
+import $package$.core.exceptions.BaseException;
 import lombok.Data;
 
 import java.io.Serializable;

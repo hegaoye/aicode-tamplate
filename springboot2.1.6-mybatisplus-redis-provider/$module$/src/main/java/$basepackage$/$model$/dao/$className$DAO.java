@@ -1,9 +1,9 @@
-package $basepackage$.$model$.dao;
+package $package$.$model$.dao;
 
-import $basepackage$.$model$.dao.mapper.$className$Mapper;
-import $basepackage$.$model$.entity.$className$;
-import $basepackage$.$model$.entity.$className$State;
-import $basepackage$.core.base.BaseDAO;
+import $package$.$model$.dao.mapper.$className$Mapper;
+import $package$.$model$.entity.$className$;
+import $package$.$model$.entity.$className$State;
+import $package$.core.base.BaseDAO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

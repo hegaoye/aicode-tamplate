@@ -1,9 +1,9 @@
 /*
  * $copyright$
  */
-package $basepackage$.$model$.vo;
+package $package$.$model$.vo;
 
-import $basepackage$.core.base.BaseVO;
+import $package$.core.base.BaseVO;
 import lombok.Data;
 
 /**

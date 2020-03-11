@@ -1,4 +1,4 @@
-package $basepackage$.core.enums;
+package $package$.core.enums;
 
 /**
  * true/false 枚举

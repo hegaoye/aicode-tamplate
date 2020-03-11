@@ -1,4 +1,4 @@
-package $basepackage$.core.tools.security;
+package $package$.core.tools.security;
 
 import java.security.Provider;
 

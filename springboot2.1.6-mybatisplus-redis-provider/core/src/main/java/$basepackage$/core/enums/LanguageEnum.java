@@ -1,4 +1,4 @@
-package $basepackage$.core.enums;
+package $package$.core.enums;
 
 /**
  * 语言枚举

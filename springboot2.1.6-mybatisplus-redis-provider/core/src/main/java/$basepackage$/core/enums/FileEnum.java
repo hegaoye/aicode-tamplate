@@ -1,4 +1,4 @@
-package $basepackage$.core.enums;
+package $package$.core.enums;
 
 /**
  * 可上传文件类型枚举

@@ -1,4 +1,4 @@
-package $basepackage$.core.cache;
+package $package$.core.cache;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

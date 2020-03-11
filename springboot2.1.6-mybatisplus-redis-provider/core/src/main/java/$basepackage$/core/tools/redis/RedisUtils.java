@@ -1,4 +1,4 @@
-package $basepackage$.core.tools.redis;
+package $package$.core.tools.redis;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;

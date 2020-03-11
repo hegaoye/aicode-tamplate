@@ -1,4 +1,4 @@
-package $basepackage$.core.tools.security.coder;
+package $package$.core.tools.security.coder;
 
 
 import java.security.MessageDigest;

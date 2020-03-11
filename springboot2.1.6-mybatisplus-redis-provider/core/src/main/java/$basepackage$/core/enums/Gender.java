@@ -1,4 +1,4 @@
-package $basepackage$.core.enums;
+package $package$.core.enums;
 
 public enum Gender {
     Male("男"),

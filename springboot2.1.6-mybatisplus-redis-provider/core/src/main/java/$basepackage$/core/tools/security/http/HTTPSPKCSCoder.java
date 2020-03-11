@@ -1,4 +1,4 @@
-package $basepackage$.core.tools.security.http;
+package $package$.core.tools.security.http;
 
 import javax.net.ssl.*;
 import java.io.FileInputStream;

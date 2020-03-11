@@ -1,7 +1,7 @@
 /**
 * $copyright$
  */
-package $basepackage$.$model$.vo;
+package $package$.$model$.vo;
 
 import lombok.Data;
 

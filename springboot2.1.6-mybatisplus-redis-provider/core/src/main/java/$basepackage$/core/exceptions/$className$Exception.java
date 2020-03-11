@@ -1,7 +1,7 @@
 /*
 * $copyright$
  */
-package $basepackage$.core.exceptions;
+package $package$.core.exceptions;
 
 import java.io.Serializable;
 

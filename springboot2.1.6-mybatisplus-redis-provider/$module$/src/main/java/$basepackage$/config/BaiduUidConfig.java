@@ -1,4 +1,4 @@
-package $basepackage$.config;
+package $package$.config;
 
 import com.baidu.fsg.uid.impl.DefaultUidGenerator;
 import com.baidu.fsg.uid.worker.DisposableWorkerIdAssigner;
