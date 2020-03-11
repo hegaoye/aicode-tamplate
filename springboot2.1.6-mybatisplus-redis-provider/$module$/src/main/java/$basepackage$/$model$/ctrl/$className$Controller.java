@@ -151,7 +151,7 @@ public class $className$Controller {
          ***/
         @ApiImplicitParam(name = "$field.field$", value = "$field.notes$", paramType = "query")
         /***if(!fieldLP.last){***/,/***}***/
-        /***}}***/
+        /***}***/
     })
     @GetMapping(value = "/count")
     @ResponseBody
