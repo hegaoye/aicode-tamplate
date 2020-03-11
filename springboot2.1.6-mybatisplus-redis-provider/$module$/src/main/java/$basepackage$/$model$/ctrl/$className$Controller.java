@@ -107,8 +107,7 @@ public class $className$Controller {
            if(field.checkDate){
         ***/
         @ApiImplicitParam(name = "$field.field$Begin", value = "$field.notes$", paramType = "query"),
-        @ApiImplicitParam(name = "$field.field$End", value = "$field.notes$", paramType = "query")
-        /***if(!fieldLP.last){***/,/***}***/
+        @ApiImplicitParam(name = "$field.field$End", value = "$field.notes$", paramType = "query")/***if(!fieldLP.last){***/,/***}***/
         /***}}***/
     })
     @GetMapping(value = "/list")
@@ -149,8 +148,7 @@ public class $className$Controller {
         /***
          for(field in fields){
          ***/
-        @ApiImplicitParam(name = "$field.field$", value = "$field.notes$", paramType = "query")
-        /***if(!fieldLP.last){***/,/***}***/
+        @ApiImplicitParam(name = "$field.field$", value = "$field.notes$", paramType = "query")/***if(!fieldLP.last){***/,/***}***/
         /***}***/
     })
     @GetMapping(value = "/count")
