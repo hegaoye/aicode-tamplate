@@ -15,7 +15,7 @@
         </filter>
                
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/debug/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>\${LOG_HOME}/debug/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <maxFileSize>1024MB</maxFileSize>
             <MaxHistory>3</MaxHistory>
         </rollingPolicy>
@@ -31,7 +31,7 @@
         </filter>
                
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/info/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>\${LOG_HOME}/info/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <maxFileSize>1024MB</maxFileSize>
             <MaxHistory>3</MaxHistory>
         </rollingPolicy>
@@ -47,7 +47,7 @@
         </filter>
                
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/info/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>\${LOG_HOME}/info/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <maxFileSize>1024MB</maxFileSize>
             <MaxHistory>3</MaxHistory>
         </rollingPolicy>
@@ -63,7 +63,7 @@
         </filter>
                
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/info/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
+            <FileNamePattern>\${LOG_HOME}/info/%d{yyyy-MM-dd}.%i.log</FileNamePattern>
             <maxFileSize>1024MB</maxFileSize>
             <MaxHistory>3</MaxHistory>
         </rollingPolicy>

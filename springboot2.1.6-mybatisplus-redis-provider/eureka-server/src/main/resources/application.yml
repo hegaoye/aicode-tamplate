@@ -19,4 +19,4 @@ eureka:
     register-with-eureka: true #是否将自身注册
     fetch-registry: false #如果为true，启动时报警.
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8763/eureka/
+      defaultZone: http://\${eureka.instance.hostname}:8763/eureka/

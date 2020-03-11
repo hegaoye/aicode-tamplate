@@ -10,7 +10,7 @@ buildscript {
 
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:\${springBootVersion}")
     }
 }
 
@@ -41,6 +41,6 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:\${springCloudVersion}"
     }
 }
