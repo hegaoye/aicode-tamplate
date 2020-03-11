@@ -9,9 +9,9 @@ spring:
       enabled: always
   datasource:
     name: mysql-data
-    url: jdbc:mysql://172.18.178.210:6606/mm?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
-    username: root
-    password: 888888
+    url: jdbc:mysql://{your_ip}:3306/{yourdatabase}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
+    username: {your_username}
+    password: {your_password}
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
     initialSize: 10 #初始化连接数量，最大最小连接数
