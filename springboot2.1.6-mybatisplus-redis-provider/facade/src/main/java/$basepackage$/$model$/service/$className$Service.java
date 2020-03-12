@@ -32,7 +32,7 @@ public interface $className$Service extends BaseService<$className$> {
      * @param code 账户编码
      * @return $className$
      */
-     $className$ loadBy$$pkField.upper$($pkField.fieldType$ $pkField.field$);
+     $className$ loadBy$pkField.upper$($pkField.fieldType$ $pkField.field$);
     /***}}***/
 
     /**
@@ -55,6 +55,6 @@ public interface $className$Service extends BaseService<$className$> {
      * @param newState  新状态
      * @param oldStates 旧状态集合
      */
-    boolean updateStateBy$$pkField.upper$($pkField.fieldType$ $pkField.field$, $className$State newState, $className$State... oldStates);
+    boolean updateStateBy$pkField.upper$($pkField.fieldType$ $pkField.field$, $className$State newState, $className$State... oldStates);
     /***}}***/
 }
