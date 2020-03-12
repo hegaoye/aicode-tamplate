@@ -238,7 +238,7 @@ public abstract class BaseDAO<E extends Serializable> {
 
     private static Map<Class, SerializedLambda> CLASS_LAMDBA_CACHE = new ConcurrentHashMap<>();
 
-    /***
+    /**
      * 转换方法引用为属性名
      * @param fn
      * @return

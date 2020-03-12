@@ -9,23 +9,23 @@ import java.io.UnsupportedEncodingException;
  */
 public class Hex {
 
-    /***
+    /**
      */
     public static final String DEFAULT_CHARSET_NAME = "UTF-8";
 
-    /***
+    /**
      * Used to build output as Hex
      */
     private static final char[] DIGITS_LOWER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',
             'e', 'f'};
 
-    /***
+    /**
      * Used to build output as Hex
      */
     private static final char[] DIGITS_UPPER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D',
             'E', 'F'};
 
-    /***
+    /**
      * Converts an array of characters representing hexadecimal values into an
      * array of bytes of those same values. The returned array will be half the
      * length of the passed array, as it takes two characters to represent any
@@ -60,7 +60,7 @@ public class Hex {
         return out;
     }
 
-    /***
+    /**
      * Converts an array of bytes into an array of characters representing the
      * hexadecimal values of each byte in order. The returned array will be
      * double the length of the passed array, as it takes two characters to
@@ -73,7 +73,7 @@ public class Hex {
         return encodeHex(data, true);
     }
 
-    /***
+    /**
      * Converts an array of bytes into an array of characters representing the
      * hexadecimal values of each byte in order. The returned array will be
      * double the length of the passed array, as it takes two characters to
@@ -89,7 +89,7 @@ public class Hex {
         return encodeHex(data, toLowerCase ? DIGITS_LOWER : DIGITS_UPPER);
     }
 
-    /***
+    /**
      * Converts an array of bytes into an array of characters representing the
      * hexadecimal values of each byte in order. The returned array will be
      * double the length of the passed array, as it takes two characters to
@@ -111,7 +111,7 @@ public class Hex {
         return out;
     }
 
-    /***
+    /**
      * Converts an array of bytes into a String representing the hexadecimal
      * values of each byte in order. The returned String will be double the
      * length of the passed array, as it takes two characters to represent any
@@ -125,7 +125,7 @@ public class Hex {
         return new String(encodeHex(data));
     }
 
-    /***
+    /**
      * Converts a hexadecimal character to an integer.
      *
      * @param ch A character to convert to an integer digit
@@ -143,14 +143,14 @@ public class Hex {
 
     private static String charsetName = DEFAULT_CHARSET_NAME;
 
-    /***
+    /**
      * Creates a new codec with the default charset name
      * {@link #DEFAULT_CHARSET_NAME}
      */
     public Hex() {
     }
 
-    /***
+    /**
      * Creates a new codec with the given charset name.
      *
      * @param csName the charset name.
@@ -160,7 +160,7 @@ public class Hex {
         charsetName = csName;
     }
 
-    /***
+    /**
      * Converts an array of character bytes representing hexadecimal values into
      * an array of bytes of those same values. The returned array will be half
      * the length of the passed array, as it takes two characters to represent
@@ -182,7 +182,7 @@ public class Hex {
         }
     }
 
-    /***
+    /**
      * Converts a String or an array of character bytes representing hexadecimal
      * values into an array of bytes of those same values. The returned array
      * will be half the length of the passed String or array, as it takes two
@@ -206,7 +206,7 @@ public class Hex {
         }
     }
 
-    /***
+    /**
      * Converts an array of bytes into an array of bytes for the characters
      * representing the hexadecimal values of each byte in order. The returned
      * array will be double the length of the passed array, as it takes two
@@ -231,7 +231,7 @@ public class Hex {
         return string.getBytes(charsetName);
     }
 
-    /***
+    /**
      * Converts a String or an array of bytes into an array of characters
      * representing the hexadecimal values of each byte in order. The returned
      * array will be double the length of the passed String or array, as it
@@ -258,7 +258,7 @@ public class Hex {
         }
     }
 
-    /***
+    /**
      * Gets the charset name.
      *
      * @return the charset name.
@@ -268,7 +268,7 @@ public class Hex {
         return charsetName;
     }
 
-    /***
+    /**
      * Returns a string representation of the object, which includes the charset
      * name.
      *
