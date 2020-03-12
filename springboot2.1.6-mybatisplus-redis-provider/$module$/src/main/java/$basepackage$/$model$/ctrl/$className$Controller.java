@@ -77,11 +77,11 @@ public class $className$Controller {
     })
     @GetMapping(value = "/load/$pkField.field$/{$pkField.field$}")
     @ResponseBody
-    public $className$VO loadBy$strutil.toUpperCase(pkField.field)$(@PathVariable $pkField.fieldType$ $pkField.field$) {
+    public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
         if ($pkField.field$ == null) {
             return null;
         }
-        $className$ $classNameLower$ = $classNameLower$Service.loadBy$strutil.toUpperCase(pkField.field)$($pkField.field$);
+        $className$ $classNameLower$ = $classNameLower$Service.loadBy$pkField.upper$($pkField.field$);
         if (null == $classNameLower$) {
             return null;
         }
@@ -200,7 +200,7 @@ public class $className$Controller {
     public R delete(@ApiIgnore $className$VO $classNameLower$VO) {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
-        $classNameLower$Service.delete(new$className$, /***for(pkField in pkFields){***/$className$::get$strutil.toUpperCase(pkField.field)$/***if(!pkFieldLP.last){***/,/***}}***/);
+        $classNameLower$Service.delete(new$className$, /***for(pkField in pkFields){***/$className$::get$pkField.upper$/***if(!pkFieldLP.last){***/,/***}}***/);
         return R.success("删除$classNameLower$成功");
     }
 
