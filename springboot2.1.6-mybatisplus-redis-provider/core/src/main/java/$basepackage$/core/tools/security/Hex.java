@@ -10,7 +10,6 @@ import java.io.UnsupportedEncodingException;
 public class Hex {
 
     /***
-     * Default charset name is {@link CharEncoding#UTF_8}
      */
     public static final String DEFAULT_CHARSET_NAME = "UTF-8";
 
