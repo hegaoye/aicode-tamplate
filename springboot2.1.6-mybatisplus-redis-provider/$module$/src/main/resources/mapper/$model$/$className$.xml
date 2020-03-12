@@ -9,6 +9,27 @@
         /***}***/
     </resultMap>
 
+    /***
+    if((oneToOneList!=null && oneToOneList.~size>0) || (oneToManyList!=null &&oneToManyList.~size>0 )){
+    ***/
+
+    <resultMap id="rs_base_relation" type="$className$" extends="rs_base">
+        /***
+        if(oneToOneList!=null && oneToOneList.~size>0){
+        ***/
+        <association property="$oneToOne.classNameLower$" column="{$oneToOne.joinField$=$oneToOne.mainField$}"
+                     select="$oneToOne.className$.loadForOneToOne"/>
+        /***
+        }
+
+        if(oneToManyList!=null && oneToManyList.~size>0){
+        ***/
+        <collection property="$oneToMany.classNameLower$List" column="{$oneToMany.joinField$=$oneToMany.mainField$}"
+                    select="$oneToMany.className$.queryForOneToMany"/>
+        /***}***/
+    </resultMap>
+    /***}***/
+
     <sql id="columns">
     /***for(field in fields){***/$field.column$/***if(!fieldLP.last){***/,/***}}***/
     </sql>
@@ -17,7 +38,7 @@
         <where>
             /***
             for(field in fields){
-              if(field.checkDate){
+            if(field.checkDate){
             ***/
             <if test="$field.field$Begin!=null">
                 AND $field.column$ >= #{$field.field$+"Begin"}
@@ -26,7 +47,7 @@
                 AND $field.column$ &lt;= #{$field.field$+"End"/>}
             </if>
             /***
-               }else if(field.checkState){
+            }else if(field.checkState){
             ***/
             <if test="$field.field$s!=null and $field.field$s!=''">
                 AND $field.column$ in
