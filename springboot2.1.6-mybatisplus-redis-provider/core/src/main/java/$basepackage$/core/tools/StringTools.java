@@ -208,7 +208,7 @@ public class StringTools {
     boolean flag = false;
     try {
       String check =
-          "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+          "^([a-z0-9A-Z]+[-|_|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}\$";
       Pattern regex = Pattern.compile(check);
       Matcher matcher = regex.matcher(email);
       flag = matcher.matches();
@@ -227,7 +227,7 @@ public class StringTools {
   public static boolean checkMbl(String mobileNumber) {
     boolean flag = false;
     try {
-      Pattern regex = Pattern.compile("^1\\d{10}$");
+      Pattern regex = Pattern.compile("^1\\d{10}\$");
       Matcher matcher = regex.matcher(mobileNumber);
       flag = matcher.matches();
     } catch (Exception e) {
@@ -245,7 +245,7 @@ public class StringTools {
   public static boolean checkEnlish(String str) {
     boolean flag = false;
     try {
-      Pattern regex = Pattern.compile("^[a-zA-Z]+$");
+      Pattern regex = Pattern.compile("^[a-zA-Z]+\$");
       Matcher matcher = regex.matcher(str);
       flag = matcher.matches();
     } catch (Exception e) {
@@ -300,7 +300,7 @@ public class StringTools {
   }
 
   /**
-   * 转义正则特殊字符 （$()*+.[]?\^{},|）
+   * 转义正则特殊字符 （\$()*+.[]?\^{},|）
    *
    * @param keyword
    * @return
@@ -308,7 +308,7 @@ public class StringTools {
   public static String escapeExprSpecialWord(String keyword) {
     if (StringUtils.isNotBlank(keyword)) {
       String[] fbsArr = {
-        "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|", "'", "\""
+        "\\", "\$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|", "'", "\""
       };
       for (String key : fbsArr) {
         if (keyword.contains(key)) {
@@ -328,7 +328,7 @@ public class StringTools {
   public static String escapSqlSpecialWord(String keyword) {
     if (StringUtils.isNotBlank(keyword)) {
       String[] fbsArr = {
-        "\\", "$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|", "'", "\"", "\b",
+        "\\", "\$", "(", ")", "*", "+", ".", "[", "]", "?", "^", "{", "}", "|", "'", "\"", "\b",
         "\n", "\t", "\f"
       };
       for (String key : fbsArr) {

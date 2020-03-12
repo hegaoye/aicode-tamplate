@@ -12,7 +12,7 @@ public class RegExpUtils {
    */
   public static boolean checkPhone(String phone) {
     String regExp =
-        "^[1](([3][0-9])|([4][5,7,9])|([5][^4,6,9])|([6][6])|([7][3,5,6,7,8])|([8][0-9])|([9][8,9]))[0-9]{8}$"; // 验证手机号
+        "^[1](([3][0-9])|([4][5,7,9])|([5][^4,6,9])|([6][6])|([7][3,5,6,7,8])|([8][0-9])|([9][8,9]))[0-9]{8}\$"; // 验证手机号
     Pattern p = Pattern.compile(regExp);
     Matcher m = p.matcher(phone);
     return m.matches();
@@ -20,7 +20,7 @@ public class RegExpUtils {
 
   public static boolean checkEmail(String eMail) {
     String RULE_EMAIL =
-        "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$";
+        "^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+\$";
     // 正则表达式的模式 编译正则表达式
     Pattern p = Pattern.compile(RULE_EMAIL);
     // 正则表达式的匹配器
