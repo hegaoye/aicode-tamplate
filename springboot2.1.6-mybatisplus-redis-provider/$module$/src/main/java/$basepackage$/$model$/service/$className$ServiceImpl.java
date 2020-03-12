@@ -52,7 +52,7 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
         for(field in fields){
             if(field.checkDate){
         ***/
-        $classNameLower$.set$strutil.toUpperCase(field.field)$(new Date());
+        $classNameLower$.set$field.upper$(new Date());
         /***}}***/
         return super.save($classNameLower$);
     }
@@ -79,8 +79,8 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
      * @return $className$
      */
     @Override
-    public $className$ loadBy$strutil.toUpperCase(pkField.field)$($pkField.fieldType$ $pkField.field$) {
-        $className$ $classNameLower$ = $classNameLower$DAO.selectBy$strutil.toUpperCase(pkField.field)$($pkField.field$);
+    public $className$ loadBy$pkField.upper$($pkField.fieldType$ $pkField.field$) {
+        $className$ $classNameLower$ = $classNameLower$DAO.selectBy$pkField.upper$($pkField.field$);
         if (null == $classNameLower$) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Result_Not_Exist);
         }
@@ -121,13 +121,13 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
      */
     @Transactional(rollbackFor = BaseException.class)
     @Override
-    public boolean updateStateBy$strutil.toUpperCase(pkField.field)$($pkField.fieldType$ $pkField.field$, $className$State newState, $className$State... oldStates) {
-        $className$ $classNameLower$ = $classNameLower$DAO.selectBy$strutil.toUpperCase(pkField.field)$($pkField.field$);
+    public boolean updateStateBy$pkField.upper$($pkField.fieldType$ $pkField.field$, $className$State newState, $className$State... oldStates) {
+        $className$ $classNameLower$ = $classNameLower$DAO.selectBy$pkField.upper$($pkField.field$);
         if (null == $classNameLower$) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Result_Not_Exist);
         }
 
-        int updateCount = $classNameLower$DAO.updateStateBy$strutil.toUpperCase(pkField.field)$($pkField.field$, newState, oldStates);
+        int updateCount = $classNameLower$DAO.updateStateBy$pkField.upper$($pkField.field$, newState, oldStates);
         return updateCount > 0 ? true : false;
     }
     /***}}***/

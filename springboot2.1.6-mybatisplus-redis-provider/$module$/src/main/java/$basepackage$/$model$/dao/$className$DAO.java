@@ -61,10 +61,10 @@ public class $className$DAO extends BaseDAO<$className$> {
      * @param $pkField.field$ $pkField.notes$
      * @return $className$
      */
-    public $className$ selectBy$strutil.toUpperCase(pkField.field)$($pkField.fieldType$ $pkField.field$) {
+    public $className$ selectBy$pkField.upper$($pkField.fieldType$ $pkField.field$) {
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
-                .eq($className$::get$strutil.toUpperCase(pkField.field)$, $pkField.field$);
+                .eq($className$::get$pkField.upper$, $pkField.field$);
         $className$ $classNameLower$ = this.selectOne(queryWrapper);
         return $classNameLower$;
     }
@@ -99,9 +99,9 @@ public class $className$DAO extends BaseDAO<$className$> {
      * @param oldStates 老状态集合
      * @return 条数
      */
-    public int updateStateBy$strutil.toUpperCase(pkField.field)$($pkField.fieldType$ $pkField.field$, $className$State newState, $className$State... oldStates) {
+    public int updateStateBy$pkField.upper$($pkField.fieldType$ $pkField.field$, $className$State newState, $className$State... oldStates) {
         UpdateWrapper<$className$> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.lambda().eq($className$::get$strutil.toUpperCase(pkField.field)$, $pkField.field$);
+        updateWrapper.lambda().eq($className$::get$pkField.upper$, $pkField.field$);
         int updateCount = this.updateByPk(updateWrapper, newState, oldStates);
         return updateCount;
     }
