@@ -9,27 +9,6 @@
         /***}***/
     </resultMap>
 
-    /***
-    if((oneToOneList!=null && oneToOneListLP.size>0) || (oneToManyList!=null &&oneToManyListLP.size>0 )){
-    ***/
-
-    <resultMap id="rs_base_relation" type="$className$" extends="rs_base">
-        /***
-        if(oneToOneList!=null && oneToOneListLP.size>0){
-        ***/
-        <association property="$oneToOne.classNameLower$" column="{$oneToOne.joinField$=$oneToOne.mainField$}"
-                     select="$oneToOne.className$.loadForOneToOne"/>
-        /***
-        }
-
-        if(oneToManyList!=null && oneToManyListLP.size>0){
-        ***/
-        <collection property="$oneToMany.classNameLower$List" column="{$oneToMany.joinField$=$oneToMany.mainField$}"
-                    select="$oneToMany.className$.queryForOneToMany"/>
-        /***}***/
-    </resultMap>
-    /***}***/
-
     <sql id="columns">
     /***for(field in fields){***/$field.column$/***if(!fieldLP.last){***/,/***}}***/
     </sql>
