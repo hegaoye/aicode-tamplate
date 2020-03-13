@@ -34,11 +34,14 @@ public final class R implements Serializable {
      * @param info 自定义提示信息
      */
     public static R success(String info) {
-        return new R(false, info, null);
+        return new R(true, info, null);
     }
 
     public static R success(String info, Object data) {
-        return new R(false, info, data);
+        return new R(true, info, data);
+    }
+    public static R success(Object data) {
+        return new R(true, "", data);
     }
 
     /**
