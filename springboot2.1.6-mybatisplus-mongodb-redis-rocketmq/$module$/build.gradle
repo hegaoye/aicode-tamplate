@@ -41,6 +41,10 @@ dependencies {
             "com.alibaba:druid-spring-boot-starter:1.1.10"
     )
 
+    //----------- mongodb start--------------
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.1.6.RELEASE'
+    //----------- mongodb end--------------
+
     //----------- rocketmq start--------------
     compile group: 'com.alibaba.cloud', name: 'spring-cloud-stream-binder-rocketmq', version: '2.1.0.RELEASE'
     //----------- rocketmq end--------------

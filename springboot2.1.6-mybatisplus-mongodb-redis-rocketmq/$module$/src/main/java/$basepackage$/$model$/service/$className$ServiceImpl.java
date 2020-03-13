@@ -4,6 +4,7 @@
 package $package$.$model$.service;
 
 import $package$.$model$.dao.$className$DAO;
+import $package$.$model$.dao.$className$MongoDAO;
 import $package$.$model$.entity.$className$;
 import $package$.$model$.entity.$className$State;
 import $package$.core.base.BaseDAO;
@@ -29,6 +30,8 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
 
     @Autowired
     private $className$DAO $classNameLower$DAO;
+    @Autowired
+    private $className$MongoDAO $classNameLower$MongoDAO;
 
     @Autowired
     private UidGenerator uidGenerator;
