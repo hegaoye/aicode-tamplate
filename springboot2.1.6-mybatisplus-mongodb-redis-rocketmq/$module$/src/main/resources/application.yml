@@ -7,6 +7,18 @@ spring:
   output:
     ansi:
       enabled: always
+  data:
+    mongodb:
+      #      uri: mongodb://172.18.178.215:26060,172.18.178.216:26060,172.18.178.217:26060/sr
+      uri: mongodb://{your_ip}:{port}/{your_database}
+      database: sr
+      #      address: 172.18.178.215:26060,172.18.178.216:26060,172.18.178.217:26060
+      address: {your_ip}:{port}
+      minConnectionsPerHost: 20
+      connectionsPerHost: 20
+      replicaSet:
+      username: {your_username}
+      password: {your_password}
   datasource:
     name: mysql-data
     url: jdbc:mysql://{your_ip}:3306/{yourdatabase}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
