@@ -11,6 +11,7 @@ import $package$.$model$.vo.$className$VO;
 import $package$.core.entity.Page;
 import $package$.core.entity.PageVO;
 import $package$.core.entity.R;
+import $package$.core.exceptions.BaseException;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.*;
@@ -43,22 +44,22 @@ public class $className$Controller {
     @ApiOperation(value = "创建$className$", notes = "创建$className$")
     @PostMapping("/build")
     @ResponseBody
-    public $className$SaveVO build(@ApiParam(name = "创建$className$", value = "传入json格式", required = true) @RequestBody $className$SaveVO $classNameLower$SaveVO) {
+    public R build(@ApiParam(name = "创建$className$", value = "传入json格式", required = true) @RequestBody $className$SaveVO $classNameLower$SaveVO) {
         if (null == $classNameLower$SaveVO) {
-            return null;
+            return R.failed(BaseException.BaseExceptionEnum.Empty_Param);
         }
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$SaveVO, new$className$);
 
         $className$ $classNameLower$ = $classNameLower$Service.save(new$className$);
         if (null == $classNameLower$) {
-            return null;
+            return R.failed(BaseException.BaseExceptionEnum.Result_Not_Exist);
         }
 
         $classNameLower$SaveVO = new $className$SaveVO();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$SaveVO);
         log.debug(JSON.toJSONString($classNameLower$SaveVO));
-        return $classNameLower$SaveVO;
+        return R.success($classNameLower$SaveVO);
     }
 
     /***
@@ -77,18 +78,18 @@ public class $className$Controller {
     })
     @GetMapping(value = "/load/$pkField.field$/{$pkField.field$}")
     @ResponseBody
-    public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
+    public R loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
         if ($pkField.field$ == null) {
-            return null;
+            return R.failed(BaseException.BaseExceptionEnum.Empty_Param);
         }
         $className$ $classNameLower$ = $classNameLower$Service.loadBy$pkField.upper$($pkField.field$);
         if (null == $classNameLower$) {
-            return null;
+            return R.failed(BaseException.BaseExceptionEnum.Result_Not_Exist);
         }
         $className$VO $classNameLower$VO = new $className$VO();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$VO);
         log.debug(JSON.toJSONString($classNameLower$VO));
-        return $classNameLower$VO;
+        return R.success($classNameLower$VO);
     }
     /***}}***/
 
@@ -112,7 +113,7 @@ public class $className$Controller {
     })
     @GetMapping(value = "/list")
     @ResponseBody
-    public PageVO<$className$VO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
+    public R list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
         Page<$className$> page = new Page<>(pageSize, curPage);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         if ($classNameLower$VO.getCreateTimeBegin() != null) {
@@ -134,7 +135,7 @@ public class $className$Controller {
             BeanUtils.copyProperties(page, $classNameLower$VOPageVO);
             log.debug(JSON.toJSONString(page));
         }
-        return $classNameLower$VOPageVO;
+        return R.success($classNameLower$VOPageVO);
     }
 
 
@@ -153,7 +154,7 @@ public class $className$Controller {
     })
     @GetMapping(value = "/count")
     @ResponseBody
-    public Integer count(@ApiIgnore $className$PageVO $classNameLower$PageVO) {
+    public R count(@ApiIgnore $className$PageVO $classNameLower$PageVO) {
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         if ($classNameLower$PageVO.getCreateTimeBegin() != null) {
             queryWrapper.lambda().gt($className$::getCreateTime, $classNameLower$PageVO.getCreateTimeBegin());
@@ -164,7 +165,8 @@ public class $className$Controller {
         if ($classNameLower$PageVO.getStatus() != null) {
             queryWrapper.lambda().eq($className$::getStatus, $classNameLower$PageVO.getStatus());
         }
-        return $classNameLower$Service.count(queryWrapper);
+        int count=$classNameLower$Service.count(queryWrapper);
+        return R.success(count);
     }
 
     /**
@@ -175,11 +177,11 @@ public class $className$Controller {
     @ApiOperation(value = "修改$className$", notes = "修改$className$")
     @PutMapping("/modify")
     @ResponseBody
-    public boolean modify(@ApiParam(name = "创建$classNameLower$", value = "传入json格式", required = true) @RequestBody $className$VO $classNameLower$VO) {
+    public R modify(@ApiParam(name = "创建$classNameLower$", value = "传入json格式", required = true) @RequestBody $className$VO $classNameLower$VO) {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
         boolean isUpdated = $classNameLower$Service.modify(new$className$, $className$::getCode);
-        return isUpdated;
+        return isUpdated ? R.success(BaseException.BaseExceptionEnum.Success) : R.success(BaseException.BaseExceptionEnum.Server_Error);
     }
 
     /**
