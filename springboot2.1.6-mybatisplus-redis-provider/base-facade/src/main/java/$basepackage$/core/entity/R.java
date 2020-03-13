@@ -28,6 +28,10 @@ public final class R implements Serializable {
         return new R(false, info, data);
     }
 
+    public static R failed(Object data) {
+        return new R(false, "", data);
+    }
+
     /**
      * 成功 true 自定义提示信息
      *
@@ -40,6 +44,7 @@ public final class R implements Serializable {
     public static R success(String info, Object data) {
         return new R(true, info, data);
     }
+
     public static R success(Object data) {
         return new R(true, "", data);
     }
