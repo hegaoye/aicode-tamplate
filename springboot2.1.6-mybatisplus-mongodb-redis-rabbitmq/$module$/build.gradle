@@ -53,6 +53,7 @@ dependencies {
     //-----------mybatis mysql druid end--------------
 
     //----------- rabbitmq start--------------
+    compile('org.springframework.cloud:spring-cloud-stream')
     compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-rabbit'
     //----------- rabbitmq end--------------
 
@@ -78,7 +79,7 @@ dependencies {
 
     compileOnly('org.projectlombok:lombok:1.18.8')
     compile('com.alibaba:fastjson:1.2.59')
-    
+
     compile group: 'com.github.pagehelper', name: 'pagehelper', version: '5.1.11'
 
     compile project(":core")

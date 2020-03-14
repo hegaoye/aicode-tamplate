@@ -13,9 +13,7 @@ repositories {
 }
 
 dependencies {
-    //----------- rabbitmq start--------------
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-rabbit'
-    //----------- rabbitmq end--------------
+    compile('org.springframework.cloud:spring-cloud-stream')
     compileOnly('org.projectlombok:lombok:1.18.12')
     compile project(":base-sv")
 }
