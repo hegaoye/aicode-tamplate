@@ -1,0 +1,5 @@
+{
+  "name": "springboot2.1.6-mybatisplus-mongodb-redis-rocketmq-provider",
+  "desc": "整合springboot2.1.6,以及cloud组件feign,mybatisplus,mongodb,redis,rocketmq,主要用于分布式系统中的 provider层，此时ctrl层仅仅返回实际结果不会被包装为BeanRet的对象",
+  "engine": "Beetl"
+}
