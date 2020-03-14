@@ -53,15 +53,14 @@ spring:
         build$class.className$Output:
           content-type: application/json
           destination: $class.className$.To
-          binder: rabbit01
         /***}***/
         /***for(class in classes){***/
         build$class.className$Input:
           content-type: application/json
           destination: $class.className$.To
           group: $class.className$_group
-          binder: rabbit01
         /***}***/
+      default-binder: rabbit01
       binders:
         rabbit01:
           type: rabbit
