@@ -29,7 +29,7 @@ public interface $className$Service extends BaseService<$className$> {
     /**
      * 加载一个对象$className$ 通过code
      *
-     * @param code 账户编码
+     * @param $pkField.field$ $pkField.notes$
      * @return $className$
      */
      $className$ loadBy$pkField.upper$($pkField.fieldType$ $pkField.field$);

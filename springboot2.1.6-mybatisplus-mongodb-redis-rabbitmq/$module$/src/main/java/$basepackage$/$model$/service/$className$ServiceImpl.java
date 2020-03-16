@@ -78,7 +78,7 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     /**
      * 加载一个对象$className$ 通过code
      *
-     * @param code 账户编码
+     * @param $pkField.field$ $pkField.notes$
      * @return $className$
      */
     @Override
