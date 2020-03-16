@@ -36,7 +36,10 @@ public class $className$DAO extends BaseDAO<$className$> {
         return $classNameLower$Mapper;
     }
 
-
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id"){
+     ***/
     /**
      * 根据id 查询 一条 $className$ 信息
      *
@@ -50,6 +53,7 @@ public class $className$DAO extends BaseDAO<$className$> {
         $className$ $classNameLower$ = this.selectOne(queryWrapper);
         return $classNameLower$;
     }
+    /***}}***/
 
     /***
      for(pkField in pkFields){
