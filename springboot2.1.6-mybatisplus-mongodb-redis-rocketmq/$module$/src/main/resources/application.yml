@@ -1,0 +1,98 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: provider
+  output:
+    ansi:
+      enabled: always
+  data:
+    mongodb:
+      #      uri: mongodb://172.18.178.215:26060,172.18.178.216:26060,172.18.178.217:26060/sr
+      uri: mongodb://{your_ip}:{port}/{your_database}
+      database: sr
+      #      address: 172.18.178.215:26060,172.18.178.216:26060,172.18.178.217:26060
+      address: {your_ip}:{port}
+      minConnectionsPerHost: 20
+      connectionsPerHost: 20
+      replicaSet:
+      username: {your_username}
+      password: {your_password}
+  datasource:
+    name: mysql-data
+    url: jdbc:mysql://{your_ip}:3306/{yourdatabase}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
+    username: {your_username}
+    password: {your_password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
+    initialSize: 10 #初始化连接数量，最大最小连接数
+    maxActive: 100
+    minIdle: 3
+    maxWait: 600000  #获取连接等待超时的时间
+    removeAbandoned: true  #超过时间限制是否回收
+    removeAbandonedTimeout: 180 #超过时间限制多长
+    timeBetweenEvictionRunsMillis: 600000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    minEvictableIdleTimeMillis: 300000 #配置一个连接在池中最小生存的时间，单位是毫秒
+    validationQuery: SELECT 1 FROM DUAL #用来检测连接是否有效的sql，要求是一个查询语句
+    testWhileIdle: true #申请连接的时候检测
+    testOnBorrow: false #申请连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+    testOnReturn: false #归还连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+    poolPreparedStatements: true #打开PSCache，并且指定每个连接上PSCache的大小
+    maxPoolPreparedStatementPerConnectionSize: 100
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
+  redis:
+    host: {your_redis_id}
+    port: 6379
+    password:
+  cloud:
+    stream:
+      bindings:
+        /***for(class in classes){***/
+        build$class.className$Output:
+          content-type: application/json
+          destination: $class.className$_To
+        /***}***/
+        /***for(class in classes){***/
+        build$class.className$Input:
+          content-type: application/json
+          destination: $class.className$_To
+          group: $class.className$_group
+        /***}***/
+
+      rocketmq:
+        binder:
+          name-server: {your_server_ip}:9876
+        bindings:
+          /***for(class in classes){***/
+          build$class.className$Output:
+            producer:
+              group: $class.className$_group
+          /***}***/
+
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8763/eureka/
+
+
+logging:
+  level:
+    com:
+      hegaoye: debug
+
+  path: /var/log/tomcat/
+  config: classpath:logback.xml
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*/*.xml,classpath:/META-INF/mybatis/mapper/WORKER*.xml
+  configuration:
+    cache-enabled: true

@@ -1,0 +1,5 @@
+{
+  "name": "springboot2.1.6-mybatisplus-redis",
+  "desc": "整合springboot2.1.6,以及cloud组件feign,mybatisplus,redis主要用于分布式系统中的 ctrl层，用于整合provider层使用，且swagger访问时可以返回R 对象，封装的统一返回类型",
+  "engine": "Beetl"
+}
