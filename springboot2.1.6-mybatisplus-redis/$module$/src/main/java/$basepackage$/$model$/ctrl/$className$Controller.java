@@ -122,8 +122,8 @@ public class $className$Controller {
         if ($classNameLower$VO.getCreateTimeEnd() != null) {
             queryWrapper.lambda().lt($className$::getCreateTime, $classNameLower$VO.getCreateTimeEnd());
         }
-        if ($classNameLower$VO.getStatus() != null) {
-            queryWrapper.lambda().eq($className$::getStatus, $classNameLower$VO.getStatus());
+        if ($classNameLower$VO.getState() != null) {
+            queryWrapper.lambda().eq($className$::getState, $classNameLower$VO.getState());
         }
 
         int total = $classNameLower$Service.count(queryWrapper);
@@ -162,8 +162,8 @@ public class $className$Controller {
         if ($classNameLower$PageVO.getCreateTimeEnd() != null) {
             queryWrapper.lambda().lt($className$::getCreateTime, $classNameLower$PageVO.getCreateTimeEnd());
         }
-        if ($classNameLower$PageVO.getStatus() != null) {
-            queryWrapper.lambda().eq($className$::getStatus, $classNameLower$PageVO.getStatus());
+        if ($classNameLower$PageVO.getState() != null) {
+            queryWrapper.lambda().eq($className$::getState, $classNameLower$PageVO.getState());
         }
         int count=$classNameLower$Service.count(queryWrapper);
         return R.success(count);
