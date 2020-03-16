@@ -2,7 +2,7 @@
  * $copyright$
  */
 package $package$.$model$.ctrl;
-import com.alibaba.dubbo.config.annotation.Reference;
+
 import $package$.$model$.entity.$className$;
 import $package$.$model$.service.$className$Service;
 import $package$.$model$.vo.$className$PageVO;
@@ -32,7 +32,6 @@ import java.util.List;
 @Slf4j
 @Api(value = "$notes$控制器", description = "$notes$控制器")
 public class $className$Controller {
-//    @Reference(check = false)
     @Autowired
     private $className$Service $classNameLower$Service;
 
@@ -116,15 +115,24 @@ public class $className$Controller {
     public PageVO<$className$VO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
         Page<$className$> page = new Page<>(pageSize, curPage);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
+        /***
+         for(field in fields){
+          if(field.checkDate){
+         ***/
         if ($classNameLower$VO.getCreateTimeBegin() != null) {
             queryWrapper.lambda().gt($className$::getCreateTime, $classNameLower$VO.getCreateTimeBegin());
         }
         if ($classNameLower$VO.getCreateTimeEnd() != null) {
             queryWrapper.lambda().lt($className$::getCreateTime, $classNameLower$VO.getCreateTimeEnd());
         }
+        /***
+         }
+         if(field.isState){
+         ***/
         if ($classNameLower$VO.getState() != null) {
             queryWrapper.lambda().eq($className$::getState, $classNameLower$VO.getState());
         }
+        /***}}***/
 
         int total = $classNameLower$Service.count(queryWrapper);
         PageVO<$className$VO> $classNameLower$VOPageVO = new PageVO<>();
@@ -156,15 +164,24 @@ public class $className$Controller {
     @ResponseBody
     public Integer count(@ApiIgnore $className$PageVO $classNameLower$PageVO) {
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
+        /***
+         for(field in fields){
+         if(field.checkDate){
+         ***/
         if ($classNameLower$PageVO.getCreateTimeBegin() != null) {
             queryWrapper.lambda().gt($className$::getCreateTime, $classNameLower$PageVO.getCreateTimeBegin());
         }
         if ($classNameLower$PageVO.getCreateTimeEnd() != null) {
             queryWrapper.lambda().lt($className$::getCreateTime, $classNameLower$PageVO.getCreateTimeEnd());
         }
+        /***
+         }
+         if(field.isState){
+         ***/
         if ($classNameLower$PageVO.getState() != null) {
             queryWrapper.lambda().eq($className$::getState, $classNameLower$PageVO.getState());
         }
+        /***}}***/
         return $classNameLower$Service.count(queryWrapper);
     }
 

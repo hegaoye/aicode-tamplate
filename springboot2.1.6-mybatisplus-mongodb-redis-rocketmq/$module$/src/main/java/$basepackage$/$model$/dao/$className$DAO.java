@@ -70,6 +70,10 @@ public class $className$DAO extends BaseDAO<$className$> {
     }
     /***}}***/
 
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id" && checkState){
+     ***/
     /**
      * 更新 状态根据主键id
      *
@@ -85,10 +89,11 @@ public class $className$DAO extends BaseDAO<$className$> {
         int updateCount = this.updateByPk(updateWrapper, newState, oldStates);
         return updateCount;
     }
+    /***}}***/
 
     /***
      for(pkField in pkFields){
-         if(pkField.field!="id"){
+     if(pkField.field!="id" && checkState){
      ***/
 
     /**
@@ -108,6 +113,9 @@ public class $className$DAO extends BaseDAO<$className$> {
     /***}}***/
 
 
+    /***
+     if(checkState){
+     ***/
     private int updateByPk(UpdateWrapper<$className$> updateWrapper, $className$State newState, $className$State... oldStates) {
         updateWrapper.lambda().set($className$::getState, newState.name());
         if (oldStates != null && oldStates.length > 0) {
@@ -119,5 +127,6 @@ public class $className$DAO extends BaseDAO<$className$> {
         int updateCount = $classNameLower$Mapper.update(null, updateWrapper);
         return updateCount;
     }
+    /***}***/
 
 }
