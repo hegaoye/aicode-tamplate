@@ -127,7 +127,7 @@ public class $className$Controller {
         }
         /***
          }
-         if(field.isState){
+         if(field.checkState){
          ***/
         if ($classNameLower$VO.getState() != null) {
             queryWrapper.lambda().eq($className$::getState, $classNameLower$VO.getState());
@@ -176,7 +176,7 @@ public class $className$Controller {
         }
         /***
          }
-         if(field.isState){
+         if(field.checkState){
          ***/
         if ($classNameLower$PageVO.getState() != null) {
             queryWrapper.lambda().eq($className$::getState, $classNameLower$PageVO.getState());
