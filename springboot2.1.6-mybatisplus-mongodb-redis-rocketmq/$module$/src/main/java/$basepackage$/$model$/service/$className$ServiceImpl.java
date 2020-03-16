@@ -49,14 +49,18 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     public $className$ save($className$ $classNameLower$) {
 //        $classNameLower$.setCode(String.valueOf(uidGenerator.getUID()));
         /***
-         for(field in fields){
-         if(field.checkDate){
-         ***/
+        for(field in fields){
+            if(field.checkDate){
+        ***/
         $classNameLower$.set$field.upper$(new Date());
         /***}}***/
         return super.save($classNameLower$);
     }
 
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id"){
+     ***/
     /**
      * 加载一个对象$className$ 通过id
      *
@@ -67,11 +71,12 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     public $className$ loadById(Long id) {
         return $classNameLower$DAO.selectById(id);
     }
+    /***}}***/
 
     /***
-     for(pkField in pkFields){
-     if(pkField.field!="id"){
-     ***/
+      for(pkField in pkFields){
+        if(pkField.field!="id"){
+    ***/
     /**
      * 加载一个对象$className$ 通过$pkField.field$
      *
@@ -91,7 +96,7 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
 
     /***
      for(pkField in pkFields){
-     if(pkField.field=="id" && checkState){
+       if(pkField.field=="id" && checkState){
      ***/
     /**
      * 根据 id 更新 状态
@@ -113,9 +118,9 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     /***}}***/
 
     /***
-     for(pkField in pkFields){
-     if(pkField.field!="id" && checkState){
-     ***/
+      for(pkField in pkFields){
+        if(pkField.field!="id" && checkState){
+    ***/
     /**
      * 根据主键oldStates 共同更新 $className$ 的状态到newState状态
      *

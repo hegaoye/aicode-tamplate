@@ -196,7 +196,7 @@ public class $className$Controller {
     public boolean modify(@ApiParam(name = "创建$classNameLower$", value = "传入json格式", required = true) @RequestBody $className$VO $classNameLower$VO) {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
-        boolean isUpdated = $classNameLower$Service.modify(new$className$, $className$::getCode);
+        boolean isUpdated = $classNameLower$Service.modify(new$className$, /***for(pkField in pkFields){***/$className$::get$pkField.upper$/***if(!pkFieldLP.last){***/,/***}}***/);
         return isUpdated;
     }
 

@@ -13,7 +13,10 @@ import $package$.$model$.entity.$className$State;
  * @author $author$
  */
 public interface $className$Service extends BaseService<$className$> {
-
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id"){
+     ***/
     /**
      * 加载一个对象$className$ 通过id
      *
@@ -21,6 +24,7 @@ public interface $className$Service extends BaseService<$className$> {
      * @return $className$
      */
     $className$ loadById(java.lang.Long id);
+    /***}}***/
 
     /***
       for(pkField in pkFields){

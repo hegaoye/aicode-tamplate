@@ -1,5 +1,5 @@
 /*
- * $copyright$
+* $copyright$
  */
 package $package$.$model$.service;
 
@@ -13,7 +13,10 @@ import $package$.$model$.entity.$className$State;
  * @author $author$
  */
 public interface $className$Service extends BaseService<$className$> {
-
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id"){
+     ***/
     /**
      * 加载一个对象$className$ 通过id
      *
@@ -21,18 +24,19 @@ public interface $className$Service extends BaseService<$className$> {
      * @return $className$
      */
     $className$ loadById(java.lang.Long id);
+    /***}}***/
 
     /***
-     for(pkField in pkFields){
-     if(pkField.field!="id"){
-     ***/
+      for(pkField in pkFields){
+        if(pkField.field!="id"){
+    ***/
     /**
      * 加载一个对象$className$ 通过code
      *
      * @param $pkField.field$ $pkField.notes$
      * @return $className$
      */
-    $className$ loadBy$pkField.upper$($pkField.fieldType$ $pkField.field$);
+     $className$ loadBy$pkField.upper$($pkField.fieldType$ $pkField.field$);
     /***}}***/
 
     /***
@@ -51,8 +55,8 @@ public interface $className$Service extends BaseService<$className$> {
 
     /***
      for(pkField in pkFields){
-     if(pkField.field!="id" && checkState){
-     ***/
+       if(pkField.field!="id" && checkState){
+    ***/
     /**
      * 根据主键code,oldStates 共同更新 $className$ 的状态到newState状态
      *

@@ -57,6 +57,10 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
         return super.save($classNameLower$);
     }
 
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id"){
+     ***/
     /**
      * 加载一个对象$className$ 通过id
      *
@@ -67,6 +71,7 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     public $className$ loadById(Long id) {
         return $classNameLower$DAO.selectById(id);
     }
+    /***}}***/
 
     /***
       for(pkField in pkFields){
