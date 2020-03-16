@@ -89,7 +89,10 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     /***}}***/
 
 
-
+    /***
+     for(pkField in pkFields){
+       if(pkField.field=="id" && checkState){
+     ***/
     /**
      * 根据 id 更新 状态
      *
@@ -107,10 +110,11 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
 
         return $classNameLower$DAO.updateStateById(id, newState, oldStates) > 0 ? true : false;
     }
+    /***}}***/
 
     /***
       for(pkField in pkFields){
-        if(pkField.field!="id"){
+        if(pkField.field!="id" && checkState){
     ***/
     /**
      * 根据主键oldStates 共同更新 $className$ 的状态到newState状态
