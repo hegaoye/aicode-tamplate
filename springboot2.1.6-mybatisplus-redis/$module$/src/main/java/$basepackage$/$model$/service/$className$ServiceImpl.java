@@ -73,9 +73,9 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
         if(pkField.field!="id"){
     ***/
     /**
-     * 加载一个对象$className$ 通过code
+     * 加载一个对象$className$ 通过$pkField.field$
      *
-     * @param code 账户编码
+     * @param $pkField.field$ $pkField.notes$
      * @return $className$
      */
     @Override
@@ -115,7 +115,7 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     /**
      * 根据主键oldStates 共同更新 $className$ 的状态到newState状态
      *
-     * @param code      账户编码
+     * @param $pkField.field$      $pkField.notes$
      * @param newState  新状态
      * @param oldStates 旧状态集合
      */
