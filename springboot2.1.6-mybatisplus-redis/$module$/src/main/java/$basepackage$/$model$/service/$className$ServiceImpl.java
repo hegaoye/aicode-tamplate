@@ -57,6 +57,10 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
         return super.save($classNameLower$);
     }
 
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id"){
+     ***/
     /**
      * 加载一个对象$className$ 通过id
      *
@@ -67,15 +71,16 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     public $className$ loadById(Long id) {
         return $classNameLower$DAO.selectById(id);
     }
+    /***}}***/
 
     /***
       for(pkField in pkFields){
         if(pkField.field!="id"){
     ***/
     /**
-     * 加载一个对象$className$ 通过code
+     * 加载一个对象$className$ 通过$pkField.field$
      *
-     * @param code 账户编码
+     * @param $pkField.field$ $pkField.notes$
      * @return $className$
      */
     @Override
@@ -89,7 +94,10 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     /***}}***/
 
 
-
+    /***
+     for(pkField in pkFields){
+       if(pkField.field=="id" && checkState){
+     ***/
     /**
      * 根据 id 更新 状态
      *
@@ -107,15 +115,16 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
 
         return $classNameLower$DAO.updateStateById(id, newState, oldStates) > 0 ? true : false;
     }
+    /***}}***/
 
     /***
       for(pkField in pkFields){
-        if(pkField.field!="id"){
+        if(pkField.field!="id" && checkState){
     ***/
     /**
      * 根据主键oldStates 共同更新 $className$ 的状态到newState状态
      *
-     * @param code      账户编码
+     * @param $pkField.field$      $pkField.notes$
      * @param newState  新状态
      * @param oldStates 旧状态集合
      */

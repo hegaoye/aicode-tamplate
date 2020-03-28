@@ -116,15 +116,24 @@ public class $className$Controller {
     public R list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
         Page<$className$> page = new Page<>(pageSize, curPage);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
+        /***
+         for(field in fields){
+          if(field.checkDate){
+         ***/
         if ($classNameLower$VO.getCreateTimeBegin() != null) {
             queryWrapper.lambda().gt($className$::getCreateTime, $classNameLower$VO.getCreateTimeBegin());
         }
         if ($classNameLower$VO.getCreateTimeEnd() != null) {
             queryWrapper.lambda().lt($className$::getCreateTime, $classNameLower$VO.getCreateTimeEnd());
         }
-        if ($classNameLower$VO.getStatus() != null) {
-            queryWrapper.lambda().eq($className$::getStatus, $classNameLower$VO.getStatus());
+        /***
+         }
+         if(field.checkState){
+         ***/
+        if ($classNameLower$VO.getState() != null) {
+            queryWrapper.lambda().eq($className$::getState, $classNameLower$VO.getState());
         }
+        /***}}***/
 
         int total = $classNameLower$Service.count(queryWrapper);
         PageVO<$className$VO> $classNameLower$VOPageVO = new PageVO<>();
@@ -156,15 +165,24 @@ public class $className$Controller {
     @ResponseBody
     public R count(@ApiIgnore $className$PageVO $classNameLower$PageVO) {
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
+        /***
+         for(field in fields){
+           if(field.checkDate){
+         ***/
         if ($classNameLower$PageVO.getCreateTimeBegin() != null) {
             queryWrapper.lambda().gt($className$::getCreateTime, $classNameLower$PageVO.getCreateTimeBegin());
         }
         if ($classNameLower$PageVO.getCreateTimeEnd() != null) {
             queryWrapper.lambda().lt($className$::getCreateTime, $classNameLower$PageVO.getCreateTimeEnd());
         }
-        if ($classNameLower$PageVO.getStatus() != null) {
-            queryWrapper.lambda().eq($className$::getStatus, $classNameLower$PageVO.getStatus());
+        /***
+         }
+         if(field.checkState){
+         ***/
+        if ($classNameLower$PageVO.getState() != null) {
+            queryWrapper.lambda().eq($className$::getState, $classNameLower$PageVO.getState());
         }
+        /***}}***/
         int count=$classNameLower$Service.count(queryWrapper);
         return R.success(count);
     }
@@ -180,7 +198,7 @@ public class $className$Controller {
     public R modify(@ApiParam(name = "创建$classNameLower$", value = "传入json格式", required = true) @RequestBody $className$VO $classNameLower$VO) {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
-        boolean isUpdated = $classNameLower$Service.modify(new$className$, $className$::getCode);
+        boolean isUpdated = $classNameLower$Service.modify(new$className$, /***for(pkField in pkFields){***/$className$::get$pkField.upper$/***if(!pkFieldLP.last){***/,/***}}***/);
         return isUpdated ? R.success(BaseException.BaseExceptionEnum.Success) : R.success(BaseException.BaseExceptionEnum.Server_Error);
     }
 

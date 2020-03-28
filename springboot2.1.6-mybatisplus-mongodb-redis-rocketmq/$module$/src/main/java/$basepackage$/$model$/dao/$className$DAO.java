@@ -36,7 +36,10 @@ public class $className$DAO extends BaseDAO<$className$> {
         return $classNameLower$Mapper;
     }
 
-
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id"){
+     ***/
     /**
      * 根据id 查询 一条 $className$ 信息
      *
@@ -50,6 +53,7 @@ public class $className$DAO extends BaseDAO<$className$> {
         $className$ $classNameLower$ = this.selectOne(queryWrapper);
         return $classNameLower$;
     }
+    /***}}***/
 
     /***
      for(pkField in pkFields){
@@ -70,6 +74,10 @@ public class $className$DAO extends BaseDAO<$className$> {
     }
     /***}}***/
 
+    /***
+     for(pkField in pkFields){
+     if(pkField.field=="id" && checkState){
+     ***/
     /**
      * 更新 状态根据主键id
      *
@@ -85,10 +93,11 @@ public class $className$DAO extends BaseDAO<$className$> {
         int updateCount = this.updateByPk(updateWrapper, newState, oldStates);
         return updateCount;
     }
+    /***}}***/
 
     /***
      for(pkField in pkFields){
-         if(pkField.field!="id"){
+         if(pkField.field!="id" && checkState){
      ***/
 
     /**
@@ -108,16 +117,20 @@ public class $className$DAO extends BaseDAO<$className$> {
     /***}}***/
 
 
+    /***
+     if(checkState){
+     ***/
     private int updateByPk(UpdateWrapper<$className$> updateWrapper, $className$State newState, $className$State... oldStates) {
-        updateWrapper.lambda().set($className$::getStatus, newState.name());
+        updateWrapper.lambda().set($className$::getState, newState.name());
         if (oldStates != null && oldStates.length > 0) {
             List<String> stateList = Arrays.asList(oldStates).stream()
                     .map($classNameLower$State -> $classNameLower$State.name())
                     .collect(Collectors.toList());
-            updateWrapper.lambda().in($className$::getStatus, stateList);
+            updateWrapper.lambda().in($className$::getState, stateList);
         }
         int updateCount = $classNameLower$Mapper.update(null, updateWrapper);
         return updateCount;
     }
+    /***}***/
 
 }
