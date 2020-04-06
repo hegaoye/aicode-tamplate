@@ -10,11 +10,13 @@ package $package$.$model$.enums;
  */
 public enum $className$State implements java.io.Serializable {
     /***
+     if(checkState){
      for(state in states){
      ***/
     $state.state$("$state.value$"),
     /***
       }
+     }
     ***/
     ;
 
