@@ -9,13 +9,8 @@ package $package$.$model$.entity;
  * @author $author$
  */
 public enum $className$State implements java.io.Serializable {
-    /***
-     for(s in states){
-     ***/
-    a,
-    /***
-     }
-    ***/
+        states 大小: $states.~size$
+
     ;
 
     public String val;
