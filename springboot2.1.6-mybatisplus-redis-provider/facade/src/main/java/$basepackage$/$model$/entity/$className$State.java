@@ -12,7 +12,7 @@ public enum $className$State implements java.io.Serializable {
     /***
      for(s in states){
      ***/
-    $s.state$("$s.value$"),
+    a,
     /***
      }
     ***/
