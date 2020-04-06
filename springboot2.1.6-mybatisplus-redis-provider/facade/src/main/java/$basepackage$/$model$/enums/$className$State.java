@@ -1,7 +1,7 @@
 /*
 * $copyright$
  */
-package $package$.$model$.entity;
+package $package$.$model$.enums;
 
 /**
  * $notes$ 的实体类的状态
