@@ -8,7 +8,7 @@ package $package$.$model$.enums;
  *
  * @author $author$
  */
-public enum $className$State implements java.io.Serializable {
+public enum $className$StateEnum implements java.io.Serializable {
     /***
      if(checkState){
      for(state in states){
