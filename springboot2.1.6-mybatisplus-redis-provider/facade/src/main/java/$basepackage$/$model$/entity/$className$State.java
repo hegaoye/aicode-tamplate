@@ -10,14 +10,11 @@ package $package$.$model$.entity;
  */
 public enum $className$State implements java.io.Serializable {
     /***
-     if(states !=null && states.~size>0){
+     if(states!=null && states.~size>0){
      for(state in states){
      ***/
     $state.state$("$state.value$"),
-    /***
-      }
-     }
-    ***/
+    /***}}***/
     ;
 
     public String val;
