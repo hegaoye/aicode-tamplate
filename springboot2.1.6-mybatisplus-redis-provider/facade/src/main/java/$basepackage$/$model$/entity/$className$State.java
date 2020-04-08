@@ -13,7 +13,7 @@ public enum $className$State implements java.io.Serializable {
      if(statusList!=null && statusList.~size>0){
      for(state in statusList){
      ***/
-    $state.name("$state.desc"),
+    $state.name$("$state.desc$"),
     /***}}***/
     ;
 
