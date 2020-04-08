@@ -10,10 +10,10 @@ package $package$.$model$.entity;
  */
 public enum $className$State implements java.io.Serializable {
     /***
-     if(statusList!=null && statusList.~size>0){
-     for(status in statusList){
+     if(states!=null && states.~size>0){
+     for(state in states){
      ***/
-    $status.name$("$status.desc"),
+    $state.name$("$state.value$"),
     /***}}***/
     ;
 
