@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * $notes$ 的实体类
@@ -15,6 +17,8 @@ import lombok.experimental.Accessors;
  * @author $author$
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class $className$ implements java.io.Serializable {
