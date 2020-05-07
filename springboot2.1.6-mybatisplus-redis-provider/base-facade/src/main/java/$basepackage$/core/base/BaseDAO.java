@@ -4,6 +4,8 @@ import cn.hutool.core.util.ReflectUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import lombok.extern.slf4j.Slf4j;
@@ -18,11 +20,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 通用DAO接口.
- *
+ * <p>
  * <p>其中的泛型参数E为实体，是一个与表字段一一对应的JavaBean;
- *
+ * <p>
  * <p>PK是主键类型，是一个实现序列化Serializable接口的类型，一般为Long型;
- *
+ * <p>
  * <p>通过继承此DAO可以享有此接口所拥有的操作方法，建议用户所有的DAO都继承此DAO。
  *
  * @author lixin 11-12-12 下午10:37
@@ -96,6 +98,10 @@ public abstract class BaseDAO<E extends Serializable> {
         return this.getBaseMapper().selectOne(queryWrapper);
     }
 
+    public E selectOne(LambdaQueryWrapper<E> queryWrapper) {
+        return this.getBaseMapper().selectOne(queryWrapper);
+    }
+
     /**
      * 分页查询
      *
@@ -134,6 +140,10 @@ public abstract class BaseDAO<E extends Serializable> {
         return this.getBaseMapper().update(e, updateWrapper);
     }
 
+    public int update(E e, LambdaUpdateWrapper<E> updateWrapper) {
+        return this.getBaseMapper().update(e, updateWrapper);
+    }
+
     /**
      * 根据 更新构造器进行更新
      * 设置值如下：
@@ -143,6 +153,10 @@ public abstract class BaseDAO<E extends Serializable> {
      * @param updateWrapper 更新条件构造器
      */
     public int update(UpdateWrapper<E> updateWrapper) {
+        return this.getBaseMapper().update(null, updateWrapper);
+    }
+
+    public int update(LambdaUpdateWrapper<E> updateWrapper) {
         return this.getBaseMapper().update(null, updateWrapper);
     }
 
@@ -185,6 +199,9 @@ public abstract class BaseDAO<E extends Serializable> {
         this.getBaseMapper().delete(deleteWrapper);
     }
 
+    public void delete(LambdaQueryWrapper<E> deleteWrapper) {
+        this.getBaseMapper().delete(deleteWrapper);
+    }
 
     /**
      * 构造 条件
@@ -240,6 +257,7 @@ public abstract class BaseDAO<E extends Serializable> {
 
     /**
      * 转换方法引用为属性名
+     *
      * @param fn
      * @return
      */
