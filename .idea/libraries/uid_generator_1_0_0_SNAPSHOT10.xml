@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="uid-generator-1.0.0-SNAPSHOT10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/springcloud2.1.5-provider-config/${module}/libs/uid-generator-1.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

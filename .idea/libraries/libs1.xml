@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libs1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ssm-dubbo-redis-swagger-lombok-disconf-sentry/libs/uid-generator-1.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ssm-dubbo-redis-swagger-lombok-disconf-sentry/libs/dubbo-2.8.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

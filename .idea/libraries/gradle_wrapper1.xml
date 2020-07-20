@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gradle-wrapper1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/springcloud2.1.5-provider-config/config-server/gradle/wrapper/gradle-wrapper.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ssm-redis-swagger-lombok/libs/uid-generator-1.0.0-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ssm-redis-swagger-lombok/libs/pinyin4j-2.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

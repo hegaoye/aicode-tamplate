@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gradle-wrapper2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/springboot2.1.6-mybatisplus-mongodb-redis-rabbitmq/eureka-server/gradle/wrapper/gradle-wrapper.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

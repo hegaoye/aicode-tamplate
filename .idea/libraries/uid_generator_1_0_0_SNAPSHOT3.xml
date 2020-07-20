@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="uid-generator-1.0.0-SNAPSHOT3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/springboot2.1.6-mybatisplus-mongodb-redis-rabbitmq/$module$/libs/uid-generator-1.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

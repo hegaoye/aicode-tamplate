@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="uid-generator-1.0.0-SNAPSHOT5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/springboot2.1.6-mysql-mongo-redis-rocketmq-dubbo/$module$/libs/uid-generator-1.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
