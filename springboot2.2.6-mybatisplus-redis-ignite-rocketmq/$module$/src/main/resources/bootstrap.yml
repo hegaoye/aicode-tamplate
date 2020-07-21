@@ -1,16 +1,16 @@
 spring:
   application:
-    name: draw-lottery-cache-api
+    name: $projectName$-api
   cloud:
 
     #注册中心配置
     nacos:
       discovery:
-        server-addr: ${REGISTER_HOST:192.168.0.250}:${REGISTER_PORT:8848}
+        server-addr: \${REGISTER_HOST:192.168.0.250}:\${REGISTER_PORT:8848}
         group: DEFAULT_GROUP
         namespace: 4fd50f88-83d5-49c3-9f4e-304d17b2a356
       config:
-        server-addr: ${REGISTER_HOST:192.168.0.250}:${REGISTER_PORT:8848}
+        server-addr: \${REGISTER_HOST:192.168.0.250}:\${REGISTER_PORT:8848}
         group: DEFAULT_GROUP
         name: draw-lottery-cache
         file-extension: yml
