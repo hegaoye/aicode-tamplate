@@ -3,6 +3,7 @@
  */
 package $package$.$model$.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.*;
@@ -31,6 +32,7 @@ public class $className$ implements java.io.Serializable {
      ***/
     @TableId(type = IdType.AUTO)
      /***}***/
+    @ApiModelProperty(value = "$field.notes$")
     private $field.fieldType$ $field.field$;
     /***}***/
 
