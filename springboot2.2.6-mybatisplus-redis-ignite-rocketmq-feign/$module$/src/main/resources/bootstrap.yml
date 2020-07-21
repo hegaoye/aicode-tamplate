@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: draw-lottery-cache-api
+  cloud:
+
+    #注册中心配置
+    nacos:
+      discovery:
+        server-addr: ${REGISTER_HOST:192.168.0.250}:${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        namespace: 4fd50f88-83d5-49c3-9f4e-304d17b2a356
+      config:
+        server-addr: ${REGISTER_HOST:192.168.0.250}:${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        name: draw-lottery-cache
+        file-extension: yml
+        namespace: 4fd50f88-83d5-49c3-9f4e-304d17b2a356
+
+    #消息队列 配置
+    stream:
+      bindings:
+        /***for(class in classes){***/
+        build$class.className$Output:
+          content-type: application/json
+          destination: $class.className$_To
+        /***}***/
+        /***for(class in classes){***/
+        build$class.className$Input:
+          content-type: application/json
+          destination: $class.className$_To
+          group: $class.className$_group
+        /***}***/
+
+      rocketmq:
+        bindings:
+          /***for(class in classes){***/
+          build$class.className$Output:
+            producer:
+              group: $class.className$_group
+          /***}***/
