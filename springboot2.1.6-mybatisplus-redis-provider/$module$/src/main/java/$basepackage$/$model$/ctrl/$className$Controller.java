@@ -129,8 +129,8 @@ public class $className$Controller {
          }
          if(field.checkState){
          ***/
-        if ($classNameLower$VO.get/***field.upper***/() != null) {
-            queryWrapper.lambda().eq($className$::get/***field.upper***/, $classNameLower$VO.get/***field.upper***/());
+        if ($classNameLower$VO.get$field.upper$() != null) {
+            queryWrapper.lambda().eq($className$::get$field.upper$, $classNameLower$VO.get$field.upper$());
         }
         /***}}***/
 
@@ -178,8 +178,8 @@ public class $className$Controller {
          }
          if(field.checkState){
          ***/
-        if ($classNameLower$PageVO.get/***field.upper***/() != null) {
-            queryWrapper.lambda().eq($className$::get/***field.upper***/, $classNameLower$PageVO.get/***field.upper***/());
+        if ($classNameLower$PageVO.get$field.upper$() != null) {
+            queryWrapper.lambda().eq($className$::get$field.upper$, $classNameLower$PageVO.get$field.upper$());
         }
         /***}}***/
         return $classNameLower$Service.count(queryWrapper);
