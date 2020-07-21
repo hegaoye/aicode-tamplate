@@ -1,6 +1,5 @@
 package $package$.config;
 
-import $package$.cache.redis.RedisKeys;
 import $package$.core.annotation.IdempotentLock;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +42,7 @@ public class MqIdempotentAspect {
      * 设置切面切入点
      * 针对所有的MQ消费者进行切入
      */
-    @Pointcut("execution(* com.ds.*.mq.consumer..*(..))")
+    @Pointcut("execution(* $package$.*.mq.consumer..*(..))")
     public void idempotent() {
     }
 
@@ -81,7 +80,7 @@ public class MqIdempotentAspect {
     private String getLock(String key, long timeout, TimeUnit timeUnit) {
         try {
             String value = UUID.randomUUID().toString();
-            key = RedisKeys.Lock.prefix + ":";
+            key = "Lock:";
             String finalKey = key;
             Boolean lockStat = stringRedisTemplate.execute((RedisCallback<Boolean>) connection ->
                     connection.set(finalKey.getBytes(Charset.forName("UTF-8")), value.getBytes(Charset.forName("UTF-8")),
@@ -106,7 +105,7 @@ public class MqIdempotentAspect {
      */
     private void unLock(String key, String value) {
         try {
-            key = RedisKeys.Lock.prefix + ":";
+            key = "Lock:";
             String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
             String finalKey = key;
             boolean unLockStat = stringRedisTemplate.execute((RedisCallback<Boolean>) connection ->
