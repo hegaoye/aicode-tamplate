@@ -3,6 +3,7 @@
  */
 package $package$.$model$.vo;
 
+import io.swagger.annotations.ApiModelProperty;
 import $package$.core.base.BaseVO;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public class $className$PageVO extends BaseVO implements java.io.Serializable {
     /**
      * 数据库字段:$field.column$  属性显示:$field.notes$
      */
+    @ApiModelProperty(value = "$field.notes$")
     private $field.fieldType$ $field.field$;
     /***}***/
 
