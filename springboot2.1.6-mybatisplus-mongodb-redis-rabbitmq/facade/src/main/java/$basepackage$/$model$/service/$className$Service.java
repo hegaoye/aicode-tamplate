@@ -41,7 +41,7 @@ public interface $className$Service extends BaseService<$className$> {
 
     /***
      for(pkField in pkFields){
-     if(pkField.field=="id" && checkState){
+     if(pkField.field=="id" && states!=null && states.~size>0){
      ***/
     /**
      * 根据主键id,oldStates 共同更新 $className$ 的状态到newState状态
@@ -55,7 +55,7 @@ public interface $className$Service extends BaseService<$className$> {
 
     /***
      for(pkField in pkFields){
-       if(pkField.field!="id" && checkState){
+       if(pkField.field!="id" && states!=null && states.~size>0){
     ***/
     /**
      * 根据主键code,oldStates 共同更新 $className$ 的状态到newState状态

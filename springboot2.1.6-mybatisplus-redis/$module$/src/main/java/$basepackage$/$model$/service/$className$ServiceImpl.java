@@ -96,7 +96,7 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
 
     /***
      for(pkField in pkFields){
-       if(pkField.field=="id" && checkState){
+       if(pkField.field=="id" && states!=null && states.~size>0){
      ***/
     /**
      * 根据 id 更新 状态
@@ -119,7 +119,7 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
 
     /***
       for(pkField in pkFields){
-        if(pkField.field!="id" && checkState){
+        if(pkField.field!="id" && states!=null && states.~size>0){
     ***/
     /**
      * 根据主键oldStates 共同更新 $className$ 的状态到newState状态

@@ -9,7 +9,12 @@ package $package$.$model$.entity;
  * @author $author$
  */
 public enum $className$State implements java.io.Serializable {
-    //枚举定义在此
+    /***
+     if(states!=null && states.~size>0){
+     for(state in states){
+     ***/
+    $state.name$("$state.value$"),
+    /***}}***/
     ;
 
     public String val;
