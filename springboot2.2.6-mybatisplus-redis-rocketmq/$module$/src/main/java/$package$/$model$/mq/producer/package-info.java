@@ -1,0 +1,1 @@
+package $package$.$model$.mq.producer;
