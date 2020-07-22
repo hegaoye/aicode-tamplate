@@ -121,12 +121,12 @@ public class $className$DAO extends BaseDAO<$className$> {
      if(states!=null && states.~size>0){
      ***/
     private int updateByPk(UpdateWrapper<$className$> updateWrapper, $className$State newState, $className$State... oldStates) {
-        updateWrapper.lambda().set($className$::getStatus(), newState.name());
+        updateWrapper.lambda().set($className$::getStatus, newState.name());
         if (oldStates != null && oldStates.length > 0) {
             List<String> stateList = Arrays.asList(oldStates).stream()
                     .map($classNameLower$State -> $classNameLower$State.name())
                     .collect(Collectors.toList());
-            updateWrapper.lambda().in($className$::getStatus(), stateList);
+            updateWrapper.lambda().in($className$::getStatus, stateList);
         }
         int updateCount = $classNameLower$Mapper.update(null, updateWrapper);
         return updateCount;
