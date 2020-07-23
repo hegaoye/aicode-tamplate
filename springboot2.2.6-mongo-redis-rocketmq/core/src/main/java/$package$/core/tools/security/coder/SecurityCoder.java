@@ -1,6 +1,6 @@
 package $package$.core.tools.security.coder;
 
-import $package$.core.tools.security.BouncyCastleProvider;
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import java.security.Security;
 
