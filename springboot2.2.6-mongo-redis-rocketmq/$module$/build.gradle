@@ -14,7 +14,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:\${springBootVersion}")
     }
 }
 
@@ -93,8 +93,8 @@ dependencies {
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:\${springCloudVersion}"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:\${springCloudAlibabaVersion}"
 
     }
 }
