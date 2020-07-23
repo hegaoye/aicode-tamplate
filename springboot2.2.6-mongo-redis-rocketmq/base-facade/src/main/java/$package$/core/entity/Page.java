@@ -1,6 +1,5 @@
 package $package$.core.entity;
 
-import $package$.core.tools.StringTools;
 import lombok.Data;
 
 import java.util.ArrayList;
