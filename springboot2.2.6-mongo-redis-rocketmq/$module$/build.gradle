@@ -86,7 +86,6 @@ dependencies {
     implementation project(path: ':core')
     implementation project(path: ':base-facade')
     implementation project(path: ':facade')
-    implementation project(path: ':base-sv')
 //    implementation 'org.springframework.boot:spring-boot-devtools'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
