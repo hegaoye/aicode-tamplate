@@ -12,13 +12,13 @@ import java.io.Serializable;
 public final class R implements Serializable {
     private String info = BaseException.BaseExceptionEnum.Server_Error.msg;
     private Object data = null;
-    private int code = BaseException.BaseExceptionEnum.Server_Error.code;
+    private String code = BaseException.BaseExceptionEnum.Server_Error.code;
 
 
     /**
      * 失败 false  传递 异常枚举对象
      */
-    public static R failed(int code, String msg) {
+    public static R failed(String code, String msg) {
         return new R(code, msg, null);
     }
 
@@ -56,7 +56,7 @@ public final class R implements Serializable {
     private R() {
     }
 
-    private R(int code, String info, Object data) {
+    private R(String code, String info, Object data) {
         this.info = info;
         this.data = data;
         this.code = code;
