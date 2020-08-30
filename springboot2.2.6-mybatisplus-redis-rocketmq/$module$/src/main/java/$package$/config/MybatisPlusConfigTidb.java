@@ -21,7 +21,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.ds.*.dao.mapper", sqlSessionTemplateRef = "tidbSqlSessionTemplate")
+@MapperScan(basePackages = "$package$.*.dao.mapper", sqlSessionTemplateRef = "tidbSqlSessionTemplate")
 public class MybatisPlusConfigTidb {
 
     @Primary

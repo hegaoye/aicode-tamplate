@@ -21,7 +21,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.ds.*.dao.mapper", sqlSessionTemplateRef = "igniteSqlSessionTemplate")
+@MapperScan(basePackages = "$package$.*.dao.mapper", sqlSessionTemplateRef = "igniteSqlSessionTemplate")
 public class MybatisPlusConfigIgnite {
 
     @Primary
