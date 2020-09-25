@@ -72,7 +72,7 @@ public class $className$Controller {
      * @return $className$VO
      */
     @ApiOperation(value = "创建$className$", notes = "创建$className$")
-    @PostMapping("/load/$pkField.field$/{$pkField.field$}")
+    @GetMapping("/load/$pkField.field$/{$pkField.field$}")
     public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
         if ($pkField.field$ == null) {
             return null;
