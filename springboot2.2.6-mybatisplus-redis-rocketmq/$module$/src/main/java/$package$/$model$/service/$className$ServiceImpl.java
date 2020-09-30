@@ -33,7 +33,7 @@ public class $className$ServiceImpl extends ServiceImpl<$className$Mapper, $clas
 
     @Override
     public boolean save($className$ entity) {
-        entity.setId(uidGenerator.getUID());
+        entity.setId(String.valueOf(uidGenerator.getUID()));
         return super.save(entity);
     }
 
