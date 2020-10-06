@@ -105,15 +105,15 @@ public class $className$Controller {
         $className$ $classNameLower$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, $classNameLower$);
         PageVO<$className$PageVO> $classNameLower$PageVO = new PageVO<>();
-        Long total = $classNameLower$Service.count($classNameLower$);
+        Long total = $classNameLower$Service.count(queryWrapper);
+        PageVO<$className$VO> $classNameLower$VOPageVO = new PageVO<>();
         if (total > 0) {
-            List<$className$> $classNameLower$s = $classNameLower$Service.list($classNameLower$, page.genRowStart(), page.getPageSize());
-            page.setTotalRow(total.intValue());
-            page.setRecords($classNameLower$s);
-            BeanUtils.copyProperties(page, $classNameLower$PageVO);
+            List<$className$> $classNameLower$List = $classNameLower$Service.list(queryWrapper, page.genRowStart(), page.getPageSize());
+            $classNameLower$VOPageVO.setTotalRow(total.intValue());
+            $classNameLower$VOPageVO.setRecords(JSON.parseArray(JSON.toJSONString($classNameLower$List),$className$VO.class));
             log.debug(JSON.toJSONString(page));
         }
-        return $classNameLower$PageVO;
+        return $classNameLower$VOPageVO;
     }
 
 

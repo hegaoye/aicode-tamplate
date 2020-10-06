@@ -138,9 +138,8 @@ public class $className$Controller {
         PageVO<$className$VO> $classNameLower$VOPageVO = new PageVO<>();
         if (total > 0) {
             List<$className$> $classNameLower$List = $classNameLower$Service.list(queryWrapper, page.genRowStart(), page.getPageSize());
-            page.setTotalRow(total);
-            page.setRecords($classNameLower$List);
-            BeanUtils.copyProperties(page, $classNameLower$VOPageVO);
+            $classNameLower$VOPageVO.setTotalRow(total);
+            $classNameLower$VOPageVO.setRecords(JSON.parseArray(JSON.toJSONString($classNameLower$List),$className$VO.class));
             log.debug(JSON.toJSONString(page));
         }
         return $classNameLower$VOPageVO;
