@@ -41,10 +41,10 @@
             if(field.checkDate){
             ***/
             <if test="$field.field$Begin!=null">
-                AND $field.column$ >= #{$field.field$+"Begin"}
+                AND $field.column$ >= #{$field.field$Begin}
             </if>
             <if test="$field.field$End!=null">
-                AND $field.column$ &lt;= #{$field.field$+"End"/>}
+                AND $field.column$ &lt;= #{$field.field$End}
             </if>
             /***
             }else if(field.checkState){
