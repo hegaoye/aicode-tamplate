@@ -126,15 +126,15 @@ public class $className$Controller {
         }
         /***}}***/
         int total = $classNameLower$Service.count(queryWrapper);
-        PageVO<$className$VO> betOptionAutoReduceOddsVOPageVO = new PageVO<>();
+        PageVO<$className$VO> $className$VOPageVO = new PageVO<>();
         if (total > 0) {
             List<$className$> $className$List = $classNameLower$Service.list(queryWrapper, page.genRowStart(), page.getPageSize());
             page.setTotalRow(total);
             page.setRecords($className$List);
-            BeanUtils.copyProperties(page, betOptionAutoReduceOddsVOPageVO);
+            BeanUtils.copyProperties(page, $className$VOPageVO);
             log.debug(JSON.toJSONString(page));
         }
-        return betOptionAutoReduceOddsVOPageVO;
+        return $className$VOPageVO;
     }
 
 
