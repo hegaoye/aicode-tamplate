@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * $className$ DAO
  * 数据服务层
  *
- * @author bruce
+ * @author $author$
  */
 @Repository
 public class $className$DAO extends BaseDAO<$className$Mapper, $className$> {

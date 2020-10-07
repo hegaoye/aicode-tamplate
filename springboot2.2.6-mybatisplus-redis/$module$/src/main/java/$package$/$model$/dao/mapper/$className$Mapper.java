@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * $className$ mapper
  * 直接与xml映射
  *
- * @author bruce
+ * @author $author$
  */
 @Repository
 public interface $className$Mapper extends BaseMapper<$className$> {

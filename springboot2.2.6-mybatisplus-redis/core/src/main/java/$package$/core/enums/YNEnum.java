@@ -2,7 +2,7 @@ package $package$.core.enums;
 
 /**
  * true/false 枚举
- * Created by bruce on 2017/6/7.
+ * Created by $author$ on 2017/6/7.
  */
 public enum YNEnum {
     Y(true), N(false);

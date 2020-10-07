@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  * 基本异常类
  *
- * @author bruce 2017-08-03 17:46
+ * @author $author$ 2017-08-03 17:46
  */
 @Slf4j
 public class BaseException extends RuntimeException implements Serializable {

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  * uid api请求熔断器
  *
- * @author bruce
+ * @author $author$
  */
 @FeignClient(name = "uid-api", fallback = UidFallback.class)
 public interface UidClient {

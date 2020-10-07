@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 投注项
  *
- * @author bruce
+ * @author $author$
  */
 public interface $className$Service {
 

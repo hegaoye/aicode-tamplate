@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 /**
- * Created by bruce on 2018/8/13.
+ * Created by $author$ on 2018/8/13.
  */
 @Configuration
 @Slf4j
