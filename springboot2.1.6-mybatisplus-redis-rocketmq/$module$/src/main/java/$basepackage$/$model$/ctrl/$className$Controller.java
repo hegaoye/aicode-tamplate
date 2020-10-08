@@ -119,11 +119,11 @@ public class $className$Controller {
          for(field in fields){
           if(field.checkDate){
          ***/
-        if ($classNameLower$VO.getCreateTimeBegin() != null) {
-            queryWrapper.lambda().gt($className$::getCreateTime, $classNameLower$VO.getCreateTimeBegin());
+        if ($classNameLower$VO.get$field.upper$Begin() != null) {
+            queryWrapper.lambda().gt($className$::get$field.upper$, $classNameLower$VO.get$field.upper$Begin());
         }
-        if ($classNameLower$VO.getCreateTimeEnd() != null) {
-            queryWrapper.lambda().lt($className$::getCreateTime, $classNameLower$VO.getCreateTimeEnd());
+        if ($classNameLower$VO.get$field.upper$End() != null) {
+            queryWrapper.lambda().lt($className$::get$field.upper$, $classNameLower$VO.get$field.upper$End());
         }
         /***
          }
