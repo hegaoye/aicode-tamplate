@@ -149,7 +149,7 @@ public class $className$Controller {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
         boolean isUpdated = $classNameLower$Service.update(new$className$, new LambdaQueryWrapper<$className$>()
-                .eq($className$::getId, new$className$.getId()));
+                .eq($className$::getId, $classNameLower$VO.getId()));
         return isUpdated;
     }
 
