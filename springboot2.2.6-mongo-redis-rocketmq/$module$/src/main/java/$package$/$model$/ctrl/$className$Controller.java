@@ -29,7 +29,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/$classNameLower$")
 @Slf4j
-@Api(value = "$notes$控制器", description = "$notes$控制器")
+@Api(value = "$notes$控制器", tags = "$notes$控制器")
 public class $className$Controller {
     @Autowired
     private $className$Service $classNameLower$Service;
