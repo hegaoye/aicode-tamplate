@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
 
 spring:
   output:
@@ -10,9 +10,9 @@ spring:
   datasource:
     tidb:
       name: mysql-data
-      url: jdbc:mysql://192.168.0.250:3306/player?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
-      username: root
-      password: 888888
+      url: jdbc:mysql://{host}/{database}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
+      username: {username}
+      password: {password}
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
       initialSize: 10 #初始化连接数量，最大最小连接数
@@ -34,8 +34,8 @@ spring:
     uid:
       name: uid-data
       url: jdbc:mysql://192.168.0.250:4000/sso?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
-      username: root
-      password: 888888
+      username: {username}
+      password: {password}
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
       initialSize: 10 #初始化连接数量，最大最小连接数

@@ -13,7 +13,7 @@ spring:
   datasource:
      name: mysql-data
      url: jdbc:mysql://192.168.1.220:3306/${projectName}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
-     username: root
+     username: {username}
      password: mysqladmin
      driver-class-name: com.mysql.cj.jdbc.Driver
      type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源

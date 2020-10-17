@@ -8,7 +8,7 @@ spring:
         enabled: true
         service-id: pps-cloud-config
       fail-fast: true
-#      username: root
+#      username: {username}
 #      password: booszy
       profile: test
 

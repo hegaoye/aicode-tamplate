@@ -21,7 +21,7 @@ spring:
     allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://192.168.10.110:3306/i18n?useUnicode=true&characterEncoding=utf-8&characterSetResults=utf8&zeroDateTimeBehavior=exception&allowMultiQueries=true&serverTimezone=Asia/Shanghai
-    username: root
+    username: {username}
     password: mysqladmin
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource # 要使用的连接池实现的完全限定名称。默认情况下，它是从类路径自动检测的。
