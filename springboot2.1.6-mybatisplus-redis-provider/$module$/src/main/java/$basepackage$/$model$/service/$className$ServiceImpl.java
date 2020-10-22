@@ -48,12 +48,6 @@ public class $className$ServiceImpl extends BaseServiceImpl<$className$> impleme
     @Override
     public $className$ save($className$ $classNameLower$) {
 //        $classNameLower$.setCode(String.valueOf(uidGenerator.getUID()));
-        /***
-        for(field in fields){
-            if(field.checkDate){
-        ***/
-        $classNameLower$.set$field.upper$(new Date());
-        /***}}***/
         return super.save($classNameLower$);
     }
 
