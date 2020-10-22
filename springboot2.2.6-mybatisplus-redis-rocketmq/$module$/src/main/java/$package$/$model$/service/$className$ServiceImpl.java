@@ -35,12 +35,6 @@ public class $className$ServiceImpl extends ServiceImpl<$className$Mapper, $clas
     @Override
     public boolean save($className$ entity) {
 //        entity.setId(String.valueOf(uidGenerator.getUID()));
-        /***
-         for(field in fields){
-         if(field.checkDate){
-         ***/
-        entity.set$field.upper(new Date());
-        /***}}***/
         return super.save(entity);
     }
 
