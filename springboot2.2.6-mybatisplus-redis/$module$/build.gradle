@@ -41,7 +41,7 @@ repositories {
 
 ext {
     set('springCloudVersion', 'Hoxton.SR2')
-    set('springCloudAlibabaVersion', '2.2.0.RELEASE')
+    set('springCloudAlibabaVersion', '2.2.1.RELEASE')
 
 }
 dependencies {
