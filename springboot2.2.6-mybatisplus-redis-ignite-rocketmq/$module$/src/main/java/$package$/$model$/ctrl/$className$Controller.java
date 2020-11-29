@@ -105,7 +105,6 @@ public class $className$Controller {
     })
     @GetMapping(value = "/list")
     public PageVO<$className$VO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
-        Page<$className$> page = new Page<>(pageSize, curPage);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         /***
          for(field in fields){
@@ -126,14 +125,14 @@ public class $className$Controller {
         }
         /***}}***/
         int total = $classNameLower$Service.count(queryWrapper);
-        PageVO<$className$VO> $classNameLower$VOPageVO = new PageVO<>();
+        Page<$className$> page = new Page<>(pageSize, curPage);
         if (total > 0) {
             List<$className$> $classNameLower$List = $classNameLower$Service.list(queryWrapper, page.genRowStart(), page.getPageSize());
-            $classNameLower$VOPageVO.setTotalRow(total);
-            $classNameLower$VOPageVO.setRecords(JSON.parseArray(JSON.toJSONString($classNameLower$List),$className$VO.class));
+            page.setTotalRow(total);
+            page.setRecords($classNameLower$List);
             log.debug(JSON.toJSONString(page));
         }
-        return $classNameLower$VOPageVO;
+        return JSON.parseObject(JSON.toJSONString(page),PageVO.class);
     }
 
 

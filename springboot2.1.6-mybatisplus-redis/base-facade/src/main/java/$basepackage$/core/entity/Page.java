@@ -32,7 +32,7 @@ public final class Page<E> implements java.io.Serializable {
     /**
      * 总记录行数
      */
-    private int totalRow = 0;
+    private long totalRow = 0;
     /**
      * 当前页，当传递到后台时候，就是要获取的页
      */
@@ -178,7 +178,8 @@ public final class Page<E> implements java.io.Serializable {
      * @return 总页数
      */
     public int getTotalPage() {
-        return totalRow <= pageSize ? 1 : (totalRow + pageSize - 1) / pageSize;
+        Long totalPage = totalRow <= pageSize ? 1 : (totalRow + pageSize - 1) / pageSize;
+        return totalPage.intValue();
     }
 
     /**
