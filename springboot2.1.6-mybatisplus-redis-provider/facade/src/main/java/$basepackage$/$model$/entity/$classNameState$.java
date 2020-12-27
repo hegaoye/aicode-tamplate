@@ -8,7 +8,7 @@ package $package$.$model$.entity;
  *
  * @author $author$
  */
-public enum $className$State implements java.io.Serializable {
+public enum $classNameState$ implements java.io.Serializable {
     /***
      if(states!=null && states.~size>0){
      for(state in states){
@@ -19,7 +19,7 @@ public enum $className$State implements java.io.Serializable {
 
     public String val;
 
-    $className$State(String val) {
+    $classNameState$(String val) {
         this.val = val;
     }
 
@@ -29,10 +29,10 @@ public enum $className$State implements java.io.Serializable {
      * @param stateName
      * @return
      */
-    public static $className$State getEnum(String stateName) {
-        for ($className$State $classNameLower$State : $className$State.values()) {
-            if ($classNameLower$State.name().equalsIgnoreCase(stateName)) {
-                return $classNameLower$State;
+    public static $classNameState$ getEnum(String stateName) {
+        for ($classNameState$ enumName : $classNameState$.values()) {
+            if (enumName.name().equalsIgnoreCase(stateName)) {
+                return enumName;
             }
         }
         return null;
