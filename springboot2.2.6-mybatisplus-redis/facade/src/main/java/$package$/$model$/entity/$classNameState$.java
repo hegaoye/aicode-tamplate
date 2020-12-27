@@ -19,7 +19,7 @@ public enum $classNameState$ implements java.io.Serializable {
 
     public String val;
 
-    $className$State(String val) {
+    $classNameState$(String val) {
         this.val = val;
     }
 
@@ -29,10 +29,10 @@ public enum $classNameState$ implements java.io.Serializable {
      * @param stateName
      * @return
      */
-    public static $className$State getEnum(String stateName) {
-        for ($className$State $classNameLower$State : $className$State.values()) {
-            if ($classNameLower$State.name().equalsIgnoreCase(stateName)) {
-                return $classNameLower$State;
+    public static $classNameState$ getEnum(String stateName) {
+        for ($classNameState$ enumName : $classNameState$.values()) {
+            if (enumName.name().equalsIgnoreCase(stateName)) {
+                return enumName;
             }
         }
         return null;
