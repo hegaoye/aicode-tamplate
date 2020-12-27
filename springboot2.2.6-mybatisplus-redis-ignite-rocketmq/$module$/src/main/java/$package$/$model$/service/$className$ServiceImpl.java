@@ -12,6 +12,8 @@ import $package$.$model$.entity.$className$;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 import java.util.Date;
@@ -32,6 +34,7 @@ public class $className$ServiceImpl extends ServiceImpl<$className$Mapper, $clas
     @Autowired
     private UidGenerator uidGenerator;
 
+    @Transactional
     @Override
     public boolean save($className$ entity) {
 //        entity.setId(String.valueOf(uidGenerator.getUID()));
