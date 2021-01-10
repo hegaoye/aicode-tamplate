@@ -1,0 +1,6 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Май–ъ€€€€
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ОЗЊ®€€€€€
+Й
+java:S1598"нThis file "TransactionalAopConfig.java" should be located in "$package$/config" directory, not in "/Users/hello50/IdeaProjects/aicode-tamplate/springboot2.1.6-mysql-mongo-redis-rocketmq-dubbo/$module$/src/main/java/$basepackage$/config".(Май–ъ€€€€

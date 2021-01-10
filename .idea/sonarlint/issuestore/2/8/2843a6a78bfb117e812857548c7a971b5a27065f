@@ -1,0 +1,4 @@
+
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(çÔö+
+ü
+java:S1598"æThis file "CacheEnum.java" should be located in "$package$/core/annotation" directory, not in "/Users/hello50/IdeaProjects/aicode-tamplate/springboot2.2.6-mybatisplus-redis-ignite-rocketmq/core/src/main/java/$package$/core/enums".(çÔö+

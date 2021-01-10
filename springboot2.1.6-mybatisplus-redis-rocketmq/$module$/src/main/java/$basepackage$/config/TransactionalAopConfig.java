@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * 全局事务管理器
- * @author bruce
+ * @author $author$
  * @date 2020/12/27 6:37 下午
  */
 @Aspect

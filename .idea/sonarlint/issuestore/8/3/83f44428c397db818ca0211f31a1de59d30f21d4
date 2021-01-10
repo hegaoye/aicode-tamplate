@@ -1,0 +1,9 @@
+
+è
+java:S1598"˘This file "$className$ServiceImpl.java" should be located in "$package$/$model$/service" directory, not in "/Users/hello50/IdeaProjects/aicode-tamplate/springboot2.1.6-mybatisplus-redis-provider/$module$/src/main/java/$basepackage$/$model$/service".(¨ÃÜ
+V	java:S125("<This block of commented-out lines of code should be removed.(´·ÉÂ˘ˇˇˇˇ
+a	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(„Ì¯1
+x	java:S116 "^Rename this field "$classNameLower$DAO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ﬁ‰Îú¯ˇˇˇˇ
+A
+java:S1128"+Remove this unused import 'java.util.Date'.(∏Öº¸
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¨ÃÜ

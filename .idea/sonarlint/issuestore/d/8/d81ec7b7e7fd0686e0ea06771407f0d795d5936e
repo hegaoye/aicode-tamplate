@@ -1,0 +1,4 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Май–ъ€€€€
+э
+java:S1598"бThis file "EnumCommand.java" should be located in "$package$/config" directory, not in "/Users/hello50/IdeaProjects/aicode-tamplate/springboot2.1.6-mybatisplus-mongodb-redis-kafka/$module$/src/main/java/$basepackage$/config".(Май–ъ€€€€

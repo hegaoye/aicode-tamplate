@@ -1,0 +1,9 @@
+
+A
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü
+x	java:S116 "^Rename this field "$classNameLower$DAO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Þäëœøÿÿÿÿ
+†
+java:S1598"ðThis file "$className$ServiceImpl.java" should be located in "$package$/$model$/service" directory, not in "/Users/hello50/IdeaProjects/aicode-tamplate/springboot2.1.6-mybatisplus-redis/$module$/src/main/java/$basepackage$/$model$/service".(¬Ì†
+V	java:S125("<This block of commented-out lines of code should be removed.(«áƒåùÿÿÿÿ
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬Ì†
+a	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ãíø1

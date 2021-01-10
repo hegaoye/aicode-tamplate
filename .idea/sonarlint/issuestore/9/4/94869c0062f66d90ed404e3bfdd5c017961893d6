@@ -1,0 +1,11 @@
+
+`	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(¢Ç€Èüÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ŒàéÐúÿÿÿÿ
+]
+java:S22599"GA "NullPointerException" could be thrown; "getValue()" can return null.(áÎ®©
+]
+java:S5361"HReplace this call to "replaceAll()" by a call to the "replace()" method.(½œ¡X
+]
+java:S5361"HReplace this call to "replaceAll()" by a call to the "replace()" method.(½œ¡X
+H
+java:S11358"2Complete the task associated to this TODO comment.(Ú¬¶°

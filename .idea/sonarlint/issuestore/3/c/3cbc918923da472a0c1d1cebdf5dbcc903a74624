@@ -1,0 +1,11 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(³£÷Ø
+ú
+java:S1598"ãThis file "Gender.java" should be located in "$package$/core/enums" directory, not in "/Users/hello50/IdeaProjects/aicode-tamplate/springboot2.1.6-mybatisplus-mongodb-redis-rabbitmq/core/src/main/java/$basepackage$/core/enums".(³£÷Ø
+j
+java:S1104"OMake val a static final constant or non-public and provide accessors if needed.(ªÉ´ıÿÿÿÿ
+>
+java:S3066"#Lower the visibility of this field.(ªÉ´ıÿÿÿÿ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÿáË ÿÿÿÿÿ
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÅÊÏÙ
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(´¬ß³ùÿÿÿÿ

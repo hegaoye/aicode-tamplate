@@ -1,0 +1,5 @@
+{
+  "name": "springboot2.2.6-mybatisplus-redis-gateway",
+  "desc": "整合springboot2.2.6,以及cloud组件feign,mybatisplus,redis,gateway,mysql",
+  "engine": "Beetl"
+}
