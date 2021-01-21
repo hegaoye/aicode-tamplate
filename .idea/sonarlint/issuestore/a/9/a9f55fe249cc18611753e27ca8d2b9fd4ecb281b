@@ -1,7 +1,7 @@
 
-V	java:S125("<This block of commented-out lines of code should be removed.(«áƒåùÿÿÿÿ
 x	java:S116 "^Rename this field "$classNameLower$DAO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Şäëœøÿÿÿÿ
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬Ì†
 A
 java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü
 a	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ãíø1
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬Ì†
+V	java:S125("<This block of commented-out lines of code should be removed.(«áƒåùÿÿÿÿ

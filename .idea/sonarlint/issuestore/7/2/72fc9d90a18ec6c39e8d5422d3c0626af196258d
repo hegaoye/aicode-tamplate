@@ -1,14 +1,14 @@
 
-k	java:S117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èµ¤÷üÿÿÿÿ
+k	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À®†úÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(÷ïó—ùÿÿÿÿ
+k	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ˜Äæúÿÿÿÿ
+s	java:S116"^Rename this field "$classNameLower$DAO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾òôü
 ‚
 java:S14885"gImmediately return this expression instead of assigning it to the temporary variable "$className$Load".(Ë¯•¡ıÿÿÿÿ
+k	java:S117f"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Èµ¤÷üÿÿÿÿ
+f	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ÑÀø
+n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬Ì†
+k	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë¯•¡ıÿÿÿÿ
 k
 java:S11920"PDefine a constant instead of duplicating this literal "$pkField.field$" 3 times.(­Ş¸Úúÿÿÿÿ
-n	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬Ì†
-g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(÷ïó—ùÿÿÿÿ
 f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(éûšö
-k	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Æ˜Äæúÿÿÿÿ
-k	java:S1175"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë¯•¡ıÿÿÿÿ
-k	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(À®†úÿÿÿÿ
-s	java:S116"^Rename this field "$classNameLower$DAO" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾òôü
-f	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ÑÀø
