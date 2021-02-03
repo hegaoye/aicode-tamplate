@@ -95,8 +95,6 @@ hspringboot2.2.6-mongo-redis-rocketmq/$module$/src/main/java/$package$/config/Tr
 [springboot2.2.6-mongo-redis-rocketmq/core/src/main/java/$package$/core/enums/CacheEnum.java,4/9/49cc6ec5185b6e0e0d6fe8b5e65fdbd762d418b9
 ê
 `springboot2.2.6-mongo-redis-rocketmq/core/src/main/java/$package$/core/enums/IdempotentLock.java,b/a/bae4e105bb0f90ebd2b3a4bd79b9048bbba3c356
-à
-Xspringboot2.2.6-mongo-redis-rocketmq/core/src/main/java/$package$/core/enums/Ignore.java,e/d/edfcffdf2d051c81a4f5b8a9cc780ac303b58036
 û
 nspringboot2.2.6-mybatisplus-redis/$module$/src/main/java/$package$/$model$/service/$className$ServiceImpl.java,a/9/a9f55fe249cc18611753e27ca8d2b9fd4ecb281b
 ä
@@ -105,10 +103,6 @@ Zspringboot2.2.6-mybatisplus-redis/$module$/src/main/java/$package$/config/EnumC
 espringboot2.2.6-mybatisplus-redis/$module$/src/main/java/$package$/config/TransactionalAopConfig.java,6/d/6d23f9f39295f5d13c448a99be3ab829d2f63b5d
 à
 Xspringboot2.2.6-mybatisplus-redis/core/src/main/java/$package$/core/enums/CacheEnum.java,6/1/61eca7a219e6883d145735edc6c8155c34764e7c
-ç
-]springboot2.2.6-mybatisplus-redis/core/src/main/java/$package$/core/enums/IdempotentLock.java,d/e/deca0272eebd8aadf273ce2d6b8ede9288146696
-Ö
-Uspringboot2.2.6-mybatisplus-redis/core/src/main/java/$package$/core/enums/Ignore.java,7/8/78b95b48feff1d7d8ad582fe3a04cf18fd7d16a1
 Æ
 ~springboot2.2.6-mybatisplus-redis-ignite-rocketmq/$module$/src/main/java/$package$/$model$/service/$className$ServiceImpl.java,e/c/ecde4d081047f12d03f69e2e351621c108843282
 ö
@@ -129,10 +123,6 @@ cspringboot2.2.6-mybatisplus-redis-rocketmq/$module$/src/main/java/$package$/con
 nspringboot2.2.6-mybatisplus-redis-rocketmq/$module$/src/main/java/$package$/config/TransactionalAopConfig.java,5/4/54d9c0791422ca03743321d5e15c0a1a71269cfb
 ë
 aspringboot2.2.6-mybatisplus-redis-rocketmq/core/src/main/java/$package$/core/enums/CacheEnum.java,2/c/2c11d248b5a2bc6e84171991a29766e703c57f69
-ñ
-fspringboot2.2.6-mybatisplus-redis-rocketmq/core/src/main/java/$package$/core/enums/IdempotentLock.java,9/4/9477be0ff08861e868275588e6e36dfef7d1b709
-é
-^springboot2.2.6-mybatisplus-redis-rocketmq/core/src/main/java/$package$/core/enums/Ignore.java,8/f/8fd3f504bdd67a2dde3777a2f62435694f582870
 É
 Sspringboot2.2.6-mybatisplus-redis/$module$/src/main/java/$package$/Application.java,2/7/272e71b2021d79c4d5c26059ab739f6e281f41c1
 ç
@@ -335,3 +325,5 @@ e
 wspringboot2.2.6-mybatisplus-redis-gateway/$module$-gateway/src/main/java/$package$/config/filter/ResponseDecorator.java,9/8/98f94693460059b91ddc11988b6786754d5373e6
 †
 pspringboot2.2.6-mybatisplus-redis-gateway/$module$-gateway/src/main/java/$package$/config/FeignErrorDecoder.java,7/b/7bfe161a2e7249b3c7048861b7bb7c44391225d2
+ç
+]springboot2.2.6-mongo-redis-rocketmq/core/src/main/java/$package$/core/annotation/Ignore.java,1/a/1a357f5a0637b65e433e14ce5bee0c64a6f6b717
