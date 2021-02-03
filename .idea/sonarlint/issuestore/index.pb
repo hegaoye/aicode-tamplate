@@ -331,3 +331,7 @@ i
 9springboot2.2.6-mybatisplus-redis-gateway/settings.gradle,f/1/f1d4565ec1e3d5631772381ec4a252fbdfc367b0
 e
 5springboot2.2.6-mybatisplus-redis-gateway/aicode.json,b/3/b328b62fa509e960e3f5b39617bdcf1a9c6dfe13
+§
+wspringboot2.2.6-mybatisplus-redis-gateway/$module$-gateway/src/main/java/$package$/config/filter/ResponseDecorator.java,9/8/98f94693460059b91ddc11988b6786754d5373e6
+ 
+pspringboot2.2.6-mybatisplus-redis-gateway/$module$-gateway/src/main/java/$package$/config/FeignErrorDecoder.java,7/b/7bfe161a2e7249b3c7048861b7bb7c44391225d2
