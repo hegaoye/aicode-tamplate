@@ -140,7 +140,7 @@ public class $className$Controller {
          }
          if(field.checkState){
          ***/
-        if (StringUtils.isNotBlank($classNameLower$VO.get$pkField.upper$())) {
+        if (StringUtils.isNotBlank($classNameLower$VO.get$field.upper$())) {
             queryWrapper.lambda().eq($className$::get$field.upper$, $classNameLower$VO.get$field.upper$());
         }
         /***}}***/

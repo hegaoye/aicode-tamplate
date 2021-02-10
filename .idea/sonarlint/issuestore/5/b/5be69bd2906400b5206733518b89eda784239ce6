@@ -1,8 +1,8 @@
 
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(³£÷Ø
-9
-java:S3066
-"#Lower the visibility of this field.(çªÆà
 g
 java:S1104
 "QMake value a static final constant or non-public and provide accessors if needed.(çªÆà
+9
+java:S3066
+"#Lower the visibility of this field.(çªÆà
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(³£÷Ø
