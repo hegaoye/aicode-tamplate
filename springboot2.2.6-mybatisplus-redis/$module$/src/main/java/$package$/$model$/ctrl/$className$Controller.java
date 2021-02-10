@@ -50,21 +50,18 @@ public class $className$Controller {
     public $className$SaveVO build(@ApiParam(name = "创建$className$", value = "传入json格式", required = true)
                                    @RequestBody $className$SaveVO $classNameLower$SaveVO) {
         /***
-         for(pkField in pkFields){
-         if(pkField.field!="id"){
+         for(field in fields){
          ***/
-        if (StringUtils.isBlank($classNameLower$SaveVO.get$pkField.upper$())) {
+        if (StringUtils.isBlank($classNameLower$SaveVO.get$field.upper$())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Empty_Param);
         }
-        /***}}***/
+        /***}***/
 
         int count = $classNameLower$Service.count(new LambdaQueryWrapper<$className$>()
                 /***
-                 for(pkField in pkFields){
-                 if(pkField.field!="id"){
+                 for(field in fields){
                  ***/
-                .eq($className$::get$pkField.upper$, $className$SaveVO.get$pkField.upper$())
-        /***}}***/);
+                .eq($className$::get$pkField.upper$, $className$SaveVO.get$pkField.upper$())/***}***/);
         if (count > 0) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Exists);
         }
