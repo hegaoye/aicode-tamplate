@@ -61,7 +61,7 @@ public class $className$Controller {
                 /***
                  for(field in fields){
                  ***/
-                .eq($className$::get$pkField.upper$, $className$SaveVO.get$pkField.upper$())/***}***/);
+                .eq($className$::get$field.upper$, $className$SaveVO.get$field.upper$())/***}***/);
         if (count > 0) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Exists);
         }
