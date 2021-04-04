@@ -10,7 +10,7 @@ public class BaseVO implements java.io.Serializable {
 
     private static final long serialVersionUID = -7200095849148417467L;
 
-    protected Long id;
+//    protected Long id;
     /**
      * 创建时间 yyyy-MM-dd HH:mm:ss
      */
