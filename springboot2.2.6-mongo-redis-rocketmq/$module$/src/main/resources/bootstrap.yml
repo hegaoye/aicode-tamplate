@@ -12,7 +12,7 @@ spring:
       config:
         server-addr: \${REGISTER_HOST:192.168.0.250}:\${REGISTER_PORT:8848}
         group: DEFAULT_GROUP
-        name: draw-lottery-cache
+        name: $projectName$
         file-extension: yml
         namespace: 4fd50f88-83d5-49c3-9f4e-304d17b2a356
 

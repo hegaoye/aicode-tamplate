@@ -122,8 +122,8 @@ public class $className$Controller {
             /***}}***/
     })
     @GetMapping(value = "/list")
-    public Page<$className$PageVO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
-        IPage<$className$PageVO> page = new Page<>(curPage, pageSize);
+    public IPage<$className$PageVO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
+        IPage<$className$> page = new Page<>(curPage, pageSize);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         /***
          for(field in fields){

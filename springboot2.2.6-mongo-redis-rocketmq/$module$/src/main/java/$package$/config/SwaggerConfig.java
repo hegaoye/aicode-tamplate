@@ -24,7 +24,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ds")) // controller路径
+                .apis(RequestHandlerSelectors.basePackage("$package$")) // controller路径
                 .paths(PathSelectors.any())
                 .build()
                 .ignoredParameterTypes(ApiIgnore.class);

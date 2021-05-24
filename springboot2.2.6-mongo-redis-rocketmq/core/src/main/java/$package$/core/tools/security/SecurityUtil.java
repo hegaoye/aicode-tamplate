@@ -1,7 +1,7 @@
 package $package$.core.tools.security;
 
 import $package$.core.tools.security.coder.*;
-import com.ds.core.tools.security.coder.*;
+import $package$.core.tools.security.coder.*;
 
 import java.util.Map;
 
