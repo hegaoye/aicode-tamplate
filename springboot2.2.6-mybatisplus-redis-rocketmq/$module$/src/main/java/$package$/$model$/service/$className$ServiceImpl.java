@@ -41,18 +41,6 @@ public class $className$ServiceImpl extends ServiceImpl<$className$Mapper, $clas
         return super.save(entity);
     }
 
-    /**
-     * 分页查询 投注项水位
-     *
-     * @param queryWrapper 查询条件
-     * @param offset       起始行
-     * @param limit        步长
-     * @return List<$className$>
-     */
-    @Override
-    public List<$className$> list(QueryWrapper<$className$> queryWrapper, int offset, int limit) {
-        return $classNameLower$DAO.list(queryWrapper, offset, limit);
-    }
 }
 
 

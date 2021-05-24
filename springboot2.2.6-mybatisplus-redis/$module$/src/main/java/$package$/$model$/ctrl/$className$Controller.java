@@ -10,7 +10,8 @@ import $package$.$model$.vo.$className$SaveVO;
 import $package$.$model$.vo.$className$VO;
 import $package$.exceptions.$className$Exception;
 import $package$.core.entity.BaseException;
-import $package$.core.entity.Page;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import $package$.core.entity.PageVO;
 import $package$.core.entity.R;
 import com.alibaba.fastjson.JSON;
@@ -122,7 +123,7 @@ public class $className$Controller {
     })
     @GetMapping(value = "/list")
     public Page<$className$PageVO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
-        Page<$className$PageVO> page = new Page<>(pageSize, curPage);
+        IPage<$className$PageVO> page = new Page<>(curPage, pageSize);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         /***
          for(field in fields){
@@ -146,13 +147,18 @@ public class $className$Controller {
         if (total > 0) {
             queryWrapper.lambda().orderByDesc($className$::getId);
 
-            List<$className$> $classNameLower$List = $classNameLower$Service.list(queryWrapper, page.genRowStart(), page.getPageSize());
-            List<$className$PageVO> $classNameLower$PageVOList = JSON.parseArray(JSON.toJSONString($classNameLower$List), $className$PageVO.class);
-            page.setTotalRow(total);
-            page.setRecords($classNameLower$PageVOList);
+            IPage<$className$> $classNameLower$Page = $classNameLower$Service.page(page,queryWrapper);
+            List<$className$PageVO> $classNameLower$PageVOList = JSON.parseArray(JSON.toJSONString($classNameLower$Page.getRecords()), $className$PageVO.class);
+            IPage<$className$PageVO> iPage = new Page<>();
+            iPage.setPages(orderIPage.getPages());
+            iPage.setCurrent(curPage);
+            iPage.setSize(pageSize);
+            iPage.setTotal(orderIPage.getTotal());
+            iPage.setRecords(JSON.parseArray(JSON.toJSONString($classNameLower$PageVOList), $className$PageVO.class));
+            return iPage;
             log.debug(JSON.toJSONString(page));
         }
-        return page;
+        return new Page<>();
     }
 
 

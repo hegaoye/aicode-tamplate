@@ -8,7 +8,10 @@ import $package$.$model$.service.$className$Service;
 import $package$.$model$.vo.$className$PageVO;
 import $package$.$model$.vo.$className$SaveVO;
 import $package$.$model$.vo.$className$VO;
-import $package$.core.entity.Page;
+import $package$.exceptions.$className$Exception;
+import $package$.core.entity.BaseException;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import $package$.core.entity.PageVO;
 import $package$.core.entity.R;
 import com.alibaba.fastjson.JSON;
@@ -16,6 +19,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,9 +50,24 @@ public class $className$Controller {
     @PostMapping("/build")
     public $className$SaveVO build(@ApiParam(name = "创建$className$", value = "传入json格式", required = true)
                                    @RequestBody $className$SaveVO $classNameLower$SaveVO) {
-        if (null == $classNameLower$SaveVO) {
-            return null;
+        /***
+         for(field in fields){
+         ***/
+        if (StringUtils.isBlank($classNameLower$SaveVO.get$field.upper$())) {
+            throw new $className$Exception(BaseException.BaseExceptionEnum.Empty_Param);
         }
+        /***}***/
+
+        int count = $classNameLower$Service.count(new LambdaQueryWrapper<$className$>()
+                /***
+                 for(field in fields){
+                 ***/
+                .eq($className$::get$field.upper$, $classNameLower$SaveVO.get$field.upper$())
+        /***}***/);
+        if (count > 0) {
+            throw new $className$Exception(BaseException.BaseExceptionEnum.Exists);
+        }
+
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$SaveVO, new$className$);
 
@@ -73,10 +92,9 @@ public class $className$Controller {
      */
     @ApiOperation(value = "创建$className$", notes = "创建$className$")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
-    public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
-        if ($pkField.field$ == null) {
-            return null;
-        }
+    public $className$VO loadBy$pkField.
+
+    upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
         $className$ $classNameLower$ = $classNameLower$Service.getOne(new LambdaQueryWrapper<$className$>()
                 .eq($className$::get$pkField.upper$, $pkField.field$));
         $className$VO $classNameLower$VO = new $className$VO();
@@ -104,7 +122,8 @@ public class $className$Controller {
             /***}}***/
     })
     @GetMapping(value = "/list")
-    public PageVO<$className$VO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
+    public Page<$className$PageVO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
+        IPage<$className$PageVO> page = new Page<>(curPage, pageSize);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         /***
          for(field in fields){
@@ -120,19 +139,26 @@ public class $className$Controller {
          }
          if(field.checkState){
          ***/
-        if ($classNameLower$VO.get$field.upper$() != null) {
+        if (StringUtils.isNotBlank($classNameLower$VO.get$field.upper$())) {
             queryWrapper.lambda().eq($className$::get$field.upper$, $classNameLower$VO.get$field.upper$());
         }
         /***}}***/
         int total = $classNameLower$Service.count(queryWrapper);
-        Page<$className$> page = new Page<>(pageSize, curPage);
         if (total > 0) {
-            List<$className$> $classNameLower$List = $classNameLower$Service.list(queryWrapper, page.genRowStart(), page.getPageSize());
-            page.setTotalRow(total);
-            page.setRecords($classNameLower$List);
+            queryWrapper.lambda().orderByDesc($className$::getId);
+
+            IPage<$className$> $classNameLower$Page = $classNameLower$Service.page(page,queryWrapper);
+            List<$className$PageVO> $classNameLower$PageVOList = JSON.parseArray(JSON.toJSONString($classNameLower$Page.getRecords()), $className$PageVO.class);
+            IPage<$className$PageVO> iPage = new Page<>();
+            iPage.setPages(orderIPage.getPages());
+            iPage.setCurrent(curPage);
+            iPage.setSize(pageSize);
+            iPage.setTotal(orderIPage.getTotal());
+            iPage.setRecords(JSON.parseArray(JSON.toJSONString($classNameLower$PageVOList), $className$PageVO.class));
+            return iPage;
             log.debug(JSON.toJSONString(page));
         }
-        return JSON.parseObject(JSON.toJSONString(page),PageVO.class);
+        return new Page<>();
     }
 
 
@@ -145,6 +171,9 @@ public class $className$Controller {
     @PutMapping("/modify")
     public boolean modify(@ApiParam(name = "修改$className$", value = "传入json格式", required = true)
                           @RequestBody $className$VO $classNameLower$VO) {
+        if (StringUtils.isBlank($classNameLower$VO.getId())) {
+            throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+        }
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
         boolean isUpdated = $classNameLower$Service.update(new$className$, new LambdaQueryWrapper<$className$>()
@@ -168,6 +197,9 @@ public class $className$Controller {
     })
     @DeleteMapping("/delete")
     public R delete(@ApiIgnore $className$VO $classNameLower$VO) {
+        if (StringUtils.isBlank($classNameLower$VO.getId())) {
+            throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+        }
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
         $classNameLower$Service.remove(new LambdaQueryWrapper<$className$>()
