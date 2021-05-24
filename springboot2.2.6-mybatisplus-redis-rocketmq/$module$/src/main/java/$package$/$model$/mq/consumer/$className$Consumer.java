@@ -27,7 +27,7 @@ public class $className$Consumer {
      * @param $classNameLower$Message 玩家彩票id集合
      */
     @StreamListener($className$Sink.build$className$Input)
-    public void autoReduceOddsInput(@Payload $className$Message $classNameLower$Message) {
+    public void build$className$Input(@Payload $className$Message $classNameLower$Message) {
         log.info("{}", $classNameLower$Message);
         try {
             $className$ $classNameLower$ = new $className$();
