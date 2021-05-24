@@ -154,9 +154,9 @@ public class $className$Controller {
             iPage.setCurrent(curPage);
             iPage.setSize(pageSize);
             iPage.setTotal(orderIPage.getTotal());
-            iPage.setRecords(JSON.parseArray(JSON.toJSONString($classNameLower$PageVOList), $className$PageVO.class));
+            iPage.setRecords($classNameLower$PageVOList);
+            log.debug(JSON.toJSONString(iPage));
             return iPage;
-            log.debug(JSON.toJSONString(page));
         }
         return new Page<>();
     }
