@@ -6,7 +6,7 @@ package $package$.gatewayroute.ctrl;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import $package$.exceptions.GateWayRouteException;
+import $package$.core.exceptions.GateWayRouteException;
 import $package$.gatewayroute.entity.GateWayRoute;
 import $package$.gatewayroute.service.GateWayRouteService;
 import $package$.gatewayroute.vo.GateWayRoutePageVO;

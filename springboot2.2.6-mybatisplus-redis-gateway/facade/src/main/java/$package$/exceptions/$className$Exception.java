@@ -3,7 +3,7 @@
  */
 package $package$.exceptions;
 
-import $package$.core.entity.BaseException;
+import $package$.core.exceptions.BaseException;
 
 import java.io.Serializable;
 
