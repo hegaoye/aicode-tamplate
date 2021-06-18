@@ -25,9 +25,7 @@
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
             <pattern>%d{yy/MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}.%M\(%line\) - %msg%n</pattern>
         </encoder>
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>1024MB</MaxFileSize>
-        </triggeringPolicy>
+
     </appender>
 
     <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -42,9 +40,7 @@
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
             <pattern>%d{yy/MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}.%M\(%line\) - %msg%n</pattern>
         </encoder>
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>1024MB</MaxFileSize>
-        </triggeringPolicy>
+
     </appender>
 
     <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -59,9 +55,7 @@
             <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
             <pattern>%d{yy/MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{50}.%M\(%line\) - %msg%n</pattern>
         </encoder>
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>1024MB</MaxFileSize>
-        </triggeringPolicy>
+
     </appender>
 
     <!--myibatis log configure-->
