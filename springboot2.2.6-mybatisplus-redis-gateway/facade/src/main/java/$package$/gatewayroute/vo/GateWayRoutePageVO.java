@@ -1,16 +1,16 @@
 /*
- * subo
+* $copyright$
  */
 package $package$.gatewayroute.vo;
 
 import io.swagger.annotations.ApiModelProperty;
-import com.subo.core.base.BaseVO;
+import $package$.core.base.BaseVO;
 import lombok.Data;
 
 /**
  * 路由 分页 对象 VO
  *
- * @author bruce
+ * @author $author$
  */
 @Data
 public class GateWayRoutePageVO extends BaseVO implements java.io.Serializable {

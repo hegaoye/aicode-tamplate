@@ -1,5 +1,5 @@
 /*
- * subo
+* $copyright$
  */
 package $package$.gatewayroute.ctrl;
 
@@ -12,10 +12,10 @@ import $package$.gatewayroute.service.GateWayRouteService;
 import $package$.gatewayroute.vo.GateWayRoutePageVO;
 import $package$.gatewayroute.vo.GateWayRouteSaveVO;
 import $package$.gatewayroute.vo.GateWayRouteVO;
-import com.subo.core.entity.BaseException;
-import com.subo.core.entity.Page;
-import com.subo.core.entity.PageVO;
-import com.subo.core.entity.R;
+import $package$.core.entity.BaseException;
+import $package$.core.entity.Page;
+import $package$.core.entity.PageVO;
+import $package$.core.entity.R;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;

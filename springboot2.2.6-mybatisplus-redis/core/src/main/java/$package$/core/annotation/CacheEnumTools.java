@@ -13,7 +13,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * @author bruce
+ * @author $author$
  * @date 2020/10/19 4:21 下午
  */
 public enum CacheEnumTools {

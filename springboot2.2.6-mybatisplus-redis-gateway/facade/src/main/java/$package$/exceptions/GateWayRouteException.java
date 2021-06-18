@@ -1,5 +1,5 @@
 /*
- * subo
+* $copyright$
  */
 package $package$.exceptions;
 

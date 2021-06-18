@@ -1,14 +1,14 @@
 /*
-* subo
+* $copyright$
  */
 package $package$.gatewayroute.entity;
 
-import com.subo.core.annotation.CacheEnum;
+import $package$.core.annotation.CacheEnum;
 
 /**
  * 状态: 启用 Enable, 停用 Disable 的实体类的状态
  *
- * @author bruce
+ * @author $author$
  */
 @CacheEnum("rbac_002")
 public enum GateWayRouteStatus implements java.io.Serializable {

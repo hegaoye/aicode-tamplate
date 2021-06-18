@@ -4,9 +4,9 @@
 //import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 //import $package$.cache.entity.RedisKey;
 //import $package$.cache.service.RedisServiceSVImpl;
-//import com.subo.core.enums.ConstantsEnum;
-//import com.subo.core.enums.SessionEnum;
-//import com.subo.core.tools.JwtToken;
+//import $package$.core.enums.ConstantsEnum;
+//import $package$.core.enums.SessionEnum;
+//import $package$.core.tools.JwtToken;
 //import lombok.extern.slf4j.Slf4j;
 //import org.apache.commons.lang.StringUtils;
 //import org.springframework.beans.factory.annotation.Autowired;

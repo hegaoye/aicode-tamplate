@@ -1,5 +1,5 @@
 /*
- * subo
+* $copyright$
  */
 package $package$.gatewayroute.service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 路由
  *
- * @author bruce
+ * @author $author$
  */
 public interface GateWayRouteService extends IService<GateWayRoute> {
 

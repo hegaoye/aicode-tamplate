@@ -1,5 +1,5 @@
 /**
-* subo
+* $copyright$
  */
 package $package$.gatewayroute.vo;
 
@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * 路由 VO
  *
- * @author bruce
+ * @author $author$
  */
 @Data
 public class GateWayRouteSaveVO extends GateWayRoute implements java.io.Serializable {

@@ -1,5 +1,5 @@
 /*
- * subo
+* $copyright$
  */
 package $package$.gatewayroute.entity;
 
@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 /**
  * 路由 的实体类
  *
- * @author bruce
+ * @author $author$
  */
 @Data
 @AllArgsConstructor

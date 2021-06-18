@@ -1,7 +1,7 @@
 package $package$.config;
 
 import com.alibaba.fastjson.JSON;
-import com.subo.core.entity.R;
+import $package$.core.entity.R;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler;

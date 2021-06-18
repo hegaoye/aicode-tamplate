@@ -2,7 +2,7 @@ package $package$.gatewayroute.dao;
 
 import $package$.gatewayroute.dao.mapper.GateWayRouteMapper;
 import $package$.gatewayroute.entity.GateWayRoute;
-import com.subo.core.base.BaseDAO;
+import $package$.core.base.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

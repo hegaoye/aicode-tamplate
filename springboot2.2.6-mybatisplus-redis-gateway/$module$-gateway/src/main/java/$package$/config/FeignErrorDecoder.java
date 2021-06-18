@@ -1,6 +1,6 @@
 package $package$.config;
 
-import com.subo.core.entity.BaseException;
+import $package$.core.entity.BaseException;
 import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
- * Created by bruce on 2018/8/13.
+ * Created by $author$ on 2018/8/13.
  */
 @Configuration
 @Slf4j
