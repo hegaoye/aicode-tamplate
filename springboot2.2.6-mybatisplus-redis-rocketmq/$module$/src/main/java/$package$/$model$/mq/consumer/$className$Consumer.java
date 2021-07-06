@@ -24,7 +24,7 @@ public class $className$Consumer {
     /**
      * 监听 创建 $model$ 数据消费
      *
-     * @param $classNameLower$Message 玩家彩票id集合
+     * @param $classNameLower$Message 集合
      */
     @StreamListener($className$Sink.build$className$Input)
     public void build$className$Input(@Payload $className$Message $classNameLower$Message) {
@@ -34,7 +34,7 @@ public class $className$Consumer {
             BeanUtils.copyProperties($classNameLower$Message, $classNameLower$);
             $classNameLower$Service.save($classNameLower$);
         } catch (Exception e) {
-            log.error("自动降赔通知玩家彩票id集合异常-{}-异常信息-{}", $classNameLower$Message, e.getMessage());
+            log.error("异常-{}-异常信息-{}", $classNameLower$Message, e.getMessage());
         }
 
     }

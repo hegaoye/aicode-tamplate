@@ -42,7 +42,7 @@ public class $className$ServiceImpl extends ServiceImpl<$className$Mapper, $clas
     }
 
     /**
-     * 分页查询 投注项水位
+     * 分页查询
      *
      * @param queryWrapper 查询条件
      * @param offset       起始行

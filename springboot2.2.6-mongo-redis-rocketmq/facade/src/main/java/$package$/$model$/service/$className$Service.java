@@ -8,7 +8,6 @@ import $package$.$model$.entity.$className$;
 import java.util.List;
 
 /**
- * 投注项
  *
  * @author $author$
  */
