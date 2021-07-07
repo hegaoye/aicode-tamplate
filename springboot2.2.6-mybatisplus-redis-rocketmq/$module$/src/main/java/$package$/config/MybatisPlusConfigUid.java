@@ -34,9 +34,7 @@ public class MybatisPlusConfigUid {
         sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().
                 getResources("classpath:/META-INF/mybatis/mapper/WORKER*.xml"));
         sqlSessionFactory.setPlugins(new Interceptor[]{
-                new PaginationInterceptor(),
-                new PerformanceInterceptor()
-//                        .setFormat(true),
+                new PaginationInterceptor()
         });
         sqlSessionFactory.setGlobalConfig(new GlobalConfig().setBanner(false));
         return sqlSessionFactory.getObject();
