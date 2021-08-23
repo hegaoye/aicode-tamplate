@@ -73,22 +73,6 @@ public class RedisServiceSVImpl {
     }
 
     /**
-     * 判断hash key是否存在
-     *
-     * @param key     缓存key
-     * @param itemKey hash key
-     * @return true 存在 false 不存在
-     */
-    public boolean hasKey(String key, String itemKey) {
-        try {
-            return redisTemplate.opsForHash().hasKey(key, itemKey);
-        } catch (Exception e) {
-            log.error("redis error: ", e);
-            return false;
-        }
-    }
-
-    /**
      * 删除缓存
      *
      * @param key 可以传一个值 或多个
@@ -668,25 +652,44 @@ public class RedisServiceSVImpl {
     /**
      * 加锁
      *
-     * @param key 锁key
+     * @param key
      * @return true/false
      */
-    public boolean lock(String key) {
-        return this.lock(key, LOCK_EXPIRE);
-    }
-
-    /**
-     * 加锁 自定义时间
-     *
-     * @param key    锁key
-     * @param expire 过期时间 单位毫秒
-     * @return true/fasle
-     */
-    public boolean lock(String key, long expire) {
+    public boolean lock(String key, long time) {
+        long lockTime = time <= 0 ? LOCK_EXPIRE : time;
         String lock = LOCK_PREFIX + key;
         return (Boolean) redisTemplate.execute((RedisCallback) connection -> {
             //过期时间
-            long expireAt = System.currentTimeMillis() + expire + 1;
+            long expireAt = System.currentTimeMillis() + lockTime + 1;
+            Boolean acquire = connection.setNX(lock.getBytes(), String.valueOf(expireAt).getBytes());
+
+            if (acquire) {
+                return true;
+            } else {
+
+                byte[] value = connection.get(lock.getBytes());
+
+                if (Objects.nonNull(value) && value.length > 0) {
+
+                    long expireTime = Long.parseLong(new String(value));
+                    // 如果锁已经过期
+                    if (expireTime < System.currentTimeMillis()) {
+                        // 重新加锁，防止死锁
+                        byte[] oldValue = connection.getSet(lock.getBytes(), String.valueOf(System.currentTimeMillis() + lockTime + 1).getBytes());
+                        return Long.parseLong(new String(oldValue)) < System.currentTimeMillis();
+                    }
+                }
+            }
+            return false;
+        });
+    }
+
+
+    public boolean lock(String key) {
+        String lock = LOCK_PREFIX + key;
+        return (Boolean) redisTemplate.execute((RedisCallback) connection -> {
+            //过期时间
+            long expireAt = System.currentTimeMillis() + LOCK_EXPIRE + 1;
             Boolean acquire = connection.setNX(lock.getBytes(), String.valueOf(expireAt).getBytes());
 
             if (acquire) {

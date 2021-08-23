@@ -655,6 +655,36 @@ public class RedisServiceSVImpl {
      * @param key
      * @return true/false
      */
+    public boolean lock(String key, long time) {
+        long lockTime = time <= 0 ? LOCK_EXPIRE : time;
+        String lock = LOCK_PREFIX + key;
+        return (Boolean) redisTemplate.execute((RedisCallback) connection -> {
+            //过期时间
+            long expireAt = System.currentTimeMillis() + lockTime + 1;
+            Boolean acquire = connection.setNX(lock.getBytes(), String.valueOf(expireAt).getBytes());
+
+            if (acquire) {
+                return true;
+            } else {
+
+                byte[] value = connection.get(lock.getBytes());
+
+                if (Objects.nonNull(value) && value.length > 0) {
+
+                    long expireTime = Long.parseLong(new String(value));
+                    // 如果锁已经过期
+                    if (expireTime < System.currentTimeMillis()) {
+                        // 重新加锁，防止死锁
+                        byte[] oldValue = connection.getSet(lock.getBytes(), String.valueOf(System.currentTimeMillis() + lockTime + 1).getBytes());
+                        return Long.parseLong(new String(oldValue)) < System.currentTimeMillis();
+                    }
+                }
+            }
+            return false;
+        });
+    }
+
+
     public boolean lock(String key) {
         String lock = LOCK_PREFIX + key;
         return (Boolean) redisTemplate.execute((RedisCallback) connection -> {
