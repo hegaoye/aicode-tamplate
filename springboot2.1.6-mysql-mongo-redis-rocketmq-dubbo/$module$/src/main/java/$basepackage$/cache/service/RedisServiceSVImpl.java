@@ -42,7 +42,7 @@ public class RedisServiceSVImpl {
             }
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -67,7 +67,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.hasKey(key);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -101,6 +101,16 @@ public class RedisServiceSVImpl {
     }
 
     /**
+     * 模糊获取 集合
+     *
+     * @param pattern key 规则
+     * @return
+     */
+    public Set<String> getKeys(String pattern) {
+        return pattern == null ? null : redisTemplate.keys(pattern);
+    }
+
+    /**
      * 普通缓存放入
      *
      * @param key   键
@@ -112,7 +122,7 @@ public class RedisServiceSVImpl {
             redisTemplate.opsForValue().set(key, value);
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
 
@@ -135,7 +145,7 @@ public class RedisServiceSVImpl {
             }
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -203,7 +213,7 @@ public class RedisServiceSVImpl {
             redisTemplate.opsForHash().putAll(key, map);
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -224,7 +234,7 @@ public class RedisServiceSVImpl {
             }
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -242,7 +252,7 @@ public class RedisServiceSVImpl {
             redisTemplate.opsForHash().put(key, item, value);
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -264,7 +274,7 @@ public class RedisServiceSVImpl {
             }
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -326,7 +336,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForSet().members(key);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return null;
         }
     }
@@ -342,7 +352,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForSet().isMember(key, value);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -358,7 +368,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForSet().add(key, values);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return 0;
         }
     }
@@ -371,7 +381,7 @@ public class RedisServiceSVImpl {
      * @param values 值 可以是多个
      * @return 成功个数
      */
-    public long addToSet(String key, long time, Object[] values) {
+    public long addToSet(String key, long time, Object... values) {
         try {
             Long count = redisTemplate.opsForSet().add(key, values);
             if (time > 0) {
@@ -379,7 +389,7 @@ public class RedisServiceSVImpl {
             }
             return count;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return 0;
         }
     }
@@ -394,7 +404,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForSet().size(key);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return 0;
         }
     }
@@ -411,7 +421,7 @@ public class RedisServiceSVImpl {
             Long count = redisTemplate.opsForSet().remove(key, values);
             return count;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return 0;
         }
     }
@@ -429,7 +439,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForList().range(key, start, end);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return null;
         }
     }
@@ -444,7 +454,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForList().size(key);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return 0;
         }
     }
@@ -460,7 +470,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForList().index(key, index);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return null;
         }
     }
@@ -477,7 +487,7 @@ public class RedisServiceSVImpl {
             redisTemplate.opsForList().rightPush(key, value);
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -498,7 +508,7 @@ public class RedisServiceSVImpl {
             }
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -515,7 +525,7 @@ public class RedisServiceSVImpl {
             redisTemplate.opsForList().rightPushAll(key, value);
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -536,7 +546,7 @@ public class RedisServiceSVImpl {
             }
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -554,7 +564,7 @@ public class RedisServiceSVImpl {
             redisTemplate.opsForList().set(key, index, value);
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -572,7 +582,7 @@ public class RedisServiceSVImpl {
             Long remove = redisTemplate.opsForList().remove(key, count, value);
             return remove;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return 0;
         }
     }
@@ -592,7 +602,7 @@ public class RedisServiceSVImpl {
             }
             return true;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return false;
         }
     }
@@ -605,7 +615,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForZSet().rangeByScore(key, minScore, maxScore);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return null;
         }
     }
@@ -618,7 +628,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForZSet().score(key, member);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return null;
         }
     }
@@ -630,7 +640,7 @@ public class RedisServiceSVImpl {
         try {
             return redisTemplate.opsForZSet().rank(key, member);
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return null;
         }
     }
@@ -643,7 +653,7 @@ public class RedisServiceSVImpl {
             Cursor<ZSetOperations.TypedTuple<Object>> cursor = redisTemplate.opsForZSet().scan(key, ScanOptions.NONE);
             return cursor;
         } catch (Exception e) {
-            log.error("redis error: ", e);
+            log.error("{}", e.getLocalizedMessage(), e);
             return null;
         }
     }
