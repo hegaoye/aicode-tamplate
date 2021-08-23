@@ -1,23 +1,23 @@
 package $package$.config;
 
 import $package$.core.annotation.IdempotentLock;
-import io.netty.util.internal.StringUtil;
+import $package$.cache.service.RedisServiceSVImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.redis.connection.RedisStringCommands;
-import org.springframework.data.redis.connection.ReturnType;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.types.Expiration;
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.common.TemplateParserContext;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
-import java.nio.charset.Charset;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,16 +33,13 @@ import java.util.concurrent.TimeUnit;
 @Order(100)
 public class MqIdempotentAspect {
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-
-    @Autowired
-    private AnnotationResolver annotationResolver;
+    private RedisServiceSVImpl redisServiceSV;
 
     /**
      * 设置切面切入点
      * 针对所有的MQ消费者进行切入
      */
-    @Pointcut("execution(* $package$.*.mq.consumer..*(..))")
+    @Pointcut("execution(* com.order.*.mq.consumer..*(..))")
     public void idempotent() {
     }
 
@@ -52,21 +49,44 @@ public class MqIdempotentAspect {
      */
     @Around(value = "idempotent() && @annotation(idempotentLock)")
     public Object doAround(ProceedingJoinPoint joinPoint, IdempotentLock idempotentLock) throws Exception {
-        String key = annotationResolver.resolver(joinPoint, idempotentLock.key());
-        String keyValue = getLock(key, idempotentLock.timeout(), idempotentLock.timeUnit());
-        if (StringUtil.isNullOrEmpty(keyValue)) {
-            //todo 返回值处理
+        String key = this.renderKey(joinPoint, idempotentLock.key());
+        try {
+            boolean locked = this.lock(key, idempotentLock.timeout(), idempotentLock.timeUnit());
+            if (!locked) {
+                return null;
+            }
+            return joinPoint.proceed();
+        } catch (Throwable throwable) {
+            return null;
+        } finally {
+            this.unLock(key);
+        }
+    }
+
+    /**
+     * 渲染 key
+     *
+     * @param key key 模板 #{对象.属性} -> spel 表达式#{#对象.属性}
+     * @return 缓存key
+     */
+    private String renderKey(JoinPoint joinpoint, String key) {
+        if (StringUtils.isEmpty(key)) {
             return null;
         }
 
-        try {
-            return joinPoint.proceed();
-        } catch (Throwable throwable) {
-            //todo 返回值处理
-            return null;
-        } finally {
-            this.unLock(key, keyValue);
+        //自动转化成 spel的格式
+        String result = "mq:" + key.replaceAll("#\\{\\w+.", "#{");
+        Object[] args = joinpoint.getArgs();
+        for (Object arg : args) {
+            ExpressionParser expressionParser = new SpelExpressionParser();
+            StandardEvaluationContext context = new StandardEvaluationContext();
+            context.setRootObject(arg);
+            Expression expression = expressionParser.parseExpression(result, new TemplateParserContext());
+            result = expression.getValue(context, String.class);
         }
+
+        log.info("消息幂等 key-{}", result);
+        return result;
     }
 
 
@@ -77,22 +97,17 @@ public class MqIdempotentAspect {
      * @param timeout  过期时间
      * @param timeUnit 时间单位
      */
-    private String getLock(String key, long timeout, TimeUnit timeUnit) {
+    private Boolean lock(String key, long timeout, TimeUnit timeUnit) {
         try {
-            String value = UUID.randomUUID().toString();
-            key = "Lock:";
-            String finalKey = key;
-            Boolean lockStat = stringRedisTemplate.execute((RedisCallback<Boolean>) connection ->
-                    connection.set(finalKey.getBytes(Charset.forName("UTF-8")), value.getBytes(Charset.forName("UTF-8")),
-                            Expiration.from(timeout, timeUnit), RedisStringCommands.SetOption.SET_IF_ABSENT));
-            if (!lockStat) {
-                // 获取锁失败。
-                return null;
+            key = "Lock:" + key;
+            if (TimeUnit.SECONDS == timeUnit) {
+                timeout = timeout * 1000;
             }
-            return value;
+            Boolean locked = redisServiceSV.lock(key, timeout);
+            return locked;
         } catch (Exception e) {
             log.error("获取分布式锁失败，key={}", key, e);
-            return null;
+            return false;
         }
     }
 
@@ -100,20 +115,12 @@ public class MqIdempotentAspect {
     /**
      * 解锁，释放锁
      *
-     * @param key   锁的key
-     * @param value 锁的值
+     * @param key 锁的key
      */
-    private void unLock(String key, String value) {
+    private void unLock(String key) {
         try {
-            key = "Lock:";
-            String script = "if redis.call('get', KEYS[1]) == ARGV[1] then return redis.call('del', KEYS[1]) else return 0 end";
-            String finalKey = key;
-            boolean unLockStat = stringRedisTemplate.execute((RedisCallback<Boolean>) connection ->
-                    connection.eval(script.getBytes(), ReturnType.BOOLEAN, 1,
-                            finalKey.getBytes(Charset.forName("UTF-8")), value.getBytes(Charset.forName("UTF-8"))));
-            if (!unLockStat) {
-                log.error("释放分布式锁失败，key={}，已自动超时，其他线程可能已经重新获取锁", key);
-            }
+            key = "Lock:" + key;
+            redisServiceSV.unlock(key);
         } catch (Exception e) {
             log.error("释放分布式锁失败，key={}", key, e);
         }

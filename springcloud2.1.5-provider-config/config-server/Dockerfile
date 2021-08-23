@@ -4,6 +4,6 @@ RUN ln -snf /usr/share/zoneinfo/${r'$'}TZ /etc/localtime && echo ${r'$'}TZ > /et
 VOLUME /tmp
 ADD config-server.jar app.jar
 RUN sh -c 'touch /app.jar'
-ENV JAVA_OPTS="-Xms128m -Xmx512m"
+ENV JAVA_OPTS="-Xms128m "
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
 EXPOSE 8092
