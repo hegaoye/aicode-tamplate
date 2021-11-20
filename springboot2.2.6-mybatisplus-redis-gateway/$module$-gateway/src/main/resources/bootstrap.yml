@@ -5,11 +5,11 @@ spring:
     #注册中心配置
     nacos:
       discovery:
-        server-addr: ${REGISTER_HOST:8.210.212.241}:${REGISTER_PORT:30848}
+        server-addr: \${REGISTER_HOST:8.210.212.241}:\${REGISTER_PORT:30848}
         group: DEFAULT_GROUP
         namespace: d60fee1d-2e70-4db2-ac63-f699edc7d679
       config:
-        server-addr: ${REGISTER_HOST:8.210.212.241}:${REGISTER_PORT:30848}
+        server-addr: \${REGISTER_HOST:8.210.212.241}:\${REGISTER_PORT:30848}
         group: DEFAULT_GROUP
         name: rbac-gateway
         file-extension: yml
