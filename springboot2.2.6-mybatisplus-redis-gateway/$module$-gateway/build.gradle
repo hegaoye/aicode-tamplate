@@ -67,7 +67,8 @@ dependencies {
     //-----------mybatis mysql druid end--------------
 
     //-----------redis start--------------
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.2.6.RELEASE'
+    implementation 'redis.clients:jedis:3.0.1'
     //-----------redis end--------------
 
 
