@@ -122,3 +122,16 @@ mybatis-plus:
   #  mapper-locations: classpath:mapper/*/*.xml,classpath:/META-INF/mybatis/mapper/WORKER*.xml
   configuration:
     cache-enabled: true
+
+#访问地址 http://127.0.0.1:8080/actuator
+management:
+  endpoints:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: "*"
+
+  health:
+    defaults:
+      enabled: true

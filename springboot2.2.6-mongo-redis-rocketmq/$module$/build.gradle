@@ -50,6 +50,8 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web') {
         exclude group: 'org.springframework.boot', module: 'spring-boot-starter-log4j'
     }
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:2.2.3.RELEASE'
