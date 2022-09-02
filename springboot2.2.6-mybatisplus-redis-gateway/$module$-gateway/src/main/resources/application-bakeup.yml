@@ -50,12 +50,32 @@ spring:
       filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
 
   redis:
+    database: 0  #Redis索引0~15，默认为0
     host: {host}
     port: {port}
-    password: {password}
+    password: {password} #密码（默认为空）
+    timeout: 5000 #连接超时时间（毫秒）
+    lettuce:
+      pool:
+        max-active: 100 #最大连接数
+        max-idle: 50 #最大空闲连接数
+        min-idle: 10 #最小空闲连接数
+        max-wait: 5s #连接池阻塞最大等待时间
+        time-between-eviction-runs: 1s #空闲对象逐出器线程的运行间隔时间.空闲连接线程释放周期时间.
+  #      cluster:
+  #        refresh:
+  #          adaptive: true #redis集群拓扑自动刷新
+  #    cluster:
+  #      nodes:
+  #        - 192.168.1.1:6789
+  #        - 192.168.1.1:6789
+  #        - 192.168.1.1:6789
 
   cloud:
     gateway:
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 5s
       discovery:
         locator:
           # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用路由名称调用服务
