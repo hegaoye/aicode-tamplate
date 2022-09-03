@@ -74,8 +74,15 @@ spring:
   cloud:
     gateway:
       httpclient:
-        connect-timeout: 1000
-        response-timeout: 5s
+        # 全局响应时间，最长等待时间，超过则返回给前端超时错误
+        response-timeout: PT10S
+        # 全局tcp链接超时时间，默认 45s
+        connect-timeout: 45000
+        pool:
+          # 最大空闲时间
+          max-idle-time: PT10S
+          # 定时回收HttpClient连接池中连接的时间间隔
+          eviction-interval: PT30S
       discovery:
         locator:
           # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用路由名称调用服务
