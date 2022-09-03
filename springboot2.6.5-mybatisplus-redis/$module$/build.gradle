@@ -1,0 +1,93 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+sourceCompatibility = 1.8
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+repositories {
+    maven { url "https://plugins.gradle.org/m2/" }
+    maven { url "https://repo.spring.io/milestone" }
+    maven { url "https://repo.spring.io/release" }
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://maven.jahia.org/maven2" }
+    maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local/" }
+
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', '2021.0.1')
+    set('springCloudAlibabaVersion', '2021.0.1.0')
+
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap', version: '3.1.1'
+    implementation group: 'com.alibaba.cloud', name: 'spring-cloud-starter-alibaba-nacos-config', version: '2021.0.1.0'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel'
+
+    //----------- mybatis mysql druid start--------------
+    implementation 'mysql:mysql-connector-java:8.0.15'
+    implementation 'com.alibaba:druid:1.1.19'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.1.10'
+    implementation 'com.baomidou:mybatis-plus-generator:3.4.0'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.0'
+    //-----------mybatis mysql druid end--------------
+
+    //-----------redis start--------------
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    //-----------redis end--------------
+
+
+    //-----------swagger2 start--------------
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+    implementation 'com.github.xiaoymin:swagger-bootstrap-ui:1.9.4'
+    //-----------swagger2 end--------------
+
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    implementation 'org.apache.commons:commons-lang3:3.4'
+
+    implementation 'com.alibaba:fastjson:1.2.59'
+    implementation 'com.github.ben-manes.caffeine:caffeine:2.8.1'
+    implementation 'com.github.pagehelper:pagehelper:5.1.11'
+
+    implementation 'cn.hutool:hutool-all:5.1.5'
+
+
+    //-----------项目中模块引入 Start--------------
+    implementation project(path: ':common')
+    implementation project(path: ':facade')
+    //-----------项目中模块引入 End--------------
+
+    implementation fileTree(dir: 'libs', include: ['uid-generator-1.0.0-SNAPSHOT.jar'])
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+dependencyManagement {
+    resolutionStrategy {
+        cacheChangingModulesFor 0, 'seconds'
+    }
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+
+    }
+}

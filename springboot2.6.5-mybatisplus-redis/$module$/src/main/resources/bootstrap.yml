@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: $projectName$-api
+  cloud:
+    nacos:
+      discovery:
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        namespace: 4fd50f88-83d5-49c3-9f4e-304d17b2a356
+      config:
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        name: $projectName$
+        file-extension: yml
+        namespace: 4fd50f88-83d5-49c3-9f4e-304d17b2a356

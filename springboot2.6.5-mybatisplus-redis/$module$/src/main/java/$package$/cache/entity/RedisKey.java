@@ -1,11 +1,8 @@
 package $package$.cache.entity;
 
-
-public enum RedisKey {
-    ,
+public enum RedisOpenApiKey {
     ;
-
-    private static final String preFix = "$projectName$";
+    private static final String preFix = "$projectName$:";
 
     public static String getCachekey() {
         return preFix + "enum";
@@ -13,4 +10,3 @@ public enum RedisKey {
 
 
 }
-

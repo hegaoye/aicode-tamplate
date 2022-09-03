@@ -7,12 +7,15 @@ spring:
       enabled: always
   main:
     allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     tidb:
       name: mysql-data
-      url: jdbc:mysql://{host}/{database}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
-      username: {username}
-      password: {password}
+      url: jdbc:mysql://43.231.7.109:30306/demo?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
+      username: root
+      password: PPkmZc3Ab6Fyi63p
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
       initialSize: 10 #初始化连接数量，最大最小连接数
@@ -33,9 +36,9 @@ spring:
       filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
     uid:
       name: uid-data
-      url: jdbc:mysql://192.168.0.250:4000/sso?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
-      username: {username}
-      password: {password}
+      url: jdbc:mysql://43.231.7.109:30306/demo?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true
+      username: root
+      password: PPkmZc3Ab6Fyi63p
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
       initialSize: 10 #初始化连接数量，最大最小连接数
@@ -54,12 +57,11 @@ spring:
       maxPoolPreparedStatementPerConnectionSize: 100
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
-
   redis:
     database: 0  #Redis索引0~15，默认为0
-    host: {host}
-    port: {port}
-    password: {password} #密码（默认为空）
+    host: 43.231.7.109
+    port: 36379
+    password: DrHadATHwYnGFE1b #密码（默认为空）
     timeout: 5000 #连接超时时间（毫秒）
     lettuce:
       pool:
@@ -78,12 +80,12 @@ spring:
   #        - 192.168.1.1:6789
 
 
-#feign:
-#  client:
-#    config:
-#      feignName:
-#        connectTimeout: 5000
-#        readTimeout: 5000
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
 
 
 hystrix:
@@ -109,7 +111,6 @@ logging:
     com:
       ds: debug
 
-  path: /var/log/tomcat/
   config: classpath:logback.xml
 
 mybatis-plus:
@@ -125,7 +126,6 @@ management:
     web:
       exposure:
         include: "*"
-
   health:
     defaults:
       enabled: true
