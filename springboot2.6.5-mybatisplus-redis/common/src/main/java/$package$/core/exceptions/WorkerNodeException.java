@@ -1,5 +1,5 @@
 /*
-* d
+* $copyright$
  */
 package $package$.core.exceptions;
 

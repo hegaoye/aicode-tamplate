@@ -1,11 +1,10 @@
 /*
-* d
+* $copyright$
  */
 package $package$.core.exceptions;
 
 import com.alibaba.fastjson.JSON;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
@@ -14,28 +13,28 @@ import java.io.Serializable;
  *
  * @author lixin 2017-08-03 17:46
  */
+@Slf4j
 public class BaseException extends RuntimeException implements Serializable {
-    private static final Logger logger = LoggerFactory.getLogger(BaseException.class);
 
     public BaseException(BaseExceptionEnum exceptionMessage) {
         super(exceptionMessage.toString());
-        logger.error("系统发生异常[{}]", exceptionMessage.toString());
+        log.error("系统发生异常[{}]", exceptionMessage.toString());
     }
 
     public BaseException(BaseExceptionEnum exceptionMessage, Object... params) {
         super(exceptionMessage.toString());
-        logger.error("系统发生异常[{}],参数为[{}]", exceptionMessage.toString(), JSON.toJSONString(params));
+        log.error("系统发生异常[{}],参数为[{}]", exceptionMessage.toString(), JSON.toJSONString(params));
     }
 
 
     public BaseException(String message) {
         super(message);
-        logger.error("系统发生异常[{}]", message);
+        log.error("系统发生异常[{}]", message);
     }
 
     public BaseException(String message, Throwable cause) {
         super(message, cause);
-        logger.error("系统发生异常[{}],异常为[{}]", message, cause);
+        log.error("系统发生异常[{}],异常为[{}]", message, cause);
     }
 
 
@@ -52,9 +51,6 @@ public class BaseException extends RuntimeException implements Serializable {
         Result_Not_Exist("9006", "The query result does not exist"),
         //-----------------上传文件异常定义[9500~9599]--------------------------
         Build_Exist("9500", "build exist"),
-        //-----------------账户异常定义[1000~1050]--------------------------
-        Account_Error("1000", "There is Error of Account and Password."),
-        Phone_Error("1001", "Phone format msg."),
         ;
 
 

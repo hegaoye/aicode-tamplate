@@ -21,7 +21,7 @@ import java.util.UUID;
 @WebFilter(filterName = "logFilter", urlPatterns = "/*")
 public class LogFilter implements Filter {
 
-    @Value("${warm.time:1500}")
+    @Value("\\${warm.time:1500}")
     private long warmTime;
 
     public static final String TRACE_KEY = "trace_id";
