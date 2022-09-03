@@ -86,8 +86,8 @@ dependencyManagement {
         cacheChangingModulesFor 0, 'seconds'
     }
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:\${springCloudVersion}"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:\${springCloudAlibabaVersion}"
 
     }
 }
