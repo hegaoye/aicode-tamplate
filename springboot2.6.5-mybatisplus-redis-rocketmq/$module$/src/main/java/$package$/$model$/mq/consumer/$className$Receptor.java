@@ -1,6 +1,7 @@
 package $package$.$model$.mq.consumer;
 
 import $package$.$model$.service.$className$Service;
+import $package$.$model$.entity.$className$;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
