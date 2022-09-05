@@ -28,7 +28,6 @@ dependencies {
     implementation 'cn.hutool:hutool-all:5.1.5'
     implementation 'com.alibaba:fastjson:1.2.66'
 
-//    implementation "org.springframework.boot:spring-boot-starter-data-redis"
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
