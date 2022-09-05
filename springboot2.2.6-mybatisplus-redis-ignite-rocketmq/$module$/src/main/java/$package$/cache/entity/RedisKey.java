@@ -1,6 +1,6 @@
 package $package$.cache.entity;
 
-public enum RedisOpenApiKey {
+public enum RedisKey {
     ;
     private static final String preFix = "$projectName$:";
 
