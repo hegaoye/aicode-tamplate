@@ -119,6 +119,6 @@ jetcache:
         minIdle: 5
         maxIdle: 20
         maxTotal: 50
-      host: ${REDIS_HOST:8.210.212.241}
-      port: ${REDIS_PORT:30379}
-      password: ${REDIS_PASSWORD:ty5tmRlj7aRRcsQ^Wi8}
+      host: \${REDIS_HOST:8.210.212.241}
+      port: \${REDIS_PORT:30379}
+      password: \${REDIS_PASSWORD:ty5tmRlj7aRRcsQ^Wi8}
