@@ -13,6 +13,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
+ * @author d
  * @date 2020/10/19 4:21 下午
  */
 public enum CacheEnumTools {
@@ -71,14 +72,15 @@ public enum CacheEnumTools {
             Map<String, String> map = new HashMap<>();
             if (clazz.isEnum()) {
                 //获得类的所有属性
-                Field[] fs = clazz.getDeclaredFields();
+                Field[] declaredFields = clazz.getDeclaredFields();
 
                 //忽略注解处理
-                List<String> ignoreKeys = new ArrayList<>();
-                for (Field field : fs) {
+                List<Field> fields = new ArrayList<>();
+                for (int i = 0; i < declaredFields.length; i++) {
+                    Field field = declaredFields[i];
                     Ignore ignore = field.getAnnotation(Ignore.class);
-                    if (ignore != null) {
-                        ignoreKeys.add(field.getName());
+                    if (null == ignore) {
+                        fields.add(field);
                     }
                 }
 
@@ -86,20 +88,16 @@ public enum CacheEnumTools {
                     String type = obj.toString();
                     String classType = obj.getClass().getTypeName();
                     classType = classType.substring(classType.lastIndexOf(".") + 1);
-                    for (int i = 0; i < fs.length; i++) {
-                        Field f = fs[i];
-                        f.setAccessible(true);
-                        String fType = f.getType().getTypeName();
+                    for (Field field : fields) {
+                        field.setAccessible(true);
+                        String fType = field.getType().getTypeName();
 
                         if (!fType.contains(classType)) {
-                            Object val = f.get(obj);
+                            Object val = field.get(obj);
                             map.put(type, val == null ? type : val.toString());
                         }
                     }
                 }
-
-                //忽略键
-                ignoreKeys.forEach(ignoreKey -> map.remove(ignoreKey));
             }
             return map;
         } catch (IllegalAccessException e) {

@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * 自动缓存枚举类型给前端使用
  * 仅用于枚举，否则无用
- * Created by $author$
+ * Created by d
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

@@ -6,16 +6,16 @@ package $package$.gatewayroute.ctrl;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import $package$.core.exceptions.GateWayRouteException;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import $package$.core.R;
+import $package$.core.exceptions.BaseException;
+import $package$.exceptions.GateWayRouteException;
 import $package$.gatewayroute.entity.GateWayRoute;
 import $package$.gatewayroute.service.GateWayRouteService;
 import $package$.gatewayroute.vo.GateWayRoutePageVO;
 import $package$.gatewayroute.vo.GateWayRouteSaveVO;
 import $package$.gatewayroute.vo.GateWayRouteVO;
-import $package$.core.entity.BaseException;
-import $package$.core.entity.Page;
-import $package$.core.entity.PageVO;
-import $package$.core.entity.R;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -75,24 +75,25 @@ public class GateWayRouteController {
             @ApiImplicitParam(name = "pageSize", value = "分页大小", required = true, paramType = "query")
     })
     @GetMapping(value = "/list")
-    public PageVO<GateWayRouteVO> list(@ApiIgnore GateWayRoutePageVO gateWayRoutePageVO, Integer curPage, Integer pageSize) {
+    public IPage<GateWayRouteVO> list(@ApiIgnore GateWayRoutePageVO gateWayRoutePageVO, Integer curPage, Integer pageSize) {
+        IPage<GateWayRoute> page = new Page<>(curPage, pageSize);
         QueryWrapper<GateWayRoute> queryWrapper = new QueryWrapper<>();
-        if (StringUtils.isNotBlank(gateWayRoutePageVO.getStatus())) {
-            queryWrapper.lambda().eq(GateWayRoute::getStatus, gateWayRoutePageVO.getStatus());
-        }
-
         int total = gateWayRouteService.count(queryWrapper);
-        Page<GateWayRoute> page = new Page<>(pageSize, curPage);
-        PageVO<GateWayRouteVO> pageVO = new PageVO<>();
         if (total > 0) {
-            queryWrapper.lambda().orderByDesc(GateWayRoute::getCreateTime);
-            List<GateWayRoute> appList = gateWayRouteService.list(queryWrapper, page.genRowStart(), page.getPageSize());
+            queryWrapper.lambda().orderByDesc(GateWayRoute::getId);
 
-            pageVO.setTotalRow(total);
-            pageVO.setRecords(JSON.parseArray(JSON.toJSONString(appList), GateWayRouteVO.class));
-            log.debug(JSON.toJSONString(page));
+            IPage<GateWayRoute> gateWayRouteIPage = gateWayRouteService.page(page, queryWrapper);
+            List<GateWayRouteVO> gateWayRouteVOList = JSON.parseArray(JSON.toJSONString(gateWayRouteIPage.getRecords()), GateWayRouteVO.class);
+            IPage<GateWayRouteVO> iPage = new Page<>();
+            iPage.setPages(gateWayRouteIPage.getPages());
+            iPage.setCurrent(curPage);
+            iPage.setSize(pageSize);
+            iPage.setTotal(gateWayRouteIPage.getTotal());
+            iPage.setRecords(gateWayRouteVOList);
+            log.debug(JSON.toJSONString(iPage));
+            return iPage;
         }
-        return pageVO;
+        return new Page<>();
     }
 
 

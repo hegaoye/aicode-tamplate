@@ -1,8 +1,6 @@
 package $package$.gatewayroute.dao;
 
 import $package$.gatewayroute.dao.mapper.GateWayRouteMapper;
-import $package$.gatewayroute.entity.GateWayRoute;
-import $package$.core.base.BaseDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @author $author$
  */
 @Repository
-public class GateWayRouteDAO extends BaseDAO<GateWayRouteMapper, GateWayRoute> {
+public class GateWayRouteDAO {
 
 
     /**

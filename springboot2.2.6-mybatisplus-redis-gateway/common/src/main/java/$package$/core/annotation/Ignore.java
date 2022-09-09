@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * 忽略某个枚举值时使用
- * Created by $author$ on 2017/8/23.
+ * Created by d on 2017/8/23.
  */
 @Target({ElementType.FIELD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

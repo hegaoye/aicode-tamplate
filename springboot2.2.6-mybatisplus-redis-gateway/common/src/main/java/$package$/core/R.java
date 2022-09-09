@@ -1,18 +1,24 @@
-package $package$.core.entity;
+package $package$.core;
 
 import $package$.core.exceptions.BaseException;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
 /**
- * 结果返回类
+ * 结果返回类  {"code":4001,"msg":"",data:{}}
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public final class R implements Serializable {
-    private String info = BaseException.BaseExceptionEnum.Server_Error.msg;
-    private Object data = null;
-    private String code = BaseException.BaseExceptionEnum.Server_Error.code;
+    private String code;
+    private String msg;
+    private Object data;
 
 
     /**
@@ -53,12 +59,4 @@ public final class R implements Serializable {
     }
 
 
-    private R() {
-    }
-
-    private R(String code, String info, Object data) {
-        this.info = info;
-        this.data = data;
-        this.code = code;
-    }
 }

@@ -1,7 +1,7 @@
 /*
-* $copyright$
+* d
  */
-package $package$.core.entity;
+package $package$.core.exceptions;
 
 import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;

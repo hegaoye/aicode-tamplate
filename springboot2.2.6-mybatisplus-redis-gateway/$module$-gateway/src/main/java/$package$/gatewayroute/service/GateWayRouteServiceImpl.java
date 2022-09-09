@@ -45,11 +45,6 @@ public class GateWayRouteServiceImpl extends ServiceImpl<GateWayRouteMapper, Gat
         return flag;
     }
 
-
-    @Override
-    public List<GateWayRoute> list(QueryWrapper<GateWayRoute> queryWrapper, int offset, int limit) {
-        return gateWayRouteDAO.list(queryWrapper, offset, limit);
-    }
 }
 
 

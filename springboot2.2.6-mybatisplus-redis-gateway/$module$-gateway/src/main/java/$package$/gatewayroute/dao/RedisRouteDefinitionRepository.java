@@ -40,7 +40,7 @@ public class RedisRouteDefinitionRepository implements RouteDefinitionRepository
     @Override
     public Flux<RouteDefinition> getRouteDefinitions() {
         try {
-            Map<Object, Object> gatewayDefineMap = redisServiceSV.getForHash(RedisKey.Rbac.name() + RedisKey.Gateway.name());
+            Map<Object, Object> gatewayDefineMap = redisServiceSV.getForHash(RedisKey.Gateway.getGatewayKey());
             log.info("路由规则-{}", gatewayDefineMap);
             Map<String, RouteDefinition> routes = new LinkedHashMap<>();
             for (Map.Entry<Object, Object> objectObjectEntry : gatewayDefineMap.entrySet()) {

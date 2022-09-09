@@ -13,8 +13,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-import java.util.Set;
-
 /**
  * ip 白名单过滤
  */
@@ -37,13 +35,6 @@ public class IpFilter implements GlobalFilter {
         String ip = this.getIpAddress(exchange.getRequest());
 
         //2.检查 缓存白名单
-        String ipCacheKey = RedisKey.White_Ip.whiteIpCacheKey();
-        Set<Object> whiteIpSet = redisServiceSV.getForSet(ipCacheKey);
-        if (!whiteIpSet.contains(ip)) {
-            //不合法返回
-            log.warn("警告：ip 不是在白名单中-{}", ip);
-            return exchange.getResponse().setComplete();
-        }
 
         //向后转发
         return chain.filter(exchange);

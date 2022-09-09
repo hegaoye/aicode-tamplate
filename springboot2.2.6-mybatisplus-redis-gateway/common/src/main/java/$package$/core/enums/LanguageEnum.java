@@ -2,7 +2,7 @@ package $package$.core.enums;
 
 /**
  * 语言枚举
- * Created by $author$ on 2018/9/18.
+ * Created by d on 2018/9/18.
  */
 public enum LanguageEnum {
     zh_CN("简体中文"),

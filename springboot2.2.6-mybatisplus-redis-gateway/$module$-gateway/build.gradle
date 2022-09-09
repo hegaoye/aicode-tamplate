@@ -90,7 +90,6 @@ dependencies {
 
     implementation 'cn.hutool:hutool-all:5.1.5'
 
-    implementation project(path: ':core')
     implementation project(path: ':common')
     implementation project(path: ':facade')
 
@@ -98,7 +97,7 @@ dependencies {
 
 
     implementation fileTree(dir: 'libs', include: ['uid-generator-1.0.0-SNAPSHOT.jar'])
-//    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-devtools'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 

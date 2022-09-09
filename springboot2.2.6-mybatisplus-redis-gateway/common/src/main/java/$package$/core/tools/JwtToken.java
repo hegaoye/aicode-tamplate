@@ -164,7 +164,6 @@ public class JwtToken {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             Date now = new Date();
             Date expires = new Date(now.getTime() + TimeUnit.MINUTES.toMillis(expireMinutes));
-            logger.info(DateTools.yyyyMMddHHmmss(expires));
             String token = JWT.create()
                     .withExpiresAt(expires)
                     .withClaim(key, value)
@@ -205,7 +204,6 @@ public class JwtToken {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             Date now = new Date();
             Date expires = new Date(now.getTime() + TimeUnit.MINUTES.toMillis(expireMinutes));
-            logger.debug(DateTools.yyyyMMddHHmmss(expires));
             String token = builder
                     .withExpiresAt(expires)
                     .sign(algorithm);
@@ -236,7 +234,6 @@ public class JwtToken {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             Date now = new Date();
             Date expires = new Date(now.getTime() + TimeUnit.MINUTES.toMillis(expireMinutes));
-            logger.debug(DateTools.yyyyMMddHHmmss(expires));
             String token = JWT.create()
                     .withExpiresAt(expires)
                     .withClaim(key, value)
@@ -266,7 +263,6 @@ public class JwtToken {
             Algorithm algorithm = Algorithm.HMAC256(secret);
             Date now = new Date();
             Date expires = new Date(now.getTime() + TimeUnit.MINUTES.toMillis(expireMinutes));
-            logger.debug(DateTools.yyyyMMddHHmmss(expires));
             String token = JWT.create()
                     .withExpiresAt(expires)
                     .sign(algorithm);
