@@ -4,7 +4,7 @@ buildscript {
     }
     repositories {
         maven { url "https://repo.spring.io/milestone" }
-        maven { url "http://maven.jahia.org/maven2" }
+        maven { url "https://maven.jahia.org/maven2" }
         mavenCentral()
         jcenter()
     }
@@ -23,7 +23,7 @@ sourceCompatibility = 1.8
 
 repositories {
     maven { url "https://repo.spring.io/milestone" }
-    maven { url "http://maven.jahia.org/maven2" }
+    maven { url "https://maven.jahia.org/maven2" }
     mavenCentral()
     jcenter()
 }

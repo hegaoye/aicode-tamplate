@@ -9,7 +9,7 @@ allprojects {
 
     buildscript {
         repositories {
-            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         }
         dependencies {
             classpath 'org.akhikhl.gretty:gretty:+'
@@ -17,7 +17,7 @@ allprojects {
     }
 
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
     }
 
 

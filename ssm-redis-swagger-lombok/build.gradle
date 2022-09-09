@@ -192,7 +192,7 @@ allprojects {
 
     buildscript {
         repositories {
-            maven { url 'http://maven.ilinm.com/repository/maven-public/' }
+            maven { url 'https://maven.ilinm.com/repository/maven-public/' }
         }
         dependencies {
             classpath 'org.akhikhl.gretty:gretty:+'
@@ -200,7 +200,7 @@ allprojects {
     }
 
     repositories {
-        maven { url 'http://maven.ilinm.com/repository/maven-public/' }
+        maven { url 'https://maven.ilinm.com/repository/maven-public/' }
     }
 
 
