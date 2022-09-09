@@ -13,7 +13,7 @@ import lombok.Data;
  * @author $author$
  */
 @Data
-public class GateWayRoutePageVO extends BaseVO implements java.io.Serializable {
+public class GateWayRoutePageVO  implements java.io.Serializable {
     /**
      * 数据库字段:id  属性显示:id
      */

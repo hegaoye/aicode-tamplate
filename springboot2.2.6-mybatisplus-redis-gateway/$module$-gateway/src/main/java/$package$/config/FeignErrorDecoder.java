@@ -1,6 +1,6 @@
 package $package$.config;
 
-import $package$.core.entity.BaseException;
+import $package$.core.exceptions.BaseException;
 import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
