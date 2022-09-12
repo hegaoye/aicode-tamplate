@@ -1,4 +1,4 @@
-package $package$.core.base;
+package $package$.core;
 
 
 import lombok.Data;
