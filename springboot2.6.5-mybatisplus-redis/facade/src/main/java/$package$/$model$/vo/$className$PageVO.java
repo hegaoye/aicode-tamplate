@@ -3,6 +3,7 @@
  */
 package $package$.$model$.vo;
 
+import $package$.core.base.BaseVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -12,7 +13,7 @@ import lombok.Data;
  * @author $author$
  */
 @Data
-public class $className$PageVO  implements java.io.Serializable {
+public class $className$PageVO extends BaseVO  implements java.io.Serializable {
     /***
      for(field in fields){
      ***/

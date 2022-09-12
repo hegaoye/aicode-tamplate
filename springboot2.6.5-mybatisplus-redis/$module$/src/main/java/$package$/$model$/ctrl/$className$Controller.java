@@ -23,7 +23,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
+import java.util.Objects;
 import java.util.List;
 
 /**
@@ -170,7 +170,7 @@ public class $className$Controller {
     @PutMapping("/modify")
     public boolean modify(@ApiParam(name = "修改$className$", value = "传入json格式", required = true)
                           @RequestBody $className$VO $classNameLower$VO) {
-        if (StringUtils.isBlank($classNameLower$VO.getId())) {
+        if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
         $className$ new$className$ = new $className$();
@@ -196,7 +196,7 @@ public class $className$Controller {
     })
     @DeleteMapping("/delete")
     public R delete(@ApiIgnore $className$VO $classNameLower$VO) {
-        if (StringUtils.isBlank($classNameLower$VO.getId())) {
+        if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
         $className$ new$className$ = new $className$();
