@@ -16,16 +16,13 @@ spring:
     #消息队列 配置
     stream:
       bindings:
-        /***for(class in classes){***/
-        $class.className$Event-out-0:
+        $classNameLower$Event-out-0:
           content-type: application/json
-          destination: $class.className$_To
-        /***}***/
-        /***for(class in classes){***/
-        $class.className$Event-in-0:
+          destination: $classNameLower$-To
+
+        $classNameLower$Event-in-0:
           content-type: application/json
-          destination: $class.className$_To
-          group: $class.className$_group
-        /***}***/
-        function:
-          definition: /***for(class in classes){***/$class.className$Event;/***}***/
+          destination: $classNameLower$-To
+          group: $classNameLower$-group
+    function:
+      definition: $classNameLower$Event;

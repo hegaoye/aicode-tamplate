@@ -83,6 +83,7 @@ spring:
       rocketmq:
         binder:
           name-server: 192.168.0.250:9876
+          group: $projectName$-api
 
 feign:
   client:

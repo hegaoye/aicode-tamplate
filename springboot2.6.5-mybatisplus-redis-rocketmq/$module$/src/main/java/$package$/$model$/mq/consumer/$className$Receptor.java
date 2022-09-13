@@ -5,12 +5,10 @@ import $package$.$model$.entity.$className$;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.internal.Function;
 import org.springframework.context.annotation.Bean;
-import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+
+import java.util.function.Consumer;
 
 /**
  * $model$消费入口
@@ -26,18 +24,15 @@ public class $className$Receptor {
      * 监听 创建 $model$ 数据消费
      */
     @Bean
-    public Function<Flux<Message<String>>, Mono<Void>> buildSettingEvent() {
-        return flux -> flux.map(message -> {
-            log.info("{}", message.getPayload());
+    public Consumer<Setting> $classNameLower$Event() {
+        return return message -> {
+            log.info("{}", message);
             try {
-                $className$ $classNameLower$ = new $className$();
-                BeanUtils.copyProperties(message.getPayload(), $classNameLower$);
-                $classNameLower$Service.save($classNameLower$);
+                $classNameLower$Service.save(message);
             } catch (Exception e) {
                 log.error("异常-{}-异常信息-{}", message.getPayload(), e.getMessage());
             }
-            return message;
-        }).then();
+        };
     }
 
 }

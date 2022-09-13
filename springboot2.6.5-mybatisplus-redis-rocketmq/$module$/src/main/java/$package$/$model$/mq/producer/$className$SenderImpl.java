@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.stereotype.Service;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.util.MimeTypeUtils;
+
 
 /**
  * 消息生产 实现
@@ -35,6 +38,7 @@ public class $className$SenderImpl implements $className$Sender {
         BeanUtils.copyProperties($classNameLower$, $classNameLower$Message);
 
         MessageBuilder messageBuilder = MessageBuilder.withPayload($classNameLower$Message)
+                .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
                 .setHeader(MessageConst.PROPERTY_KEYS, linkId);
 //                .setHeader(RocketMQHeaders.TAGS, settingMessage.getCode());
         streamBridge.send($className$Topic.$className$Event_OUT.topic, messageBuilder.build());
