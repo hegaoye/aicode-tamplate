@@ -22,9 +22,6 @@ dependencies {
     implementation 'commons-lang:commons-lang:2.5'
     //-----------commons   end--------------
 
-    implementation 'com.baomidou:mybatis-plus-generator:3.4.0'
-    implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.0'
-
     implementation 'cn.hutool:hutool-all:5.1.5'
     implementation 'com.alibaba:fastjson:1.2.66'
 

@@ -4,7 +4,6 @@
 package $package$.core.exceptions;
 
 import com.alibaba.fastjson.JSON;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
@@ -13,28 +12,23 @@ import java.io.Serializable;
  *
  * @author lixin 2017-08-03 17:46
  */
-@Slf4j
 public class BaseException extends RuntimeException implements Serializable {
 
     public BaseException(BaseExceptionEnum exceptionMessage) {
         super(exceptionMessage.toString());
-        log.error("系统发生异常[{}]", exceptionMessage.toString());
     }
 
     public BaseException(BaseExceptionEnum exceptionMessage, Object... params) {
         super(exceptionMessage.toString());
-        log.error("系统发生异常[{}],参数为[{}]", exceptionMessage.toString(), JSON.toJSONString(params));
     }
 
 
     public BaseException(String message) {
         super(message);
-        log.error("系统发生异常[{}]", message);
     }
 
     public BaseException(String message, Throwable cause) {
         super(message, cause);
-        log.error("系统发生异常[{}],异常为[{}]", message, cause);
     }
 
 

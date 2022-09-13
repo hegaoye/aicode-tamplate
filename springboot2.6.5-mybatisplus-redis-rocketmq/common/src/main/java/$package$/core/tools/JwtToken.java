@@ -9,8 +9,6 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -20,7 +18,6 @@ import java.util.concurrent.TimeUnit;
  * Created by lixin on 2017/9/13.
  */
 public class JwtToken {
-    protected final static Logger logger = LoggerFactory.getLogger(JwtToken.class);
 
     private static long expireMinutes = 60L;//60分钟
     private static String secret = "ShenzhenXiDeKeJi20180828@pi-top.com";//临时同步秘钥的设定，正常情况下应该设置到setting中可以随时进行更改
@@ -48,11 +45,6 @@ public class JwtToken {
             JWTVerifier verifier = JWT.require(algorithm)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
-            logger.info("verifier token ==============================================");
-            logger.info(jwt.getToken());
-            logger.info(jwt.getHeader());
-            logger.info(jwt.getPayload());
-            logger.info(jwt.getSignature());
             if (jwt != null && jwt.getToken().equals(token)) {
                 return true;
             } else {
@@ -80,11 +72,6 @@ public class JwtToken {
             JWTVerifier verifier = JWT.require(algorithm)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
-            logger.info("verifier token ==============================================");
-            logger.info(jwt.getToken());
-            logger.info(jwt.getHeader());
-            logger.info(jwt.getPayload());
-            logger.info(jwt.getSignature());
             if (jwt != null && jwt.getToken().equals(token)) {
                 return true;
             } else {
@@ -112,9 +99,7 @@ public class JwtToken {
             JWTVerifier verifier = JWT.require(algorithm)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
-            logger.info("verifier token ==============================================");
             Claim claim = jwt.getClaim(key);
-            logger.info(claim.asString());
             String value = claim.asString();
             return value;
         } catch (UnsupportedEncodingException exception) {
@@ -139,9 +124,7 @@ public class JwtToken {
             JWTVerifier verifier = JWT.require(algorithm)
                     .build();
             DecodedJWT jwt = verifier.verify(token);
-            logger.info("verifier token ==============================================");
             Claim claim = jwt.getClaim(key);
-            logger.info(claim.asString());
             String value = claim.asString();
             return value;
         } catch (UnsupportedEncodingException exception) {
@@ -168,9 +151,6 @@ public class JwtToken {
                     .withExpiresAt(expires)
                     .withClaim(key, value)
                     .sign(algorithm);
-            logger.info("create token begin ==============================================");
-            logger.info(token);
-            logger.info("create token end ==============================================");
             return token;
         } catch (UnsupportedEncodingException exception) {
             exception.printStackTrace();
@@ -207,9 +187,6 @@ public class JwtToken {
             String token = builder
                     .withExpiresAt(expires)
                     .sign(algorithm);
-            logger.debug("create token begin ==============================================");
-            logger.debug(token);
-            logger.debug("create token end ==============================================");
             return token;
         } catch (UnsupportedEncodingException exception) {
             exception.printStackTrace();
@@ -238,9 +215,6 @@ public class JwtToken {
                     .withExpiresAt(expires)
                     .withClaim(key, value)
                     .sign(algorithm);
-            logger.debug("create token begin ==============================================");
-            logger.debug(token);
-            logger.debug("create token end ==============================================");
             return token;
         } catch (UnsupportedEncodingException exception) {
             exception.printStackTrace();
@@ -266,9 +240,6 @@ public class JwtToken {
             String token = JWT.create()
                     .withExpiresAt(expires)
                     .sign(algorithm);
-            logger.debug("create token begin ==============================================");
-            logger.debug(token);
-            logger.debug("create token end ==============================================");
             return token;
         } catch (UnsupportedEncodingException exception) {
             exception.printStackTrace();
