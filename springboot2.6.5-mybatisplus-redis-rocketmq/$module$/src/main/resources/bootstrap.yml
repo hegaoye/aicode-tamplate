@@ -19,10 +19,12 @@ spring:
         $classNameLower$Event-out-0:
           content-type: application/json
           destination: $classNameLower$-To
+          group: $classNameLower$-group
 
         $classNameLower$Event-in-0:
           content-type: application/json
           destination: $classNameLower$-To
           group: $classNameLower$-group
     function:
+      #映射消费者方法名
       definition: $classNameLower$Event;
