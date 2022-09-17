@@ -5,11 +5,11 @@ package $package$.$model$.mq;
  * 定义 stream 通道
  */
 public enum $className$Topic {
-    $className$Event_OUT("$className$Event-out-0"),
+    $className$Event_OUT("$classNameLower$Event-out-0"),
     ;
     public final String topic;
 
-    SettingTopic(String topic) {
+    $className$Topic(String topic) {
         this.topic = topic;
     }
 }
