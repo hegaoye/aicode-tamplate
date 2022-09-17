@@ -25,7 +25,7 @@ public class $className$Receptor {
      */
     @Bean
     public Consumer<$className$> $classNameLower$Event() {
-        return return message -> {
+        return message -> {
             log.info("{}", message);
             try {
                 $classNameLower$Service.save(message);
