@@ -7,7 +7,7 @@ package $package$.$model$.mq;
 public enum $className$Topic {
     $className$Event_OUT("$classNameLower$Event-out-0"),
     ;
-    public final String topic;
+    public String topic;
 
     $className$Topic(String topic) {
         this.topic = topic;
