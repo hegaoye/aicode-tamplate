@@ -24,7 +24,7 @@ public class $className$Receptor {
      * 监听 创建 $model$ 数据消费
      */
     @Bean
-    public Consumer<Setting> $classNameLower$Event() {
+    public Consumer<$className$> $classNameLower$Event() {
         return return message -> {
             log.info("{}", message);
             try {

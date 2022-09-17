@@ -32,7 +32,7 @@ public class $className$SenderImpl implements $className$Sender {
      * @param $classNameLower$  的实体类
      */
     @Override
-    public void build(Setting setting) {
+    public void build($className$ $classNameLower$) {
         String linkId = RandomStringUtils.random(32, true, true);
         $className$Message $classNameLower$Message = new $className$Message();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$Message);
@@ -40,7 +40,7 @@ public class $className$SenderImpl implements $className$Sender {
         MessageBuilder messageBuilder = MessageBuilder.withPayload($classNameLower$Message)
                 .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
                 .setHeader(MessageConst.PROPERTY_KEYS, linkId);
-//                .setHeader(RocketMQHeaders.TAGS, settingMessage.getCode());
+//                .setHeader(RocketMQHeaders.TAGS, $className$Message.getCode());
         streamBridge.send($className$Topic.$className$Event_OUT.topic, messageBuilder.build());
     }
 }
