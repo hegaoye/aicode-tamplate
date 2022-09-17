@@ -33,7 +33,7 @@ public class $className$Receptor {
                 $className$ $classNameLower$ = JSON.parseObject(JSON.toJSONString(message), $className$.class);
                 $classNameLower$Service.save($classNameLower$);
             } catch (Exception e) {
-                log.error("异常-{}-异常信息-{}", message.getPayload(), e.getMessage());
+                log.error("异常-{}-异常信息-{}", message, e.getMessage());
             }
         };
     }
