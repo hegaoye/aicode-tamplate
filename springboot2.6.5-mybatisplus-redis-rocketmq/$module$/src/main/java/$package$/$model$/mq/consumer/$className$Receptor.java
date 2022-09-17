@@ -1,7 +1,9 @@
 package $package$.$model$.mq.consumer;
 
+import com.alibaba.fastjson.JSON;
 import $package$.$model$.service.$className$Service;
 import $package$.$model$.entity.$className$;
+import $package$.$model$.message.$className$Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,12 @@ public class $className$Receptor {
      * 监听 创建 $model$ 数据消费
      */
     @Bean
-    public Consumer<$className$> $classNameLower$Event() {
+    public Consumer<$className$Message> $classNameLower$Event() {
         return message -> {
             log.info("{}", message);
             try {
-                $classNameLower$Service.save(message);
+                $className$ $classNameLower$ = JSON.parseObject(JSON.toJSONString(message), $className$.class);
+                $classNameLower$Service.save($classNameLower$);
             } catch (Exception e) {
                 log.error("异常-{}-异常信息-{}", message.getPayload(), e.getMessage());
             }
