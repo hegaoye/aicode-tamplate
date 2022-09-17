@@ -3,7 +3,7 @@
  */
 package $package$.$model$.vo;
 
-import $package$.core.base.BaseVO;
+import $package$.core.BaseVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
