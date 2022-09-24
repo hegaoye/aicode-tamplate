@@ -90,7 +90,7 @@ public class $className$Controller {
      * @param $pkField.field$ $pkField.notes$
      * @return $className$VO
      */
-    @ApiOperation(value = "创建$className$", notes = "创建$className$")
+    @ApiOperation(value = "根据条件$pkField.field$查询$notes$一个详情信息", notes = "根据条件$pkField.field$查询$notes$一个详情信息")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
     public $className$VO loadBy$pkField.
 
