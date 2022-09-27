@@ -105,7 +105,7 @@ subprojects {
         //-----------poi 导入/导出 end--------------
 
         //-----------工具包依赖 begin-----------
-        compile "com.alibaba:fastjson:1.2.32"
+        compile 'com.alibaba.fastjson2:fastjson2:2.0.10'
         compile "com.google.guava:guava:21.0"
         //-----------工具包依赖 end-----------
 

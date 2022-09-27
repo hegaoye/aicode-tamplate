@@ -87,7 +87,7 @@ dependencies {
     //-----------swagger2 end--------------
 
     compileOnly('org.projectlombok:lombok:1.18.8')
-    compile('com.alibaba:fastjson:1.2.59')
+    compile('com.alibaba.fastjson2:fastjson2:2.0.10')
 
     compile project(":core")
     compile project(':base-facade')

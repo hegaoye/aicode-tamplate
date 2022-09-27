@@ -18,8 +18,8 @@ dependencies {
     //----------- mongodb start--------------
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.1.6.RELEASE'
     //----------- mongodb end--------------
-    implementation 'cn.hutool:hutool-all:5.1.5'
-    implementation 'com.alibaba:fastjson:1.2.66'
+    implementation 'cn.hutool:hutool-all:5.8.6'
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.10'
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 

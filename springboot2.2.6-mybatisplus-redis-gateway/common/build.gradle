@@ -25,8 +25,8 @@ dependencies {
     implementation 'com.baomidou:mybatis-plus-generator:3.4.0'
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.4.0'
 
-    implementation 'cn.hutool:hutool-all:5.1.5'
-    implementation 'com.alibaba:fastjson:1.2.66'
+    implementation 'cn.hutool:hutool-all:5.8.6'
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.10'
 
 //    implementation "org.springframework.boot:spring-boot-starter-data-redis"
     compileOnly 'org.projectlombok:lombok:1.18.12'

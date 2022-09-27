@@ -77,11 +77,11 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
-    implementation 'com.alibaba:fastjson:1.2.59'
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.10'
     implementation 'com.github.ben-manes.caffeine:caffeine:2.8.1'
     implementation 'com.github.pagehelper:pagehelper:5.1.11'
 
-    implementation 'cn.hutool:hutool-all:5.1.5'
+    implementation 'cn.hutool:hutool-all:5.8.6'
 
     implementation project(path: ':core')
     implementation project(path: ':common')

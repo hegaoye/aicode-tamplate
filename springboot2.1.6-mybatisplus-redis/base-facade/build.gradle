@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     compileOnly('org.projectlombok:lombok:1.18.12')
-    compile('com.alibaba:fastjson:1.2.66')
+    compile('com.alibaba.fastjson2:fastjson2:2.0.10')
 
     //----------- mybatis mysql druid start--------------
     compile group: 'com.baomidou', name: 'mybatis-plus-generator', version: '3.1.2'
