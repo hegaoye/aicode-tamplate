@@ -149,7 +149,7 @@ public class $className$Controller {
     })
     @DeleteMapping("/delete")
     @ResponseBody
-    public R delete(@ApiIgnore $className$VO $classNameLower$VO) {
+    public boolean delete(@ApiIgnore $className$VO $classNameLower$VO) {
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
         $classNameLower$Service.delete(new$className$.getId());

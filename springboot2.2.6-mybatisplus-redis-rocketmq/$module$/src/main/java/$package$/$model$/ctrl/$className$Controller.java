@@ -196,7 +196,7 @@ public class $className$Controller {
             /***}***/
     })
     @DeleteMapping("/delete")
-    public R delete(@ApiIgnore $className$VO $classNameLower$VO) {
+    public boolean delete(@ApiIgnore $className$VO $classNameLower$VO) {
         if (StringUtils.isBlank($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
@@ -204,7 +204,7 @@ public class $className$Controller {
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
         $classNameLower$Service.remove(new LambdaQueryWrapper<$className$>()
                 .eq($className$::getId, $classNameLower$VO.getId()));
-        return R.success("删除成功");
+        return true;
     }
 
 }

@@ -129,7 +129,7 @@ public class GateWayRouteController {
             @ApiImplicitParam(name = "id", value = "id", paramType = "query")
     })
     @DeleteMapping("/delete")
-    public R delete(@ApiIgnore GateWayRouteVO appVO) {
+    public boolean delete(@ApiIgnore GateWayRouteVO appVO) {
         if (StringUtils.isBlank(appVO.getId())) {
             throw new GateWayRouteException(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
@@ -137,7 +137,7 @@ public class GateWayRouteController {
         BeanUtils.copyProperties(appVO, newGateWayRoute);
         gateWayRouteService.remove(new LambdaQueryWrapper<GateWayRoute>()
                 .eq(GateWayRoute::getId, appVO.getId()));
-        return R.success("删除成功");
+        return true;
     }
 
 }
