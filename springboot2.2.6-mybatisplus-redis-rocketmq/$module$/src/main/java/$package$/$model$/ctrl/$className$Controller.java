@@ -56,12 +56,12 @@ public class $className$Controller {
         }
         /***}***/
 
-        int count = $classNameLower$Service.count(new LambdaQueryWrapper<$className$>()
+        int count = $classNameLower$Service.lambdaQuery()
                 /***
                  for(field in fields){
                  ***/
-                .eq($className$::get$field.upper$, $classNameLower$SaveVO.get$field.upper$())
-        /***}***/);
+                .eq($className$::get$field.upper$, $classNameLower$SaveVO.get$field.upper$())/***}***/
+                .count();
         if (count > 0) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Exists);
         }
@@ -93,7 +93,7 @@ public class $className$Controller {
     public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
         $className$ $classNameLower$ = $classNameLower$Service.lambdaQuery()
                 .eq($className$::get$pkField.upper$, $pkField.field$)
-        .one();
+                .one();
         $className$VO $classNameLower$VO = new $className$VO();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$VO);
 
