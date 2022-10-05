@@ -12,18 +12,17 @@ import $package$.core.exceptions.$className$Exception;
 import $package$.core.exceptions.BaseException;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import $package$.core.entity.PageVO;
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
+import java.util.Objects;
 import java.util.List;
 
 /**
@@ -91,14 +90,15 @@ public class $className$Controller {
      */
     @ApiOperation(value = "根据条件$pkField.field$查询$notes$一个详情信息", notes = "根据条件$pkField.field$查询$notes$一个详情信息")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
-    public $className$VO loadBy$pkField.
-
-    upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
-        $className$ $classNameLower$ = $classNameLower$Service.getOne(new LambdaQueryWrapper<$className$>()
-                .eq($className$::get$pkField.upper$, $pkField.field$));
+    public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
+        $className$ $classNameLower$ = $classNameLower$Service.lambdaQuery()
+                .eq($className$::get$pkField.upper$, $pkField.field$)
+        .one();
         $className$VO $classNameLower$VO = new $className$VO();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$VO);
-        log.debug(JSON.toJSONString($classNameLower$VO));
+
+        log.debug("根据条件$pkField.field$查询$notes$一个详情信息-{}",$classNameLower$VO);
+
         return $classNameLower$VO;
     }
     /***}}***/
@@ -142,12 +142,14 @@ public class $className$Controller {
             queryWrapper.lambda().eq($className$::get$field.upper$, $classNameLower$VO.get$field.upper$());
         }
         /***}}***/
+
         int total = $classNameLower$Service.count(queryWrapper);
         if (total > 0) {
             queryWrapper.lambda().orderByDesc($className$::getId);
 
             IPage<$className$> $classNameLower$Page = $classNameLower$Service.page(page,queryWrapper);
             List<$className$PageVO> $classNameLower$PageVOList = JSON.parseArray(JSON.toJSONString($classNameLower$Page.getRecords()), $className$PageVO.class);
+
             IPage<$className$PageVO> iPage = new Page<>();
             iPage.setPages($classNameLower$Page.getPages());
             iPage.setCurrent(curPage);
@@ -157,6 +159,7 @@ public class $className$Controller {
             log.debug(JSON.toJSONString(iPage));
             return iPage;
         }
+
         return new Page<>();
     }
 
@@ -170,13 +173,16 @@ public class $className$Controller {
     @PutMapping("/modify")
     public boolean modify(@ApiParam(name = "修改$className$", value = "传入json格式", required = true)
                           @RequestBody $className$VO $classNameLower$VO) {
-        if (StringUtils.isBlank($classNameLower$VO.getId())) {
+        if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
+
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
+
         boolean isUpdated = $classNameLower$Service.update(new$className$, new LambdaQueryWrapper<$className$>()
                 .eq($className$::getId, $classNameLower$VO.getId()));
+
         return isUpdated;
     }
 
@@ -196,13 +202,16 @@ public class $className$Controller {
     })
     @DeleteMapping("/delete")
     public boolean delete(@ApiIgnore $className$VO $classNameLower$VO) {
-        if (StringUtils.isBlank($classNameLower$VO.getId())) {
+        if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
+
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
-        $classNameLower$Service.remove(new LambdaQueryWrapper<$className$>()
-                .eq($className$::getId, $classNameLower$VO.getId()));
+        $classNameLower$Service.lambdaUpdate()
+                .eq($className$::getId, $classNameLower$VO.getId())
+                .remove();
+
         return true;
     }
 

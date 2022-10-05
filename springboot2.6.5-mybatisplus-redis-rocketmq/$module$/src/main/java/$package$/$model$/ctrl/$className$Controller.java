@@ -90,14 +90,15 @@ public class $className$Controller {
      */
     @ApiOperation(value = "根据条件$pkField.field$查询$notes$一个详情信息", notes = "根据条件$pkField.field$查询$notes$一个详情信息")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
-    public $className$VO loadBy$pkField.
-
-    upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
-        $className$ $classNameLower$ = $classNameLower$Service.getOne(new LambdaQueryWrapper<$className$>()
-                .eq($className$::get$pkField.upper$, $pkField.field$));
+    public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
+        $className$ $classNameLower$ = $classNameLower$Service.lambdaQuery()
+                .eq($className$::get$pkField.upper$, $pkField.field$)
+        .one();
         $className$VO $classNameLower$VO = new $className$VO();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$VO);
-        log.debug(JSON.toJSONString($classNameLower$VO));
+
+        log.debug("根据条件$pkField.field$查询$notes$一个详情信息-{}",$classNameLower$VO);
+
         return $classNameLower$VO;
     }
     /***}}***/
@@ -141,12 +142,14 @@ public class $className$Controller {
             queryWrapper.lambda().eq($className$::get$field.upper$, $classNameLower$VO.get$field.upper$());
         }
         /***}}***/
+
         int total = $classNameLower$Service.count(queryWrapper);
         if (total > 0) {
             queryWrapper.lambda().orderByDesc($className$::getId);
 
             IPage<$className$> $classNameLower$Page = $classNameLower$Service.page(page,queryWrapper);
             List<$className$PageVO> $classNameLower$PageVOList = JSON.parseArray(JSON.toJSONString($classNameLower$Page.getRecords()), $className$PageVO.class);
+
             IPage<$className$PageVO> iPage = new Page<>();
             iPage.setPages($classNameLower$Page.getPages());
             iPage.setCurrent(curPage);
@@ -156,6 +159,7 @@ public class $className$Controller {
             log.debug(JSON.toJSONString(iPage));
             return iPage;
         }
+
         return new Page<>();
     }
 
@@ -172,10 +176,13 @@ public class $className$Controller {
         if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
+
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
+
         boolean isUpdated = $classNameLower$Service.update(new$className$, new LambdaQueryWrapper<$className$>()
                 .eq($className$::getId, $classNameLower$VO.getId()));
+
         return isUpdated;
     }
 
@@ -198,10 +205,13 @@ public class $className$Controller {
         if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
+
         $className$ new$className$ = new $className$();
         BeanUtils.copyProperties($classNameLower$VO, new$className$);
-        $classNameLower$Service.remove(new LambdaQueryWrapper<$className$>()
-                .eq($className$::getId, $classNameLower$VO.getId()));
+        $classNameLower$Service.lambdaUpdate()
+                .eq($className$::getId, $classNameLower$VO.getId())
+                .remove();
+
         return true;
     }
 
