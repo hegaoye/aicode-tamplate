@@ -60,7 +60,8 @@ public class $className$Controller {
                 /***
                  for(field in fields){
                  ***/
-                .eq($className$::get$field.upper$, $classNameLower$SaveVO.get$field.upper$())/***}***/
+                .eq($className$::get$field.upper$, $classNameLower$SaveVO.get$field.upper$())
+                /***}***/
                 .count();
         if (count > 0) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Exists);
