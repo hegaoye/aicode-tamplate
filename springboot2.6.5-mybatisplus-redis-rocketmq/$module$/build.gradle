@@ -60,7 +60,7 @@ dependencies {
 
     //-----------swagger2 start--------------
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
-    implementation 'com.github.xiaoymin:swagger-bootstrap-ui:1.9.4'
+    implementation group: 'com.github.xiaoymin', name: 'knife4j-spring-boot-starter', version: '3.0.3'
     //-----------swagger2 end--------------
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
