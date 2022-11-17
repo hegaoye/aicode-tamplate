@@ -17,7 +17,7 @@ import org.springframework.util.MimeTypeUtils;
 
 
 /**
- * 消息生产 实现
+ * $notes$ $className$ 消息 生产 实现
  */
 @Slf4j
 @Service
@@ -27,20 +27,24 @@ public class $className$SenderImpl implements $className$Sender {
     private StreamBridge streamBridge;
 
     /**
-     * 创建 $className$
+     * 创建 $notes$ $className$ 消息
      *
-     * @param $classNameLower$  的实体类
+     * @param $classNameLower$ 的实体类
      */
     @Override
     public void build($className$ $classNameLower$) {
-        String linkId = RandomStringUtils.random(32, true, true);
-        $className$Message $classNameLower$Message = new $className$Message();
-        BeanUtils.copyProperties($classNameLower$, $classNameLower$Message);
+        try {
+            String linkId = RandomStringUtils.random(32, true, true);
+            $className$Message $classNameLower$Message = new $className$Message();
+            BeanUtils.copyProperties($classNameLower$, $classNameLower$Message);
 
-        MessageBuilder messageBuilder = MessageBuilder.withPayload($classNameLower$Message)
-                .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
-                .setHeader(MessageConst.PROPERTY_KEYS, linkId);
+            MessageBuilder messageBuilder = MessageBuilder.withPayload($classNameLower$Message)
+                    .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
+                    .setHeader(MessageConst.PROPERTY_KEYS, linkId);
 //                .setHeader(RocketMQHeaders.TAGS, $className$Message.getCode());
-        streamBridge.send($className$Topic.$className$Event_OUT.topic, messageBuilder.build());
+            streamBridge.send($className$Topic.$className$Event_OUT.topic, messageBuilder.build());
+        } catch (Exception e) {
+            log.error("生产 创建 $notes$ 消息-{}", e.getLocalizedMessage(), e);
+        }
     }
 }

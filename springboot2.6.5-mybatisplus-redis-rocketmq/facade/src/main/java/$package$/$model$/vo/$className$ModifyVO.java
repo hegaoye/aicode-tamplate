@@ -1,5 +1,5 @@
 /**
- * $copyright$
+* $copyright$
  */
 package $package$.$model$.vo;
 
@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 保存 $notes$ VO
+ * 修改 $notes$ VO
  *
  * @author $author$
  */
