@@ -8,6 +8,7 @@ import $package$.$model$.service.$className$Service;
 import $package$.$model$.vo.$className$PageVO;
 import $package$.$model$.vo.$className$SaveVO;
 import $package$.$model$.vo.$className$VO;
+import $package$.$model$.vo.$className$ModifyVO;
 import $package$.core.exceptions.$className$Exception;
 import $package$.core.exceptions.BaseException;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -22,6 +23,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
+
 import java.util.Objects;
 import java.util.List;
 
@@ -57,11 +59,11 @@ public class $className$Controller {
         /***}***/
 
         int count = $classNameLower$Service.lambdaQuery()
-                /***
-                 for(field in fields){
-                 ***/
+        /***
+         for(field in fields){
+         ***/
                 .eq($className$::get$field.upper$, $classNameLower$SaveVO.get$field.upper$())
-                /***}***/
+        /***}***/
                 .count();
         if (count > 0) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Exists);
@@ -91,14 +93,16 @@ public class $className$Controller {
      */
     @ApiOperation(value = "根据条件$pkField.field$查询$notes$一个详情信息", notes = "根据条件$pkField.field$查询$notes$一个详情信息")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
-    public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
+    public $className$VO loadBy$pkField.
+
+    upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
         $className$ $classNameLower$ = $classNameLower$Service.lambdaQuery()
                 .eq($className$::get$pkField.upper$, $pkField.field$)
                 .one();
         $className$VO $classNameLower$VO = new $className$VO();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$VO);
 
-        log.debug("根据条件$pkField.field$查询$notes$一个详情信息-{}",$classNameLower$VO);
+        log.debug("根据条件$pkField.field$查询$notes$一个详情信息-{}", $classNameLower$VO);
 
         return $classNameLower$VO;
     }
@@ -148,7 +152,7 @@ public class $className$Controller {
         if (total > 0) {
             queryWrapper.lambda().orderByDesc($className$::getId);
 
-            IPage<$className$> $classNameLower$Page = $classNameLower$Service.page(page,queryWrapper);
+            IPage<$className$> $classNameLower$Page = $classNameLower$Service.page(page, queryWrapper);
             List<$className$PageVO> $classNameLower$PageVOList = JSON.parseArray(JSON.toJSONString($classNameLower$Page.getRecords()), $className$PageVO.class);
 
             IPage<$className$PageVO> iPage = new Page<>();
@@ -173,13 +177,13 @@ public class $className$Controller {
     @ApiOperation(value = "修改$className$", notes = "修改$className$")
     @PutMapping("/modify")
     public boolean modify(@ApiParam(name = "修改$className$", value = "传入json格式", required = true)
-                          @RequestBody $className$VO $classNameLower$VO) {
-        if (Objects.isNull($classNameLower$VO.getId())) {
+                          @RequestBody $className$ModifyVO $classNameLower$ModifyVO) {
+        if (Objects.isNull($classNameLower$ModifyVO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
 
         $className$ new$className$ = new $className$();
-        BeanUtils.copyProperties($classNameLower$VO, new$className$);
+        BeanUtils.copyProperties($classNameLower$ModifyVO, new$className$);
 
         boolean isUpdated = $classNameLower$Service.update(new$className$, new LambdaQueryWrapper<$className$>()
                 .eq($className$::getId, $classNameLower$VO.getId()));
