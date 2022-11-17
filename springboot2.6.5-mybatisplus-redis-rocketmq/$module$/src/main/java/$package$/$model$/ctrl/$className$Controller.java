@@ -186,7 +186,7 @@ public class $className$Controller {
         BeanUtils.copyProperties($classNameLower$ModifyVO, new$className$);
 
         boolean isUpdated = $classNameLower$Service.update(new$className$, new LambdaQueryWrapper<$className$>()
-                .eq($className$::getId, $classNameLower$VO.getId()));
+                .eq($className$::getId, $classNameLower$ModifyVO.getId()));
 
         return isUpdated;
     }

@@ -12,7 +12,7 @@ import lombok.Data;
  * @author $author$
  */
 @Data
-public class $className$VO implements java.io.Serializable {
+public class $className$ModifyVO implements java.io.Serializable {
 
     /***
      for(field in fields){
