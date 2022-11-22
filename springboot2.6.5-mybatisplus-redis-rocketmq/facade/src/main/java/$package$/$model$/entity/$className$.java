@@ -3,7 +3,6 @@
  */
 package $package$.$model$.entity;
 
-import com.alibaba.fastjson2.JSONObject;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -19,7 +18,7 @@ import lombok.experimental.Accessors;
 @Builder
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class $className$ extends JSONObject implements java.io.Serializable {
+public class $className$ implements java.io.Serializable {
     /***
      for(field in fields){
      ***/
