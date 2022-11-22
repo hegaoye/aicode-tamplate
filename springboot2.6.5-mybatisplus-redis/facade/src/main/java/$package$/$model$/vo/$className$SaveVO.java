@@ -3,6 +3,7 @@
  */
 package $package$.$model$.vo;
 
+import com.alibaba.fastjson2.JSONObject;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -12,7 +13,7 @@ import lombok.Data;
  * @author $author$
  */
 @Data
-public class $className$SaveVO implements java.io.Serializable {
+public class $className$SaveVO extends JSONObject implements java.io.Serializable {
 
     /***
      for(field in fields){
