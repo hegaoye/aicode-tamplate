@@ -1,30 +1,25 @@
 package $package$.config;
 
-import com.alibaba.fastjson.serializer.SerializeConfig;
-import com.alibaba.fastjson.serializer.ToStringSerializer;
-import com.alibaba.fastjson.support.config.FastJsonConfig;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 @Configuration
 public class WebDataConvertConfig {
     @Bean
-    public FastJsonHttpMessageConverter fastJsonHttpMessageConverter() {
-        //1.需要定义一个convert转换消息的对象
-        FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
-
-        //2.添加fastJson的配置信息
-        FastJsonConfig fastJsonConfig = new FastJsonConfig();
-
-        //3.设置Long为字符串
-        SerializeConfig serializeConfig = SerializeConfig.globalInstance;
-        serializeConfig.put(Long.class, ToStringSerializer.instance);
-        serializeConfig.put(Long.TYPE, ToStringSerializer.instance);
-        fastJsonConfig.setSerializeConfig(serializeConfig);
-
-        //4.在convert中添加配置信息.
-        converter.setFastJsonConfig(fastJsonConfig);
-        return converter;
+    @Primary
+    @ConditionalOnMissingBean(ObjectMapper.class)
+    public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder) {
+        ObjectMapper objectMapper = builder.createXmlMapper(false).build();
+        SimpleModule simpleModule = new SimpleModule();
+        //Long类型----String
+        simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
+        objectMapper.registerModule(simpleModule);
+        return objectMapper;
     }
 }
