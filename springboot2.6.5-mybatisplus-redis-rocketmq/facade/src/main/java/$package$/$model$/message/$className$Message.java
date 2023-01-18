@@ -3,7 +3,6 @@
  */
 package $package$.$model$.message;
 
-import com.alibaba.fastjson2.JSONObject;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -11,7 +10,7 @@ import lombok.Data;
  * $model$ 消息体针对 测试业务
  */
 @Data
-public class $className$Message extends JSONObject implements java.io.Serializable {
+public class $className$Message  implements java.io.Serializable {
 
     /***
      for(field in fields){
