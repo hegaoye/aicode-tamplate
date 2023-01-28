@@ -89,7 +89,7 @@ public class GateWayRouteController {
             iPage.setSize(pageSize);
             iPage.setTotal(gateWayRouteIPage.getTotal());
             iPage.setRecords(gateWayRouteVOList);
-            log.debug(JSON.toJSONString(iPage));
+            log.debug("查询$notes$信息集合-{}",iPage);
             return iPage;
         }
         return new Page<>();

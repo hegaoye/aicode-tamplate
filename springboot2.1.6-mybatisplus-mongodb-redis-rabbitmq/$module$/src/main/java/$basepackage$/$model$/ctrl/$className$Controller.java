@@ -57,7 +57,7 @@ public class $className$Controller {
 
         $classNameLower$SaveVO = new $className$SaveVO();
         BeanUtils.copyProperties($classNameLower$, $classNameLower$SaveVO);
-        log.debug(JSON.toJSONString($classNameLower$SaveVO));
+        log.debug("创建 $notes$-{}",$classNameLower$SaveVO);
         return $classNameLower$SaveVO;
     }
 

@@ -74,7 +74,7 @@ public class $className$Controller {
 
         $classNameLower$SaveVO = new $className$SaveVO();
         BeanUtils.copyProperties(new$className$, $classNameLower$SaveVO);
-        log.debug(JSON.toJSONString($classNameLower$SaveVO));
+        log.debug("创建 $notes$-{}",$classNameLower$SaveVO);
         return $classNameLower$SaveVO;
     }
 
@@ -157,7 +157,7 @@ public class $className$Controller {
             iPage.setSize(pageSize);
             iPage.setTotal($classNameLower$Page.getTotal());
             iPage.setRecords($classNameLower$PageVOList);
-            log.debug(JSON.toJSONString(iPage));
+            log.debug("查询$notes$信息集合-{}",iPage);
             return iPage;
         }
 
