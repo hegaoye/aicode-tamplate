@@ -44,9 +44,9 @@ public class $className$Controller {
      *
      * @return R
      */
-    @ApiOperation(value = "创建$className$", notes = "创建$className$")
+    @ApiOperation(value = "创建 $notes$", notes = "创建 $notes$")
     @PostMapping("/build")
-    public $className$SaveVO build(@ApiParam(name = "创建$className$", value = "传入json格式", required = true)
+    public $className$SaveVO build(@ApiParam(name = "创建 $notes$", value = "传入json格式", required = true)
                                    @RequestBody $className$SaveVO $classNameLower$SaveVO) {
         /***
          for(field in fields){
@@ -109,7 +109,7 @@ public class $className$Controller {
      *
      * @return 分页对象
      */
-    @ApiOperation(value = "查询$className$信息集合", notes = "查询$className$信息集合")
+    @ApiOperation(value = "查询$notes$信息集合", notes = "查询$notes$信息集合")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query"),
             @ApiImplicitParam(name = "pageSize", value = "分页大小", required = true, paramType = "query"),
@@ -170,9 +170,9 @@ public class $className$Controller {
      *
      * @return R
      */
-    @ApiOperation(value = "修改$className$", notes = "修改$className$")
+    @ApiOperation(value = "修改 $notes$", notes = "修改 $notes$")
     @PutMapping("/modify")
-    public boolean modify(@ApiParam(name = "修改$className$", value = "传入json格式", required = true)
+    public boolean modify(@ApiParam(name = "修改 $notes$", value = "传入json格式", required = true)
                           @RequestBody $className$VO $classNameLower$VO) {
         if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
@@ -193,7 +193,7 @@ public class $className$Controller {
      *
      * @return R
      */
-    @ApiOperation(value = "删除$className$", notes = "删除$className$")
+    @ApiOperation(value = "删除 $notes$", notes = "删除 $notes$")
     @ApiImplicitParams({
             /***
              for(pkField in pkFields){
