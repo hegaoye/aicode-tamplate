@@ -118,10 +118,10 @@ public class $className$Controller {
          for(field in fields){
           if(field.checkDate){
          ***/
-        if ($classNameLower$VO.get$field.upper$Begin() != null) {
+        if (null != $classNameLower$VO.get$field.upper$Begin()) {
             queryWrapper.lambda().gt($className$::get$field.upper$, $classNameLower$VO.get$field.upper$Begin());
         }
-        if ($classNameLower$VO.get$field.upper$End() != null) {
+        if (null != $classNameLower$VO.get$field.upper$End()) {
             queryWrapper.lambda().lt($className$::get$field.upper$, $classNameLower$VO.get$field.upper$End());
         }
         /***
