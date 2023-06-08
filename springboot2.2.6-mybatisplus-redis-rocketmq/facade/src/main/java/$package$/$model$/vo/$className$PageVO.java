@@ -6,6 +6,7 @@ package $package$.$model$.vo;
 import io.swagger.annotations.ApiModelProperty;
 import $package$.core.base.BaseVO;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * $notes$ 分页 对象 VO
@@ -13,6 +14,7 @@ import lombok.Data;
  * @author $author$
  */
 @Data
+@EqualsAndHashCode(callSuper=false)
 public class $className$PageVO extends BaseVO implements java.io.Serializable {
     /***
      for(field in fields){
