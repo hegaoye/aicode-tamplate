@@ -9,6 +9,10 @@ repositories {
     maven { url "https://repo.spring.io/milestone" }
     maven { url "https://maven.jahia.org/maven2" }
     maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local/" }
+    maven {
+        allowInsecureProtocol System.getenv("NEXUS_HOST") ? false : true
+        url System.getenv("NEXUS_HOST") ? System.getenv("NEXUS_HOST") : "https://nexus.127867.com/repository/maven-central/"
+    }
 
     mavenCentral()
     jcenter()
