@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: demo17-api
+  cloud:
+    nacos:
+      discovery:
+        #2.2.1 只有强项开启，nacos 权限中配置
+        #用户名
+        username: bruce
+        #密码
+        password: bruce
+        server-addr: 192.168.3.11:30785
+        group: DEFAULT_GROUP
+        namespace: bruce
+      config:
+        #2.2.1 只有强项开启，nacos 权限中配置
+        #用户名
+        username: bruce
+        #密码
+        password: bruce
+        server-addr: 192.168.3.11:30785
+        group: DEFAULT_GROUP
+        name: demo.yml
+        file-extension: yml
+        namespace: bruce
+        refresh-enabled: true

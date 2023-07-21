@@ -1,0 +1,163 @@
+server:
+  port: 8080
+spring:
+  output:
+    ansi:
+      enabled: always
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    tidb:
+      name: mysql-data
+      url: jdbc:mysql://${TIDB_HOST:192.168.3.12:32385}/${TIDB_DATABASE:im}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true&rewriteBatchedStatements=true
+      username: ${TIDB_USERNAME:root}
+      password: ${TIDB_PASSWORD:12345678}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
+      initialSize: 10 #初始化连接数量，最大最小连接数
+      maxActive: 100
+      minIdle: 3
+      maxWait: 600000  #获取连接等待超时的时间
+      removeAbandoned: true  #超过时间限制是否回收
+      removeAbandonedTimeout: 180 #超过时间限制多长
+      timeBetweenEvictionRunsMillis: 600000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      minEvictableIdleTimeMillis: 300000 #配置一个连接在池中最小生存的时间，单位是毫秒
+      validationQuery: SELECT 1 FROM DUAL #用来检测连接是否有效的sql，要求是一个查询语句
+      testWhileIdle: true #申请连接的时候检测
+      testOnBorrow: false #申请连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+      testOnReturn: false #归还连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+      poolPreparedStatements: true #打开PSCache，并且指定每个连接上PSCache的大小
+      maxPoolPreparedStatementPerConnectionSize: 100
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
+    uid:
+      name: uid-data
+      url: jdbc:mysql://${UID_HOST:192.168.3.12:32385}/${UID_DATABASE:uid_dev}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true&rewriteBatchedStatements=true
+      username: ${UID_USERNAME:root}
+      password: ${UID_PASSWORD:12345678}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
+      initialSize: 10 #初始化连接数量，最大最小连接数
+      maxActive: 100
+      minIdle: 3
+      maxWait: 600000  #获取连接等待超时的时间
+      removeAbandoned: true  #超过时间限制是否回收
+      removeAbandonedTimeout: 180 #超过时间限制多长
+      timeBetweenEvictionRunsMillis: 600000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      minEvictableIdleTimeMillis: 300000 #配置一个连接在池中最小生存的时间，单位是毫秒
+      validationQuery: SELECT 1 FROM DUAL #用来检测连接是否有效的sql，要求是一个查询语句
+      testWhileIdle: true #申请连接的时候检测
+      testOnBorrow: false #申请连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+      testOnReturn: false #归还连接时执行validationQuery检测连接是否有效，配置为true会降低性能
+      poolPreparedStatements: true #打开PSCache，并且指定每个连接上PSCache的大小
+      maxPoolPreparedStatementPerConnectionSize: 100
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
+  data:
+    redis:
+      database: ${REDIS_DATABASE:2}  #Redis索引0~15，默认为0
+      host: ${REDIS_HOST:192.168.3.11}
+      port: ${REDIS_PORT:32572}
+      password: ${REDIS_PASSWORD:14ywk2yA?bE4} #密码（默认为空）
+      timeout: 5000 #连接超时时间（毫秒）
+      lettuce:
+        pool:
+          max-active: 500 #最大连接数
+          max-idle: 50 #最大空闲连接数
+          min-idle: 10 #最小空闲连接数
+          max-wait: 2000ms #连接池阻塞最大等待时间
+          time-between-eviction-runs: 1s #空闲对象逐出器线程的运行间隔时间.空闲连接线程释放周期时间.
+        cluster:
+          refresh:
+            adaptive: true #redis集群拓扑自动刷新
+            period: 20 #20秒刷新一次
+    #    cluster:
+    #      nodes:
+    #        - 192.168.1.1:6789
+    #        - 192.168.1.1:6789
+    #        - 192.168.1.1:6789
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: ${MQ_NAMESEVER:192.168.3.11:30670}
+          group: player-client
+
+
+jetcache:
+  statIntervalMinutes: 1
+  areaInCacheName: false
+  local:
+    default:
+      type: caffeine
+      keyConvertor: fastjson
+  remote:
+    default:
+      type: redis
+      keyConvertor: fastjson
+      valueEncoder: kryo
+      valueDecoder: kryo
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      host: ${REDIS_HOST:192.168.3.11}
+      port: ${REDIS_PORT:31953}
+      password: ${REDIS_PASSWORD:14ywk2yA?bE4}
+
+feign:
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+##Ribbon超时重试配置
+ribbon:
+  ConnectTimeout: 20000  #毫秒    连接超时时间
+  ReadTimeout: 20000     #毫秒      逻辑处理超时时间
+  OkToRetryOnAllOperations: true    # 是否对所有操作都进行重试
+  MaxAutoRetries: 2     # 对当前实例的最大重试次数(请求服务超时6s则会再请求一次)
+  MaxAutoRetriesNextServer: 1     # 切换实例的最大重试次数(如果还失败就切换下
+
+logging:
+  level:
+    com.alibaba.cloud.stream.binder.rocketmq: warn
+    io.lettuce.core.protocol: warn
+    com.yh: debug
+  config: classpath:logback.xml
+
+mybatis-plus:
+  #  mapper-locations: classpath:mapper/*/*.xml,classpath:/META-INF/mybatis/mapper/WORKER*.xml
+  configuration:
+    cache-enabled: true
+
+#访问地址 http://127.0.0.1:8080/actuator
+management:
+  endpoints:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: "*"
+  health:
+    probes:
+      enabled: true
+
+# jasypt 对yml 加密解密
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: ${ENCYRPT_SALT}

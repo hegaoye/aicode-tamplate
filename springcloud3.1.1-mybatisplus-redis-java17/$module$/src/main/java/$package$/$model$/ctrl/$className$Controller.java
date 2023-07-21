@@ -5,27 +5,29 @@ package $package$.$model$.ctrl;
 
 import $package$.$model$.entity.$className$;
 import $package$.$model$.service.$className$Service;
-import $package$.$model$.vo.$className$PageVO;
-import $package$.$model$.vo.$className$SaveVO;
-import $package$.$model$.vo.$className$VO;
 import $package$.$model$.vo.$className$ModifyVO;
-import $package$.core.exceptions.$className$Exception;
+import $package$.$model$.vo.$className$SaveVO;
 import $package$.core.exceptions.BaseException;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.alibaba.fastjson.JSON;
+import $package$.core.exceptions.$className$Exception;
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import io.swagger.annotations.*;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import $package$.$model$.vo.$className$PageVO;
+import $package$.$model$.vo.$className$VO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Objects;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * $notes$
@@ -35,21 +37,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/$classNameLower$")
 @Slf4j
-@Api(value = "$notes$控制器", tags = "$notes$控制器")
+@Tag(name = "$notes$控制器", description = "$notes$控制器")
 public class $className$Controller {
     @Autowired
     private $className$Service $classNameLower$Service;
 
-
     /**
      * 创建 $notes$
-     *
-     * @return R
      */
-    @ApiOperation(value = "创建 $notes$", notes = "创建 $notes$")
+    @Operation(summary = "创建 $notes$", description = "创建 $notes$")
     @PostMapping("/build")
-    public $className$SaveVO build(@ApiParam(name = "创建 $notes$", value = "传入json格式", required = true)
-                                   @RequestBody $className$SaveVO $classNameLower$SaveVO) {
+    public $className$SaveVO build(@RequestBody $className$SaveVO $classNameLower$SaveVO) {
+
         /***
          for(field in fields){
          ***/
@@ -91,7 +90,7 @@ public class $className$Controller {
      * @param $pkField.field$ $pkField.notes$
      * @return $className$VO
      */
-    @ApiOperation(value = "根据条件$pkField.field$查询$notes$一个详情信息", notes = "根据条件$pkField.field$查询$notes$一个详情信息")
+    @Operation(summary = "根据条件$pkField.field$查询$notes$一个详情信息", description = "根据条件$pkField.field$查询$notes$一个详情信息")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
     public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
         $className$ $classNameLower$ = $classNameLower$Service.lambdaQuery()
@@ -101,30 +100,30 @@ public class $className$Controller {
         BeanUtils.copyProperties($classNameLower$, $classNameLower$VO);
 
         log.debug("根据条件$pkField.field$查询$notes$一个详情信息-{}", $classNameLower$VO);
-
         return $classNameLower$VO;
     }
     /***}}***/
+
 
     /**
      * 查询$notes$信息集合
      *
      * @return 分页对象
      */
-    @ApiOperation(value = "查询$notes$信息集合", notes = "查询$notes$信息集合")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query"),
-            @ApiImplicitParam(name = "pageSize", value = "分页大小", required = true, paramType = "query"),
+    @Operation(summary = "查询$notes$信息集合", description = "查询$notes$信息集合")
+    @Parameters( value = {
+            @Parameter(name = "curPage", description = "当前页"),
+            @Parameter(name = "pageSize", description = "分页大小"),
             /***
              for(field in fields){
              if(field.checkDate){
              ***/
-            @ApiImplicitParam(name = "$field.field$Begin", value = "$field.notes$", paramType = "query"),
-            @ApiImplicitParam(name = "$field.field$End", value = "$field.notes$", paramType = "query")/***if(!fieldLP.last){***/,/***}***/
+            @Parameter(name = "$field.field$Begin", description = "$field.notes$"),
+            @Parameter(name = "$field.field$End", description = "$field.notes$")/***if(!fieldLP.last){***/,/***}***/
             /***}}***/
     })
     @GetMapping(value = "/list")
-    public IPage<$className$PageVO> list(@ApiIgnore $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
+    public IPage<$className$PageVO> list(@Parameter(hidden = true) $className$PageVO $classNameLower$VO, Integer curPage, Integer pageSize) {
         IPage<$className$> page = new Page<>(curPage, pageSize);
         QueryWrapper<$className$> queryWrapper = new QueryWrapper<>();
         /***
@@ -167,15 +166,15 @@ public class $className$Controller {
     }
 
 
+
     /**
      * 修改 $notes$
      *
      * @return R
      */
-    @ApiOperation(value = "修改 $notes$", notes = "修改 $notes$")
+    @Operation(summary = "修改 $notes$", description = "修改 $notes$")
     @PutMapping("/modify")
-    public boolean modify(@ApiParam(name = "修改 $notes$", value = "传入json格式", required = true)
-                          @RequestBody $className$ModifyVO $classNameLower$ModifyVO) {
+    public boolean modify(@RequestBody $className$ModifyVO $classNameLower$ModifyVO) {
         if (Objects.isNull($classNameLower$ModifyVO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
@@ -195,16 +194,16 @@ public class $className$Controller {
      *
      * @return R
      */
-    @ApiOperation(value = "删除 $notes$", notes = "删除 $notes$")
-    @ApiImplicitParams({
+    @Operation(summary = "删除 $notes$", description = "删除 $notes$")
+    @Parameters( value = {
             /***
              for(pkField in pkFields){
              ***/
-            @ApiImplicitParam(name = "$pkField.field$", value = "$pkField.notes$", paramType = "query")/***if(!pkFieldLP.last){***/,/***}***/
+            @Parameter(name = "$pkField.field$", description = "$pkField.notes$")/***if(!pkFieldLP.last){***/,/***}***/
             /***}***/
     })
     @DeleteMapping("/delete")
-    public boolean delete(@ApiIgnore $className$VO $classNameLower$VO) {
+    public boolean delete($className$VO $classNameLower$VO) {
         if (Objects.isNull($classNameLower$VO.getId())) {
             throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
         }
