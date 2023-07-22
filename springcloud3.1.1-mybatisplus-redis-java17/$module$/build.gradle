@@ -70,6 +70,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     //-----------redis end--------------
 
+    //prometheus 对接接口
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.10.2'
 
     //-----------springdoc-openapi start--------------
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.0.4'
