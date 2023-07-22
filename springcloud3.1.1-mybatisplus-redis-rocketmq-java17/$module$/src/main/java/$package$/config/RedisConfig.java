@@ -68,4 +68,16 @@ public class RedisConfig {
 
         return redisTemplate;
     }
+
+    /**
+     * redis 锁配置
+     *
+     * @param redisConnectionFactory redis 工厂
+     * @return
+     */
+    @Bean
+    public RedisLockRegistry redisLockRegistry(RedisConnectionFactory redisConnectionFactory) {
+        //强制 默认 10s 超时
+        return new RedisLockRegistry(redisConnectionFactory, "redis_lock", TimeUnit.SECONDS.toMillis(10));
+    }
 }

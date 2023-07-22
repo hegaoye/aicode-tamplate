@@ -68,6 +68,8 @@ dependencies {
 
     //-----------redis start--------------
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-integration:2.6.3'
+    implementation 'org.springframework.integration:spring-integration-redis:5.5.8'
     //-----------redis end--------------
 
     //prometheus 对接接口
