@@ -55,10 +55,10 @@ spring:
       filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
   data:
     redis:
-      database: ${REDIS_DATABASE:2}  #Redis索引0~15，默认为0
+      database: ${REDIS_DATABASE:0}  #Redis索引0~15，默认为0
       host: ${REDIS_HOST:192.168.3.11}
       port: ${REDIS_PORT:32572}
-      password: ${REDIS_PASSWORD:14ywk2yA?bE4} #密码（默认为空）
+      password: ${REDIS_PASSWORD:12345678} #密码（默认为空）
       timeout: 5000 #连接超时时间（毫秒）
       lettuce:
         pool:
@@ -81,7 +81,7 @@ spring:
       rocketmq:
         binder:
           name-server: ${MQ_NAMESEVER:192.168.3.11:30670}
-          group: player-client
+          group: $projectName$
 
 
 jetcache:
@@ -103,7 +103,7 @@ jetcache:
         maxTotal: 50
       host: ${REDIS_HOST:192.168.3.11}
       port: ${REDIS_PORT:31953}
-      password: ${REDIS_PASSWORD:14ywk2yA?bE4}
+      password: ${REDIS_PASSWORD:12345678}
 
 feign:
   client:
@@ -136,15 +136,14 @@ logging:
     com.alibaba.cloud.stream.binder.rocketmq: warn
     io.lettuce.core.protocol: warn
     com.yh: debug
-  config: classpath:logback.xml
+  config: classpath:logback-debug.xml
 
-mybatis-plus:
-  #  mapper-locations: classpath:mapper/*/*.xml,classpath:/META-INF/mybatis/mapper/WORKER*.xml
-  configuration:
-    cache-enabled: true
-
+#项目基础资料监控
 #访问地址 http://127.0.0.1:8080/actuator
 management:
+  endpoint:
+    env:
+      enabled: false
   endpoints:
     health:
       show-details: always
@@ -154,6 +153,9 @@ management:
   health:
     probes:
       enabled: true
+  #自定义管理端口
+  server:
+    port: 8088
 
 # jasypt 对yml 加密解密
 jasypt:

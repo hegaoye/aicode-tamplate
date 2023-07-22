@@ -1,26 +1,26 @@
 spring:
   application:
-    name: demo17-api
+    name: $projectName$-api
   cloud:
     nacos:
       discovery:
         #2.2.1 只有强项开启，nacos 权限中配置
         #用户名
-        username: bruce
+        username: \${USER_NAME:nacos}
         #密码
-        password: bruce
-        server-addr: 192.168.3.11:30785
+        password: \${PASSWORD:nacos}
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
         group: DEFAULT_GROUP
-        namespace: bruce
+        namespace: \${NAMESPACE:$projectName$}
       config:
         #2.2.1 只有强项开启，nacos 权限中配置
         #用户名
-        username: bruce
+        username:  \${USER_NAME:nacos}
         #密码
-        password: bruce
-        server-addr: 192.168.3.11:30785
+        password: \${PASSWORD:nacos}
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
         group: DEFAULT_GROUP
-        name: demo.yml
+        name: $projectName$
         file-extension: yml
-        namespace: bruce
+        namespace: \${NAMESPACE:$projectName$}
         refresh-enabled: true
