@@ -76,6 +76,12 @@ spring:
     #        - 192.168.1.1:6789
     #        - 192.168.1.1:6789
     #        - 192.168.1.1:6789
+  cloud:
+    stream:
+      rocketmq:
+        binder:
+          name-server: \${MQ_NAMESEVER:192.168.3.11:30670}
+          group: $projectName$
 
 
 jetcache:
