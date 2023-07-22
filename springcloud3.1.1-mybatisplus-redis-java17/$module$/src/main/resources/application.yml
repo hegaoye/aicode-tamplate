@@ -9,9 +9,9 @@ spring:
   datasource:
     tidb:
       name: mysql-data
-      url: jdbc:mysql://${TIDB_HOST:192.168.3.12:32385}/${TIDB_DATABASE:im}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true&rewriteBatchedStatements=true
-      username: ${TIDB_USERNAME:root}
-      password: ${TIDB_PASSWORD:12345678}
+      url: jdbc:mysql://\${TIDB_HOST:192.168.3.12:32385}/\${TIDB_DATABASE:im}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true&rewriteBatchedStatements=true
+      username: \${TIDB_USERNAME:root}
+      password: \${TIDB_PASSWORD:12345678}
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
       initialSize: 10 #初始化连接数量，最大最小连接数
@@ -32,9 +32,9 @@ spring:
       filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
     uid:
       name: uid-data
-      url: jdbc:mysql://${UID_HOST:192.168.3.12:32385}/${UID_DATABASE:uid_dev}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true&rewriteBatchedStatements=true
-      username: ${UID_USERNAME:root}
-      password: ${UID_PASSWORD:12345678}
+      url: jdbc:mysql://\${UID_HOST:192.168.3.12:32385}/\${UID_DATABASE:uid_dev}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=round&allowMultiQueries=true&rewriteBatchedStatements=true
+      username: \${UID_USERNAME:root}
+      password: \${UID_PASSWORD:12345678}
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.alibaba.druid.pool.DruidDataSource # 使用druid数据源
       initialSize: 10 #初始化连接数量，最大最小连接数
@@ -55,10 +55,10 @@ spring:
       filters: stat #属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有：监控统计用的filter:stat 日志用的filter:log4j 防御SQL注入的filter:wall
   data:
     redis:
-      database: ${REDIS_DATABASE:0}  #Redis索引0~15，默认为0
-      host: ${REDIS_HOST:192.168.3.11}
-      port: ${REDIS_PORT:32572}
-      password: ${REDIS_PASSWORD:12345678} #密码（默认为空）
+      database: \${REDIS_DATABASE:0}  #Redis索引0~15，默认为0
+      host: \${REDIS_HOST:192.168.3.11}
+      port: \${REDIS_PORT:32572}
+      password: \${REDIS_PASSWORD:12345678} #密码（默认为空）
       timeout: 5000 #连接超时时间（毫秒）
       lettuce:
         pool:
@@ -80,7 +80,7 @@ spring:
     stream:
       rocketmq:
         binder:
-          name-server: ${MQ_NAMESEVER:192.168.3.11:30670}
+          name-server: \${MQ_NAMESEVER:192.168.3.11:30670}
           group: $projectName$
 
 
@@ -101,9 +101,9 @@ jetcache:
         minIdle: 5
         maxIdle: 20
         maxTotal: 50
-      host: ${REDIS_HOST:192.168.3.11}
-      port: ${REDIS_PORT:31953}
-      password: ${REDIS_PASSWORD:12345678}
+      host: \${REDIS_HOST:192.168.3.11}
+      port: \${REDIS_PORT:31953}
+      password: \${REDIS_PASSWORD:12345678}
 
 feign:
   client:
@@ -162,4 +162,4 @@ jasypt:
   encryptor:
     algorithm: PBEWithMD5AndDES
     iv-generator-classname: org.jasypt.iv.NoIvGenerator
-    password: ${ENCYRPT_SALT}
+    password: \${ENCYRPT_SALT}
