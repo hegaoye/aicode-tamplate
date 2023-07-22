@@ -145,7 +145,7 @@ public class $className$Controller {
         }
         /***}}***/
 
-        int total = $classNameLower$Service.count(queryWrapper);
+        long total = $classNameLower$Service.count(queryWrapper);
         if (total > 0) {
             queryWrapper.lambda().orderByDesc($className$::getId);
 
