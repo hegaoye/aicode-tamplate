@@ -57,7 +57,7 @@ public class $className$Controller {
         }
         /***}***/
 
-        int count = $classNameLower$Service.lambdaQuery()
+        long count = $classNameLower$Service.lambdaQuery()
         /***
          for(field in fields){
          ***/
