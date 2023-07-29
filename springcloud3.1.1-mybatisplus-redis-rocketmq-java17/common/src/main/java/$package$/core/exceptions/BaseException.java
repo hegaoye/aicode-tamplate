@@ -49,21 +49,6 @@ public class BaseException extends RuntimeException implements Serializable {
         public String code;//错误编码
         public String msg;//错误信息
 
-        //信息提示：不存在
-        private static String not_exist(String arg) {
-            return arg + " does not exist";
-        }
-
-        //信息提示：已经存在
-        private static String already_exist(String arg) {
-            return arg + " already exists";
-        }
-
-        //信息提示：添加失败
-        private static String add_failed(String arg) {
-            return "add " + arg + " failed";
-        }
-
         BaseExceptionEnum(String code, String msg) {
             this.code = code;
             this.msg = msg;
@@ -71,7 +56,7 @@ public class BaseException extends RuntimeException implements Serializable {
 
         @Override
         public String toString() {
-            return "{code:" + code + ", msg:\"" + msg + "\"}";
+            return "{\"code\":\"" + code + "\",\"msg\":\"" + msg + "\"}";
         }
 
     }

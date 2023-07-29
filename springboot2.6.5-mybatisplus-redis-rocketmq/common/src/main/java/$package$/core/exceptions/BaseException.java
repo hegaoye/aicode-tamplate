@@ -73,7 +73,7 @@ public class BaseException extends RuntimeException implements Serializable {
 
         @Override
         public String toString() {
-            return "{code:" + code + ", msg:\"" + msg + "\"}";
+            return "{\"code\":\"" + code + "\",\"msg\":\"" + msg + "\"}";
         }
 
     }
