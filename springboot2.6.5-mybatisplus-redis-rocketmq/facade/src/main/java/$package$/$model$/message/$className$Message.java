@@ -15,9 +15,6 @@ public class $className$Message  implements java.io.Serializable {
     /***
      for(field in fields){
      ***/
-    /**
-     * $field.notes$
-     */
     @ApiModelProperty(value = "$field.notes$")
     private $field.fieldType$ $field.field$;
     /***}***/

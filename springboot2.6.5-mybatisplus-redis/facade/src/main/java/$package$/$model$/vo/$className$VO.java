@@ -17,10 +17,7 @@ public class $className$VO implements java.io.Serializable {
     /***
      for(field in fields){
      ***/
-    /**
-     * 数据库字段:$field.column$  属性显示:$field.notes$
-     */
-    @ApiModelProperty(value = "$field.notes$")
+    @ApiModelProperty(value = "数据库字段:$field.column$ $field.notes$")
     private $field.fieldType$ $field.field$;
     /***}***/
 

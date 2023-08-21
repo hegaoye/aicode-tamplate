@@ -41,11 +41,6 @@ public class $className$Controller {
     private $className$Service $classNameLower$Service;
 
 
-    /**
-     * 创建 $notes$
-     *
-     * @return R
-     */
     @ApiOperation(value = "创建 $notes$", notes = "创建 $notes$")
     @PostMapping("/build")
     public $className$SaveVO build(@ApiParam(name = "创建 $notes$", value = "传入json格式", required = true)
@@ -85,12 +80,6 @@ public class $className$Controller {
      for(pkField in pkFields){
      if(pkField.field!="id"){
      ***/
-    /**
-     * 根据条件$pkField.field$查询$notes$一个详情信息
-     *
-     * @param $pkField.field$ $pkField.notes$
-     * @return $className$VO
-     */
     @ApiOperation(value = "根据条件$pkField.field$查询$notes$一个详情信息", notes = "根据条件$pkField.field$查询$notes$一个详情信息")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
     public $className$VO loadBy$pkField.
@@ -108,11 +97,6 @@ public class $className$Controller {
     }
     /***}}***/
 
-    /**
-     * 查询$notes$信息集合
-     *
-     * @return 分页对象
-     */
     @ApiOperation(value = "查询$notes$信息集合", notes = "查询$notes$信息集合")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "curPage", value = "当前页", required = true, paramType = "query"),
@@ -168,12 +152,6 @@ public class $className$Controller {
         return new Page<>();
     }
 
-
-    /**
-     * 修改 $notes$
-     *
-     * @return R
-     */
     @ApiOperation(value = "修改 $notes$", notes = "修改 $notes$")
     @PutMapping("/modify")
     public boolean modify(@ApiParam(name = "修改 $notes$", value = "传入json格式", required = true)
@@ -191,12 +169,6 @@ public class $className$Controller {
         return isUpdated;
     }
 
-
-    /**
-     * 删除 $notes$
-     *
-     * @return R
-     */
     @ApiOperation(value = "删除 $notes$", notes = "删除 $notes$")
     @ApiImplicitParams({
             /***
