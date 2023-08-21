@@ -17,10 +17,7 @@ public class $className$SaveVO implements java.io.Serializable {
     /***
      for(field in fields){
      ***/
-    /**
-     * 数据库字段:$field.column$  属性显示:$field.notes$
-     */
-    @Schema(description = "$field.notes$")
+    @Schema(description = "数据库字段:$field.column$ $field.notes$")
     private $field.fieldType$ $field.field$;
     /***}***/
 }

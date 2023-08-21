@@ -42,9 +42,6 @@ public class $className$Controller {
     @Autowired
     private $className$Service $classNameLower$Service;
 
-    /**
-     * 创建 $notes$
-     */
     @Operation(summary = "创建 $notes$", description = "创建 $notes$")
     @PostMapping("/build")
     public $className$SaveVO build(@RequestBody $className$SaveVO $classNameLower$SaveVO) {
@@ -84,12 +81,6 @@ public class $className$Controller {
      for(pkField in pkFields){
      if(pkField.field!="id"){
      ***/
-    /**
-     * 根据条件$pkField.field$查询$notes$一个详情信息
-     *
-     * @param $pkField.field$ $pkField.notes$
-     * @return $className$VO
-     */
     @Operation(summary = "根据条件$pkField.field$查询$notes$一个详情信息", description = "根据条件$pkField.field$查询$notes$一个详情信息")
     @GetMapping("/load/$pkField.field$/{$pkField.field$}")
     public $className$VO loadBy$pkField.upper$(@PathVariable $pkField.fieldType$ $pkField.field$) {
@@ -105,11 +96,6 @@ public class $className$Controller {
     /***}}***/
 
 
-    /**
-     * 查询$notes$信息集合
-     *
-     * @return 分页对象
-     */
     @Operation(summary = "查询$notes$信息集合", description = "查询$notes$信息集合")
     @Parameters( value = {
             @Parameter(name = "curPage", description = "当前页"),
@@ -167,11 +153,6 @@ public class $className$Controller {
 
 
 
-    /**
-     * 修改 $notes$
-     *
-     * @return R
-     */
     @Operation(summary = "修改 $notes$", description = "修改 $notes$")
     @PutMapping("/modify")
     public boolean modify(@RequestBody $className$ModifyVO $classNameLower$ModifyVO) {
@@ -188,12 +169,6 @@ public class $className$Controller {
         return isUpdated;
     }
 
-
-    /**
-     * 删除 $notes$
-     *
-     * @return R
-     */
     @Operation(summary = "删除 $notes$", description = "删除 $notes$")
     @Parameters( value = {
             /***
