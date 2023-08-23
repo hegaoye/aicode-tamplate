@@ -135,7 +135,7 @@ logging:
   level:
     com.alibaba.cloud.stream.binder.rocketmq: warn
     io.lettuce.core.protocol: warn
-    com.yh: debug
+    $package$: debug
   config: classpath:logback.xml
 
 #项目基础资料监控

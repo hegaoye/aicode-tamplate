@@ -1,6 +1,6 @@
 package $package$.config;
 
-import org.apache.commons.lang3.StringUtils;
+import $package$.core.http.HttpHeaders;
 import org.slf4j.MDC;
 import org.springframework.core.task.TaskDecorator;
 
@@ -21,12 +21,12 @@ public class MdcTaskDecorator implements TaskDecorator {
         Map<String, String> map = MDC.getCopyOfContextMap();
         return () -> {
             try {
-                MDC.setContextMap(map);
-                String traceId = MDC.get(LogFilter.TRACE_KEY);
-                if (StringUtils.isBlank(traceId)) {
-                    traceId = UUID.randomUUID().toString();
-                    MDC.put(LogFilter.TRACE_KEY, traceId);
+                if (null != map) {
+                    MDC.setContextMap(map);
+                } else {
+                    MDC.put(HttpHeaders.TRACE_ID, UUID.randomUUID().toString());
                 }
+
                 runnable.run();
             } finally {
                 MDC.clear();
