@@ -152,7 +152,6 @@ public class $className$Controller {
     }
 
 
-
     @Operation(summary = "修改 $notes$", description = "修改 $notes$")
     @PutMapping("/modify")
     public boolean modify(@RequestBody $className$ModifyVO $classNameLower$ModifyVO) {
