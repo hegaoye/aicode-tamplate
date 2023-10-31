@@ -75,7 +75,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     @Override
     public ${className} load(<#list pkFields as field>${field.fieldType} ${field.field}<#if field_has_next>,</#if></#list>) {
         if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
 
         Map<String,Object> param=new HashMap<>();
@@ -94,7 +94,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     @Override
     public ${className} loadBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field}) {
         if(${pkField.field}==null){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         return ${classNameLower}DAO.loadBy${pkField.field?cap_first}(${pkField.field});
     }
@@ -112,13 +112,13 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     @Override
     public void updateStateBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field},${className}State newState,${className}State... oldStates){
         if(${pkField.field}==null){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         if(newState==null){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         if(oldStates==null){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         ${classNameLower}DAO.updateStateBy${pkField.field?cap_first}(${pkField.field},new Date(),newState,oldStates);
     }
@@ -134,7 +134,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     @Override
     public void updateBy${pkField.field?cap_first}(${pkField.fieldType} ${pkField.field},${className}State state){
         if(${pkField.field}==null){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         ${classNameLower}DAO.updateBy${pkField.field?cap_first}(${pkField.field},state,new Date());
     }
@@ -149,7 +149,7 @@ public class ${className}SVImpl extends BaseSVImpl<${className}, Long> implement
     @Override
     public void delete(<#list pkFields as pkField>${pkField.fieldType} ${pkField.field}<#if pkField_has_next>,</#if></#list>) {
         if(<#list pkFields as field>${field.field}==null<#if field_has_next>&&</#if></#list>){
-            throw new ${className}Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new ${className}Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         Map<String,Object> param=new HashMap<>();
         <#list pkFields as pkField>

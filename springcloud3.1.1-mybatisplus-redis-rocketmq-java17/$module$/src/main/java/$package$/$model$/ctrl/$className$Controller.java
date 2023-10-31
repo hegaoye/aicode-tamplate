@@ -154,7 +154,7 @@ public class $className$Controller {
     @PutMapping("/modify")
     public boolean modify(@RequestBody $className$ModifyVO $classNameLower$ModifyVO) {
         if (Objects.isNull($classNameLower$ModifyVO.getId())) {
-            throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new $className$Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
 
         $className$ new$className$ = new $className$();
@@ -177,7 +177,7 @@ public class $className$Controller {
     @DeleteMapping("/delete")
     public boolean delete($className$VO $classNameLower$VO) {
         if (Objects.isNull($classNameLower$VO.getId())) {
-            throw new $className$Exception(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new $className$Exception(BaseException.BaseExceptionEnum.Illegal_Param);
         }
 
         $className$ new$className$ = new $className$();

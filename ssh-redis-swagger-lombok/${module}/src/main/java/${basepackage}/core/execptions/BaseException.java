@@ -43,7 +43,7 @@ public class BaseException extends RuntimeException implements Serializable {
         //-----------------系统异常定义 [9000~9499]--------------------------
         Server_Error(9999, "Server Error"),
         State_Error(9002, "State error"),
-        Ilegal_Param(9003, "Parameter is ilegal"),
+        Illegal_Param(9003, "Parameter is ilegal"),
         Empty_Param(9004, "Parameter is empty"),
         Exists(9005, "There is already exists"),
         Result_Not_Exist(9006, "The query result does not exist"),

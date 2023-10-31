@@ -106,7 +106,7 @@ public class GateWayRouteController {
     public boolean modify(@ApiParam(name = "修改GateWayRoute", value = "传入json格式", required = true)
                           @RequestBody GateWayRouteVO appVO, String ip) {
         if (StringUtils.isBlank(appVO.getId())) {
-            throw new GateWayRouteException(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new GateWayRouteException(BaseException.BaseExceptionEnum.Illegal_Param);
         }
 
         GateWayRoute newGateWayRoute = new GateWayRoute();
@@ -130,7 +130,7 @@ public class GateWayRouteController {
     @DeleteMapping("/delete")
     public boolean delete(@ApiIgnore GateWayRouteVO appVO) {
         if (StringUtils.isBlank(appVO.getId())) {
-            throw new GateWayRouteException(BaseException.BaseExceptionEnum.Ilegal_Param);
+            throw new GateWayRouteException(BaseException.BaseExceptionEnum.Illegal_Param);
         }
         GateWayRoute newGateWayRoute = new GateWayRoute();
         BeanUtils.copyProperties(appVO, newGateWayRoute);
