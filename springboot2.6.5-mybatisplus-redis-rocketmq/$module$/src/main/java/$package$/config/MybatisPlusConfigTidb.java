@@ -22,6 +22,8 @@ import javax.sql.DataSource;
 @Configuration
 @MapperScan(basePackages = "$package$.*.dao.mapper", sqlSessionTemplateRef = "tidbSqlSessionTemplate")
 public class MybatisPlusConfigTidb {
+    @Autowired
+    private MybatisPlusMetaObjectHandler mybatisPlusMetaObjectHandler;
 
     @Primary
     @Bean("tidbSqlSessionFactory")
@@ -37,7 +39,11 @@ public class MybatisPlusConfigTidb {
         sqlSessionFactory.setPlugins(new Interceptor[]{
                 new PaginationInterceptor()
         });
-        sqlSessionFactory.setGlobalConfig(new GlobalConfig().setBanner(false));
+
+        GlobalConfig globalConfig = new GlobalConfig();
+        globalConfig.setMetaObjectHandler(mybatisPlusMetaObjectHandler);
+        sqlSessionFactory.setGlobalConfig(globalConfig.setBanner(false));
+
         return sqlSessionFactory.getObject();
     }
 
