@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,12 @@ import javax.sql.DataSource;
 @MapperScan(basePackages = "$package$.*.dao.mapper", sqlSessionTemplateRef = "tidbSqlSessionTemplate")
 public class MybatisPlusConfigTidb {
 
+    @Autowired
+    private MybatisPlusMetaObjectHandler mybatisPlusMetaObjectHandler;
+
+    @Autowired
+    private MybatisPlusInterceptor mybatisPlusInterceptor;
+
     @Primary
     @Bean("tidbSqlSessionFactory")
     public SqlSessionFactory tidbSqlSessionFactory(@Qualifier("tidbDataSource") DataSource dataSource) throws Exception {
@@ -34,10 +41,13 @@ public class MybatisPlusConfigTidb {
         sqlSessionFactory.setConfiguration(configuration);
         sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().
                 getResources("classpath:mapper/*/*.xml"));
-//        sqlSessionFactory.setPlugins(new Interceptor[]{
-//                new MybatisPlusInterceptor()
-//        });
-        sqlSessionFactory.setGlobalConfig(new GlobalConfig().setBanner(false));
+        sqlSessionFactory.setPlugins(new Interceptor[]{
+                mybatisPlusInterceptor
+        });
+
+        GlobalConfig globalConfig = new GlobalConfig();
+        globalConfig.setMetaObjectHandler(mybatisPlusMetaObjectHandler);
+        sqlSessionFactory.setGlobalConfig(globalConfig.setBanner(false));
         return sqlSessionFactory.getObject();
     }
 
