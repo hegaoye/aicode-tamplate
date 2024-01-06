@@ -16,7 +16,7 @@ repositories {
     maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local/" }
     maven {
         allowInsecureProtocol = System.getenv("NEXUS_HOST") ? true : false
-        url System.getenv("NEXUS_HOST") ? System.getenv("NEXUS_HOST") : "https://nexus.127867.com/repository/maven-central/"
+        url System.getenv("NEXUS_HOST") ? System.getenv("NEXUS_HOST") : "https://nexus.127867.com/repository/maven-public/"
     }
 
     mavenCentral()
