@@ -20,9 +20,9 @@ public class BaiduUidConfig {
     public DefaultUidGenerator uidGenerator(DisposableWorkerIdAssigner disposableWorkerIdAssigner) {
         DefaultUidGenerator defaultUidGenerator = new DefaultUidGenerator();
         defaultUidGenerator.setWorkerIdAssigner(disposableWorkerIdAssigner);
-        defaultUidGenerator.setTimeBits(29);
-        defaultUidGenerator.setWorkerBits(21);
-        defaultUidGenerator.setSeqBits(13);
+        defaultUidGenerator.setTimeBits(31);
+        defaultUidGenerator.setWorkerBits(23);
+        defaultUidGenerator.setSeqBits(9);
         defaultUidGenerator.setEpochStr("2016-09-20");
         return defaultUidGenerator;
     }
