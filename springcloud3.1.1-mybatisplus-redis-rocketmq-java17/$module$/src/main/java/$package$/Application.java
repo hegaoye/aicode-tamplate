@@ -11,6 +11,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class Application {
 
     public static void main(String[] args) {
+        //设置rocketmq 日志管理方式
+        System.setProperty("rocketmq.client.logUseSlf4j", "true");
         SpringApplication.run(Application.class, args);
     }
 
