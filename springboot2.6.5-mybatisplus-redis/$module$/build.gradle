@@ -76,6 +76,9 @@ dependencies {
 
     implementation 'cn.hutool:hutool-all:5.8.6'
 
+    //yml 密码加密
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+
 
     //-----------项目中模块引入 Start--------------
     implementation project(path: ':common')
