@@ -25,7 +25,7 @@ spring:
 #          $classNameLower$Event-in-0:
 #            consumer:
 #              #配置是否开启广播消息 默认为false
-#              broadcasting: true
+#              messageModel: BROADCASTING
 
       bindings:
         $classNameLower$Event-out-0:
