@@ -15,7 +15,7 @@ spring:
       config:
         #2.2.1 只有强项开启，nacos 权限中配置
         #用户名
-        username:  \${USER_NAME:nacos}
+        username: \${USER_NAME:nacos}
         #密码
         password: \${PASSWORD:nacos}
         server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
@@ -24,3 +24,32 @@ spring:
         file-extension: yml
         namespace: \${NAMESPACE:$projectName$}
         refresh-enabled: true
+
+   #消息队列 配置
+    stream:
+      #扩展发送队列大小，默认10太小不够用需要扩大
+      dynamic-destination-cache-size: 100
+
+      #设置消费者特性
+      #      rocketmq:
+      #        bindings:
+      #          #登录消息广播消费模式
+      #          $classNameLower$Event-in-0:
+      #            consumer:
+      #              #配置是否开启广播消息 默认为false
+      #              broadcasting: true
+
+      bindings:
+        $classNameLower$Event-out-0:
+          content-type: application/json
+          destination: $classNameLower$-To
+          group: $classNameLower$-group
+
+        $classNameLower$Event-in-0:
+          content-type: application/json
+          destination: $classNameLower$-To
+          group: $classNameLower$-group
+
+      function:
+        #映射消费者方法名
+        definition: $classNameLower$Event;
