@@ -26,7 +26,7 @@ public class TaskExecutorConfig implements AsyncConfigurer {
         // 设置核心线程数量。若池中的实际线程数小于该值，无论其中是否有空闲的线程，都会产生新的线程
         executor.setCorePoolSize(processorNum * 2);
         // 设置最大线程数量
-        executor.setMaxPoolSize(35);
+//        executor.setMaxPoolSize(35);
         // 设置阻塞任务队列大小
         executor.setQueueCapacity(1000);
         // 线程名称前缀

@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 
 java {
-    sourceCompatibility = '17'
+    sourceCompatibility = '21'
 }
 
 [compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
