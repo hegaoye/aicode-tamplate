@@ -40,6 +40,14 @@ public class $className$SenderImpl implements $className$Sender {
 
             MessageBuilder messageBuilder = MessageBuilder.withPayload($classNameLower$Message)
                     .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
+                    /**
+                     * 延迟消息，必须设置延迟级别，每个级别代表一个延迟时间长度
+                     *级别：1  2   3  4   5  6  7  8  9  10 11 12 13 14  15  16  17 18
+                     *延迟：1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h
+                     */
+                    //.setHeader(MessageConst.PROPERTY_DELAY_TIME_LEVEL, 延迟级别)
+                    .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
+                    .setHeader(MessageConst.PROPERTY_ORIGIN_MESSAGE_ID, linkId)
                     .setHeader(MessageConst.PROPERTY_KEYS, linkId);
 //                .setHeader(RocketMQHeaders.TAGS, $className$Message.getCode());
             streamBridge.send($className$Topic.$className$Event_OUT.topic, messageBuilder.build());
