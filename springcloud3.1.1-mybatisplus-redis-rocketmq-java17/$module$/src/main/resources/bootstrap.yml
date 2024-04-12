@@ -30,14 +30,20 @@ spring:
       #扩展发送队列大小，默认10太小不够用需要扩大
       dynamic-destination-cache-size: 100
 
-      #设置消费者特性
-      #      rocketmq:
-      #        bindings:
-      #          #登录消息广播消费模式
-      #          $classNameLower$Event-in-0:
-      #            consumer:
-      #              #配置是否开启广播消息 默认为false
-      #              messageModel: BROADCASTING
+#      #设置消费rocketmq特性,此处springcloud stream 无法统一处理，需要根据mq特性设置
+#      rocketmq:
+#        bindings:
+#          #消息广播消费模式
+#          $classNameLower$Event-in-0:
+#            consumer:
+#              #配置是否开启广播消息 默认为false
+#              messageModel: BROADCASTING
+#          #消息发送时启用 事务消息
+#          $classNameLower$Event-out-0:
+#            producer:
+#              #参考rocketmq属性类 RocketMQProducerProperties -> ProducerType
+#              producerType: Trans
+#              transactionListener: $classNameLower$TransactionListener
 
       bindings:
         $classNameLower$Event-out-0:
