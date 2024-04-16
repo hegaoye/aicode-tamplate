@@ -1,16 +1,14 @@
 package $package$.filter;
 
 import com.baidu.fsg.uid.UidGenerator;
-import $package$.core.http.HttpHeaders;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Component
@@ -21,13 +19,13 @@ public class ContextInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         //日志追踪 id
-        String traceId = request.getHeader(HttpHeaders.TRACE_ID);
+        String traceId = request.getHeader("traceId");
         log.info("日志追踪 traceId: {}", traceId);
 
         if (StringUtils.isBlank(traceId)) {
             traceId = String.valueOf(uidGenerator.getUID());
         }
-        MDC.put(HttpHeaders.TRACE_ID, traceId);
+        MDC.put("traceId", traceId);
 
         return true;
     }

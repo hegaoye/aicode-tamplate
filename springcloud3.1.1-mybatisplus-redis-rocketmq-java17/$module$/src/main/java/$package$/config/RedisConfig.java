@@ -7,11 +7,13 @@ import jakarta.annotation.Resource;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.integration.redis.util.RedisLockRegistry;
 
 
 @EnableCaching
@@ -78,6 +80,6 @@ public class RedisConfig {
     @Bean
     public RedisLockRegistry redisLockRegistry(RedisConnectionFactory redisConnectionFactory) {
         //强制 默认 10s 超时
-        return new RedisLockRegistry(redisConnectionFactory, "redis_lock", TimeUnit.SECONDS.toMillis(10));
+        return new RedisLockRegistry(redisConnectionFactory, "redis_lock", 10 * 1000);
     }
 }
