@@ -58,7 +58,7 @@ public class $className$SenderImpl implements $className$Sender {
                     .setHeader(MessageConst.PROPERTY_ORIGIN_MESSAGE_ID, linkId)
                     .setHeader(MessageConst.PROPERTY_KEYS, linkId)
                     .build();
-            streamBridge.send($className$Topic.$className$Event_OUT.topic, messageBuilder);
+            streamBridge.send($className$Topic.$className$Event_OUT.topic, message);
         } catch (Exception e) {
             log.error("生产 创建 $notes$ 消息-{}", e.getLocalizedMessage(), e);
         }
