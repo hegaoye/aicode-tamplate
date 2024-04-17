@@ -60,4 +60,4 @@ logging:
       hegaoye: debug
 
   path: /var/log/tomcat/
-  config: classpath:logback-debug.xml
+  config: classpath:logback.xml

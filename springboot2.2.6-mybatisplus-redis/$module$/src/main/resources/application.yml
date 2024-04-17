@@ -110,7 +110,7 @@ logging:
       ds: debug
 
   path: /var/log/tomcat/
-  config: classpath:logback-debug.xml
+  config: classpath:logback.xml
 
 mybatis-plus:
   #  mapper-locations: classpath:mapper/*/*.xml,classpath:/META-INF/mybatis/mapper/WORKER*.xml
