@@ -136,7 +136,7 @@ logging:
     com.alibaba.cloud.stream.binder.rocketmq: warn
     io.lettuce.core.protocol: warn
     $package$: debug
-  config: classpath:logback.xml
+  config: classpath:logback-debug.xml
 
 #项目基础资料监控
 #访问地址 http://127.0.0.1:8080/actuator

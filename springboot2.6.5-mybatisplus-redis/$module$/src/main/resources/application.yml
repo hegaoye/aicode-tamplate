@@ -111,7 +111,7 @@ logging:
     com:
       ds: debug
 
-  config: classpath:logback.xml
+  config: classpath:logback-debug.xml
 
 mybatis-plus:
   #  mapper-locations: classpath:mapper/*/*.xml,classpath:/META-INF/mybatis/mapper/WORKER*.xml

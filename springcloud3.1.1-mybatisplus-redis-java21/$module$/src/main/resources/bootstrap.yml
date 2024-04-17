@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: $projectName$-api
+  cloud:
+    nacos:
+      discovery:
+        #2.2.1 只有强项开启，nacos 权限中配置
+        #用户名
+        username: \${USER_NAME:nacos}
+        #密码
+        password: \${PASSWORD:nacos}
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        namespace: \${NAMESPACE:$projectName$}
+      config:
+        #2.2.1 只有强项开启，nacos 权限中配置
+        #用户名
+        username:  \${USER_NAME:nacos}
+        #密码
+        password: \${PASSWORD:nacos}
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        name: $projectName$
+        file-extension: yml
+        namespace: \${NAMESPACE:$projectName$}
+        refresh-enabled: true
