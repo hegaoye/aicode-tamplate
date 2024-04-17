@@ -1,0 +1,120 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+java {
+    sourceCompatibility = '21'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+repositories {
+//    maven { url "https://plugins.gradle.org/m2/" }
+//    maven { url "https://repo.spring.io/milestone" }
+//    maven { url "https://repo.spring.io/release" }
+//    maven { url "https://repo.spring.io/snapshot" }
+//    maven { url "https://maven.jahia.org/maven2" }
+//    maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local/" }
+//    mavenCentral()
+    maven {
+        allowInsecureProtocol System.getenv("NEXUS_HOST") ? true : false
+        url System.getenv("NEXUS_HOST") ? System.getenv("NEXUS_HOST") : "https://nexus.127867.com/repository/maven-public/"
+    }
+    mavenCentral()
+
+}
+
+ext {
+    set('springCloudVersion', "2022.0.3")
+    set('springCloudAlibabaVersion', '2022.0.0.0-RC1')
+}
+
+
+tasks.withType(Jar.class).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+dependencies {
+    //----------- springCloud start--------------
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.1.1'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.2.4'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:3.2.4'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.2.4'
+    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:4.1.2'
+    //----------- springCloud end--------------
+
+    //----------- springCloud Alibaba start--------------
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config:2023.0.0.0-RC1'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:2023.0.0.0-RC1'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel:2023.0.0.0-RC1'
+    //----------- springCloud Alibaba end--------------
+
+    //----------- mybatis mysql druid start--------------
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    implementation 'com.alibaba:druid:1.2.22'
+    implementation 'com.alibaba:druid-spring-boot-starter:1.2.22'
+    implementation 'com.baomidou:mybatis-plus-generator:3.5.6'
+    implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.6'
+    //-----------mybatis mysql druid end--------------
+
+    //-----------redis start--------------
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-integration:3.2.4'
+    implementation 'org.springframework.integration:spring-integration-redis:6.2.3'
+    //-----------redis end--------------
+
+    //----------- rocketmq start--------------
+    implementation 'com.alibaba.cloud:spring-cloud-starter-stream-rocketmq:2023.0.0.0-RC1'
+//    implementation 'org.apache.rocketmq:rocketmq-tools:4.9.1'
+    //----------- rocketmq end--------------
+
+    //prometheus 对接接口
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.12.5'
+
+    //-----------springdoc-openapi start--------------
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.3.0'
+    implementation 'com.github.xiaoymin:knife4j-springdoc-ui:3.0.3'
+    //-----------springdoc-openapi end--------------
+
+    //yml 密码加密
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    implementation 'org.apache.commons:commons-lang3:3.14.0'
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.40'
+    implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
+    implementation 'com.github.pagehelper:pagehelper:6.0.0'
+    implementation 'cn.hutool:hutool-all:5.8.22'
+
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    //-----------项目中模块引入 Start--------------
+    implementation project(path: ':common')
+    implementation project(path: ':facade')
+    //-----------项目中模块引入 End--------------
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+dependencyManagement {
+    resolutionStrategy {
+        cacheChangingModulesFor 0, 'seconds'
+    }
+
+    imports {
+        mavenBom "com.google.cloud:spring-cloud-gcp-dependencies:4.6.0"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+    }
+}
