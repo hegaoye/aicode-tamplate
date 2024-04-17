@@ -1,5 +1,5 @@
 {
-  "name": "springcloud3.1.1-mybatisplus-redis-java17",
-  "desc": "整合springboot3.1.1,支持java17,以及cloud组件feign,mybatisplus,redis,rocketmq,mysql,主要用于分布式系统中的 provider层，此时ctrl层仅仅返回实际结果不会被包装为BeanRet的对象",
+  "name": "springcloud3.1.1-mybatisplus-redis-java21",
+  "desc": "整合springboot3.1.1,支持java21,以及cloud组件feign,mybatisplus,redis,rocketmq,mysql,主要用于分布式系统中的 provider层，此时ctrl层仅仅返回实际结果不会被包装为BeanRet的对象",
   "engine": "Beetl"
 }
