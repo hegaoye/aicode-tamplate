@@ -43,7 +43,7 @@ public class $className$SenderImpl implements $className$Sender {
             $className$Message $classNameLower$Message = new $className$Message();
             BeanUtils.copyProperties($classNameLower$, $classNameLower$Message);
 
-            Message<$classNameLower$Message> message = MessageBuilder.withPayload($classNameLower$Message)
+            Message<$className$Message> message = MessageBuilder.withPayload($classNameLower$Message)
                     .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
                     /**
                      * 延迟消息，必须设置延迟级别，每个级别代表一个延迟时间长度
@@ -58,7 +58,7 @@ public class $className$SenderImpl implements $className$Sender {
                     .setHeader(MessageConst.PROPERTY_ORIGIN_MESSAGE_ID, linkId)
                     .setHeader(MessageConst.PROPERTY_KEYS, linkId)
                     .build();
-            streamBridge.send($className$Topic.$className$Event_OUT.topic, messageBuilder);
+            streamBridge.send($className$Topic.$className$Event_OUT.topic, message);
         } catch (Exception e) {
             log.error("生产 创建 $notes$ 消息-{}", e.getLocalizedMessage(), e);
         }
