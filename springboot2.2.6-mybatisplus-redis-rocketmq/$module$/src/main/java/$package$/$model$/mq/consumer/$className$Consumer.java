@@ -22,7 +22,7 @@ public class $className$Consumer {
     private $className$Service $classNameLower$Service;
 
     /**
-     * 监听 创建 $model$ 数据消费
+     * 监听 消费 $notes$ 消息
      *
      * @param $classNameLower$Message 集合
      */

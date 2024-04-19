@@ -19,7 +19,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.function.Consumer;
 
 /**
- * $model$消费入口
+ * $notes$消费入口
  */
 @Slf4j
 @Service
@@ -32,7 +32,7 @@ public class $className$Receptor {
     private RedisLockRegistry redisLockRegistry;
 
     /**
-     * 监听 创建 $model$ 数据消费
+     * 监听 消费 $notes$ 消息
      */
     @Bean
     public Consumer<Message<$className$Message>> $classNameLower$Event() {
