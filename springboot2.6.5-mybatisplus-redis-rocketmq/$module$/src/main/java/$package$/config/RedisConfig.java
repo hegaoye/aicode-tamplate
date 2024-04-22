@@ -110,7 +110,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     @Bean
     public RedisLockRegistry redisLockRegistry(RedisConnectionFactory redisConnectionFactory) {
         //强制 默认 10s 超时
-        return new RedisLockRegistry(redisConnectionFactory, "redis_lock", TimeUnit.SECONDS.toMillis(10));
+        return new RedisLockRegistry(redisConnectionFactory, "lock", TimeUnit.SECONDS.toMillis(10));
     }
 
 

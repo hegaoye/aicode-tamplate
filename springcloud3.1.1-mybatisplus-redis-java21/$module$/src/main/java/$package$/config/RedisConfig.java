@@ -80,6 +80,6 @@ public class RedisConfig {
     @Bean
     public RedisLockRegistry redisLockRegistry(RedisConnectionFactory redisConnectionFactory) {
         //强制 默认 10s 超时
-        return new RedisLockRegistry(redisConnectionFactory, "redis_lock", 10 * 1000);
+        return new RedisLockRegistry(redisConnectionFactory, "lock", 10 * 1000);
     }
 }

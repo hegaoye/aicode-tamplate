@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class RedisServiceSVImpl {
     //锁名称
-    public static final String LOCK_PREFIX = "redis_lock:";
+    public static final String LOCK_PREFIX = "lock:";
     //加锁失效时间，毫秒
     public static final int LOCK_EXPIRE = 200; // ms
 
