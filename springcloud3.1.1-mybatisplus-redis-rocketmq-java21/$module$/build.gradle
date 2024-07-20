@@ -88,6 +88,11 @@ dependencies {
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
 
+    // https://mvnrepository.com/artifact/io.github.openfeign/feign-hc5
+    implementation 'io.github.openfeign:feign-hc5:13.2.1'
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.3.1'
+
     implementation 'org.apache.commons:commons-lang3:3.14.0'
     implementation 'com.alibaba.fastjson2:fastjson2:2.0.40'
     implementation 'com.github.ben-manes.caffeine:caffeine:3.1.8'
