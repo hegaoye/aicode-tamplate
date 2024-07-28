@@ -32,6 +32,7 @@ import java.util.List;
  *
  * @author $author$
  */
+@Deprecated
 @RestController
 @RequestMapping("/$classNameLower$")
 @Slf4j

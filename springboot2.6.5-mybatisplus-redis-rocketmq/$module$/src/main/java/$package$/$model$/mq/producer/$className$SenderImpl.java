@@ -20,6 +20,7 @@ import org.springframework.util.MimeTypeUtils;
 /**
  * $notes$ $className$ 消息 生产 实现
  */
+@Deprecated
 @Slf4j
 @Service
 public class $className$SenderImpl implements $className$Sender {

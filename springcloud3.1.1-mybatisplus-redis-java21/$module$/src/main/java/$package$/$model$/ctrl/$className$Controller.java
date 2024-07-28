@@ -34,6 +34,7 @@ import java.util.Objects;
  *
  * @author $author$
  */
+@Deprecated
 @RestController
 @RequestMapping("/$classNameLower$")
 @Slf4j

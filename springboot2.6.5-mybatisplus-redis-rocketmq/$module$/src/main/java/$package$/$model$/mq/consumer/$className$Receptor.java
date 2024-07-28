@@ -21,6 +21,7 @@ import java.util.function.Consumer;
 /**
  * $notes$消费入口
  */
+@Deprecated
 @Slf4j
 @Service
 public class $className$Receptor {

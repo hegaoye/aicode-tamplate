@@ -15,6 +15,7 @@ import java.util.Map;
  * 此处为事务消息，不需要时应删除，需要启用 yml 事务消息配置
  * 注意开启 @Component 注解使其生效
  */
+@Deprecated
 @Slf4j
 //@Component
 public class $className$TransactionListener implements TransactionListener {
