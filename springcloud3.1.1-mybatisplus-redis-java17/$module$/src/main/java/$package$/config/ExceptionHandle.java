@@ -7,6 +7,8 @@ import $package$.core.R;
 import $package$.core.exceptions.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +23,7 @@ public class ExceptionHandle {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public R catchException(Exception exception) {
+    public ResponseEntity<R> catchException(Exception exception) {
         String errorMsg = null;
         JSONObject jsonObject = null;
         if (exception != null) {
@@ -46,7 +48,7 @@ public class ExceptionHandle {
             errorMsg = BaseException.BaseExceptionEnum.Server_Error.toString();
             jsonObject = JSON.parseObject(errorMsg, Feature.OrderedField);
         }
-        return jsonObject.toJavaObject(R.class);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(jsonObject.toJavaObject(R.class));
     }
 
 
