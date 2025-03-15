@@ -1,0 +1,23 @@
+spring:
+  data:
+    redis:
+      database: \${REDIS_DATABASE:0}  #Redis索引0~15，默认为0
+      #单机连接模式
+      host: \${REDIS_HOST}
+      port: \${REDIS_PORT}
+      #集群时开启设置，并关闭单机连接模式
+      #cluster:
+      #  nodes: \${REDIS_HOST}:\${REDIS_PORT}
+      password: \${REDIS_PASSWORD} #密码（默认为空）
+      timeout: 5000 #连接超时时间（毫秒）
+      lettuce:
+        pool:
+          max-active: 500 #最大连接数
+          max-idle: 50 #最大空闲连接数
+          min-idle: 10 #最小空闲连接数
+          max-wait: 2000ms #连接池阻塞最大等待时间
+          time-between-eviction-runs: 1s #空闲对象逐出器线程的运行间隔时间.空闲连接线程释放周期时间.
+        cluster:
+          refresh:
+            adaptive: true #redis集群拓扑自动刷新
+            period: 20 #20秒刷新一次

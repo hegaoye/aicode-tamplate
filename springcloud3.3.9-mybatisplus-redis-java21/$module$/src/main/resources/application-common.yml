@@ -1,0 +1,78 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+  output:
+    ansi:
+      enabled: always
+  main:
+    allow-bean-definition-overriding: true
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  cloud:
+    openfeign:
+      client:
+        config:
+          uid-client:
+            connect-timeout: 5000
+            read-timeout: 5000
+      httpclient:
+        hc5:
+          enabled: true
+        maxConnections: 1000   #最大连接数
+        maxConnectionsPerRoute: 300   #feign单个路径的最大连接数
+        connectionTimeout: 3000  #超时时间
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+
+##Ribbon超时重试配置
+ribbon:
+  ConnectTimeout: 20000  #毫秒    连接超时时间
+  ReadTimeout: 20000     #毫秒      逻辑处理超时时间
+  OkToRetryOnAllOperations: true    # 是否对所有操作都进行重试
+  MaxAutoRetries: 2     # 对当前实例的最大重试次数(请求服务超时6s则会再请求一次)
+  MaxAutoRetriesNextServer: 1     # 切换实例的最大重试次数(如果还失败就切换下
+
+
+#项目基础资料监控
+#访问地址 http://127.0.0.1:8088/actuator
+management:
+  endpoint:
+    env:
+      enabled: true
+    shutdown:
+      enabled: true
+  endpoints:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: \${spring.application.name}
+  health:
+    probes:
+      enabled: true
+  #自定义管理端口
+  server:
+    port: 8088
+
+# jasypt 对yml 加密解密
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    password: \${ENCYRPT_SALT}

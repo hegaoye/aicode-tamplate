@@ -1,0 +1,81 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+  application:
+    name: $projectName$-api
+  cloud:
+    nacos:
+      discovery:
+        #2.2.1 只有强项开启，nacos 权限中配置
+        #用户名
+        username: \${USER_NAME:nacos}
+        #密码
+        password: \${PASSWORD:nacos}
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        namespace: \${NAMESPACE:$projectName$}
+        ip: \${spring.application.name}-backend-svc
+      config:
+        #2.2.1 只有强项开启，nacos 权限中配置
+        #用户名
+        username: \${USER_NAME:nacos}
+        #密码
+        password: \${PASSWORD:nacos}
+        server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
+        group: DEFAULT_GROUP
+        name: $projectName$
+        file-extension: yml
+        namespace: \${NAMESPACE:application-common}
+        refresh-enabled: true
+
+        # shared-configs 引入通用配置
+        shared-configs:
+          # 数组list下标越大优先级越大（list后面的优先级大）
+          - dataId: tidb.yml
+            refresh: true
+          - dataId: uid.yml
+            refresh: true
+          - dataId: redis.yml
+            refresh: true
+          - dataId: jetcache.yml
+            refresh: true
+
+    #消息队列 配置
+    stream:
+      rocketmq:
+        binder:
+          name-server: \${MQ_NAMESERVER}
+          group: \${spring.application.name}
+      #扩展发送队列大小，默认10太小不够用需要扩大
+      dynamic-destination-cache-size: 100
+
+      #      #设置消费rocketmq特性,此处springcloud stream 无法统一处理，需要根据mq特性设置
+      #      rocketmq:
+      #        bindings:
+      #          #消息广播消费模式
+      #          $classNameLower$Event-in-0:
+      #            consumer:
+      #              #配置是否开启广播消息 默认为false
+      #              messageModel: BROADCASTING
+      #          #消息发送时启用 事务消息
+      #          $classNameLower$Event-out-0:
+      #            producer:
+      #              #参考rocketmq属性类 RocketMQProducerProperties -> ProducerType
+      #              producerType: Trans
+      #              transactionListener: $classNameLower$TransactionListener
+
+      bindings:
+        $classNameLower$Event-out-0:
+          content-type: application/json
+          destination: $classNameLower$-To
+          group: $classNameLower$-group
+
+        $classNameLower$Event-in-0:
+          content-type: application/json
+          destination: $classNameLower$-To
+          group: $classNameLower$-group
+
+    function:
+      #映射消费者方法名
+      definition: $classNameLower$Event;

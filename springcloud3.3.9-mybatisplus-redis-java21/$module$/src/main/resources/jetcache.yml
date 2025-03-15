@@ -1,0 +1,27 @@
+#jetcache 配置
+jetcache:
+  statIntervalMinutes: 1
+  areaInCacheName: false
+  local:
+    default:
+      type: caffeine
+      keyConvertor: fastjson2
+  remote:
+    default:
+      type: redis.lettuce
+      keyConvertor: fastjson2
+      valueEncoder: java
+      valueDecoder: java
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+      #单机模式
+      host: \${REDIS_HOST}
+      port: \${REDIS_PORT}
+      password: \${REDIS_PASSWORD}
+      #集群模式开启
+#      mode: cluster
+#      uri:
+#        # redis://[密码]@[IP]:[PORT]/[库]
+#        - redis://\${JETCACHE_REDIS_PASSWORD}@\${REDIS_HOST}:\${REDIS_PORT}
