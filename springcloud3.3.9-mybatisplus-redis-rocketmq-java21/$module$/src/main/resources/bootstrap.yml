@@ -24,9 +24,9 @@ spring:
         password: \${PASSWORD:nacos}
         server-addr: \${REGISTER_HOST:{your_host}}:\${REGISTER_PORT:8848}
         group: DEFAULT_GROUP
-        name: $projectName$
+        name: \${CONFIG_NAME:application-common}
         file-extension: yml
-        namespace: \${NAMESPACE:application-common}
+        namespace: \${NAMESPACE:$projectName$}
         refresh-enabled: true
 
         # shared-configs 引入通用配置
